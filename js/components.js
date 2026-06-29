@@ -1,0 +1,165 @@
+/* ============================================================
+   Components — Tad Natsuhara portfolio
+   Each component is a pure function: (props) -> HTML string.
+   Pages are assembled by mapping data (js/content.js) over these.
+   A pattern is defined exactly ONCE here and reused everywhere.
+   No inline styles — components emit classes styled in components.css.
+   ============================================================ */
+
+window.Components = (function () {
+  /* Escape interpolated text so copy can't break markup. */
+  const esc = (s) =>
+    String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+  /* --- Layout primitive: Container (max-width column, defined in tokens.css) --- */
+  const Container = (inner) => `<div class="container">${inner}</div>`;
+
+  /* --- Layout primitive: Section ---
+     opts: { id, content, modifier, reveal }
+     A sticky-label split is composed by passing split markup as `content`. */
+  const Section = ({ id = '', content = '', modifier = '', reveal = true } = {}) => `
+    <section class="section${modifier ? ' ' + modifier : ''}"${id ? ` id="${esc(id)}"` : ''}>
+      ${Container(reveal ? `<div data-reveal>${content}</div>` : content)}
+    </section>`;
+
+  /* --- Sticky-label split (What I Do, How I Work, About) ---
+     opts: { label, content, modifier }
+     `modifier` selects a column-ratio class defined in components.css,
+     e.g. 'split--what' / 'split--about' — so ratios stay in CSS, never inline. */
+  const Split = ({ label = '', content = '', modifier = '' } = {}) => `
+    <div class="split${modifier ? ' ' + modifier : ''}">
+      <div class="split__label">${Eyebrow(label)}</div>
+      <div class="split__content">${content}</div>
+    </div>`;
+
+  /* --- Text primitives --- */
+  const Eyebrow = (text) => `<span class="eyebrow">${esc(text)}</span>`;
+  const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
+  const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
+
+  /* Wrap given names in <strong> for inline emphasis (--text-bright/600). */
+  const emphasizeNames = (text, names) => {
+    var out = esc(text);
+    (names || []).forEach(function (n) {
+      out = out.replace(esc(n), '<strong class="emph">' + esc(n) + '</strong>');
+    });
+    return out;
+  };
+
+  /* --- SiteHeader: sticky translucent chrome (build-spec §2) --- */
+  const SiteHeader = ({ name, nav }) => `
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-header__name" href="#top">${esc(name)}</a>
+        <nav class="site-header__nav" aria-label="Primary">
+          ${(nav || []).map(function (i) {
+            return '<a class="site-header__link" href="' + esc(i.href) + '">' + esc(i.label) + '</a>';
+          }).join('')}
+        </nav>
+      </div>
+    </header>`;
+
+  /* --- CaseStudyCard: ONE component, mapped over the data array (build-spec §3c) ---
+     props: number, client, theme, title, question, description,
+            capabilities[], href, image{src,alt,caption}, cta */
+  const CaseStudyCard = ({
+    number, client, theme, title, question, description,
+    capabilities = [], href, image = {}, cta = 'View case study',
+  }) => `
+    <a class="case-card" href="${esc(href)}" data-reveal>
+      <div class="case-card__body">
+        <div class="case-card__eyebrow">
+          <span class="case-card__num">${esc(number)}</span>
+          <span class="case-card__client">${esc(client)}</span>
+          <span class="case-card__dot" aria-hidden="true">·</span>
+          <span class="case-card__theme">${esc(theme)}</span>
+        </div>
+        <h3 class="case-card__title">${esc(title)}</h3>
+        <p class="case-card__question">${esc(question)}</p>
+        <p class="case-card__desc">${esc(description)}</p>
+        <div class="case-card__chips">
+          ${capabilities.map(Chip).join('')}
+        </div>
+        <span class="case-card__cta">${esc(cta)} <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
+      </div>
+      <div class="case-card__media">
+        ${ImageSlot(image)}
+      </div>
+    </a>`;
+
+  /* --- ImageSlot: placeholder until a real screenshot is supplied ---
+     If image.src is set, render a responsive <img>; else a labelled slot. */
+  const ImageSlot = ({ src, alt, caption } = {}) =>
+    src
+      ? `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}" loading="lazy" />`
+      : `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
+           <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
+           <span class="image-slot__caption">${esc(caption)}</span>
+           <span class="image-slot__hint">image slot</span>
+         </div>`;
+
+  /* --- PrincipleItem: numbered principle (build-spec §3d) --- */
+  const PrincipleItem = ({ number, title, description }) => `
+    <div class="principle">
+      <span class="principle__num">${esc(number)}</span>
+      <div class="principle__text">
+        <h3 class="principle__title">${esc(title)}</h3>
+        <p class="principle__desc">${esc(description)}</p>
+      </div>
+    </div>`;
+
+  /* --- WorkCell: Additional Work item (build-spec §3e) --- */
+  const WorkCell = ({ client, title, note }) => `
+    <div class="work-cell">
+      ${Eyebrow(client)}
+      <h3 class="work-cell__title">${esc(title)}</h3>
+      ${note ? `<p class="work-cell__note">${esc(note)}</p>` : ''}
+    </div>`;
+
+  /* --- PortraitSlot: About portrait (4/5), real <img> when src is set --- */
+  const PortraitSlot = ({ src, alt } = {}) =>
+    src
+      ? `<img class="portrait__img" src="${esc(src)}" alt="${esc(alt)}" />`
+      : `<div class="portrait" role="img" aria-label="${esc(alt || 'Portrait')}">
+           <span class="portrait__icon" aria-hidden="true">&#9633;</span>
+           <span class="portrait__caption">Drop your photo</span>
+           <span class="portrait__hint">portrait slot</span>
+         </div>`;
+
+  /* --- SiteFooter: giant mailto + contact columns (build-spec §3g) --- */
+  const SiteFooter = (d) => `
+    <footer class="site-footer section--footer" id="contact">
+      <div class="container" data-reveal>
+        ${Eyebrow(d.eyebrow)}
+        <a class="site-footer__cta" href="mailto:${esc(d.email)}">${esc(d.cta)}
+          <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <div class="site-footer__details">
+          <div class="site-footer__col">
+            ${Eyebrow('Email')}
+            <a class="site-footer__link" href="mailto:${esc(d.email)}">${esc(d.email)}</a>
+          </div>
+          <div class="site-footer__col">
+            ${Eyebrow('Phone')}
+            <a class="site-footer__link" href="tel:${esc(d.phone.replace(/\s+/g, ''))}">${esc(d.phone)}</a>
+          </div>
+          <div class="site-footer__col">
+            ${Eyebrow('Social')}
+            <a class="site-footer__link" href="${esc(d.linkedin.href)}" target="_blank" rel="noopener">
+              ${esc(d.linkedin.label)} <span aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </div>
+        <p class="site-footer__copyright">${esc(d.copyright)}</p>
+      </div>
+    </footer>`;
+
+  return {
+    esc, Container, Section, Split, Eyebrow, Pill, Chip,
+    emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot,
+    PrincipleItem, WorkCell, PortraitSlot, SiteFooter,
+  };
+})();

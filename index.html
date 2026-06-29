@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tad Natsuhara — Senior Product Designer</title>
+  <meta name="description" content="Tad Natsuhara — Senior Product Designer in Vancouver, BC. I design enterprise products that simplify complex systems." />
+
+  <!-- Bricolage Grotesque, weights 400–800 (build-spec §0) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
+
+  <!-- Single source of truth for all design values -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <!-- Component + layout styles (tokens only, no hardcoded values) -->
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <!-- Page is rendered from data by js/app.js — never hand-written markup per section -->
+  <div id="app"></div>
+
+  <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
+  <script src="js/content.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
