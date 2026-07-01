@@ -74,15 +74,14 @@ window.Content = {
           'management, introduced reusable Style Kits, and established a single ' +
           'source of truth for branding across the RISE ecosystem.',
         capabilities: [
-          'Product Strategy', 'Enterprise SaaS', 'Systems Thinking',
-          'Information Architecture', 'AI-assisted Design', 'Customer Validation',
+          'Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture',
         ],
         href: 'case-brand-governance.html',
         image: { src: '', alt: 'Brand Governance platform', caption: 'Brand Governance — RISE platform' },
       },
       {
         number: '02',
-        client: 'Lululemon',
+        client: 'lululemon',
         theme: 'Behavioral Complexity',
         title: 'Designing a Passwordless Authentication Experience',
         question:
@@ -92,11 +91,10 @@ window.Content = {
           'security, accessibility, and customer confidence while supporting ' +
           'adoption of emerging authentication standards.',
         capabilities: [
-          'Trust Design', 'Cross-platform UX', 'Accessibility',
-          'Design Systems', 'Product Collaboration',
+          'Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems',
         ],
         href: 'case-passkeys.html',
-        image: { src: '', alt: 'Passkey authentication flow', caption: 'Passkeys — authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys — authentication flow' },
       },
       {
         number: '03',
@@ -114,7 +112,7 @@ window.Content = {
           'Responsive UX', 'Enterprise Product Design',
         ],
         href: 'case-rail-booking.html',
-        image: { src: '', alt: 'Rail booking seat selection', caption: 'Rail Booking — seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb.png', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
       },
     ],
     cta: 'View case study',
@@ -132,7 +130,7 @@ window.Content = {
       { number: '03', title: 'Rapid exploration', description: 'AI-assisted tools to widen the option space — increasing exploration, not replacing thinking.' },
       { number: '04', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
-    closing: 'The result is software that feels intuitive without sacrificing capability.',
+    closing: 'The result is software people trust on the first try and rely on every day after.',
   },
 
   /* ---------- Additional Work (WorkCell ×4) ---------- */
@@ -172,6 +170,6 @@ window.Content = {
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',
     linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    copyright: '© 2026 Tadashi Design — Tad Natsuhara',
+    copyright: '© 2026 Tad Natsuhara',
   },
 };

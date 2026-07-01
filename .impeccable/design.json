@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-30T00:00:00Z",
+  "title": "Design System: Tad Natsuhara Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Coastal Cyan", "canonical": "oklch(0.80 0.10 210)", "tonalRamp": ["oklch(0.20 0.04 210)", "oklch(0.32 0.06 210)", "oklch(0.44 0.07 210)", "oklch(0.56 0.09 210)", "oklch(0.68 0.10 210)", "oklch(0.80 0.10 210)", "oklch(0.88 0.07 210)", "oklch(0.95 0.03 210)"] },
+      "bg": { "role": "neutral", "displayName": "Warm Pitch", "canonical": "#15120D" },
+      "bg-card": { "role": "neutral", "displayName": "Card Brown", "canonical": "#1A1610" },
+      "bg-inset": { "role": "neutral", "displayName": "Inset Brown", "canonical": "#26211A" },
+      "band-bg": { "role": "tertiary", "displayName": "Outcome Teal", "canonical": "oklch(0.62 0.09 208)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only." },
+      "section": { "displayName": "Section", "purpose": "Section headlines." },
+      "statement": { "displayName": "Statement", "purpose": "Mid-weight declarative statements (What I Do / How I Work)." },
+      "lead": { "displayName": "Lead", "purpose": "Lead paragraph directly under a headline." },
+      "body": { "displayName": "Body", "purpose": "Default running copy." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "Uppercase micro-labels above headlines and in card metadata." }
+    },
+    "shadows": [
+      { "name": "ambient-rest", "value": "0 4px 24px rgba(0, 0, 0, 0.25)", "purpose": "Default soft shadow under card-level surfaces." },
+      { "name": "ambient-hover", "value": "0 8px 32px rgba(0, 0, 0, 0.32)", "purpose": "Deeper shadow on hover, paired with border-brightening." },
+      { "name": "accent-glow", "value": "0 0 10px oklch(0.80 0.10 210)", "purpose": "Live-status dot glow in About section; the only colored shadow." }
+    ],
+    "motion": [
+      { "name": "reveal", "value": "0.7s cubic-bezier(0.2, 0.7, 0.2, 1)", "purpose": "Scroll-reveal entrance animation." },
+      { "name": "hover-border", "value": "0.4s ease", "purpose": "Border-color hover transitions." },
+      { "name": "hover-color", "value": "0.3s ease", "purpose": "Text/icon color hover transitions." }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Highest-status label per context (e.g. role title) — solid accent fill.",
+      "html": "<span class=\"ds-pill\">Senior Product Designer</span>",
+      "css": ".ds-pill { display: inline-block; background: oklch(0.80 0.10 210); color: #0E1416; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 100px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Secondary metadata tag (capability tags, case-study tech chips).",
+      "html": "<span class=\"ds-chip\">Design Systems</span>",
+      "css": ".ds-chip { display: inline-block; background: #26211A; color: #C9BCA6; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 100px; }"
+    },
+    {
+      "name": "Case Study Card",
+      "kind": "card",
+      "refersTo": "case-card",
+      "description": "Two-column case-study summary card with eyebrow metadata, title, description, chips, and CTA.",
+      "html": "<a class=\"ds-case-card\" href=\"#\"><div class=\"ds-case-card__body\"><div class=\"ds-case-card__eyebrow\"><span class=\"ds-case-card__num\">01</span><span class=\"ds-case-card__client\">Acme Corp</span></div><h3 class=\"ds-case-card__title\">Simplifying enterprise onboarding</h3><p class=\"ds-case-card__desc\">A short description of the case study outcome.</p><span class=\"ds-case-card__cta\">View case study →</span></div></a>",
+      "css": ".ds-case-card { display: block; background: #1A1610; border: 1px solid rgba(241,235,223,0.12); border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); text-decoration: none; color: inherit; transition: border-color 0.4s, box-shadow 0.4s; } .ds-case-card:hover, .ds-case-card:focus-visible { border-color: rgba(241,235,223,0.26); box-shadow: 0 8px 32px rgba(0,0,0,0.32); } .ds-case-card__body { padding: 48px 50px; } .ds-case-card__eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: #A1957F; margin-bottom: 22px; } .ds-case-card__num { color: oklch(0.82 0.10 210); font-weight: 700; } .ds-case-card__client { color: #E7DFD2; } .ds-case-card__title { margin: 0 0 18px; font-size: clamp(26px, 2.9vw, 40px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; color: #F1EBDF; } .ds-case-card__desc { margin: 0 0 26px; font-size: 16px; line-height: 1.6; color: #A1957F; max-width: 48ch; } .ds-case-card__cta { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #A1957F; transition: color 0.3s; } .ds-case-card:hover .ds-case-card__cta { color: #F1EBDF; }"
+    },
+    {
+      "name": "Hero Cue Button",
+      "kind": "button",
+      "refersTo": "hero-cue-btn",
+      "description": "Circular scroll-cue icon button used as the hero's primary affordance.",
+      "html": "<a class=\"ds-hero-cue\" href=\"#work\"><span class=\"ds-hero-cue__btn\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></span><span class=\"ds-hero-cue__label\">Selected Work</span></a>",
+      "css": ".ds-hero-cue { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: #A1957F; } .ds-hero-cue__btn { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid rgba(241,235,223,0.26); border-radius: 100px; color: #F1EBDF; transition: border-color 0.4s, transform 0.3s; } .ds-hero-cue:hover .ds-hero-cue__btn { border-color: #F1EBDF; transform: translateY(3px); } .ds-hero-cue__label { font-size: 12px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Site Header Nav Link",
+      "kind": "nav",
+      "refersTo": "site-header__link",
+      "description": "Sticky header navigation link.",
+      "html": "<a class=\"ds-nav-link\" href=\"#work\">Work</a>",
+      "css": ".ds-nav-link { font-size: 13px; font-weight: 600; color: #A1957F; text-decoration: none; transition: color 0.3s; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #F1EBDF; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Confidence",
+    "overview": "A warm near-black canvas (#15120D) holds the page; one cool cyan accent (oklch(0.80 0.10 210)) is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy. This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no stock-photo sheen. Where a typical SaaS landing page reaches for a gradient to feel \"modern,\" this system reaches for restraint and a single confident hue instead.",
+    "keyCharacteristics": [
+      "One accent color, used sparingly, never diluted with a second hue",
+      "Warm near-black base instead of true black or cool gray",
+      "Flat-by-default surfaces with tonal layering, accented by soft ambient shadows for depth",
+      "Display type goes large and tight (negative letter-spacing, low line-height) while body copy stays generous and readable",
+      "Borders, not shadows, do most of the \"this is interactive\" signaling on hover"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Cyan is the only saturated color in the system. If a new UI need calls for \"another color,\" the answer is a neutral tone from the existing ramp, not a second hue.", "section": "colors" },
+      { "name": "The Display Ceiling Rule", "body": "Hero display type tops out at 148px even at ultra-wide viewports — large enough to command the fold without shouting past it.", "section": "typography" },
+      { "name": "The Diffuse-Not-Dark Rule", "body": "Shadows stay low-opacity and large-radius (soft ambient glow), never small-radius/high-opacity \"2014 app\" drop shadows. If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep cyan (oklch(0.80 0.10 210)) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.",
+      "Do use the Ambient Rest / Ambient Hover shadow pair (0 4px 24px rgba(0,0,0,0.25) → 0 8px 32px rgba(0,0,0,0.32)) for any new card-level surface, paired with the existing border-brightening hover.",
+      "Do step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.",
+      "Do cap hero display type at 148px and keep its line-height tight (0.94) so large type reads as composed, not sprawling.",
+      "Do write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice."
+    ],
+    "donts": [
+      "Don't introduce a second saturated accent color (no purple, no magenta, no multi-color gradient) — this breaks the One Accent Rule and reads as generic AI-template styling.",
+      "Don't use purple gradients, glassmorphism, interchangeable stock-photo hero sections, or any other generic SaaS-landing-page clichés — these are explicit anti-references from PRODUCT.md.",
+      "Don't use hard, small-radius drop shadows (the \"2014 app\" look). If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.",
+      "Don't pair Bricolage Grotesque with a second typeface; contrast comes from weight and scale within the one family, not from font pairing.",
+      "Don't let muted/faint text fall below the 4.5:1 contrast ratio against its background. text-faint is safe on the page background but fails on lighter surfaces (bg-inset); use text-muted there instead. A near-black \"faintest\" tone was removed from the system entirely after failing AA everywhere it was used — don't reintroduce it."
+    ]
+  }
+}

@@ -22,8 +22,7 @@
   --text-tertiary:  #C9BCA6;
   --text-muted:     #A1957F; /* eyebrows, supporting copy, nav */
   --text-faint:     #736959; /* faint labels */
-  --text-faint-2:   #8A8070;
-  --text-faint-3:   #5E5648; /* copyright */
+  --text-faint-2:   #8A8070; /* copyright */
 
   /* ---------- Color: accent (cyan) ---------- */
   /* Use --accent for fills/solids, --accent-text for type on dark */
@@ -93,6 +92,10 @@
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
   --dot-glow: 0 0 10px oklch(0.80 0.10 210); /* About status dot */
+
+  /* ---------- Elevation (DESIGN.md §4) ---------- */
+  --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-ambient-hover: 0 8px 32px rgba(0, 0, 0, 0.32);
 }
 
 /* ---------- Global base (apply once, e.g. in globals.css) ---------- */

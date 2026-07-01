@@ -48,7 +48,7 @@
   function CaseStudies(d) {
     var head =
       '<div class="section-opener">' +
-        '<span class="section-opener__label">' + C.esc(d.label) + '</span>' +
+        '<h2 class="section-opener__label">' + C.esc(d.label) + '</h2>' +
         '<span class="section-opener__meta">' + C.esc(d.meta) + '</span>' +
       '</div>';
     var cards =
@@ -78,7 +78,7 @@
   function AdditionalWork(d) {
     var head =
       '<div class="section-opener">' +
-        '<span class="section-opener__label">' + C.esc(d.label) + '</span>' +
+        '<h2 class="section-opener__label">' + C.esc(d.label) + '</h2>' +
         '<span class="section-opener__meta">' + C.esc(d.meta) + '</span>' +
       '</div>';
     var intro = '<p class="addwork__intro">' + C.esc(d.intro) + '</p>';
@@ -101,12 +101,31 @@
             C.esc(d.name) + '</p>' +
         '</div>' +
         '<div class="split__content">' +
-          C.Eyebrow(d.label) +
+          C.SectionHeading(d.label) +
           '<p class="statement about__statement">' + C.esc(d.statement) + '</p>' +
           '<p class="statement__body">' + C.esc(d.body) + '</p>' +
         '</div>' +
       '</div>';
     return C.Section({ id: 'about', content: content });
+  }
+
+  /* ---------- Mobile nav toggle: shows/hides .site-header__nav below 600px ---------- */
+  function initNavToggle() {
+    var toggle = document.querySelector('.site-header__toggle');
+    var nav = document.getElementById('primary-nav');
+    if (!toggle || !nav) return;
+
+    function close() {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
   }
 
   /* ---------- Scroll-reveal: add .is-visible once on enter. Reduced-motion aware. ---------- */
@@ -145,6 +164,7 @@
 
     document.getElementById('app').innerHTML = page;
     initReveal();
+    initNavToggle();
   }
 
   if (document.readyState === 'loading') {

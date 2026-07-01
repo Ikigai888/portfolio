@@ -37,6 +37,7 @@
 /* ---------- Text primitives: Eyebrow / Pill / Chip ---------- */
 .eyebrow {
   display: inline-block;
+  margin: 0;
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);
@@ -96,6 +97,31 @@
   transition: color var(--hover-color-dur);
 }
 .site-header__link:hover { color: var(--text-primary); }
+
+/* ---------- Mobile nav toggle (hidden on desktop) ---------- */
+.site-header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin: -10px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.site-header__toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: transform var(--hover-color-dur), opacity var(--hover-color-dur);
+}
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:first-child { transform: translateY(3.5px) rotate(45deg); }
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
 /* ---------- Hero (build-spec §3a) ---------- */
 .hero__badge {
@@ -199,6 +225,7 @@
   margin-bottom: var(--gap-split);
 }
 .section-opener__label {
+  margin: 0;
   font-size: var(--fs-eyebrow);
   font-weight: 700;
   letter-spacing: var(--ls-eyebrow);
@@ -225,9 +252,10 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--hover-dur);
+  box-shadow: var(--shadow-ambient-rest);
+  transition: border-color var(--hover-dur), box-shadow var(--hover-dur);
 }
-.case-card:hover { border-color: var(--border-bright); }
+.case-card:hover { border-color: var(--border-bright); box-shadow: var(--shadow-ambient-hover); }
 
 .case-card__body { padding: 48px 50px; }
 
@@ -307,12 +335,12 @@
   background: var(--bg-inset);
 }
 .image-slot__icon { font-size: 26px; color: var(--text-faint); }
-.image-slot__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-faint-2); }
+.image-slot__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); }
 .image-slot__hint {
   font-size: 11px;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--text-faint-3);
+  color: var(--text-muted);
 }
 .image-slot__img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
@@ -419,12 +447,12 @@
 }
 .portrait__img { object-fit: cover; display: block; }
 .portrait__icon { font-size: 26px; color: var(--text-faint); }
-.portrait__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-faint-2); }
+.portrait__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); }
 .portrait__hint {
   font-size: 11px;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--text-faint-3);
+  color: var(--text-muted);
 }
 .about__name {
   display: flex;
@@ -483,7 +511,7 @@
 .site-footer__copyright {
   margin: 56px 0 0;
   font-size: var(--fs-chip);
-  color: var(--text-faint-3);
+  color: var(--text-faint-2);
 }
 
 /* ---------- Accessibility: visible keyboard focus (build-spec §5) ---------- */
@@ -510,6 +538,26 @@ button:focus-visible {
 
 @media (max-width: 600px) {
   .case-card__body { padding: 32px 26px; }
-  .site-header__nav { gap: 18px; }
   .hero__subtext { margin-top: 36px; }
+
+  /* Collapse the primary nav into a toggleable dropdown so the site
+     name never has to wrap or fight the nav links for space. */
+  .site-header__toggle { display: flex; }
+  .site-header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header__nav.is-open { display: flex; }
+  .site-header__link {
+    padding: 16px var(--gutter);
+    border-top: 1px solid var(--hairline);
+    font-size: 15px;
+  }
 }

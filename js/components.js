@@ -31,12 +31,16 @@ window.Components = (function () {
      e.g. 'split--what' / 'split--about' — so ratios stay in CSS, never inline. */
   const Split = ({ label = '', content = '', modifier = '' } = {}) => `
     <div class="split${modifier ? ' ' + modifier : ''}">
-      <div class="split__label">${Eyebrow(label)}</div>
+      <div class="split__label">${SectionHeading(label)}</div>
       <div class="split__content">${content}</div>
     </div>`;
 
   /* --- Text primitives --- */
   const Eyebrow = (text) => `<span class="eyebrow">${esc(text)}</span>`;
+  /* SectionHeading: same visual treatment as Eyebrow, but a real <h2> so
+     the document outline reads h1 (hero) > h2 (each page section) >
+     h3 (case-card titles) instead of skipping straight to h3. */
+  const SectionHeading = (text) => `<h2 class="eyebrow">${esc(text)}</h2>`;
   const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
   const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
 
@@ -49,12 +53,19 @@ window.Components = (function () {
     return out;
   };
 
-  /* --- SiteHeader: sticky translucent chrome (build-spec §2) --- */
+  /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
+     Includes a mobile nav toggle (hidden on desktop via CSS) so the
+     four nav links never have to wrap or crowd the name at narrow
+     widths. Wired up by app.js. */
   const SiteHeader = ({ name, nav }) => `
     <header class="site-header">
       <div class="container site-header__inner">
         <a class="site-header__name" href="#top">${esc(name)}</a>
-        <nav class="site-header__nav" aria-label="Primary">
+        <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+          <span class="site-header__toggle-bar"></span>
+          <span class="site-header__toggle-bar"></span>
+        </button>
+        <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
           ${(nav || []).map(function (i) {
             return '<a class="site-header__link" href="' + esc(i.href) + '">' + esc(i.label) + '</a>';
           }).join('')}
@@ -133,7 +144,7 @@ window.Components = (function () {
   const SiteFooter = (d) => `
     <footer class="site-footer section--footer" id="contact">
       <div class="container" data-reveal>
-        ${Eyebrow(d.eyebrow)}
+        ${SectionHeading(d.eyebrow)}
         <a class="site-footer__cta" href="mailto:${esc(d.email)}">${esc(d.cta)}
           <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
         </a>
@@ -158,7 +169,7 @@ window.Components = (function () {
     </footer>`;
 
   return {
-    esc, Container, Section, Split, Eyebrow, Pill, Chip,
+    esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
     emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot,
     PrincipleItem, WorkCell, PortraitSlot, SiteFooter,
   };

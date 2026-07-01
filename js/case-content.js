@@ -80,11 +80,11 @@ window.CaseContent = {
 
     aiExploration: {
       number: '04',
-      label: 'AI-Assisted Exploration',
+      label: 'AI Exploration',
       headline: 'Wider exploration, faster alignment',
       body: [
         'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — broker, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
-        'AI increased the breadth of exploration; it didn\'t replace the design thinking. The judgment about which model held up under governance constraints, and which would confuse admins, stayed firmly a design decision.',
+        'AI increased the breadth of exploration; it didn’t replace the design thinking. The judgment about which model held up under governance constraints, and which would confuse admins, stayed firmly a design decision.',
       ],
     },
 
@@ -100,23 +100,23 @@ window.CaseContent = {
     },
 
     outcome: {
-      number: '07',
+      number: '06',
       label: 'Outcome',
       headline: 'A foundation the ecosystem builds on',
       body: 'The work established branding as a governed platform capability rather than a per-product feature — setting the direction for how RISE products consume brand going forward.',
       impacts: [
         { label: 'Brand infrastructure', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
         { label: 'Style Kit adoption', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
-        { label: 'Platform scalability', desc: 'A governed branding service the ecosystem reads from rather than an inherited hierarchy rather than a flat set of assets — a structure the whole ecosystem now shares.' },
+        { label: 'Platform scalability', desc: 'A governed branding service other products read from rather than rebuild — a structure the whole ecosystem now shares.' },
       ],
     },
 
     reflection: {
-      number: '08',
+      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'The hardest part wasn\'t designing the UI — it was convincing the team that branding was an infrastructure problem, not a content problem. Once the framing shifted, every design decision became easier to defend.',
+        'The hardest part wasn’t designing the UI — it was convincing the team that branding was an infrastructure problem, not a content problem. Once the framing shifted, every design decision became easier to defend.',
         'The biggest shift was organizational: helping the team see brand not as a thing you check, but as infrastructure you inherit. Once that framing landed, the right product decisions became much easier to make.',
       ],
     },
@@ -131,16 +131,16 @@ window.CaseContent = {
   /* ------------------------------------------------------------------ */
 
   'passkeys': {
-    meta: { client: 'Lululemon', slug: 'passkeys' },
+    meta: { client: 'lululemon', slug: 'passkeys' },
     nav: ['Summary', 'Context', 'Challenges', 'Exploration', 'Validation', 'Outcome', 'Reflection'],
     next: { label: 'Accessible Rail Booking', href: 'case-rail-booking.html' },
 
     summary: {
       number: '02',
-      client: 'Lululemon',
+      client: 'lululemon',
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
-      question: 'How do you convince people to trust a sign-in method they\'ve never used before?',
+      question: 'How do you convince people to trust a sign-in method they’ve never used before?',
       project: 'End-to-end passkey experience across app, web, and in-store',
       role: 'Lead Product Designer — UX strategy, interaction design, accessibility, design systems',
       outcome: 'A trusted, accessible passkey flow adopted across all sign-in surfaces',
@@ -158,7 +158,7 @@ window.CaseContent = {
       headline: 'Why this project existed',
       body: [
         'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts — every reset was friction at the exact moment someone wanted to engage with the brand.',
-        'Passkeys promised to remove that friction entirely while improving security. The challenge wasn\'t technical — it was behavioural. Asking someone to trust a sign-in method they\'d never seen before required more than a feature launch.',
+        'Passkeys promised to remove that friction entirely while improving security. The challenge wasn’t technical — it was behavioral. Asking someone to trust a sign-in method they’d never seen before required more than a feature launch.',
       ],
     },
 
@@ -166,31 +166,31 @@ window.CaseContent = {
       number: '03',
       label: 'Challenges',
       intro: 'Three questions that shaped the design',
-      body: 'The design problems weren\'t about screens — they were about trust, timing, and clarity at moments of friction.',
+      body: 'The design problems weren’t about screens — they were about trust, timing, and clarity at moments of friction.',
       items: [
         {
           number: 1,
           headline: 'Introducing something unfamiliar without creating anxiety',
           body: 'Passkeys are safer and faster than passwords, but most people had never heard of them. Introducing a new mechanism at login — the highest-stakes moment in the experience — risked abandonment.',
           options: 'Options considered · silent rollout; opt-in prompt; explained introduction with progressive disclosure.',
-          decision: 'A contextual introduction that explains what\'s happening and why before asking anything — earning trust before requesting action.',
-          image: { alt: 'Passkey introduction flow', caption: 'Passkey introduction flow' },
+          decision: 'A contextual introduction that explains what’s happening and why before asking anything — earning trust before requesting action.',
+          image: { src: 'images/case-studies/passkeys-introduction.png', alt: 'lululemon sign-in screen with a "Use a Passkey" option and Face ID prompt', caption: 'Passkey introduction flow' },
         },
         {
           number: 2,
-          headline: 'Designing for people who don\'t fully understand biometrics',
-          body: 'Face ID and Touch ID are familiar, but their relationship to account security isn\'t. Many customers assumed biometrics replaced their password — not that they were the key.',
-          options: 'Options considered · technical explanation; metaphor-first framing; show-don\'t-tell interaction.',
+          headline: 'Designing for people who don’t fully understand biometrics',
+          body: 'Face ID and Touch ID are familiar, but their relationship to account security isn’t. Many customers assumed biometrics replaced their password — not that they were the key.',
+          options: 'Options considered · technical explanation; metaphor-first framing; show-don’t-tell interaction.',
           decision: 'A progressive disclosure pattern that shows the mechanism in action before explaining it — letting the experience teach rather than the copy.',
-          image: { alt: 'Biometric trust model', caption: 'Biometric trust model' },
+          image: { src: 'images/case-studies/passkeys-biometric-education.png', alt: '"What is a Passkey?" education modal explaining Face ID and Touch ID security', caption: 'Biometric trust model' },
         },
         {
           number: 3,
           headline: 'Keeping the fallback from becoming the default',
           body: 'If the passkey flow felt uncertain, customers would retreat to passwords. The fallback had to exist without advertising itself as the safer choice.',
           options: 'Options considered · hide the fallback; deprioritize it visually; make it available but secondary.',
-          decision: 'A visually secondary fallback that is discoverable but doesn\'t compete — making passkeys feel like the obvious path without removing the escape hatch.',
-          image: { alt: 'Fallback flow design', caption: 'Fallback flow design' },
+          decision: 'A visually secondary fallback that is discoverable but doesn’t compete — making passkeys feel like the obvious path without removing the escape hatch.',
+          image: { src: 'images/case-studies/passkeys-management-security.png', alt: 'Account security settings showing passkeys alongside password manager fallback options', caption: 'Fallback flow design' },
         },
       ],
     },
@@ -217,23 +217,23 @@ window.CaseContent = {
     },
 
     outcome: {
-      number: '07',
+      number: '06',
       label: 'Outcome',
       headline: 'Confidence without complexity',
       body: 'Passkeys shipped across app, web, and in-store. The pattern established for this feature became the foundation for introducing other unfamiliar capabilities to a consumer audience.',
       impacts: [
         { label: 'Cross-surface delivery', desc: 'Passkey sign-in delivered across app, web, and in-store with a consistent pattern.' },
         { label: 'Reusable introduction model', desc: 'Established a pattern for introducing unfamiliar features that the team applied to subsequent work.' },
-        { label: 'Trust by design', desc: 'I came in expecting to design a faster login. I left having designed confidence — and a reusable way to introduce anything unfamiliar to people who have every reason to be cautious.' },
+        { label: 'Trust by design', desc: 'Reframed authentication from a security checkbox into a trust-building moment, measured on confidence as well as completion rate.' },
       ],
     },
 
     reflection: {
-      number: '08',
+      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'Authentication design is really trust design. The challenge wasn\'t getting the interaction right — it was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon.',
+        'Authentication design is really trust design. The challenge wasn’t getting the interaction right — it was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon.',
         'I came in expecting to design a faster login. I left having designed confidence — and a reusable way to introduce anything unfamiliar to people who have every reason to be cautious.',
       ],
     },
@@ -274,8 +274,8 @@ window.CaseContent = {
       label: 'Context',
       headline: 'Why this project existed',
       body: [
-        'SAP Concur\'s rail booking experience handled complex routing, multi-leg journeys, and seat availability across dozens of rail operators — each with different data formats, seating models, and booking rules.',
-        'The existing seat selection experience collapsed under that complexity. Business travelers — already navigating policy rules, approval workflows, and tight itineraries — hit an interface that required expertise they didn\'t have to use.',
+        'SAP Concur’s rail booking experience handled complex routing, multi-leg journeys, and seat availability across dozens of rail operators — each with different data formats, seating models, and booking rules.',
+        'The existing seat selection experience collapsed under that complexity. Business travelers — already navigating policy rules, approval workflows, and tight itineraries — hit an interface that required expertise they didn’t have to use.',
       ],
     },
 
@@ -291,7 +291,7 @@ window.CaseContent = {
           body: 'Seat selection data includes car type, seat class, direction of travel, table vs. window, reservation status, and accessibility needs — all variable by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
           options: 'Options considered · progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
           decision: 'A spatial seat map with progressive detail — the map shows position, selection reveals the relevant attributes for that seat.',
-          image: { alt: 'Seat map spatial layout', caption: 'Seat map spatial layout' },
+          image: { src: 'images/case-studies/rail-seatmap-iteration.png', alt: 'Seat-map design iterations across web and mobile, showing coach layout and seat-attribute detail', caption: 'Seat map spatial layout' },
         },
         {
           number: 2,
@@ -299,7 +299,7 @@ window.CaseContent = {
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
           options: 'Options considered · visual-only map; list alternative with no map; parallel accessible map with ARIA region labelling.',
           decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to — same data, appropriate for each mode.',
-          image: { alt: 'Accessibility dual-mode design', caption: 'Accessibility dual-mode design' },
+          image: { src: 'images/case-studies/rail-a11y-documentation.png', alt: 'Keyboard navigation order and tab-flow documentation for the seat map', caption: 'Accessibility dual-mode design' },
         },
         {
           number: 3,
@@ -307,7 +307,7 @@ window.CaseContent = {
           body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. Surfacing policy violations after selection — the existing behaviour — was the primary source of rebooking.',
           options: 'Options considered · hide restricted seats; grey them with a tooltip; pre-filter to policy-compliant options with an override path.',
           decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override — policy-forward without policy-punishing.',
-          image: { alt: 'Policy constraint flow', caption: 'Policy constraint flow' },
+          image: { src: 'images/case-studies/rail-early-concepts.png', alt: 'Early seat-selection concept screens used to test layout and seat-attribute clarity', caption: 'Policy constraint flow' },
         },
       ],
     },
@@ -330,11 +330,11 @@ window.CaseContent = {
         'I ran sessions with frequent business rail travelers — people booking multi-leg journeys under policy constraints with limited time to make decisions. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
         'The dual-mode accessibility approach was validated in the first round — screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override — a gap we closed before launch.',
       ],
-      image: { alt: 'Usability validation sessions', caption: 'Usability validation sessions' },
+      image: { src: 'images/case-studies/rail-usability-study.png', alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
     },
 
     outcome: {
-      number: '07',
+      number: '06',
       label: 'Outcome',
       headline: 'Clarity inside complexity',
       body: 'The seat selection experience shipped across responsive breakpoints. Accessibility compliance was validated against WCAG 2.1 AA. The data model held across all rail operators in the initial launch set.',
@@ -346,12 +346,12 @@ window.CaseContent = {
     },
 
     reflection: {
-      number: '08',
+      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
         'Enterprise travel design is really constraint design. Every stakeholder — traveler, admin, policy team, rail operator — had legitimate requirements that pulled in different directions. The design work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
-        'Accessibility forced better design decisions across the board. The structured list mode I built for screen reader users turned out to be what keyboard-only users preferred too — and it revealed information hierarchy problems in the visual map that I\'d missed.',
+        'Accessibility forced better design decisions across the board. The structured list mode I built for screen reader users turned out to be what keyboard-only users preferred too — and it revealed information hierarchy problems in the visual map that I’d missed.',
       ],
     },
 

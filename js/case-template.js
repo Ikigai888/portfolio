@@ -10,6 +10,10 @@
   function esc(s) { return C.esc(s); }
   function Eyebrow(t) { return C.Eyebrow(t); }
   function Chip(t) { return C.Chip(t); }
+  /* Single source of truth for section-id slugs, shared by the subnav
+     links (CaseHeader) and the section anchors themselves, so the two
+     can never drift out of sync. */
+  function slugify(label) { return label.toLowerCase().replace(/\s+/g, '-'); }
 
   function sectionNum(n, label) {
     return '<span class="cs-section-num">' + esc(n) + ' — ' + esc(label.toUpperCase()) + '</span>';
@@ -22,8 +26,7 @@
 
   function CaseHeader(d) {
     var navLinks = d.nav.map(function (label, i) {
-      var id = label.toLowerCase().replace(/\s+/g, '-');
-      return '<a class="case-header__nav-link" href="#cs-' + id + '">' + esc(label) + '</a>';
+      return '<a class="case-header__nav-link" href="#cs-' + slugify(label) + '">' + esc(label) + '</a>';
     }).join('');
     return (
       '<header class="case-header">' +
@@ -153,7 +156,7 @@
       return '<p class="cs-body">' + esc(p) + '</p>';
     }).join('');
     return (
-      '<section class="section cs-split-section" id="cs-ai-assisted-exploration" data-reveal>' +
+      '<section class="section cs-split-section" id="cs-' + slugify(ai.label) + '" data-reveal>' +
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +

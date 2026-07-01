@@ -236,7 +236,7 @@
   color: var(--band-text);
   padding: var(--section-pad) 0;
 }
-.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.65; }
+.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.92; }
 .cs-outcome__headline {
   margin: 0 0 24px;
   font-size: var(--fs-section);
@@ -251,7 +251,7 @@
   line-height: var(--lh-body);
   color: var(--band-text);
   max-width: 64ch;
-  opacity: 0.85;
+  opacity: 0.92;
 }
 .cs-impact-grid {
   display: grid;
@@ -262,7 +262,7 @@
   overflow: hidden;
 }
 .cs-impact {
-  background: rgba(14, 20, 22, 0.12);
+  background: rgba(255, 255, 255, 0.10);
   padding: 36px 32px;
 }
 .cs-impact__label {
@@ -276,7 +276,7 @@
   font-size: 15px;
   line-height: var(--lh-body);
   color: var(--band-text);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* ---------- Next case study link (Reflection section) ---------- */
@@ -331,7 +331,7 @@
   transition: color var(--hover-color-dur);
 }
 .cs-footer__link:hover { color: var(--text-primary); }
-.cs-footer__copy { font-size: 13px; color: var(--text-faint-3); margin-left: auto; }
+.cs-footer__copy { font-size: 13px; color: var(--text-faint-2); margin-left: auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
