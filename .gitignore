@@ -1,3 +1,10 @@
+# macOS
+.DS_Store
+
+# Impeccable live-mode runtime state (transient, server-restart-dependent)
+.impeccable/live/sessions/
+.impeccable/live/server.json
+
 # Logs
 logs
 *.log

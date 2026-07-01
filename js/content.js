@@ -25,36 +25,22 @@ window.Content = {
   hero: {
     pill: 'Senior Product Designer',
     meta: 'Vancouver, BC · Open to Senior / Lead / Staff roles',
-    // headline rendered as three lines; `accent: true` marks the cyan line
+    // headline rendered as two lines; `accent: true` marks the cyan line
     headline: [
-      { text: 'Complexity is' },
-      { text: 'inevitable.' },
+      { text: 'Complexity is inevitable.' },
       { text: 'Confusion isn’t.', accent: true },
     ],
     lead:
-      'I design enterprise products that simplify complex systems, helping ' +
+      'I design products that simplify complex systems, helping ' +
       'people accomplish their goals with confidence.',
-    // support paragraph; `emphasize` names are wrapped in --text-bright/600
-    support:
-      'Over the past decade I’ve partnered with companies including ' +
-      'Microsoft, SAP Concur, lululemon, Electronic Arts, and MoxiWorks to ' +
-      'transform complex workflows into intuitive product experiences.',
-    emphasize: ['Microsoft', 'SAP Concur', 'lululemon', 'Electronic Arts', 'MoxiWorks'],
-    cue: { label: 'Selected Work', href: '#work' },
   },
 
   /* ---------- What I Do ---------- */
   whatIDo: {
     label: 'What I Do',
     statement:
-      'The products I enjoy designing are rarely simple. They’re the products ' +
-      'with deep organizational structures, complex booking flows, evolving ' +
-      'authentication standards, or enterprise workflows that have grown over time.',
-    body:
-      'I specialize in making those experiences feel intuitive without sacrificing ' +
-      'capability. Whether I’m designing a governance platform, rethinking ' +
-      'authentication, or simplifying travel booking, my goal is always the same:',
-    punch: 'Create clarity where complexity already exists.',
+      'Most of my work falls into three recurring kinds of complexity — ' +
+      'organizational, behavioral, and interaction. The case studies below are one of each.',
   },
 
   /* ---------- Featured Case Studies (CaseStudyCard ×3, rendered from this array) ---------- */
@@ -122,7 +108,7 @@ window.Content = {
   howIWork: {
     label: 'How I Work',
     statement:
-      'Good enterprise software doesn’t become simpler by removing complexity. ' +
+      'Good software doesn’t become simpler by removing complexity. ' +
       'It becomes better by organizing complexity into systems people can understand.',
     principles: [
       { number: '01', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
@@ -131,22 +117,6 @@ window.Content = {
       { number: '04', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
     closing: 'The result is software people trust on the first try and rely on every day after.',
-  },
-
-  /* ---------- Additional Work (WorkCell ×4) ---------- */
-  additionalWork: {
-    label: 'Additional Work',
-    meta: '2014 — 2021',
-    intro: 'A selection of projects that shaped how I think about product design.',
-    items: [
-      { client: 'Microsoft', title: 'Sports Companion App' },
-      { client: 'Electronic Arts', title: 'Player Experience' },
-      { client: 'SAP Jam', title: 'Enterprise Collaboration' },
-      { client: 'MoxiWorks', title: 'Dynamic Property Search' },
-    ],
-    closing:
-      'Additional interaction design, platform strategy, design systems, and ' +
-      'workflow improvements across enterprise software.',
   },
 
   /* ---------- About ---------- */
@@ -159,6 +129,7 @@ window.Content = {
       'My work sits at the intersection of systems thinking, interaction design, ' +
       'and product strategy — partnering closely with Product, Engineering, and ' +
       'customers to transform complexity into clarity.',
+    credential: 'Also shipped work at Microsoft, Electronic Arts, and SAP Jam.',
     name: 'Tad Natsuhara — Vancouver, BC',
     portrait: { src: '', alt: 'Tad Natsuhara' },
   },

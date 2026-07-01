@@ -44,15 +44,6 @@ window.Components = (function () {
   const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
   const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
 
-  /* Wrap given names in <strong> for inline emphasis (--text-bright/600). */
-  const emphasizeNames = (text, names) => {
-    var out = esc(text);
-    (names || []).forEach(function (n) {
-      out = out.replace(esc(n), '<strong class="emph">' + esc(n) + '</strong>');
-    });
-    return out;
-  };
-
   /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
      Includes a mobile nav toggle (hidden on desktop via CSS) so the
      four nav links never have to wrap or crowd the name at narrow
@@ -122,14 +113,6 @@ window.Components = (function () {
       </div>
     </div>`;
 
-  /* --- WorkCell: Additional Work item (build-spec §3e) --- */
-  const WorkCell = ({ client, title, note }) => `
-    <div class="work-cell">
-      ${Eyebrow(client)}
-      <h3 class="work-cell__title">${esc(title)}</h3>
-      ${note ? `<p class="work-cell__note">${esc(note)}</p>` : ''}
-    </div>`;
-
   /* --- PortraitSlot: About portrait (4/5), real <img> when src is set --- */
   const PortraitSlot = ({ src, alt } = {}) =>
     src
@@ -170,7 +153,7 @@ window.Components = (function () {
 
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
-    emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot,
-    PrincipleItem, WorkCell, PortraitSlot, SiteFooter,
+    SiteHeader, CaseStudyCard, ImageSlot,
+    PrincipleItem, PortraitSlot, SiteFooter,
   };
 })();

@@ -25,21 +25,13 @@
       '<h1 class="hero__headline">' + headline + '</h1>' +
       '<div class="hero__subtext">' +
         '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
-        '<p class="hero__support">' + C.emphasizeNames(d.support, d.emphasize) + '</p>' +
-      '</div>' +
-      '<a class="hero__cue" href="' + C.esc(d.cue.href) + '">' +
-        '<span class="hero__cue-btn" aria-hidden="true">&darr;</span>' +
-        '<span class="hero__cue-label">' + C.esc(d.cue.label) + '</span>' +
-      '</a>';
+      '</div>';
 
     return C.Section({ id: 'top', content: content });
   }
 
   function WhatIDo(d) {
-    var right =
-      '<p class="statement">' + C.esc(d.statement) + '</p>' +
-      '<p class="statement__body">' + C.esc(d.body) + '</p>' +
-      '<p class="statement__punch">' + C.esc(d.punch) + '</p>';
+    var right = '<p class="statement">' + C.esc(d.statement) + '</p>';
     return C.Section({
       content: C.Split({ label: d.label, content: right, modifier: 'split--what' }),
     });
@@ -75,21 +67,6 @@
     });
   }
 
-  function AdditionalWork(d) {
-    var head =
-      '<div class="section-opener">' +
-        '<h2 class="section-opener__label">' + C.esc(d.label) + '</h2>' +
-        '<span class="section-opener__meta">' + C.esc(d.meta) + '</span>' +
-      '</div>';
-    var intro = '<p class="addwork__intro">' + C.esc(d.intro) + '</p>';
-    var grid =
-      '<div class="work-grid">' +
-        d.items.map(C.WorkCell).join('') +
-      '</div>';
-    var closing = '<p class="addwork__closing">' + C.esc(d.closing) + '</p>';
-    return C.Section({ content: head + intro + grid + closing });
-  }
-
   function About(d) {
     // About reuses the .split layout primitive, but its left column is a
     // sticky portrait (not an eyebrow), so the markup is composed directly.
@@ -104,6 +81,7 @@
           C.SectionHeading(d.label) +
           '<p class="statement about__statement">' + C.esc(d.statement) + '</p>' +
           '<p class="statement__body">' + C.esc(d.body) + '</p>' +
+          '<p class="about__credential">' + C.esc(d.credential) + '</p>' +
         '</div>' +
       '</div>';
     return C.Section({ id: 'about', content: content });
@@ -157,7 +135,6 @@
         WhatIDo(D.whatIDo) +
         CaseStudies(D.caseStudies) +
         HowIWork(D.howIWork) +
-        AdditionalWork(D.additionalWork) +
         About(D.about) +
       '</main>' +
       C.SiteFooter(D.contact);

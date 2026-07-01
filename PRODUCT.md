@@ -6,7 +6,7 @@ brand
 
 ## Users
 
-Hiring managers and recruiters at enterprise companies evaluating Tad Natsuhara for Senior / Lead / Staff product design roles. They're scanning quickly, comparing against other candidates, and looking for evidence he can simplify complex enterprise systems (the kind of multi-stakeholder, high-stakes workflows companies like Microsoft, SAP Concur, lululemon, Electronic Arts, and MoxiWorks deal with). Their job to be done: assess credibility fast, then decide whether to reach out for an interview.
+Hiring managers and recruiters across industries — enterprise SaaS, e-commerce, consumer tech, travel — evaluating Tad Natsuhara for Senior / Lead / Staff product design roles. They're scanning quickly, comparing against other candidates, and looking for evidence he can simplify complex systems regardless of domain, whether that's a multi-stakeholder enterprise workflow (MoxiWorks, SAP Concur) or a consumer trust moment (lululemon passkeys). His breadth across company types is a strength to signal, not narrow away. Their job to be done: assess credibility fast, then decide whether to reach out for an interview.
 
 ## Product Purpose
 

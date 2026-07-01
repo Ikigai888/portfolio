@@ -144,51 +144,15 @@
 .hero__line--accent { color: var(--accent-text); }
 
 .hero__subtext {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--gap-split);
   margin-top: 56px;
 }
 .hero__lead {
   margin: 0;
+  max-width: 62ch;
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--text-secondary);
 }
-.hero__support {
-  margin: 0;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--text-muted);
-}
-.hero__support .emph { color: var(--text-bright); font-weight: 600; }
-
-.hero__cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 64px;
-  text-decoration: none;
-  color: var(--text-muted);
-}
-.hero__cue-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--border-bright);
-  border-radius: var(--r-pill);
-  color: var(--text-primary);
-  transition: border-color var(--hover-dur), transform var(--hover-color-dur);
-}
-.hero__cue-label {
-  font-size: var(--fs-eyebrow);
-  font-weight: 600;
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-}
-.hero__cue:hover .hero__cue-btn { border-color: var(--text-primary); transform: translateY(3px); }
 
 /* ---------- Statement block (What I Do; reused by How I Work) ---------- */
 .statement {
@@ -206,15 +170,6 @@
   color: var(--text-muted);
   max-width: 60ch;
 }
-.statement__punch {
-  margin: 0;
-  font-size: var(--fs-statement-sm);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-statement);
-  font-weight: 700;
-  color: var(--accent-text);
-}
-
 /* ---------- Section opener (2px rule + label/meta row, build-spec §3c) ---------- */
 .section-opener {
   display: flex;
@@ -383,50 +338,6 @@
   color: var(--text-muted);
 }
 
-/* ---------- Additional Work (build-spec §3e) ---------- */
-.addwork__intro {
-  margin: 0 0 44px;
-  font-size: var(--fs-lead);
-  line-height: var(--lh-body);
-  color: var(--text-secondary);
-  max-width: 52ch;
-}
-/* 1px gaps over a --border background paint hairline dividers between cells */
-.work-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--r-portrait);
-  overflow: hidden;
-}
-.work-cell {
-  background: var(--bg);
-  padding: 40px 44px;
-}
-.work-cell__title {
-  margin: 14px 0 0;
-  font-size: clamp(20px, 2.2vw, 28px);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-section);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.work-cell__note {
-  margin: 12px 0 0;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--text-muted);
-}
-.addwork__closing {
-  margin: 44px 0 0;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--text-muted);
-  max-width: 64ch;
-}
-
 /* ---------- About (build-spec §3f) ---------- */
 .split--about { gap: 72px; }
 .about__media { display: flex; flex-direction: column; gap: 18px; }
@@ -471,6 +382,12 @@
   box-shadow: var(--dot-glow);
 }
 .about__statement { margin-top: 18px; }
+.about__credential {
+  margin: 20px 0 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+}
 
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
@@ -527,12 +444,10 @@ button:focus-visible {
   .split,
   .split--about { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .split__label { position: static; }
-  .hero__subtext { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .case-card { grid-template-columns: 1fr; }
   .case-card__media,
   .image-slot { min-height: 280px; }
   .principle-grid { grid-template-columns: 1fr; gap: 28px; }
-  .work-grid { grid-template-columns: 1fr; }
   .site-footer__details { grid-template-columns: 1fr; gap: 28px; max-width: none; }
 }
 
