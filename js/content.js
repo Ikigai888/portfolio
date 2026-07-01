@@ -140,7 +140,7 @@ window.Content = {
     cta: 'Start a project',
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',
-    linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+    linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
     copyright: '© 2026 Tad Natsuhara',
   },
 };

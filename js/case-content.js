@@ -123,7 +123,7 @@ window.CaseContent = {
 
     caseFooter: {
       email: '1tadashi8@gmail.com',
-      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
       copyright: '© 2026 Tad Natsuhara',
     },
   },
@@ -240,7 +240,7 @@ window.CaseContent = {
 
     caseFooter: {
       email: '1tadashi8@gmail.com',
-      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
       copyright: '© 2026 Tad Natsuhara',
     },
   },
@@ -357,7 +357,7 @@ window.CaseContent = {
 
     caseFooter: {
       email: '1tadashi8@gmail.com',
-      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+      linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
       copyright: '© 2026 Tad Natsuhara',
     },
   },
