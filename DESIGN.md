@@ -25,7 +25,7 @@ colors:
 typography:
   display:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(46px, 9vw, 148px)"
+    fontSize: "clamp(40px, 9vw, 118px)"
     fontWeight: 700
     lineHeight: 0.94
     letterSpacing: "-0.04em"
@@ -138,7 +138,7 @@ The palette is built from one warm-neutral surface ramp, one warm-neutral text r
 **Character:** A single grotesque sans family carries the entire system across five weights (400–800), so contrast comes from scale and weight rather than from pairing two typefaces — a confident, unfussy choice that matches the brand's understated register.
 
 ### Hierarchy
-- **Display** (700, `clamp(46px, 9vw, 148px)`, line-height 0.94, letter-spacing -0.04em): Hero headline only. Tight leading makes large type feel compressed and intentional rather than sprawling.
+- **Display** (800, `clamp(40px, 9vw, 118px)`, line-height 0.94, letter-spacing -0.04em): Hero headline only. Tight leading makes large type feel compressed and intentional rather than sprawling.
 - **Section** (700, `clamp(30px, 4vw, 54px)`, line-height 1.1, letter-spacing -0.03em): Section headlines ("Selected Work," "How I Work," etc.).
 - **Statement** (600, `clamp(24px, 3.1vw, 44px)`, line-height 1.1, letter-spacing -0.025em): Mid-weight declarative statements reused across "What I Do" and "How I Work."
 - **Lead** (400, `clamp(17px, 1.6vw, 21px)`, line-height 1.6): Lead paragraphs directly under a headline.
@@ -146,7 +146,7 @@ The palette is built from one warm-neutral surface ramp, one warm-neutral text r
 - **Eyebrow** (600, 12px, letter-spacing 0.10em, uppercase): Labels above headlines, nav-adjacent micro-copy, case-card metadata.
 
 ### Named Rules
-**The Display Ceiling Rule.** Hero display type tops out at 148px even at ultra-wide viewports — large enough to command the fold without shouting past it.
+**The Display Ceiling Rule.** Hero display type tops out at 118px even at ultra-wide viewports — the largest size at which the longest headline line still fits the 1180px container on one line. If the headline copy changes, re-derive this cap.
 
 ## 4. Elevation
 
@@ -191,7 +191,7 @@ A two-column grid (≈1.05fr / 0.95fr) pairing a text body against an image-slot
 - **Do** keep cyan (`oklch(0.80 0.10 210)`) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.
 - **Do** use the Ambient Rest / Ambient Hover shadow pair (`0 4px 24px rgba(0,0,0,0.25)` → `0 8px 32px rgba(0,0,0,0.32)`) for any new card-level surface, paired with the existing border-brightening hover.
 - **Do** step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.
-- **Do** cap hero display type at 148px and keep its line-height tight (0.94) so large type reads as composed, not sprawling.
+- **Do** cap hero display type at 118px and keep its line-height tight (0.94) so large type reads as composed, not sprawling.
 - **Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice.
 
 ### Don't:
