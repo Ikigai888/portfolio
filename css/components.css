@@ -91,6 +91,11 @@
   color: var(--text-primary);
   text-decoration: none;
 }
+.site-header__logo {
+  display: block;
+  height: 24px;
+  width: auto; /* 201x45 intrinsic keeps the aspect; ~2x for retina */
+}
 /* Availability signal — same live-dot vocabulary as the About section */
 .site-header__dot {
   width: 9px;
