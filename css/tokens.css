@@ -137,3 +137,8 @@ body {
   [data-reveal] { opacity: 1; }
   [data-reveal].is-visible { animation: none; }
 }
+
+/* Tighter vertical rhythm on small screens (--section-pad range is 60-130) */
+@media (max-width: 600px) {
+  :root { --section-pad: 64px; }
+}

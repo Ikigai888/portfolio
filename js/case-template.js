@@ -59,8 +59,7 @@
               '<div class="cs-summary__eyebrow">' +
                 '<span class="cs-summary__num">' + esc(s.number) + '</span>' +
                 '<span class="cs-summary__client">' + esc(s.client) + '</span>' +
-                '<span class="cs-summary__sep" aria-hidden="true">&middot;</span>' +
-                '<span class="cs-summary__theme">' + esc(s.theme) + '</span>' +
+                '<span class="cs-summary__theme"><span class="cs-summary__sep" aria-hidden="true">&middot;&nbsp;</span>' + esc(s.theme) + '</span>' +
               '</div>' +
               '<h1 class="cs-summary__title">' + esc(s.title) + '</h1>' +
               '<p class="cs-summary__question">' + esc(s.question) + '</p>' +
@@ -279,12 +278,55 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Subnav: overflow fade + scrollspy (aria-current) ---- */
+  function initSubnav() {
+    var subnav = document.querySelector('.case-header__subnav');
+    var scroller = document.querySelector('.case-header__subnav-inner');
+    if (!subnav || !scroller) return;
+
+    function updateFade() {
+      var more = scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft > 8;
+      subnav.classList.toggle('has-more', more);
+    }
+    scroller.addEventListener('scroll', updateFade, { passive: true });
+    window.addEventListener('resize', updateFade);
+    updateFade();
+
+    if (!('IntersectionObserver' in window)) return;
+    var linkFor = {};
+    scroller.querySelectorAll('.case-header__nav-link').forEach(function (a) {
+      linkFor[a.getAttribute('href').slice(1)] = a;
+    });
+    var active = null;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var link = linkFor[entry.target.id];
+        if (!link || link === active) return;
+        if (active) active.removeAttribute('aria-current');
+        active = link;
+        active.setAttribute('aria-current', 'true');
+        // keep the active link visible inside the scroller (instant, no motion)
+        if (active.offsetLeft < scroller.scrollLeft ||
+            active.offsetLeft + active.offsetWidth > scroller.scrollLeft + scroller.clientWidth) {
+          scroller.scrollLeft = Math.max(0, active.offsetLeft - 24);
+        }
+        updateFade();
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    Object.keys(linkFor).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) spy.observe(sec);
+    });
+  }
+
   /* ---- Entry point ---- */
   function render(slug) {
     var d = window.CaseContent[slug];
     if (!d) { document.getElementById('app').innerHTML = '<p style="color:#F1EBDF;padding:40px">Case study not found: ' + esc(slug) + '</p>'; return; }
 
     var page =
+      '<a class="skip-link" href="#content">Skip to content</a>' +
       CaseHeader(d) +
       '<main id="content">' +
         SummarySection(d.summary) +
@@ -299,6 +341,7 @@
 
     document.getElementById('app').innerHTML = page;
     initReveal();
+    initSubnav();
   }
 
   window.CaseTemplate = { render: render };

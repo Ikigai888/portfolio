@@ -209,9 +209,9 @@
 }
 .cs-options {
   margin: 20px 0 12px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: var(--lh-body);
-  color: var(--text-faint-2);
+  color: var(--text-muted);
 }
 .cs-decision {
   margin: 0;
@@ -348,4 +348,39 @@
   .cs-summary__left,
   .cs-summary__right { padding: 32px 26px; }
   .case-header__nav-link { padding: 10px 16px 10px 0; }
+}
+
+/* ---------- Subnav scrollspy + overflow fade ---------- */
+.case-header__nav-link[aria-current] {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+}
+.case-header__subnav { position: relative; }
+/* Right-edge scrim signalling more items off-screen; matches header tint */
+.case-header__subnav::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 56px;
+  background: linear-gradient(to right, rgba(21, 18, 13, 0), rgba(21, 18, 13, 0.92));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--hover-color-dur);
+}
+.case-header__subnav.has-more::after { opacity: 1; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .case-header__back,
+  .case-header__nav-link,
+  .case-header__subnav::after,
+  .cs-next__link,
+  .cs-next__arrow,
+  .cs-footer__back,
+  .cs-footer__link { transition: none; }
+  .cs-next__link:hover .cs-next__arrow { transform: none; }
 }

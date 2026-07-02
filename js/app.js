@@ -129,6 +129,7 @@
   /* ---------- Assemble ---------- */
   function render() {
     var page =
+      '<a class="skip-link" href="#content">Skip to content</a>' +
       C.SiteHeader(D.header) +
       '<main id="content">' +
         Hero(D.hero) +

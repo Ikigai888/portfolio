@@ -158,7 +158,7 @@ window.CaseContent = {
       headline: 'Why this project existed',
       body: [
         'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts — every reset was friction at the exact moment someone wanted to engage with the brand.',
-        'Passkeys promised to remove that friction entirely while improving security. The challenge wasn’t technical — it was behavioral. Asking someone to trust a sign-in method they’d never seen before required more than a feature launch.',
+        'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped — people had to be convinced it was safe, at the exact moment they were least patient.',
       ],
     },
 
@@ -234,7 +234,7 @@ window.CaseContent = {
       headline: 'What this project taught me',
       body: [
         'Authentication design is really trust design. The challenge wasn’t getting the interaction right — it was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon.',
-        'I came in expecting to design a faster login. I left having designed confidence — and a reusable way to introduce anything unfamiliar to people who have every reason to be cautious.',
+        'I came in expecting to design a faster login. What shipped was closer to a method: a repeatable way to introduce something unfamiliar to people who have every reason to be cautious.',
       ],
     },
 
@@ -350,7 +350,7 @@ window.CaseContent = {
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'Enterprise travel design is really constraint design. Every stakeholder — traveler, admin, policy team, rail operator — had legitimate requirements that pulled in different directions. The design work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
+        'Four stakeholders pulled this design in four directions — traveler, admin, policy team, rail operator — and each had a legitimate case. The work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
         'Accessibility forced better design decisions across the board. The structured list mode I built for screen reader users turned out to be what keyboard-only users preferred too — and it revealed information hierarchy problems in the visual map that I’d missed.',
       ],
     },
