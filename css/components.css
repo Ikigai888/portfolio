@@ -136,6 +136,22 @@
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
 /* ---------- Hero (build-spec §3a) ---------- */
+/* Generative wireframe motif carried over from the brand's prior site.
+   Anchored bottom + faded into --bg up top so the headline stays on clean
+   canvas and the image's cooler black seams invisibly into the warm page bg.
+   Decorative only (CSS background, no DOM node, no alt needed). */
+#top {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to bottom, var(--bg) 0%, rgba(21, 18, 13, 0.82) 58%, rgba(21, 18, 13, 0.40) 100%),
+    url('../images/hero-bg.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center bottom, center bottom;
+  background-size: cover, cover;
+}
+/* Insurance for the lead sitting over the brighter part of the motif */
+#top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
+
 .hero__badge {
   display: flex;
   align-items: center;
