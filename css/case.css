@@ -237,7 +237,7 @@
   color: var(--band-text);
   padding: var(--section-pad) 0;
 }
-.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.92; }
+.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.95; }
 .cs-outcome__headline {
   margin: 0 0 24px;
   font-size: var(--fs-section);
@@ -252,18 +252,18 @@
   line-height: var(--lh-body);
   color: var(--band-text);
   max-width: 64ch;
-  opacity: 0.92;
+  opacity: 0.95;
 }
 .cs-impact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgba(14, 20, 22, 0.2);
+  background: var(--band-hairline);
   border-radius: var(--r-card);
   overflow: hidden;
 }
 .cs-impact {
-  background: rgba(255, 255, 255, 0.10);
+  background: var(--band-card);
   padding: 36px 32px;
 }
 .cs-impact__label {
@@ -277,7 +277,7 @@
   font-size: 15px;
   line-height: var(--lh-body);
   color: var(--band-text);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ---------- Next case study link (Reflection section) ---------- */
