@@ -31,22 +31,29 @@ window.Content = {
       { text: 'Confusion isn’t.', accent: true },
     ],
     lead:
-      'I design products that simplify complex systems, helping ' +
-      'people accomplish their goals with confidence.',
+      'I design enterprise software where the system is complicated ' +
+      'and the experience can\u2019t be.',
   },
 
   /* ---------- What I Do ---------- */
   whatIDo: {
     label: 'What I Do',
     statement:
-      'Most of my work falls into three recurring kinds of complexity — ' +
-      'organizational, behavioral, and interaction. The case studies below are one of each.',
+      'For teams at MoxiWorks, lululemon, and SAP Concur, I\u2019ve designed ' +
+      'through three recurring kinds of complexity.',
+    emphasize: ['MoxiWorks', 'lululemon', 'SAP Concur'],
+    kinds: [
+      { number: '01', title: 'Organizational', description: 'Systems too big for any one person to hold in their head.' },
+      { number: '02', title: 'Behavioral', description: 'Asking people to trust something unfamiliar.' },
+      { number: '03', title: 'Interaction', description: 'Dense interfaces where every detail competes for attention.' },
+    ],
+    closing: 'The case studies below take one each.',
   },
 
   /* ---------- Featured Case Studies (CaseStudyCard ×3, rendered from this array) ---------- */
   caseStudies: {
-    label: 'Featured Case Studies',
-    meta: '03 — Flagship projects',
+    label: 'Case Studies',
+    meta: 'Three projects',
     items: [
       {
         number: '01',
@@ -56,9 +63,9 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         description:
-          'Designed a self-service enterprise platform that centralized brand ' +
-          'management, introduced reusable Style Kits, and established a single ' +
-          'source of truth for branding across the RISE ecosystem.',
+          'Designed the self-service platform that lets thousands of agents ' +
+          'brand their own materials correctly — reusable Style Kits instead ' +
+          'of one-off requests to a design team.',
         capabilities: [
           'Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture',
         ],
@@ -73,9 +80,9 @@ window.Content = {
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         description:
-          'Designed an end-to-end passkey experience that balanced usability, ' +
-          'security, accessibility, and customer confidence while supporting ' +
-          'adoption of emerging authentication standards.',
+          'Designed lululemon\u2019s passkey sign-in end to end — the moment of ' +
+          'first encounter, the fallbacks when a device says no, and the ' +
+          'language that makes a new standard feel safe enough to try.',
         capabilities: [
           'Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems',
         ],
@@ -90,9 +97,9 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         description:
-          'Led the design of an interactive seat selection experience that ' +
-          'balanced accessibility, responsive design, business goals, and ' +
-          'traveler confidence.',
+          'Led design of SAP Concur\u2019s rail seat map — making a screen with ' +
+          'hundreds of touch targets work for keyboards, screen readers, and ' +
+          'phones without losing the booking.',
         capabilities: [
           'Complex Interaction Design', 'Accessibility',
           'Responsive UX', 'Enterprise Product Design',
@@ -113,7 +120,7 @@ window.Content = {
     principles: [
       { number: '01', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
       { number: '02', title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
-      { number: '03', title: 'Rapid exploration', description: 'AI-assisted tools to widen the option space — increasing exploration, not replacing thinking.' },
+      { number: '03', title: 'Rapid exploration', description: 'More directions, earlier — prototyping in hours what used to take days, then throwing most of it away on purpose.' },
       { number: '04', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
     closing: 'The result is software people trust on the first try and rely on every day after.',
@@ -126,9 +133,9 @@ window.Content = {
       'I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy ' +
       'solving the kinds of product problems that don’t have obvious answers.',
     body:
-      'My work sits at the intersection of systems thinking, interaction design, ' +
-      'and product strategy — partnering closely with Product, Engineering, and ' +
-      'customers to transform complexity into clarity.',
+      'I work closest to the hard middle of products — where the system design, ' +
+      'the interaction details, and the business logic all have to agree. Most ' +
+      'days that means whiteboards with engineers and calls with customers.',
     credential: 'Also shipped work at Microsoft, Electronic Arts, and SAP Jam.',
     name: 'Tad Natsuhara — Vancouver, BC',
     portrait: { src: '', alt: 'Tad Natsuhara' },
@@ -137,7 +144,7 @@ window.Content = {
   /* ---------- Contact footer ---------- */
   contact: {
     eyebrow: 'Let’s work together',
-    cta: 'Start a project',
+    cta: 'Say hello',
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',
     linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },

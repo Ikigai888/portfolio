@@ -31,7 +31,10 @@
   }
 
   function WhatIDo(d) {
-    var right = '<p class="statement">' + C.esc(d.statement) + '</p>';
+    var right =
+      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize) + '</p>' +
+      '<div class="kind-list">' + d.kinds.map(C.PrincipleItem).join('') + '</div>' +
+      '<p class="whatido__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
       content: C.Split({ label: d.label, content: right, modifier: 'split--what' }),
     });

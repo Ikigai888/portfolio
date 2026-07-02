@@ -44,6 +44,15 @@ window.Components = (function () {
   const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
   const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
 
+  /* Wrap given names in <strong class="emph"> for inline emphasis. */
+  const emphasizeNames = (text, names) => {
+    var out = esc(text);
+    (names || []).forEach(function (n) {
+      out = out.replace(esc(n), '<strong class="emph">' + esc(n) + '</strong>');
+    });
+    return out;
+  };
+
   /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
      Includes a mobile nav toggle (hidden on desktop via CSS) so the
      four nav links never have to wrap or crowd the name at narrow
@@ -153,7 +162,7 @@ window.Components = (function () {
 
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
-    SiteHeader, CaseStudyCard, ImageSlot,
+    emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot,
     PrincipleItem, PortraitSlot, SiteFooter,
   };
 })();

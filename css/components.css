@@ -138,9 +138,9 @@
   font-size: var(--fs-display);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
-  font-weight: 700;
+  font-weight: 800;
 }
-.hero__line { display: block; }
+.hero__line { display: block; text-wrap: balance; }
 .hero__line--accent { color: var(--accent-text); }
 
 .hero__subtext {
@@ -157,8 +157,8 @@
 /* ---------- Statement block (What I Do; reused by How I Work) ---------- */
 .statement {
   margin: 0 0 28px;
-  font-size: var(--fs-statement);
-  line-height: var(--lh-tight);
+  font-size: var(--fs-statement-sm);
+  line-height: var(--lh-statement);
   letter-spacing: var(--ls-statement);
   font-weight: 600;
   color: var(--text-primary);
@@ -232,7 +232,7 @@
 
 .case-card__title {
   margin: 0 0 18px;
-  font-size: clamp(26px, 2.9vw, 40px);
+  font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-section);
   font-weight: 700;
@@ -302,7 +302,7 @@
 /* ---------- Statement closing line (How I Work) ---------- */
 .statement__closing {
   margin: 44px 0 0;
-  font-size: var(--fs-statement-sm);
+  font-size: var(--fs-coda);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-statement);
   font-weight: 700;
@@ -401,7 +401,7 @@
   font-size: clamp(40px, 8.5vw, 128px);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   text-decoration: none;
 }
@@ -504,11 +504,32 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .site-header__link,
   .site-header__toggle-bar,
-  .hero__cue-btn,
   .case-card,
   .case-card__cta,
   .case-card__arrow,
   .site-footer__link { transition: none; }
-  .hero__cue:hover .hero__cue-btn { transform: none; }
   .case-card:hover .case-card__arrow { transform: none; }
 }
+
+/* ---------- Inline name emphasis (statements) ---------- */
+.emph { color: var(--text-bright); font-weight: 600; }
+
+/* ---------- What I Do: the three kinds of complexity ---------- */
+.kind-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 44px;
+  padding-top: 44px;
+  border-top: 1px solid var(--border);
+}
+.kind-list .principle__title { font-size: 21px; }
+.whatido__closing {
+  margin: 40px 0 0;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+}
+
+/* ---------- About credential: cap the only 75ch+ measure ---------- */
+.about__credential { max-width: 66ch; }
