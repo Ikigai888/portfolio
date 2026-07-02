@@ -13,9 +13,9 @@ colors:
   text-muted: "#A1957F"
   text-faint: "#736959"
   text-faint-2: "#8A8070"
-  accent: "oklch(0.80 0.10 210)"
-  accent-text: "oklch(0.82 0.10 210)"
-  band-bg: "oklch(0.62 0.09 208)"
+  accent: "oklch(0.81 0.084 179)"
+  accent-text: "oklch(0.91 0.097 179)"
+  band-bg: "oklch(0.62 0.09 179)"
   band-text: "#0E1416"
   border: "rgba(241, 235, 223, 0.12)"
   border-bright: "rgba(241, 235, 223, 0.26)"
@@ -107,8 +107,8 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue (cyan). Nothing else competes with the accent.
 
 ### Primary
-- **Coastal Cyan** (`oklch(0.80 0.10 210)` / `#66CFE1`): The single accent. Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Appears on a small minority of any given screen — its rarity is what makes it land.
-- **Coastal Cyan, Text Variant** (`oklch(0.82 0.10 210)` / `#6DD6E8`): Slightly brighter sibling used specifically for accent text on dark backgrounds (hero accent line, case-card numerals) where the solid-fill version would be too dim to read.
+- **Signature Mint** (`oklch(0.81 0.084 179)` / `#83D4C3`): The single accent, keyed to the TN_Port_Logo wordmark. Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Appears on a small minority of any given screen — its rarity is what makes it land.
+- **Signature Mint, Text Variant** (`oklch(0.91 0.097 179)` / `#97F8E4`): Brighter sibling (the wordmark file color) used specifically for accent text on dark backgrounds (hero accent line, case-card numerals) where the solid-fill version would be too dim to read.
 
 ### Neutral
 - **Warm Pitch** (`#15120D`): Page background. Warm near-black, not true black — keeps the page from feeling cold or clinical.
@@ -124,11 +124,11 @@ The palette is built from one warm-neutral surface ramp, one warm-neutral text r
 - **Faint Paper, Variant** (`#8A8070`): The dimmest text token in the system — copyright line and footer credits. (A near-black "Copyright Brown" tone was tried here but failed WCAG AA contrast against the footer background; this is the darkest tone that still clears 4.5:1.)
 
 ### Inverted Band
-- **Outcome Teal** (`oklch(0.62 0.09 208)` / `#3495A2`): Background for the inverted "Outcome" band inside case studies — a deliberate polarity flip (dark text on a mid-tone teal field) that visually marks "this is the result," distinct from the surrounding dark sections.
+- **Outcome Mint** (`oklch(0.62 0.09 179)` / `#3D9887`): Background for the inverted "Outcome" band, same hue as the accent inside case studies — a deliberate polarity flip (dark text on a mid-tone teal field) that visually marks "this is the result," distinct from the surrounding dark sections.
 - **Outcome Ink** (`#0E1416`): Text color on the Outcome Teal band.
 
 ### Named Rules
-**The One Accent Rule.** Cyan is the only saturated color in the system. If a new UI need calls for "another color," the answer is a neutral tone from the existing ramp, not a second hue.
+**The One Accent Rule.** The signature mint is the only saturated color in the system. If a new UI need calls for "another color," the answer is a neutral tone from the existing ramp, not a second hue.
 
 ## 3. Typography
 

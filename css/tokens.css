@@ -24,16 +24,16 @@
   --text-faint:     #736959; /* faint labels */
   --text-faint-2:   #8A8070; /* copyright */
 
-  /* ---------- Color: accent (cyan) ---------- */
+  /* ---------- Color: accent (signature mint, keyed to TN_Port_Logo) ---------- */
   /* Use --accent for fills/solids, --accent-text for type on dark */
-  --accent:       oklch(0.80 0.10 210);  /* fallback #66CFE1 */
-  --accent-text:  oklch(0.82 0.10 210);  /* fallback #6DD6E8 */
-  --accent-hex:        #66CFE1;
-  --accent-text-hex:   #6DD6E8;
+  --accent:       oklch(0.81 0.084 179); /* fallback #83D4C3 — the mark's stroke cores as rendered */
+  --accent-text:  oklch(0.91 0.097 179); /* fallback #97F8E4 — the mark's file color; 15.0:1 on --bg */
+  --accent-hex:        #83D4C3;
+  --accent-text-hex:   #97F8E4;
 
   /* ---------- Color: inverted "Outcome" band (case studies) ---------- */
-  --band-bg:    oklch(0.62 0.09 208);     /* fallback #3495A2 */
-  --band-bg-hex: #3495A2;
+  --band-bg:    oklch(0.62 0.09 179);     /* fallback #3D9887 — same hue as the accent */
+  --band-bg-hex: #3D9887;
   --band-text:  #0E1416;
   --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
   --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
@@ -51,7 +51,7 @@
   --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #83D4C3; /* the wordmark as the eye sees it: bright stroke cores of the rendered signature (file color #97F8E4 reads lighter than the on-screen mark) */
+  --selection-bg:   #83D4C3; /* = --accent-hex; the wordmark as rendered */
   --selection-text: #0E1416;
 
   /* ---------- Typography: families ---------- */
@@ -100,7 +100,7 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 10px oklch(0.80 0.10 210); /* About status dot */
+  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* About status dot */
 
   /* ---------- Elevation (DESIGN.md §4) ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
