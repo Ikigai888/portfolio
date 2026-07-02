@@ -42,6 +42,22 @@ function runInSandbox(files) {
   return window;
 }
 
+/* Guard against the escaping helper in js/components.js regressing:
+   after stripping every well-formed attr="value" pair (value containing no
+   quote), no literal `"` should remain — one left over means some
+   interpolated string broke out of its attribute or leaked into text
+   content unescaped. */
+function assertNoUnescapedQuotes(html, label) {
+  const stripped = html.replace(/\s[a-zA-Z_:][-\w:.]*="[^"]*"/g, '');
+  const idx = stripped.indexOf('"');
+  if (idx !== -1) {
+    const context = stripped.slice(Math.max(0, idx - 40), idx + 40);
+    throw new Error(
+      `${label}: unescaped double-quote found in generated markup near: ...${context}...`
+    );
+  }
+}
+
 function injectBuild(htmlPath, html) {
   const before = readFileSync(htmlPath, 'utf8');
   const marker = /<!-- BUILD:START -->[\s\S]*?<!-- BUILD:END -->/;
@@ -58,6 +74,7 @@ console.log('Pre-rendering index.html...');
 {
   const sandbox = runInSandbox(['js/content.js', 'js/components.js', 'js/app.js']);
   const html = sandbox.App.buildPage();
+  assertNoUnescapedQuotes(html, 'index.html');
   injectBuild(path('index.html'), html);
 }
 
@@ -73,6 +90,7 @@ console.log('Pre-rendering case studies...');
   const sandbox = runInSandbox(['js/components.js', 'js/case-content.js', 'js/case-template.js']);
   for (const { slug, file } of cases) {
     const html = sandbox.CaseTemplate.buildPage(slug);
+    assertNoUnescapedQuotes(html, file);
     injectBuild(path(file), html);
   }
 }

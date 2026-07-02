@@ -12,7 +12,8 @@ window.Components = (function () {
     String(s == null ? '' : s)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
 
   /* --- Layout primitive: Container (max-width column, defined in tokens.css) --- */
   const Container = (inner) => `<div class="container">${inner}</div>`;
@@ -100,7 +101,7 @@ window.Components = (function () {
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
      sources); else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h } = {}) => {
+  const ImageSlot = ({ src, alt, caption, w, h, poster } = {}) => {
     if (!src) {
       return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
@@ -109,8 +110,9 @@ window.Components = (function () {
          </div>`;
     }
     const dims = w && h ? ` width="${w}" height="${h}"` : '';
+    const posterAttr = poster ? ` poster="${esc(poster)}"` : '';
     return /\.(mp4|webm)$/i.test(src)
-      ? `<video class="image-slot__img" src="${esc(src)}"${dims} autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
+      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
   };
 

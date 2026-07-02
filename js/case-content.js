@@ -215,7 +215,7 @@ window.CaseContent = {
         { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
         { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Animated walkthrough of the passkey onboarding prompt on desktop and mobile', caption: 'Onboarding prompt — full flow' },
         { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Animated walkthrough of the Face ID setup and passkey confirmation screens', caption: 'Face ID setup — full flow' },
-        { src: 'images/case-studies/passkeys-login-movie.mp4', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login — full flow' },
+        { src: 'images/case-studies/passkeys-login-movie.mp4', poster: 'images/case-studies/passkeys-login-movie-poster.jpg', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login — full flow' },
       ],
       quote: { text: 'Sometimes it will forget what my password is, I have to type in my e-mail and send a link which I don’t like because then I have to exit and wait for the e-mail.', attribution: '— usability session participant' },
     },
