@@ -55,7 +55,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'Options considered · per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit — the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits.png', alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — color, type, and logo bundled into one applied unit' },
+          image: { src: 'images/case-studies/brand-gov-style-kits.png', w: 1440, h: 1266, alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — color, type, and logo bundled into one applied unit' },
         },
         {
           number: 3,
@@ -63,7 +63,7 @@ window.CaseContent = {
           body: 'Too much admin control creates friction for agents. Too little creates brand drift. The line needed to be explicit, not emergent.',
           options: 'Options considered · full admin lock; full agent freedom; explicit lock/unlock per element.',
           decision: 'A permission layer where admins lock the elements that matter and unlock the rest — making control visible and intentional.',
-          image: { src: 'images/case-studies/brand-gov-color-permissions.png', alt: 'Brand Library color editing panel with a locked primary color — admin-controlled elements made visible', caption: 'Locked brand elements — admin control made visible' },
+          image: { src: 'images/case-studies/brand-gov-color-permissions.png', w: 1440, h: 1012, alt: 'Brand Library color editing panel with a locked primary color — admin-controlled elements made visible', caption: 'Locked brand elements — admin control made visible' },
         },
         {
           number: 4,
@@ -71,7 +71,7 @@ window.CaseContent = {
           body: 'Whatever shipped had to be consumed by many RISE products, not just one screen. The model needed to hold up as the ecosystem grew.',
           options: 'Options considered · a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability — branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-text-styles.png', alt: 'Brand Library screen managing governed text styles — name, family, fallback font, and tags', caption: 'Brand Library — the shared source products read from' },
+          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen managing governed text styles — name, family, fallback font, and tags', caption: 'Brand Library — the shared source products read from' },
         },
       ],
     },
@@ -170,7 +170,7 @@ window.CaseContent = {
           body: 'Passkeys are safer and faster than passwords, but most people had never heard of them. Introducing a new mechanism at login — the highest-stakes moment in the experience — risked abandonment.',
           options: 'Options considered · silent rollout; opt-in prompt; explained introduction with progressive disclosure.',
           decision: 'A contextual introduction that explains what’s happening and why before asking anything — earning trust before requesting action.',
-          image: { src: 'images/case-studies/passkeys-introduction.png', alt: 'lululemon sign-in screen with a "Use a Passkey" option and Face ID prompt', caption: 'Passkey introduction flow' },
+          image: { src: 'images/case-studies/passkeys-introduction.png', w: 1439, h: 1081, alt: 'lululemon sign-in screen with a "Use a Passkey" option and Face ID prompt', caption: 'Passkey introduction flow' },
         },
         {
           number: 2,
@@ -178,7 +178,7 @@ window.CaseContent = {
           body: 'Face ID and Touch ID are familiar, but their relationship to account security isn’t. Many customers assumed biometrics replaced their password — not that they were the key.',
           options: 'Options considered · technical explanation; metaphor-first framing; show-don’t-tell interaction.',
           decision: 'A progressive disclosure pattern that shows the mechanism in action before explaining it — letting the experience teach rather than the copy.',
-          image: { src: 'images/case-studies/passkeys-biometric-education.png', alt: '"What is a Passkey?" education modal explaining Face ID and Touch ID security', caption: 'Biometric trust model' },
+          image: { src: 'images/case-studies/passkeys-biometric-education.png', w: 1188, h: 819, alt: '"What is a Passkey?" education modal explaining Face ID and Touch ID security', caption: 'Biometric trust model' },
         },
         {
           number: 3,
@@ -186,7 +186,7 @@ window.CaseContent = {
           body: 'If the passkey flow felt uncertain, customers would retreat to passwords. The fallback had to exist without advertising itself as the safer choice.',
           options: 'Options considered · hide the fallback; deprioritize it visually; make it available but secondary.',
           decision: 'A visually secondary fallback that is discoverable but doesn’t compete — making passkeys feel like the obvious path without removing the escape hatch.',
-          image: { src: 'images/case-studies/passkeys-management-security.png', alt: 'Account security settings showing passkeys alongside password manager fallback options', caption: 'Fallback flow design' },
+          image: { src: 'images/case-studies/passkeys-management-security.png', w: 1168, h: 1034, alt: 'Account security settings showing passkeys alongside password manager fallback options', caption: 'Fallback flow design' },
         },
       ],
     },
@@ -285,7 +285,7 @@ window.CaseContent = {
           body: 'Seat selection data includes car type, seat class, direction of travel, table vs. window, reservation status, and accessibility needs — all variable by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
           options: 'Options considered · progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
           decision: 'A spatial seat map with progressive detail — the map shows position, selection reveals the relevant attributes for that seat.',
-          image: { src: 'images/case-studies/rail-seatmap-iteration.png', alt: 'Seat-map design iterations across web and mobile, showing coach layout and seat-attribute detail', caption: 'Seat map spatial layout' },
+          image: { src: 'images/case-studies/rail-seatmap-iteration.png', w: 1732, h: 742, alt: 'Seat-map design iterations across web and mobile, showing coach layout and seat-attribute detail', caption: 'Seat map spatial layout' },
         },
         {
           number: 2,
@@ -293,7 +293,7 @@ window.CaseContent = {
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
           options: 'Options considered · visual-only map; list alternative with no map; parallel accessible map with ARIA region labelling.',
           decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to — same data, appropriate for each mode.',
-          image: { src: 'images/case-studies/rail-a11y-documentation.png', alt: 'Keyboard navigation order and tab-flow documentation for the seat map', caption: 'Accessibility dual-mode design' },
+          image: { src: 'images/case-studies/rail-a11y-documentation.png', w: 921, h: 1070, alt: 'Keyboard navigation order and tab-flow documentation for the seat map', caption: 'Accessibility dual-mode design' },
         },
         {
           number: 3,
@@ -301,7 +301,7 @@ window.CaseContent = {
           body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. Surfacing policy violations after selection — the existing behaviour — was the primary source of rebooking.',
           options: 'Options considered · hide restricted seats; grey them with a tooltip; pre-filter to policy-compliant options with an override path.',
           decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override — policy-forward without policy-punishing.',
-          image: { src: 'images/case-studies/rail-early-concepts.png', alt: 'Early seat-selection concept screens used to test layout and seat-attribute clarity', caption: 'Policy constraint flow' },
+          image: { src: 'images/case-studies/rail-early-concepts.png', w: 1232, h: 903, alt: 'Early seat-selection concept screens used to test layout and seat-attribute clarity', caption: 'Policy constraint flow' },
         },
       ],
     },
@@ -324,7 +324,7 @@ window.CaseContent = {
         'I ran sessions with frequent business rail travelers — people booking multi-leg journeys under policy constraints with limited time to make decisions. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
         'The dual-mode accessibility approach was validated in the first round — screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override — a gap we closed before launch.',
       ],
-      image: { src: 'images/case-studies/rail-usability-study.png', alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
+      image: { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
     },
 
     outcome: {

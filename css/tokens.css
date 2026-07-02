@@ -45,6 +45,11 @@
   --hairline-2:    rgba(241, 235, 223, 0.16); /* stronger rule */
   --rule-strong:   #F1EBDF;                    /* 2px section opener rule */
 
+  /* ---------- Color: header scrims (page bg at opacity) ---------- */
+  --scrim-0:      rgba(21, 18, 13, 0);
+  --scrim:        rgba(21, 18, 13, 0.82); /* homepage sticky header */
+  --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
+
   /* ---------- Selection ---------- */
   --selection-bg:   oklch(0.80 0.10 210);
   --selection-text: #0E1416;
@@ -133,8 +138,9 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: none; }
 }
-[data-reveal] { opacity: 0; }
-[data-reveal].is-visible {
+/* Gated on html.js (set inline in <head>): without JS everything paints visible */
+html.js [data-reveal] { opacity: 0; }
+html.js [data-reveal].is-visible {
   animation: revealUp var(--reveal-dur) var(--reveal-ease) both;
 }
 

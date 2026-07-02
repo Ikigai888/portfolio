@@ -63,7 +63,7 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-style-kits.png', alt: 'Brand Governance Style Kit editor — color and typography tokens with share permissions', caption: 'Brand Governance — RISE platform' },
+        image: { src: 'images/case-studies/brand-gov-style-kits.png', w: 1440, h: 1266, alt: 'Brand Governance Style Kit editor — color and typography tokens with share permissions', caption: 'Brand Governance — RISE platform' },
       },
       {
         number: '02',
@@ -73,7 +73,7 @@ window.Content = {
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         href: 'case-passkeys.html',
-        image: { src: 'images/case-studies/passkeys-thumb.png', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys — authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys — authentication flow' },
       },
       {
         number: '03',
@@ -83,7 +83,7 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb.png', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb.png', w: 1680, h: 876, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
       },
     ],
     cta: 'View case study',
@@ -116,7 +116,7 @@ window.Content = {
       'days that means whiteboards with engineers and calls with customers.',
     credential: 'Also shipped work at Microsoft, Electronic Arts, and SAP Jam.',
     name: 'Tad Natsuhara — Vancouver, BC',
-    portrait: { src: 'images/portrait.jpg', alt: 'Tad Natsuhara' },
+    portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
 
   /* ---------- Contact footer ---------- */

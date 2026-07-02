@@ -99,9 +99,9 @@ window.Components = (function () {
 
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img>; else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption } = {}) =>
+  const ImageSlot = ({ src, alt, caption, w, h } = {}) =>
     src
-      ? `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}" loading="lazy" />`
+      ? `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${w && h ? ` width="${w}" height="${h}"` : ''} loading="lazy" />`
       : `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
            <span class="image-slot__caption">${esc(caption)}</span>
@@ -119,9 +119,9 @@ window.Components = (function () {
     </div>`;
 
   /* --- PortraitSlot: About portrait (4/5), real <img> when src is set --- */
-  const PortraitSlot = ({ src, alt } = {}) =>
+  const PortraitSlot = ({ src, alt, w, h } = {}) =>
     src
-      ? `<img class="portrait__img" src="${esc(src)}" alt="${esc(alt)}" />`
+      ? `<img class="portrait__img" src="${esc(src)}" alt="${esc(alt)}"${w && h ? ` width="${w}" height="${h}"` : ''} />`
       : `<div class="portrait" role="img" aria-label="${esc(alt || 'Portrait')}">
            <span class="portrait__icon" aria-hidden="true">&#9633;</span>
            <span class="portrait__caption">Drop your photo</span>
