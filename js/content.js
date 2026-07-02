@@ -62,13 +62,6 @@ window.Content = {
         title: 'Designing Brand Governance for Enterprise Scale',
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
-        description:
-          'Designed the self-service platform that lets thousands of agents ' +
-          'brand their own materials correctly — reusable Style Kits instead ' +
-          'of one-off requests to a design team.',
-        capabilities: [
-          'Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture',
-        ],
         href: 'case-brand-governance.html',
         image: { src: 'images/case-studies/brand-gov-style-kits.png', alt: 'Brand Governance Style Kit editor — color and typography tokens with share permissions', caption: 'Brand Governance — RISE platform' },
       },
@@ -79,13 +72,6 @@ window.Content = {
         title: 'Designing a Passwordless Authentication Experience',
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
-        description:
-          'Designed lululemon\u2019s passkey sign-in end to end — the moment of ' +
-          'first encounter, the fallbacks when a device says no, and the ' +
-          'language that makes a new standard feel safe enough to try.',
-        capabilities: [
-          'Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems',
-        ],
         href: 'case-passkeys.html',
         image: { src: 'images/case-studies/passkeys-thumb.png', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys — authentication flow' },
       },
@@ -96,14 +82,6 @@ window.Content = {
         title: 'Designing an Accessible Rail Booking Experience',
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
-        description:
-          'Led design of SAP Concur\u2019s rail seat map — making a screen with ' +
-          'hundreds of touch targets work for keyboards, screen readers, and ' +
-          'phones without losing the booking.',
-        capabilities: [
-          'Complex Interaction Design', 'Accessibility',
-          'Responsive UX', 'Enterprise Product Design',
-        ],
         href: 'case-rail-booking.html',
         image: { src: 'images/case-studies/rail-booking-thumb.png', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
       },

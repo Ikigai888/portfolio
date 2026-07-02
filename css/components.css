@@ -246,19 +246,6 @@
   line-height: var(--lh-body);
   color: var(--text-secondary);
 }
-.case-card__desc {
-  margin: 0 0 26px;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--text-muted);
-  max-width: 48ch;
-}
-.case-card__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
 .case-card__cta {
   display: inline-flex;
   align-items: center;

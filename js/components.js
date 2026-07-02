@@ -74,11 +74,11 @@ window.Components = (function () {
     </header>`;
 
   /* --- CaseStudyCard: ONE component, mapped over the data array (build-spec §3c) ---
-     props: number, client, theme, title, question, description,
-            capabilities[], href, image{src,alt,caption}, cta */
+     Distilled (impeccable live, Jul 2026): eyebrow, title, question, CTA.
+     props: number, client, theme, title, question, href, image{src,alt,caption}, cta */
   const CaseStudyCard = ({
-    number, client, theme, title, question, description,
-    capabilities = [], href, image = {}, cta = 'View case study',
+    number, client, theme, title, question,
+    href, image = {}, cta = 'View case study',
   }) => `
     <a class="case-card" href="${esc(href)}" data-reveal>
       <div class="case-card__body">
@@ -90,10 +90,6 @@ window.Components = (function () {
         </div>
         <h3 class="case-card__title">${esc(title)}</h3>
         <p class="case-card__question">${esc(question)}</p>
-        <p class="case-card__desc">${esc(description)}</p>
-        <div class="case-card__chips">
-          ${capabilities.map(Chip).join('')}
-        </div>
         <span class="case-card__cta">${esc(cta)} <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
       </div>
       <div class="case-card__media">
