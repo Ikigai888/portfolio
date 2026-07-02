@@ -60,7 +60,7 @@ window.Components = (function () {
   const SiteHeader = ({ name, nav }) => `
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__name" href="#top"><span class="site-header__dot" aria-hidden="true"></span><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
+        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
         <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
           <span class="site-header__toggle-bar"></span>
           <span class="site-header__toggle-bar"></span>

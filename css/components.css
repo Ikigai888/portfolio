@@ -79,8 +79,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .site-header__name {
   display: inline-flex;
@@ -93,16 +93,8 @@
 }
 .site-header__logo {
   display: block;
-  height: 24px;
-  width: auto; /* 201x45 intrinsic keeps the aspect; ~2x for retina */
-}
-/* Availability signal — same live-dot vocabulary as the About section */
-.site-header__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  box-shadow: var(--dot-glow);
+  height: 32px;
+  width: auto; /* 201x45 intrinsic keeps the aspect */
 }
 .site-header__nav { display: flex; gap: 28px; }
 .site-header__link {
