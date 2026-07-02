@@ -1,6 +1,6 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A warm near-black portfolio for a senior product designer, lit by a single cyan accent.
+description: A warm near-black portfolio for a senior product designer, lit by a single mint accent.
 colors:
   bg: "#15120D"
   bg-footer: "#0F0D09"
@@ -24,11 +24,11 @@ colors:
   rule-strong: "#F1EBDF"
 typography:
   display:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(40px, 9vw, 118px)"
-    fontWeight: 700
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(40px, 8.4vw, 112px)"
+    fontWeight: 800
     lineHeight: 0.94
-    letterSpacing: "-0.04em"
+    letterSpacing: "-0.012em"
   section:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
     fontSize: "clamp(30px, 4vw, 54px)"
@@ -91,7 +91,7 @@ components:
 
 **Creative North Star: "The Quiet Confidence"**
 
-A warm near-black canvas (#15120D) holds the page; one cool cyan accent (oklch(0.80 0.10 210)) is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy.
+A warm near-black canvas (#15120D) holds the page; one mint accent (oklch(0.81 0.084 179)) is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy.
 
 This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no stock-photo sheen. Where a typical SaaS landing page reaches for a gradient to feel "modern," this system reaches for restraint and a single confident hue instead.
 
@@ -104,7 +104,7 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 
 ## 2. Colors
 
-The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue (cyan). Nothing else competes with the accent.
+The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue (mint). Nothing else competes with the accent.
 
 ### Primary
 - **Signature Mint** (`oklch(0.81 0.084 179)` / `#83D4C3`): The single accent, keyed to the TN_Port_Logo wordmark. Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Appears on a small minority of any given screen — its rarity is what makes it land.
@@ -188,7 +188,7 @@ A two-column grid (≈1.05fr / 0.95fr) pairing a text body against an image-slot
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep cyan (`oklch(0.80 0.10 210)`) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.
+- **Do** keep mint (`oklch(0.81 0.084 179)`, text variant `oklch(0.91 0.097 179)`) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.
 - **Do** use the Ambient Rest / Ambient Hover shadow pair (`0 4px 24px rgba(0,0,0,0.25)` → `0 8px 32px rgba(0,0,0,0.32)`) for any new card-level surface, paired with the existing border-brightening hover.
 - **Do** step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.
 - **Do** cap hero display type at 118px and keep its line-height tight (0.94) so large type reads as composed, not sprawling.
@@ -198,5 +198,5 @@ A two-column grid (≈1.05fr / 0.95fr) pairing a text body against an image-slot
 - **Don't** introduce a second saturated accent color (no purple, no magenta, no multi-color gradient) — this breaks the One Accent Rule and reads as generic AI-template styling.
 - **Don't** use purple gradients, glassmorphism, interchangeable stock-photo hero sections, or any other generic SaaS-landing-page clichés — these are explicit anti-references from PRODUCT.md.
 - **Don't** use hard, small-radius drop shadows (the "2014 app" look). If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.
-- **Don't** pair Bricolage Grotesque with a second typeface; contrast comes from weight and scale within the one family, not from font pairing.
+- **Do** keep the type system to the two committed families — Alegreya (calligraphic serif, display roles) and Bricolage Grotesque (body/UI/labels). They pair on a real contrast axis (serif vs. grotesque). Don't add a third family, and don't swap the display serif for a reflex default (Fraunces, Playfair, Cormorant).
 - **Don't** let muted/faint text fall below the 4.5:1 contrast ratio against its background. `--text-faint` is safe on the page background but fails on lighter surfaces (`--bg-inset`); use `--text-muted` there instead. A near-black "faintest" tone was removed from the system entirely after failing AA everywhere it was used — don't reintroduce it.

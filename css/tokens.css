@@ -61,7 +61,7 @@
   --ls-serif: -0.012em; /* Alegreya needs looser tracking than the grotesque */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
-  --fs-display:   clamp(2.5rem, 9vw, 7.375rem); /* hero headline; 118px is the max that keeps 'Complexity is inevitable.' on one line in the 1180px container */
+  --fs-display:   clamp(2.5rem, 8.4vw, 7rem); /* hero headline; 112px cap + 8.4vw keep 'Complexity is inevitable.' (its widest string, ~1123px at the cap) on one line from ~500px up through the widest viewports — it wraps only on phones, where 3 lines is intended. Do not raise the cap past 7rem: at 118px the line is 1183px and overflows the 1180px container by 3px. */
   --fs-section:   clamp(1.875rem, 4vw, 3.375rem); /* section headlines */
   --fs-section-sm:clamp(1.75rem, 3.6vw, 2.875rem);
   --fs-statement: clamp(1.5rem, 3.1vw, 2.75rem); /* big statements */
@@ -96,6 +96,7 @@
   --r-summary:  18px; /* case-study summary card */
   --r-portrait: 16px;
   --r-pill:     100px; /* pills + chips */
+  --r-focus:    4px;   /* keyboard focus-ring corner softening */
 
   /* ---------- Motion ---------- */
   --reveal-dur:  0.7s;
