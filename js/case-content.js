@@ -54,7 +54,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'Options considered · per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit — the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits.png', w: 1440, h: 1266, alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — color, type, and logo bundled into one applied unit' },
+          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — color, type, and logo bundled into one applied unit' },
         },
         {
           number: 3,
