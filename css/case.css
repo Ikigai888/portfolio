@@ -237,9 +237,9 @@
   color: var(--band-text);
   padding: var(--section-pad) 0;
 }
-.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.95; }
+.cs-outcome .cs-section-num { color: var(--band-text); opacity: 0.95; margin-bottom: 24px; }
 .cs-outcome__headline {
-  margin: 0 0 24px;
+  margin: 0 0 18px;
   font-size: var(--fs-section);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-section);
@@ -247,11 +247,11 @@
   color: var(--band-text);
 }
 .cs-outcome__body {
-  margin: 0 0 56px;
+  margin: 0 0 72px; /* breath before the impact grid (live polish, breath=72) */
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--band-text);
-  max-width: 64ch;
+  max-width: 56ch;
   opacity: 0.95;
 }
 .cs-impact-grid {
@@ -264,10 +264,10 @@
 }
 .cs-impact {
   background: var(--band-card);
-  padding: 36px 32px;
+  padding: 34px 30px;
 }
 .cs-impact__label {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: var(--fs-body);
   font-weight: 700;
   color: var(--band-text);
