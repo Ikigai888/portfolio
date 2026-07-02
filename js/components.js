@@ -121,7 +121,7 @@ window.Components = (function () {
   /* --- PortraitSlot: About portrait (4/5), real <img> when src is set --- */
   const PortraitSlot = ({ src, alt, w, h } = {}) =>
     src
-      ? `<img class="portrait__img" src="${esc(src)}" alt="${esc(alt)}"${w && h ? ` width="${w}" height="${h}"` : ''} />`
+      ? `<img class="portrait__img" src="${esc(src)}" alt="${esc(alt)}"${w && h ? ` width="${w}" height="${h}"` : ''} loading="lazy" />`
       : `<div class="portrait" role="img" aria-label="${esc(alt || 'Portrait')}">
            <span class="portrait__icon" aria-hidden="true">&#9633;</span>
            <span class="portrait__caption">Drop your photo</span>

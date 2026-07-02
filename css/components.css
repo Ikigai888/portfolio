@@ -425,8 +425,8 @@
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--hover-color-dur);
-  padding-block: 9px;    /* 44px tap box */
-  margin-block: -9px;
+  padding-block: 12px;   /* 44px tap box */
+  margin-block: -12px;
 }
 .site-footer__link:hover { color: var(--text-primary); }
 .site-footer__copyright {
