@@ -545,3 +545,7 @@ button:focus-visible {
 .hero__lead,
 .statement__body,
 .whatido__closing { text-wrap: pretty; }
+
+/* ---------- Thesis settle (transient; spans are removed after the animation) ---------- */
+.hero__word { display: inline-block; white-space: nowrap; }
+.hero__glyph { display: inline-block; will-change: transform, opacity, filter; }

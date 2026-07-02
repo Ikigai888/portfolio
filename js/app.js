@@ -129,6 +129,69 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Thesis settle (hero headline, homepage only) ----------
+     The headline enacts its own argument: glyphs load slightly scattered
+     and blurred (complexity), then spring crisply into place; the accent
+     line settles last. Runs once per load; afterwards the DOM is restored
+     to the plain static headline so kerning, text-wrap: balance, and
+     screen-reader output are exactly what a no-motion visitor gets. */
+  function initThesisSettle() {
+    var headline = document.querySelector('.hero__headline');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!headline || reduce || !('animate' in Element.prototype)) return;
+
+    var lines = Array.prototype.slice.call(headline.querySelectorAll('.hero__line'));
+    var originals = lines.map(function (l) { return l.textContent; });
+    headline.setAttribute('aria-label', originals.join(' '));
+
+    var glyphs = [];
+    lines.forEach(function (line, li) {
+      var words = line.textContent.split(' ');
+      line.textContent = '';
+      line.setAttribute('aria-hidden', 'true');
+      words.forEach(function (word, wi) {
+        var w = document.createElement('span');
+        w.className = 'hero__word';
+        for (var i = 0; i < word.length; i++) {
+          var g = document.createElement('span');
+          g.className = 'hero__glyph';
+          g.textContent = word[i];
+          w.appendChild(g);
+          glyphs.push({ el: g, line: li });
+        }
+        line.appendChild(w);
+        if (wi < words.length - 1) line.appendChild(document.createTextNode(' '));
+      });
+    });
+
+    // Deterministic scatter so every load settles the same way
+    var seed = 7;
+    function rand() { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; }
+
+    var anims = glyphs.map(function (item, idx) {
+      var lineDelay = item.line === 0 ? 0 : 460;
+      var delay = lineDelay + idx * 9 + Math.abs(rand()) * 70;
+      var dx = rand() * 14, dy = rand() * 12, rot = rand() * 5;
+      return item.el.animate([
+        { opacity: 0.12, transform: 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)', filter: 'blur(5px)' },
+        { opacity: 1, transform: 'none', filter: 'blur(0px)' }
+      ], {
+        duration: item.line === 0 ? 760 : 600,
+        delay: delay,
+        easing: 'cubic-bezier(0.22, 1, 0.36, 1)', /* ease-out-quint */
+        fill: 'backwards'
+      });
+    });
+
+    Promise.all(anims.map(function (a) { return a.finished; })).then(function () {
+      lines.forEach(function (line, i) {
+        line.textContent = originals[i];
+        line.removeAttribute('aria-hidden');
+      });
+      headline.removeAttribute('aria-label');
+    }).catch(function () { /* interrupted (e.g. nav away) — leave as-is */ });
+  }
+
   /* ---------- Assemble ---------- */
   function render() {
     var page =
@@ -146,6 +209,7 @@
     document.getElementById('app').innerHTML = page;
     initReveal();
     initNavToggle();
+    initThesisSettle();
   }
 
   if (document.readyState === 'loading') {
