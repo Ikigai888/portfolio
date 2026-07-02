@@ -384,3 +384,6 @@
   .cs-footer__link { transition: none; }
   .cs-next__link:hover .cs-next__arrow { transform: none; }
 }
+
+/* Text-only challenge (no artifact yet): single readable column, no empty slot */
+.cs-challenge__inner--solo { grid-template-columns: 1fr; max-width: 62ch; }

@@ -73,7 +73,7 @@ window.CaseContent = {
           body: 'Whatever shipped had to be consumed by many RISE products, not just one screen. The model needed to hold up as the ecosystem grew.',
           options: 'Options considered · a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability — branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { alt: 'Platform architecture diagram', caption: 'Platform architecture diagram' },
+          image: { src: 'images/case-studies/brand-gov-text-styles.png', alt: 'Brand Library screen managing governed text styles — name, family, fallback font, and tags', caption: 'Brand Library — the shared source products read from' },
         },
       ],
     },

@@ -112,9 +112,13 @@
 
   function ChallengeBlock(item, idx) {
     var isEven = idx % 2 === 0;
+    var hasImage = item.image && item.image.src;
+    var media = hasImage
+      ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
+      : '';
     return (
       '<div class="cs-challenge" data-reveal>' +
-        '<div class="cs-challenge__inner cs-challenge__inner--' + (isEven ? 'left' : 'right') + '">' +
+        '<div class="cs-challenge__inner' + (hasImage ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right') : ' cs-challenge__inner--solo') + '">' +
           '<div class="cs-challenge__text">' +
             '<span class="cs-challenge__label">' + esc('Challenge ' + item.number) + '</span>' +
             '<h3 class="cs-challenge__headline">' + esc(item.headline) + '</h3>' +
@@ -122,9 +126,7 @@
             '<p class="cs-options">' + esc(item.options) + '</p>' +
             '<p class="cs-decision"><strong class="cs-decision__label">Decision · </strong>' + esc(item.decision) + '</p>' +
           '</div>' +
-          '<div class="cs-challenge__media">' +
-            C.ImageSlot(item.image) +
-          '</div>' +
+          media +
         '</div>' +
       '</div>'
     );
@@ -183,7 +185,7 @@
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
           '</div>' +
-          '<div class="cs-full-image" data-reveal>' + C.ImageSlot(v.image) + '</div>' +
+          (v.image && v.image.src ? '<div class="cs-full-image" data-reveal>' + C.ImageSlot(v.image) + '</div>' : '') +
         '</div>' +
       '</section>'
     );
