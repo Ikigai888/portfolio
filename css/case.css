@@ -84,6 +84,9 @@
   position: sticky;
   top: 110px; /* clears the two-row sticky case header */
 }
+.cs-split__right {
+  padding-top: 32px; /* first paragraph aligns with the headline, not the eyebrow */
+}
 .cs-section-headline {
   margin: 0;
   font-size: var(--fs-section-sm);
@@ -180,6 +183,7 @@
 }
 
 /* ---------- Challenge blocks ---------- */
+.cs-challenges .cs-split { margin-bottom: var(--gap-split); } /* air before the first rule */
 .cs-challenge-list { display: flex; flex-direction: column; gap: 0; }
 .cs-challenge {
   border-top: 1px solid var(--border);
@@ -344,6 +348,7 @@
 @media (max-width: 900px) {
   .cs-split { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .cs-split__left { position: static; }
+  .cs-split__right { padding-top: 0; }
   .cs-summary__card { grid-template-columns: 1fr; }
   .cs-challenge__inner { grid-template-columns: 1fr; }
   .cs-challenge__inner--right { direction: ltr; }
