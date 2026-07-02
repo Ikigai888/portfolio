@@ -31,8 +31,8 @@ window.Content = {
       { text: 'Confusion isn’t.', accent: true },
     ],
     lead:
-      'I design software where the system is complicated ' +
-      'and the experience can\u2019t be.',
+      'Nobody should need a manual for the tools they use every day. ' +
+      'I design so they don\u2019t.',
   },
 
   /* ---------- What I Do ---------- */
