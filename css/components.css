@@ -86,7 +86,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--text-primary);
   text-decoration: none;
@@ -144,7 +144,7 @@
   gap: 16px;
   margin-bottom: 40px;
 }
-.hero__meta { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.hero__meta { font-size: 0.8125rem; font-weight: 600; color: var(--text-muted); }
 
 .hero__headline {
   margin: 0;
@@ -289,10 +289,10 @@
   text-align: center;
   background: var(--bg-inset);
 }
-.image-slot__icon { font-size: 26px; color: var(--text-faint); }
+.image-slot__icon { font-size: 1.625rem; color: var(--text-faint); }
 .image-slot__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); }
 .image-slot__hint {
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   color: var(--text-muted);
@@ -327,13 +327,13 @@
 }
 .principle__title {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 .principle__desc {
   margin: 0;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: var(--lh-body);
   color: var(--text-muted);
 }
@@ -357,10 +357,10 @@
   border: 1px solid var(--border);
 }
 .portrait__img { object-fit: cover; display: block; }
-.portrait__icon { font-size: 26px; color: var(--text-faint); }
+.portrait__icon { font-size: 1.625rem; color: var(--text-faint); }
 .portrait__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); }
 .portrait__hint {
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   color: var(--text-muted);
@@ -398,7 +398,7 @@
 .site-footer__cta {
   display: block;
   margin: 24px 0 0;
-  font-size: clamp(40px, 8.5vw, 128px);
+  font-size: clamp(2.5rem, 8.5vw, 8rem);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
   font-weight: 800;
@@ -473,7 +473,7 @@ button:focus-visible {
   .site-header__link {
     padding: 16px var(--gutter);
     border-top: 1px solid var(--hairline);
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 }
 
@@ -523,7 +523,7 @@ button:focus-visible {
   padding-top: 44px;
   border-top: 1px solid var(--border);
 }
-.kind-list .principle__title { font-size: 21px; }
+.kind-list .principle__title { font-size: 1.3125rem; }
 .whatido__closing {
   margin: 40px 0 0;
   font-size: var(--fs-lead);
@@ -533,3 +533,11 @@ button:focus-visible {
 
 /* ---------- About credential: cap the only 75ch+ measure ---------- */
 .about__credential { max-width: 66ch; }
+
+/* ---------- Typeset: even heading rags, orphan-free prose ---------- */
+.case-card__title,
+.statement,
+.section-opener__label { text-wrap: balance; }
+.hero__lead,
+.statement__body,
+.whatido__closing { text-wrap: pretty; }

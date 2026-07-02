@@ -21,7 +21,7 @@
   padding-bottom: 14px;
 }
 .case-header__back {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--text-muted);
 }
 .case-header__client { font-weight: 600; color: var(--text-bright); }
@@ -51,7 +51,7 @@
 .case-header__nav-link {
   flex-shrink: 0;
   padding: 12px 20px 12px 0;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -134,7 +134,7 @@
 .cs-summary__sep { color: var(--text-faint); }
 .cs-summary__title {
   margin: 0 0 16px;
-  font-size: clamp(24px, 2.6vw, 36px);
+  font-size: var(--fs-section); /* page h1 must outrank the h2 section headlines */
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-section);
   font-weight: 700;
@@ -172,7 +172,7 @@
 .cs-arrow {
   flex-shrink: 0;
   color: var(--accent-text);
-  font-size: 18px;
+  font-size: 1.125rem;
   margin-top: 2px;
 }
 
@@ -209,7 +209,7 @@
 }
 .cs-options {
   margin: 20px 0 12px;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: var(--lh-body);
   color: var(--text-muted);
 }
@@ -274,7 +274,7 @@
 }
 .cs-impact__desc {
   margin: 0;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: var(--lh-body);
   color: var(--text-secondary);
 }
@@ -316,7 +316,7 @@
   flex-wrap: wrap;
 }
 .cs-footer__back {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -325,13 +325,13 @@
 }
 .cs-footer__back:hover { color: var(--text-primary); }
 .cs-footer__link {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--text-muted);
   text-decoration: none;
   transition: color var(--hover-color-dur);
 }
 .cs-footer__link:hover { color: var(--text-primary); }
-.cs-footer__copy { font-size: 13px; color: var(--text-faint-2); margin-left: auto; }
+.cs-footer__copy { font-size: 0.8125rem; color: var(--text-faint-2); margin-left: auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -386,3 +386,13 @@
 
 /* Text-only challenge (no artifact yet): single readable column, no empty slot */
 .cs-challenge__inner--solo { grid-template-columns: 1fr; max-width: 62ch; }
+
+/* ---------- Typeset: even heading rags, orphan-free prose ---------- */
+.cs-summary__title,
+.cs-section-headline,
+.cs-challenge__headline,
+.cs-outcome__headline { text-wrap: balance; }
+.cs-body,
+.cs-outcome__body,
+.cs-impact__desc,
+.cs-summary__question { text-wrap: pretty; }
