@@ -22,6 +22,20 @@
   /* Arrow bullet used in summary outcomes and impact cards */
   function Arrow() { return '<span class="cs-arrow" aria-hidden="true">&#x2192;</span>'; }
 
+  /* Renders one or more full-width supporting images/GIFs. Single item stays
+     full-bleed (existing behavior); 2+ lay out as a responsive gallery. */
+  function FullImages(images) {
+    if (!images || !images.length) return '';
+    if (images.length === 1) {
+      return '<div class="cs-full-image" data-reveal>' + C.ImageSlot(images[0]) + '</div>';
+    }
+    return '<div class="cs-full-image-grid" data-reveal>' +
+      images.map(function (img) {
+        return '<div class="cs-full-image cs-full-image--grid">' + C.ImageSlot(img) + '</div>';
+      }).join('') +
+    '</div>';
+  }
+
   /* ---- Section builders ---- */
 
   function CaseHeader(d) {
@@ -97,6 +111,7 @@
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
           '</div>' +
+          FullImages(ctx.images) +
         '</div>' +
       '</section>'
     );
@@ -177,7 +192,7 @@
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
           '</div>' +
-          (v.image && v.image.src ? '<div class="cs-full-image" data-reveal>' + C.ImageSlot(v.image) + '</div>' : '') +
+          FullImages(v.images || (v.image && v.image.src ? [v.image] : [])) +
         '</div>' +
       '</section>'
     );

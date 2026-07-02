@@ -412,3 +412,14 @@
 .cs-outcome__body,
 .cs-impact__desc,
 .cs-summary__question { text-wrap: pretty; }
+
+/* ---------- Full-image gallery (2+ supporting images/GIFs in one section) ---------- */
+.cs-full-image-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 56px;
+}
+.cs-full-image-grid .cs-full-image { margin-top: 0; }
+.cs-full-image--grid .image-slot,
+.cs-full-image--grid .image-slot__img { min-height: 260px; max-height: 420px; }

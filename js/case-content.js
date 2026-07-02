@@ -156,6 +156,9 @@ window.CaseContent = {
         'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts — every reset was friction at the exact moment someone wanted to engage with the brand.',
         'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped — people had to be convinced it was safe, at the exact moment they were least patient.',
       ],
+      images: [
+        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 490, alt: 'Three member personas — Sentiment & Efficiency, Product Education & Confidence, and Confidence — summarizing research going into the passkey rollout', caption: 'Member research — three primary personas' },
+      ],
     },
 
     challenges: {
@@ -209,7 +212,11 @@ window.CaseContent = {
         'I ran usability sessions focused on the moments of highest uncertainty: the initial introduction, the first-time setup, and recovery when something went wrong. Participants ranged from tech-comfortable to tech-avoidant.',
         'The sessions confirmed the progressive disclosure approach — participants who saw the interaction before the explanation consistently rated their confidence higher. They also surfaced a gap: customers needed reassurance that their old password still worked as a backup.',
       ],
-      image: { alt: 'Usability test sessions', caption: 'Usability test sessions' },
+      images: [
+        { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
+        { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Animated walkthrough of the passkey onboarding prompt on desktop and mobile', caption: 'Onboarding prompt — full flow' },
+        { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Animated walkthrough of the Face ID setup and passkey confirmation screens', caption: 'Face ID setup — full flow' },
+      ],
     },
 
     outcome: {
