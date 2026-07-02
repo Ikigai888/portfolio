@@ -51,7 +51,7 @@
   --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   oklch(0.80 0.10 210);
+  --selection-bg:   #97F8E4; /* sampled from the TN_Port_Logo wordmark */
   --selection-text: #0E1416;
 
   /* ---------- Typography: families ---------- */
