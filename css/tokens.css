@@ -51,7 +51,7 @@
   --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #97F8E4; /* sampled from the TN_Port_Logo wordmark */
+  --selection-bg:   #83D4C3; /* the wordmark as the eye sees it: bright stroke cores of the rendered signature (file color #97F8E4 reads lighter than the on-screen mark) */
   --selection-text: #0E1416;
 
   /* ---------- Typography: families ---------- */
