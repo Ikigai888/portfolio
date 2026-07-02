@@ -270,14 +270,13 @@
   margin: 0 0 10px;
   font-size: var(--fs-body);
   font-weight: 700;
-  color: var(--band-text);
+  color: var(--text-primary);
 }
 .cs-impact__desc {
   margin: 0;
   font-size: 15px;
   line-height: var(--lh-body);
-  color: var(--band-text);
-  opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 /* ---------- Next case study link (Reflection section) ---------- */

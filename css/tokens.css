@@ -35,7 +35,7 @@
   --band-bg:    oklch(0.62 0.09 208);     /* fallback #3495A2 */
   --band-bg-hex: #3495A2;
   --band-text:  #0E1416;
-  --band-card:     rgba(255, 255, 255, 0.10); /* impact cards on the band */
+  --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
   --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
 
   /* ---------- Color: lines ---------- */
