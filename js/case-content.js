@@ -16,9 +16,7 @@ window.CaseContent = {
       theme: 'Organizational Complexity',
       title: 'Designing Brand Governance for Enterprise Scale',
       question: 'How do you help thousands of agents stay on brand without relying on manual processes?',
-      project: 'Self-service brand governance platform across the RISE ecosystem',
       role: 'Lead Product Designer — strategy, IA, interaction design, customer validation',
-      outcome: 'A governed branding capability, consumed by multiple products',
       capabilities: ['Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture', 'AI-assisted Design', 'Customer Validation'],
       outcomes: [
         'Centralized brand management into a single source of truth.',
@@ -141,9 +139,7 @@ window.CaseContent = {
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
       question: 'How do you convince people to trust a sign-in method they’ve never used before?',
-      project: 'End-to-end passkey experience across app, web, and in-store',
       role: 'Lead Product Designer — UX strategy, interaction design, accessibility, design systems',
-      outcome: 'A trusted, accessible passkey flow adopted across all sign-in surfaces',
       capabilities: ['Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems', 'Product Collaboration'],
       outcomes: [
         'Delivered passkey sign-in across app, web, and in-store.',
@@ -258,9 +254,7 @@ window.CaseContent = {
       theme: 'Interaction Complexity',
       title: 'Designing an Accessible Rail Booking Experience',
       question: 'How do you simplify one of the most information-dense experiences in travel?',
-      project: 'Interactive seat selection for rail booking across responsive web',
       role: 'Lead Product Designer — interaction design, accessibility, responsive UX',
-      outcome: 'An accessible, responsive seat selection experience that balanced traveler confidence with business constraints',
       capabilities: ['Complex Interaction Design', 'Accessibility', 'Responsive UX', 'Enterprise Product Design'],
       outcomes: [
         'Delivered accessible seat selection across responsive breakpoints.',

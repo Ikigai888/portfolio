@@ -46,7 +46,7 @@
   }
 
   function SummarySection(s) {
-    var chips = s.capabilities.map(Chip).join('');
+    var chips = s.capabilities.slice(0, 3).map(Chip).join(''); // distilled: top three
     var bullets = s.outcomes.map(function (o) {
       return '<li class="cs-summary__outcome">' + Arrow() + '<span>' + esc(o) + '</span></li>';
     }).join('');
@@ -65,16 +65,8 @@
               '<p class="cs-summary__question">' + esc(s.question) + '</p>' +
               '<div class="cs-summary__meta">' +
                 '<div class="cs-summary__meta-row">' +
-                  Eyebrow('Project') +
-                  '<p class="cs-summary__meta-val">' + esc(s.project) + '</p>' +
-                '</div>' +
-                '<div class="cs-summary__meta-row">' +
                   Eyebrow('Role') +
                   '<p class="cs-summary__meta-val">' + esc(s.role) + '</p>' +
-                '</div>' +
-                '<div class="cs-summary__meta-row">' +
-                  Eyebrow('Outcome') +
-                  '<p class="cs-summary__meta-val">' + esc(s.outcome) + '</p>' +
                 '</div>' +
               '</div>' +
               '<div class="cs-summary__caps">' +
