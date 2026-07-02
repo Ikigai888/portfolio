@@ -1,10 +1,19 @@
 # Portfolio — project notes
 
-Static, no-build portfolio site (plain HTML/CSS/JS). Pages render client-side
-from data: `js/content.js` (homepage copy) and `js/case-content.js` (case
-studies) feed component functions in `js/components.js`, assembled by
-`js/app.js` (homepage) and `js/case-template.js` (case pages). Edit copy in the
+Portfolio site (plain HTML/CSS/JS, no framework/bundler). Pages render from
+data: `js/content.js` (homepage copy) and `js/case-content.js` (case studies)
+feed component functions in `js/components.js`, assembled by `js/app.js`
+(homepage) and `js/case-template.js` (case pages). Edit copy in the
 `*-content.js` data files, not the HTML.
+
+## Before committing — run the build
+
+`npm run build` (see [README.md](README.md)) pre-renders `js/content.js` /
+`js/case-content.js` into complete static HTML inside each page's
+`<!-- BUILD:START -->…<!-- BUILD:END -->` block, so crawlers and no-JS
+clients see full content. Run it after any content/component edit and before
+every push — the generated HTML files are committed, there's no server-side
+build.
 
 ## Before committing — strip live-mode injection
 
@@ -35,7 +44,7 @@ grep -rl "localhost:8400\|impeccable-live" *.html   # should print nothing
 
 ## Cache-busting
 
-Script/style tags carry a `?v=N` query param (currently `?v=29`). Bump `N` on
+Script/style tags carry a `?v=N` query param (currently `?v=35`). Bump `N` on
 **every** tag across all four HTML files whenever any `js/` or `css/` file
 changes, so browsers don't serve stale cached assets. The browser HTTP cache is
 aggressive here — a plain reload can show old content even when the source on

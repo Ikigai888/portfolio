@@ -114,7 +114,11 @@ window.Content = {
       'I work closest to the hard middle of products — where the system design, ' +
       'the interaction details, and the business logic all have to agree. Most ' +
       'days that means whiteboards with engineers and calls with customers.',
-    credential: 'Also shipped work at Microsoft, Electronic Arts, and SAP Jam.',
+    credential: {
+      before: 'Also shipped work at ',
+      link: { label: 'Microsoft (6 inventor patents)', href: 'https://patents.justia.com/inventor/tad-natsuhara' },
+      after: ', Electronic Arts, and SAP Jam.',
+    },
     name: 'Tad Natsuhara — Vancouver, BC',
     portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },

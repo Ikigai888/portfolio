@@ -16,11 +16,11 @@ window.CaseContent = {
       theme: 'Organizational Complexity',
       title: 'Designing Brand Governance for Enterprise Scale',
       question: 'How do you help thousands of agents stay on brand without relying on manual processes?',
-      role: 'Lead Product Designer — strategy, IA, interaction design, customer validation',
+      role: 'Senior Product Designer — strategy, IA, interaction design, customer validation',
       capabilities: ['Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture', 'AI-assisted Design', 'Customer Validation'],
       outcomes: [
-        'Centralized brand management into a single source of truth.',
-        'Introduced reusable Style Kits consumed across RISE products.',
+        'Centralized brand management for thousands of agents into a single source of truth.',
+        'Introduced reusable Style Kits consumed across multiple RISE products.',
         'Replaced manual brand policing with a scalable, governed system.',
       ],
     },
@@ -47,7 +47,6 @@ window.CaseContent = {
           body: 'Brands cascade through broker → office → team → agent, each level needing to inherit or override. Exposed naively, that hierarchy overwhelmed admins.',
           options: 'Options considered · a flat list of all brands; an explicit org tree; an inheritance model with visible overrides.',
           decision: 'An inheritance model that shows what is inherited and what can be overridden — presenting the hierarchy rather than hiding it.',
-          image: { alt: 'Hierarchy & inheritance model', caption: 'Hierarchy & inheritance model' },
         },
         {
           number: 2,
@@ -94,7 +93,6 @@ window.CaseContent = {
         'I ran structured sessions with brokers, office admins, and agents at different points in the process — once with rough concepts to pressure-test the inheritance model, and again with a higher-fidelity prototype to validate the Style Kit application flow.',
         'The sessions surfaced two things that changed the design: admins wanted to see which agents had applied a kit before publishing changes, and agents needed a clearer preview of what a kit would look like on their actual materials before committing.',
       ],
-      image: { alt: 'Customer validation sessions / before-after iteration', caption: 'Customer validation sessions / before–after iteration' },
     },
 
     outcome: {
@@ -103,9 +101,9 @@ window.CaseContent = {
       headline: 'A foundation the ecosystem builds on',
       body: 'The work established branding as a governed platform capability rather than a per-product feature — setting the direction for how RISE products consume brand going forward.',
       impacts: [
-        { label: 'Brand infrastructure', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
-        { label: 'Style Kit adoption', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
-        { label: 'Inheritance model', desc: 'Brand settings cascade broker → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
+        { label: 'Fewer manual brand reviews', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
+        { label: 'Style Kits adopted across multiple RISE products', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
+        { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade broker → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
       ],
     },
 
@@ -139,12 +137,12 @@ window.CaseContent = {
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
       question: 'How do you convince people to trust a sign-in method they’ve never used before?',
-      role: 'Lead Product Designer — UX strategy, interaction design, accessibility, design systems',
+      role: 'Senior Product Designer — UX strategy, interaction design, accessibility, design systems',
       capabilities: ['Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems', 'Product Collaboration'],
       outcomes: [
+        '90% fewer password resets after passkey rollout.',
         'Delivered passkey sign-in across app, web, and in-store.',
-        'Established a reusable pattern for introducing unfamiliar features.',
-        'Reduced friction at the exact moment customers wanted to engage.',
+        'Zero security breaches via phishing since launch.',
       ],
     },
 
@@ -190,6 +188,7 @@ window.CaseContent = {
           options: 'Options considered · hide the fallback; deprioritize it visually; make it available but secondary.',
           decision: 'A visually secondary fallback that is discoverable but doesn’t compete — making passkeys feel like the obvious path without removing the escape hatch.',
           image: { src: 'images/case-studies/passkeys-management-security.png', w: 1168, h: 1034, alt: 'Account security settings showing passkeys alongside password manager fallback options', caption: 'Fallback flow design' },
+          impact: 'The management and security controls weren’t on the roadmap. I surfaced the need through research and conversations with the dev team, built the case for it, and got cross-functional and leadership buy-in to ship create, remove, and manage controls.',
         },
       ],
     },
@@ -216,7 +215,9 @@ window.CaseContent = {
         { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
         { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Animated walkthrough of the passkey onboarding prompt on desktop and mobile', caption: 'Onboarding prompt — full flow' },
         { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Animated walkthrough of the Face ID setup and passkey confirmation screens', caption: 'Face ID setup — full flow' },
+        { src: 'images/case-studies/passkeys-login-movie.mp4', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login — full flow' },
       ],
+      quote: { text: 'Sometimes it will forget what my password is, I have to type in my e-mail and send a link which I don’t like because then I have to exit and wait for the e-mail.', attribution: '— usability session participant' },
     },
 
     outcome: {
@@ -225,9 +226,9 @@ window.CaseContent = {
       headline: 'Confidence without complexity',
       body: 'Passkeys shipped across app, web, and in-store. The pattern established for this feature became the foundation for introducing other unfamiliar capabilities to a consumer audience.',
       impacts: [
-        { label: 'Cross-surface delivery', desc: 'Passkey sign-in delivered across app, web, and in-store with a consistent pattern.' },
-        { label: 'Reusable introduction model', desc: 'Established a pattern for introducing unfamiliar features that the team applied to subsequent work.' },
-        { label: 'Trust by design', desc: 'Reframed authentication from a security checkbox into a trust-building moment, measured on confidence as well as completion rate.' },
+        { label: '90% fewer password resets', desc: 'Removed the single biggest source of failed logins and support contacts, reframing authentication from a security checkbox into a trust-building moment.' },
+        { label: 'Zero security breaches via phishing', desc: 'Passkeys removed the credential-phishing attack surface entirely — a security outcome, not just a UX one.' },
+        { label: 'Cross-surface delivery', desc: 'Passkey sign-in delivered across app, web, and in-store with a consistent, reusable pattern the team applied to subsequent work.' },
       ],
     },
 
@@ -261,12 +262,12 @@ window.CaseContent = {
       theme: 'Interaction Complexity',
       title: 'Designing an Accessible Rail Booking Experience',
       question: 'How do you simplify one of the most information-dense experiences in travel?',
-      role: 'Lead Product Designer — interaction design, accessibility, responsive UX',
+      role: 'Senior Product Designer — interaction design, accessibility, responsive UX',
       capabilities: ['Complex Interaction Design', 'Accessibility', 'Responsive UX', 'Enterprise Product Design'],
       outcomes: [
-        'Delivered accessible seat selection across responsive breakpoints.',
-        'Balanced traveler confidence with corporate travel policy constraints.',
-        'Simplified the most information-dense step in the booking flow.',
+        '20% increase in completed bookings.',
+        '35% reduction in seat selection errors.',
+        'Components subsequently adopted by the Air seat map team.',
       ],
     },
 
@@ -330,8 +331,11 @@ window.CaseContent = {
       body: [
         'I ran sessions with frequent business rail travelers — people booking multi-leg journeys under policy constraints with limited time to make decisions. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
         'The dual-mode accessibility approach was validated in the first round — screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override — a gap we closed before launch.',
+        'Stakeholders pushed back on the accessibility investment early — "Does everything need to be tabbed? Can we skip some items?" Rather than debate it in a conference room, I interviewed visually impaired travelers directly.',
+        'One finding reset our assumptions: guide dog owners consistently preferred table seats for the extra space on long journeys. That changed the screen-reader priority order and told us exactly which components were safe to skip. My documentation of the findings became the reference engineering built the implementation from.',
       ],
       image: { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
+      quote: { text: 'It was a bit hard to tell what each seat offers. I want to see options like power outlets or extra space right away, not guess.', attribution: '— usability session participant' },
     },
 
     outcome: {
@@ -340,9 +344,9 @@ window.CaseContent = {
       headline: 'Clarity inside complexity',
       body: 'The seat selection experience shipped across responsive breakpoints. Accessibility compliance was validated against WCAG 2.1 AA. The data model held across all rail operators in the initial launch set.',
       impacts: [
-        { label: 'Accessible across modes', desc: 'Full WCAG 2.1 AA compliance with a dual-mode design that preserved capability for all users.' },
-        { label: 'Policy-forward booking', desc: 'Pre-filtering to policy-compliant options reduced rebooking caused by after-selection policy violations.' },
-        { label: 'Operator-agnostic model', desc: 'A seat data representation that worked across all operators without operator-specific design decisions.' },
+        { label: '20% increase in completed bookings', desc: 'Simplifying the most information-dense step in the flow reduced abandonment at seat selection.' },
+        { label: '35% reduction in seat selection errors', desc: 'Pre-filtering to policy-compliant options and clarifying seat attributes reduced mis-selections and the rebooking they caused.' },
+        { label: 'Adopted by the Air seat map team', desc: 'The spatial seat map and dual-mode accessibility pattern were subsequently reused outside rail — validation the model generalized beyond its original scope.' },
       ],
     },
 

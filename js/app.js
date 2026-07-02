@@ -84,7 +84,10 @@
           C.SectionHeading(d.label) +
           '<p class="statement about__statement">' + C.esc(d.statement) + '</p>' +
           '<p class="statement__body">' + C.esc(d.body) + '</p>' +
-          '<p class="about__credential">' + C.esc(d.credential) + '</p>' +
+          '<p class="about__credential">' + C.esc(d.credential.before) +
+            '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
+              C.esc(d.credential.link.label) + '</a>' +
+            C.esc(d.credential.after) + '</p>' +
         '</div>' +
       '</div>';
     return C.Section({ id: 'about', content: content });
@@ -213,9 +216,11 @@
     update();
   }
 
-  /* ---------- Assemble ---------- */
-  function render() {
-    var page =
+  /* ---------- Assemble ----------
+     buildPage is pure (data -> HTML string) so it can also run in Node
+     at build time (see scripts/build.mjs) to pre-render index.html. */
+  function buildPage() {
+    return (
       '<a class="skip-link" href="#content">Skip to content</a>' +
       C.SiteHeader(D.header) +
       '<main id="content">' +
@@ -225,18 +230,25 @@
         HowIWork(D.howIWork) +
         About(D.about) +
       '</main>' +
-      C.SiteFooter(D.contact);
+      C.SiteFooter(D.contact)
+    );
+  }
 
-    document.getElementById('app').innerHTML = page;
+  function render() {
+    document.getElementById('app').innerHTML = buildPage();
     initReveal();
     initNavToggle();
     initThesisSettle();
     initHeroParallax();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', render);
-  } else {
-    render();
+  window.App = { render: render, buildPage: buildPage };
+
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
+    }
   }
 })();

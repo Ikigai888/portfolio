@@ -26,13 +26,173 @@
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=33" />
+  <link rel="stylesheet" href="css/tokens.css?v=37" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=33" />
+  <link rel="stylesheet" href="css/components.css?v=37" />
 </head>
 <body>
-  <!-- Page is rendered from data by js/app.js — never hand-written markup per section -->
-  <div id="app"></div>
+  <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
+       Content between the BUILD markers is pre-rendered by scripts/build.mjs from the
+       same content/component files, so crawlers see full HTML with no JS required.
+       js/app.js still re-renders this on load to wire up animations/interactions. -->
+  <div id="app"><!-- BUILD:START --><a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
+        <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+          <span class="site-header__toggle-bar"></span>
+          <span class="site-header__toggle-bar"></span>
+        </button>
+        <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
+          <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header><main id="content">
+    <section class="section" id="top">
+      <div class="container"><div data-reveal><div class="hero__badge"><span class="pill">Senior Product Designer</span><span class="hero__meta">Vancouver, BC · Open to Senior / Lead / Staff roles</span></div><h1 class="hero__headline"><span class="hero__line">Complexity is inevitable.</span><span class="hero__line hero__line--accent">Confusion isn’t.</span></h1><div class="hero__subtext"><p class="hero__lead">Nobody should need a manual for the tools they use every day. I design so they don’t.</p></div></div></div>
+    </section>
+    <section class="section">
+      <div class="container"><div data-reveal>
+    <div class="split split--what">
+      <div class="split__label"><h2 class="eyebrow">What I Do</h2></div>
+      <div class="split__content"><p class="statement">For teams at <strong class="emph">MoxiWorks</strong>, <strong class="emph">lululemon</strong>, and <strong class="emph">SAP Concur</strong>, I’ve designed through three recurring kinds of complexity.</p><div class="kind-list">
+    <div class="principle">
+      <span class="principle__num">01</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Organizational</h3>
+        <p class="principle__desc">Systems too big for any one person to hold in their head.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle__num">02</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Behavioral</h3>
+        <p class="principle__desc">Asking people to trust something unfamiliar.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle__num">03</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Interaction</h3>
+        <p class="principle__desc">Dense interfaces where every detail competes for attention.</p>
+      </div>
+    </div></div><p class="whatido__closing">The case studies below take one each.</p></div>
+    </div></div></div>
+    </section>
+    <section class="section" id="work">
+      <div class="container"><div class="section-opener"><h2 class="section-opener__label">Case Studies</h2><span class="section-opener__meta">Three projects</span></div><div class="case-stack">
+    <a class="case-card" href="case-brand-governance.html" data-reveal>
+      <div class="case-card__body">
+        <div class="case-card__eyebrow">
+          <span class="case-card__num">01</span>
+          <span class="case-card__client">MoxiWorks</span>
+          <span class="case-card__dot" aria-hidden="true">·</span>
+          <span class="case-card__theme">Organizational Complexity</span>
+        </div>
+        <h3 class="case-card__title">Designing Brand Governance for Enterprise Scale</h3>
+        <p class="case-card__question">How do you help thousands of agents stay on brand without relying on manual processes?</p>
+        <span class="case-card__cta">View case study <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
+      </div>
+      <div class="case-card__media">
+        <img class="image-slot__img" src="images/case-studies/brand-gov-style-kits.png" alt="Brand Governance Style Kit editor — color and typography tokens with share permissions" width="1440" height="1266" loading="lazy" />
+      </div>
+    </a>
+    <a class="case-card" href="case-passkeys.html" data-reveal>
+      <div class="case-card__body">
+        <div class="case-card__eyebrow">
+          <span class="case-card__num">02</span>
+          <span class="case-card__client">lululemon</span>
+          <span class="case-card__dot" aria-hidden="true">·</span>
+          <span class="case-card__theme">Behavioral Complexity</span>
+        </div>
+        <h3 class="case-card__title">Designing a Passwordless Authentication Experience</h3>
+        <p class="case-card__question">How do you convince people to trust a sign-in method they’ve never used before?</p>
+        <span class="case-card__cta">View case study <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
+      </div>
+      <div class="case-card__media">
+        <img class="image-slot__img" src="images/case-studies/passkeys-thumb.png" alt="lululemon passkey sign-in flow shown on desktop and mobile" width="1360" height="824" loading="lazy" />
+      </div>
+    </a>
+    <a class="case-card" href="case-rail-booking.html" data-reveal>
+      <div class="case-card__body">
+        <div class="case-card__eyebrow">
+          <span class="case-card__num">03</span>
+          <span class="case-card__client">SAP Concur</span>
+          <span class="case-card__dot" aria-hidden="true">·</span>
+          <span class="case-card__theme">Interaction Complexity</span>
+        </div>
+        <h3 class="case-card__title">Designing an Accessible Rail Booking Experience</h3>
+        <p class="case-card__question">How do you simplify one of the most information-dense experiences in travel?</p>
+        <span class="case-card__cta">View case study <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
+      </div>
+      <div class="case-card__media">
+        <img class="image-slot__img" src="images/case-studies/rail-booking-thumb.png" alt="SAP Concur rail seat selection across desktop, tablet, and mobile" width="1680" height="876" loading="lazy" />
+      </div>
+    </a></div></div>
+    </section>
+    <section class="section" id="approach">
+      <div class="container"><div data-reveal>
+    <div class="split split--approach">
+      <div class="split__label"><h2 class="eyebrow">How I Work</h2></div>
+      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by organizing complexity into systems people can understand.</p><div class="principle-grid">
+    <div class="principle">
+      <span class="principle__num">01</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Systems thinking</h3>
+        <p class="principle__desc">Organizing complexity into structures people can understand, not hiding it.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle__num">02</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Close collaboration</h3>
+        <p class="principle__desc">Working in lockstep with Product and Engineering from problem to ship.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle__num">03</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Rapid exploration</h3>
+        <p class="principle__desc">More directions, earlier — prototyping in hours what used to take days, then throwing most of it away on purpose.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle__num">04</span>
+      <div class="principle__text">
+        <h3 class="principle__title">Continuous validation</h3>
+        <p class="principle__desc">Testing decisions with real customers and iterating on what they reveal.</p>
+      </div>
+    </div></div><p class="statement__closing">The result is software people trust on the first try and rely on every day after.</p></div>
+    </div></div></div>
+    </section>
+    <section class="section" id="about">
+      <div class="container"><div data-reveal><div class="split split--about"><div class="split__label about__media"><img class="portrait__img" src="images/portrait.jpg" alt="Tad Natsuhara" width="1230" height="1600" loading="lazy" /><p class="about__name"><span class="about__dot" aria-hidden="true"></span>Tad Natsuhara — Vancouver, BC</p></div><div class="split__content"><h2 class="eyebrow">About</h2><p class="statement about__statement">I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy solving the kinds of product problems that don’t have obvious answers.</p><p class="statement__body">I work closest to the hard middle of products — where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p></div></div></div></div>
+    </section></main>
+    <footer class="site-footer section--footer" id="contact">
+      <div class="container" data-reveal>
+        <h2 class="eyebrow">Let’s work together</h2>
+        <a class="site-footer__cta" href="mailto:1tadashi8@gmail.com">Say hello
+          <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <div class="site-footer__details">
+          <div class="site-footer__col">
+            <span class="eyebrow">Email</span>
+            <a class="site-footer__link" href="mailto:1tadashi8@gmail.com">1tadashi8@gmail.com</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="eyebrow">Phone</span>
+            <a class="site-footer__link" href="tel:+17788466994">+1 778 846 6994</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="eyebrow">Social</span>
+            <a class="site-footer__link" href="https://www.linkedin.com/in/tad-natsuhara-design" target="_blank" rel="noopener">
+              LinkedIn <span aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </div>
+        <p class="site-footer__copyright">© 2026 Tad Natsuhara</p>
+      </div>
+    </footer><!-- BUILD:END --></div>
   <noscript>
     <div class="noscript-notice container">
       <h1>Tad Natsuhara — Senior Product Designer</h1>
@@ -52,8 +212,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=33"></script>
-  <script src="js/components.js?v=33"></script>
-  <script src="js/app.js?v=33"></script>
+  <script src="js/content.js?v=37"></script>
+  <script src="js/components.js?v=37"></script>
+  <script src="js/app.js?v=37"></script>
 </body>
 </html>

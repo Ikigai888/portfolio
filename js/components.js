@@ -98,15 +98,28 @@ window.Components = (function () {
     </a>`;
 
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
-     If image.src is set, render a responsive <img>; else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h } = {}) =>
-    src
-      ? `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${w && h ? ` width="${w}" height="${h}"` : ''} loading="lazy" />`
-      : `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
+     If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
+     sources); else a labelled slot. */
+  const ImageSlot = ({ src, alt, caption, w, h } = {}) => {
+    if (!src) {
+      return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
            <span class="image-slot__caption">${esc(caption)}</span>
            <span class="image-slot__hint">image slot</span>
          </div>`;
+    }
+    const dims = w && h ? ` width="${w}" height="${h}"` : '';
+    return /\.(mp4|webm)$/i.test(src)
+      ? `<video class="image-slot__img" src="${esc(src)}"${dims} autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
+      : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
+  };
+
+  /* --- Quote: accent-bordered callout for a participant/session quote --- */
+  const Quote = ({ text, attribution } = {}) => `
+    <blockquote class="cs-quote">
+      <p class="cs-quote__text">&ldquo;${esc(text)}&rdquo;</p>
+      ${attribution ? `<footer class="cs-quote__attribution">${esc(attribution)}</footer>` : ''}
+    </blockquote>`;
 
   /* --- PrincipleItem: numbered principle (build-spec §3d) --- */
   const PrincipleItem = ({ number, title, description }) => `
@@ -158,7 +171,7 @@ window.Components = (function () {
 
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
-    emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot,
+    emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot, Quote,
     PrincipleItem, PortraitSlot, SiteFooter,
   };
 })();

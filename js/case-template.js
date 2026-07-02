@@ -123,6 +123,9 @@
     var media = hasImage
       ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
       : '';
+    var impact = item.impact
+      ? '<p class="cs-decision"><strong class="cs-decision__label">Impact · </strong>' + esc(item.impact) + '</p>'
+      : '';
     return (
       '<div class="cs-challenge" data-reveal>' +
         '<div class="cs-challenge__inner' + (hasImage ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right') : ' cs-challenge__inner--solo') + '">' +
@@ -132,6 +135,7 @@
             '<p class="cs-body">' + esc(item.body) + '</p>' +
             '<p class="cs-options">' + esc(item.options) + '</p>' +
             '<p class="cs-decision"><strong class="cs-decision__label">Decision · </strong>' + esc(item.decision) + '</p>' +
+            impact +
           '</div>' +
           media +
         '</div>' +
@@ -182,6 +186,7 @@
     var paras = v.body.map(function (p) {
       return '<p class="cs-body">' + esc(p) + '</p>';
     }).join('');
+    var quote = v.quote ? C.Quote(v.quote) : '';
     return (
       '<section class="section cs-split-section" id="cs-validation" data-reveal>' +
         '<div class="container">' +
@@ -190,7 +195,7 @@
               sectionNum(v.number, v.label) +
               '<h2 class="cs-section-headline">' + esc(v.headline) + '</h2>' +
             '</div>' +
-            '<div class="cs-split__right">' + paras + '</div>' +
+            '<div class="cs-split__right">' + paras + quote + '</div>' +
           '</div>' +
           FullImages(v.images || (v.image && v.image.src ? [v.image] : [])) +
         '</div>' +
@@ -329,12 +334,14 @@
     });
   }
 
-  /* ---- Entry point ---- */
-  function render(slug) {
+  /* ---- Entry point ----
+     buildPage is pure (slug -> HTML string) so it can also run in Node
+     at build time (see scripts/build.mjs) to pre-render each case page. */
+  function buildPage(slug) {
     var d = window.CaseContent[slug];
-    if (!d) { document.getElementById('app').innerHTML = '<p style="color:#F1EBDF;padding:40px">Case study not found: ' + esc(slug) + '</p>'; return; }
+    if (!d) { return '<p style="color:#F1EBDF;padding:40px">Case study not found: ' + esc(slug) + '</p>'; }
 
-    var page =
+    return (
       '<a class="skip-link" href="#content">Skip to content</a>' +
       CaseHeader(d) +
       '<main id="content">' +
@@ -346,12 +353,15 @@
         OutcomeSection(d.outcome) +
         ReflectionSection(d.reflection, d.next) +
       '</main>' +
-      CaseFooter(d.caseFooter);
+      CaseFooter(d.caseFooter)
+    );
+  }
 
-    document.getElementById('app').innerHTML = page;
+  function render(slug) {
+    document.getElementById('app').innerHTML = buildPage(slug);
     initReveal();
     initSubnav();
   }
 
-  window.CaseTemplate = { render: render };
+  window.CaseTemplate = { render: render, buildPage: buildPage };
 })();
