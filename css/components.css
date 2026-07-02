@@ -147,9 +147,10 @@
 
 .hero__headline {
   margin: 0;
+  font-family: var(--font-display);
   font-size: var(--fs-display);
   line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
+  letter-spacing: var(--ls-serif);
   font-weight: 800;
 }
 .hero__line { display: block; text-wrap: balance; }
@@ -169,9 +170,10 @@
 /* ---------- Statement block (What I Do; reused by How I Work) ---------- */
 .statement {
   margin: 0 0 28px;
+  font-family: var(--font-display);
   font-size: var(--fs-statement-sm);
   line-height: var(--lh-statement);
-  letter-spacing: var(--ls-statement);
+  letter-spacing: var(--ls-serif);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -244,9 +246,10 @@
 
 .case-card__title {
   margin: 0 0 18px;
+  font-family: var(--font-display);
   font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
-  letter-spacing: var(--ls-section);
+  letter-spacing: var(--ls-serif);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -301,6 +304,7 @@
 /* ---------- Statement closing line (How I Work) ---------- */
 .statement__closing {
   margin: 44px 0 0;
+  font-family: var(--font-display);
   font-size: var(--fs-coda);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-statement);
@@ -397,9 +401,10 @@
 .site-footer__cta {
   display: block;
   margin: 24px 0 0;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 8.5vw, 8rem);
   line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
+  letter-spacing: var(--ls-serif);
   font-weight: 800;
   color: var(--text-primary);
   text-decoration: none;

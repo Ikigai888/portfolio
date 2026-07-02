@@ -132,10 +132,10 @@ The palette is built from one warm-neutral surface ramp, one warm-neutral text r
 
 ## 3. Typography
 
-**Display Font:** Bricolage Grotesque (with system-ui, sans-serif fallback)
+**Display Font:** Alegreya (calligraphic serif, with Georgia fallback) — paired to the signature wordmark
 **Body Font:** Bricolage Grotesque (with system-ui, sans-serif fallback)
 
-**Character:** A single grotesque sans family carries the entire system across five weights (400–800), so contrast comes from scale and weight rather than from pairing two typefaces — a confident, unfussy choice that matches the brand's understated register.
+**Character:** A serif/grotesque pairing on a real contrast axis: Alegreya (drawn with calligraphic pen logic, echoing the signature wordmark) carries display roles — hero, statements, titles, the footer CTA — while Bricolage Grotesque carries body, UI, and labels across five weights. Serif roles use the looser --ls-serif tracking.
 
 ### Hierarchy
 - **Display** (800, `clamp(40px, 9vw, 118px)`, line-height 0.94, letter-spacing -0.04em): Hero headline only. Tight leading makes large type feel compressed and intentional rather than sprawling.

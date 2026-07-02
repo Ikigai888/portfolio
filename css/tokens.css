@@ -57,6 +57,8 @@
   /* ---------- Typography: families ---------- */
   --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
   /* weights in use: 400 500 600 700 800 */
+  --font-display: 'Alegreya', Georgia, serif; /* calligraphic serif paired to the signature wordmark; weights 600 700 800 */
+  --ls-serif: -0.012em; /* Alegreya needs looser tracking than the grotesque */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
   --fs-display:   clamp(2.5rem, 9vw, 7.375rem); /* hero headline; 118px is the max that keeps 'Complexity is inevitable.' on one line in the 1180px container */
