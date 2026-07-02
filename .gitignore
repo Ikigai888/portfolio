@@ -141,3 +141,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Claude Code personal settings (machine-local)
+.claude/settings.local.json
