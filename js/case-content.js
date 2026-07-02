@@ -57,7 +57,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'Options considered · per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit — the source of truth other products read from.',
-          image: { alt: 'Style Kit system', caption: 'Style Kit system' },
+          image: { src: 'images/case-studies/brand-gov-style-kits.png', alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — color, type, and logo bundled into one applied unit' },
         },
         {
           number: 3,
@@ -65,7 +65,7 @@ window.CaseContent = {
           body: 'Too much admin control creates friction for agents. Too little creates brand drift. The line needed to be explicit, not emergent.',
           options: 'Options considered · full admin lock; full agent freedom; explicit lock/unlock per element.',
           decision: 'A permission layer where admins lock the elements that matter and unlock the rest — making control visible and intentional.',
-          image: { alt: 'Permission model', caption: 'Permission model' },
+          image: { src: 'images/case-studies/brand-gov-color-permissions.png', alt: 'Brand Library color editing panel with a locked primary color — admin-controlled elements made visible', caption: 'Locked brand elements — admin control made visible' },
         },
         {
           number: 4,

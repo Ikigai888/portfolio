@@ -70,7 +70,7 @@ window.Content = {
           'Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture',
         ],
         href: 'case-brand-governance.html',
-        image: { src: '', alt: 'Brand Governance platform', caption: 'Brand Governance — RISE platform' },
+        image: { src: 'images/case-studies/brand-gov-style-kits.png', alt: 'Brand Governance Style Kit editor — color and typography tokens with share permissions', caption: 'Brand Governance — RISE platform' },
       },
       {
         number: '02',
@@ -138,7 +138,7 @@ window.Content = {
       'days that means whiteboards with engineers and calls with customers.',
     credential: 'Also shipped work at Microsoft, Electronic Arts, and SAP Jam.',
     name: 'Tad Natsuhara — Vancouver, BC',
-    portrait: { src: '', alt: 'Tad Natsuhara' },
+    portrait: { src: 'images/portrait.jpg', alt: 'Tad Natsuhara' },
   },
 
   /* ---------- Contact footer ---------- */
