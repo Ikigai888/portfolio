@@ -107,7 +107,7 @@ window.CaseContent = {
       impacts: [
         { label: 'Brand infrastructure', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
         { label: 'Style Kit adoption', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
-        { label: 'Platform scalability', desc: 'A governed branding service other products read from rather than rebuild — a structure the whole ecosystem now shares.' },
+        { label: 'Inheritance model', desc: 'Brand settings cascade broker → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
       ],
     },
 
@@ -117,7 +117,7 @@ window.CaseContent = {
       headline: 'What this project taught me',
       body: [
         'The hardest part wasn’t designing the UI — it was convincing the team that branding was an infrastructure problem, not a content problem. Once the framing shifted, every design decision became easier to defend.',
-        'The biggest shift was organizational: helping the team see brand not as a thing you check, but as infrastructure you inherit. Once that framing landed, the right product decisions became much easier to make.',
+        'What carried forward: name the system before designing the screens. Every project since has started with the nouns — what inherits, what overrides, what owns the source of truth — and the interface questions get easier once those are right.',
       ],
     },
 
@@ -136,7 +136,7 @@ window.CaseContent = {
     next: { label: 'Accessible Rail Booking', href: 'case-rail-booking.html' },
 
     summary: {
-      number: '02',
+      number: '01',
       client: 'lululemon',
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
@@ -253,7 +253,7 @@ window.CaseContent = {
     next: null,
 
     summary: {
-      number: '03',
+      number: '01',
       client: 'SAP Concur',
       theme: 'Interaction Complexity',
       title: 'Designing an Accessible Rail Booking Experience',

@@ -226,9 +226,10 @@
   margin-top: 56px;
   border-radius: var(--r-feature);
   overflow: hidden;
+  background: var(--bg-inset); /* letterbox field behind contained images */
 }
 .cs-full-image .image-slot { min-height: 360px; }
-.cs-full-image .image-slot__img { width: 100%; max-height: 520px; object-fit: cover; }
+.cs-full-image .image-slot__img { width: 100%; max-height: 640px; object-fit: contain; }
 
 /* ---------- Outcome band (cyan teal, build-spec §07) ---------- */
 .cs-outcome {
