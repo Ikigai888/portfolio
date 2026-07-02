@@ -434,6 +434,7 @@
   line-height: var(--lh-body);
   color: var(--text-muted);
 }
+.about__credential a { color: var(--accent-text); }
 
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
