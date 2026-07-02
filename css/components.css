@@ -358,7 +358,7 @@
   background: var(--bg-inset);
   border: 1px solid var(--border);
 }
-.portrait__img { object-fit: cover; display: block; }
+.portrait__img { object-fit: cover; display: block; height: auto; } /* height attr must not beat aspect-ratio */
 .portrait__icon { font-size: 1.625rem; color: var(--text-faint); }
 .portrait__caption { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); }
 .portrait__hint {
