@@ -63,7 +63,7 @@ window.CaseContent = {
           body: 'Brand still had to reach thousands of agents through hundreds of offices, cascading brand → office → team → agent, each level inheriting or overriding. Exposed naively, that hierarchy overwhelmed admins. And the moment kits cascaded automatically, a second question opened: how much could an agent still change locally? Too much admin control creates friction; too little invites brand drift.',
           options: 'Options considered · a flat list of all brands or an explicit org tree; full admin lock or full agent freedom; an inheritance model with visible overrides plus explicit lock/unlock per element.',
           decision: 'An inheritance model that shows what\'s inherited and what can be overridden, paired with a permission layer where admins lock the elements that matter and unlock the rest — the hierarchy stays visible and control stays intentional.',
-          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2082, h: 3836, alt: 'High-level brand governance flow — brand settings cascade from admin through the Brand Library and Style Kits down to agents, with inheritance, overrides, and permissions at each level', caption: 'How brand cascades and stays governed — admin to agent' },
+          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 1700, h: 3600, alt: 'High-level brand governance flow — brand settings cascade from admin through the Brand Library and Style Kits down to agents, with inheritance, overrides, and permissions at each level', caption: 'How brand cascades and stays governed — admin to agent' },
         },
         {
           number: 4,
