@@ -280,6 +280,24 @@
     );
   }
 
+  /* ---- Back-to-top: quick exit from a long single-scroll page ---- */
+  function BackToTop() {
+    return (
+      '<a href="#content" class="cs-back-to-top" aria-label="Back to top">' +
+        '<span class="cs-back-to-top__arrow" aria-hidden="true">&#8593;</span> Top' +
+      '</a>'
+    );
+  }
+
+  function initBackToTop() {
+    var link = document.querySelector('.cs-back-to-top');
+    if (!link) return;
+    var threshold = window.innerHeight * 0.8;
+    function update() { link.classList.toggle('is-visible', window.scrollY > threshold); }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
   /* ---- Reveal utility (same as homepage) ---- */
   function initReveal() {
     var els = document.querySelectorAll('[data-reveal]');
@@ -360,7 +378,8 @@
         OutcomeSection(d.outcome) +
         ReflectionSection(d.reflection, d.next) +
       '</main>' +
-      CaseFooter(d.caseFooter)
+      CaseFooter(d.caseFooter) +
+      BackToTop()
     );
   }
 
@@ -368,6 +387,7 @@
     document.getElementById('app').innerHTML = buildPage(slug);
     initReveal();
     initSubnav();
+    initBackToTop();
   }
 
   window.CaseTemplate = { render: render, buildPage: buildPage };

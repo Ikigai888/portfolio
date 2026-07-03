@@ -355,6 +355,15 @@
 }
 .image-slot__frame .image-slot__img { height: auto; object-fit: contain; border-radius: 4px; }
 
+/* Dark mat for light-mode product screenshots: contains off-brand UI colors
+   (e.g. a blue accent) inside the system's own surface ramp instead of a
+   second saturated hue competing with the mint accent on the page itself. */
+.image-slot__frame--dark {
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+}
+.image-slot__frame--dark .image-slot__img { border-radius: 4px; }
+
 /* ---------- Statement closing line (How I Work) ---------- */
 .statement__closing {
   margin: 44px 0 0;

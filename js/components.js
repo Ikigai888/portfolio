@@ -116,7 +116,11 @@ window.Components = (function () {
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
     /* frame: true wraps light-background artifacts (diagrams, exports from
        external tools) in a white card so they read as a held artifact rather
-       than a raw screenshot bleeding onto the dark page. */
+       than a raw screenshot bleeding onto the dark page. frame: 'dark' mats a
+       light-mode product screenshot in the system's own dark surface instead,
+       so off-brand UI colors (e.g. blue accents) read as windowed evidence
+       rather than a second accent competing with the mint. */
+    if (frame === 'dark') return `<div class="image-slot__frame image-slot__frame--dark">${media}</div>`;
     return frame ? `<div class="image-slot__frame">${media}</div>` : media;
   };
 

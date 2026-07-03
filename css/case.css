@@ -417,6 +417,10 @@
   .cs-summary__left,
   .cs-summary__right { padding: 32px 26px; }
   .case-header__nav-link { padding: 10px 16px 10px 0; }
+  /* Theme drops to its own deliberate line instead of wrapping mid-flex,
+     which strands the separator dot at the start of the wrapped line. */
+  .cs-summary__theme { flex-basis: 100%; }
+  .cs-summary__sep { display: none; }
 }
 
 /* ---------- Subnav scrollspy + overflow fade ---------- */
@@ -442,6 +446,32 @@
 }
 .case-header__subnav.has-more::after { opacity: 1; }
 
+/* ---------- Back-to-top: quick exit on a long single-scroll page ---------- */
+.cs-back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40; /* below the sticky header (50) */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity var(--hover-dur), transform var(--hover-dur), color var(--hover-color-dur);
+}
+.cs-back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.cs-back-to-top:hover { color: var(--text-primary); }
+.cs-back-to-top__arrow { color: var(--accent-text); transition: transform var(--hover-dur); }
+.cs-back-to-top:hover .cs-back-to-top__arrow { transform: translateY(-2px); }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .case-header__back,
@@ -450,8 +480,12 @@
   .cs-next__link,
   .cs-next__arrow,
   .cs-footer__back,
-  .cs-footer__link { transition: none; }
+  .cs-footer__link,
+  .cs-back-to-top,
+  .cs-back-to-top__arrow { transition: none; }
   .cs-next__link:hover .cs-next__arrow { transform: none; }
+  .cs-back-to-top { transform: none; }
+  .cs-back-to-top:hover .cs-back-to-top__arrow { transform: none; }
 }
 
 /* Text-only challenge (no artifact yet): single readable column, no empty slot */
