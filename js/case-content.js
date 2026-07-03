@@ -38,8 +38,8 @@ window.CaseContent = {
     challenges: {
       number: '03',
       label: 'Challenges',
-      intro: 'Five decisions, built in the order they actually happen',
-      body: 'This is the real sequence: define the brand once, package it, make it cascade, control who can change it, and prove it scales beyond one screen — the problem, the options, and the reasoning behind each one.',
+      intro: 'Four decisions, built in the order they actually happen',
+      body: 'This is the real sequence: define the brand once, package it, make it cascade under control, and prove it scales beyond one screen — the problem, the options, and the reasoning behind each one.',
       items: [
         {
           number: 1,
@@ -59,27 +59,19 @@ window.CaseContent = {
         },
         {
           number: 3,
-          headline: 'Making the organizational hierarchy understandable',
-          body: 'Once brand lived in Style Kits, it still had to reach thousands of agents through hundreds of offices. Brands cascade through brand → office → team → agent, each level needing to inherit or override. Exposed naively, that hierarchy overwhelmed admins.',
-          options: 'Options considered · a flat list of all brands; an explicit org tree; an inheritance model with visible overrides.',
-          decision: 'An inheritance model that shows what\'s inherited and what can be overridden, keeping the hierarchy visible instead of hidden.',
-          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2333, h: 4016, frame: true, alt: 'High-level brand governance flow — how brand settings cascade and can be overridden from brand down to agent', caption: 'How it all propagates — brand to agent' },
+          headline: 'Making the hierarchy cascade — under control',
+          body: 'Brand still had to reach thousands of agents through hundreds of offices, cascading brand → office → team → agent, each level inheriting or overriding. Exposed naively, that hierarchy overwhelmed admins. And the moment kits cascaded automatically, a second question opened: how much could an agent still change locally? Too much admin control creates friction; too little invites brand drift.',
+          options: 'Options considered · a flat list of all brands or an explicit org tree; full admin lock or full agent freedom; an inheritance model with visible overrides plus explicit lock/unlock per element.',
+          decision: 'An inheritance model that shows what\'s inherited and what can be overridden, paired with a permission layer where admins lock the elements that matter and unlock the rest — the hierarchy stays visible and control stays intentional.',
+          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2082, h: 3836, alt: 'High-level brand governance flow — brand settings cascade from admin through the Brand Library and Style Kits down to agents, with inheritance, overrides, and permissions at each level', caption: 'How brand cascades and stays governed — admin to agent' },
         },
         {
           number: 4,
-          headline: 'Defining what admins control versus what agents control',
-          body: 'Once kits could cascade automatically, the question became how much an agent could still adjust locally. Too much admin control creates friction for agents. Too little creates brand drift. The line needed to be explicit, not emergent.',
-          options: 'Options considered · full admin lock; full agent freedom; explicit lock/unlock per element.',
-          decision: 'A permission layer where admins lock the elements that matter and unlock the rest — making control visible and intentional.',
-          image: { src: 'images/case-studies/brand-gov-color-permissions.png', w: 1440, h: 1012, alt: 'Brand Library color editing panel with a locked primary color — admin-controlled elements made visible', caption: 'Locked brand elements — admin control made visible' },
-        },
-        {
-          number: 5,
           headline: 'Architecting for the platform, not the page',
           body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one — and hold up as the ecosystem grew.',
           options: 'Options considered · a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability — branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-disclaimer-usage.png', w: 1440, h: 1012, alt: 'Brand Library disclaimer panel showing a locked entry reused 203 times across the organization', caption: 'One disclaimer, reused 203 times — proof it worked as a platform, not a page' },
+          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits — consumed inside Presentations, not rebuilt per product' },
         },
       ],
     },
@@ -103,7 +95,6 @@ window.CaseContent = {
         'I ran structured sessions with brokers, office admins, and agents at different points in the process — once with rough concepts to pressure-test the inheritance model, and again with a higher-fidelity prototype to validate the Style Kit application flow.',
         'The sessions surfaced two things that changed the design: admins wanted to see which agents had applied a kit before publishing changes, and agents needed a clearer preview of what a kit would look like on their actual materials before committing.',
       ],
-      image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher showing Primary, Luxury, Commercial, Team, and Office kits available to apply', caption: 'What validation was checking — an agent previewing a kit on real client-facing work' },
     },
 
     outcome: {
