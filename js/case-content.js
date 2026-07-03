@@ -90,10 +90,15 @@ window.CaseContent = {
     validation: {
       number: '05',
       label: 'Validation',
+      numSep: '·',
       headline: 'Testing with real admins and agents',
       body: [
-        'I ran structured sessions with brokers, office admins, and agents at different points in the process — once with rough concepts to pressure-test the inheritance model, and again with a higher-fidelity prototype to validate the Style Kit application flow.',
-        'The sessions surfaced two things that changed the design: admins wanted to see which agents had applied a kit before publishing changes, and agents needed a clearer preview of what a kit would look like on their actual materials before committing.',
+        'I ran structured sessions with brokers, office admins, and agents at different points in the process: first with rough concepts to pressure-test the inheritance model, then with a higher-fidelity prototype to validate the Style Kit application flow.',
+      ],
+      cue: 'Two things changed the design:',
+      findings: [
+        'Admins wanted to see which agents had applied a kit before publishing changes.',
+        'Agents needed a clearer preview of what a kit would look like on their own materials before committing.',
       ],
     },
 

@@ -107,6 +107,30 @@
 .cs-body:last-child { margin-bottom: 0; }
 .cs-body--lead { color: var(--text-muted); }
 
+/* ---------- Validation findings list ---------- */
+.cs-val-cue { color: var(--text-muted); }
+.cs-val-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cs-val-item {
+  position: relative;
+  padding-left: 30px;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+}
+.cs-val-item::before {
+  position: absolute;
+  left: 0;
+  color: var(--accent-text);
+  content: "→";
+}
+
 /* ---------- Summary card (build-spec — matches featured card style) ---------- */
 .cs-summary { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
 .cs-summary__card {

@@ -15,8 +15,8 @@
      can never drift out of sync. */
   function slugify(label) { return label.toLowerCase().replace(/\s+/g, '-'); }
 
-  function sectionNum(n, label) {
-    return '<span class="cs-section-num">' + esc(n) + ' — ' + esc(label.toUpperCase()) + '</span>';
+  function sectionNum(n, label, sep) {
+    return '<span class="cs-section-num">' + esc(n) + ' ' + (sep || '—') + ' ' + esc(label.toUpperCase()) + '</span>';
   }
 
   /* Arrow bullet used in summary outcomes and impact cards */
@@ -187,16 +187,22 @@
     var paras = v.body.map(function (p) {
       return '<p class="cs-body">' + esc(p) + '</p>';
     }).join('');
+    var cue = v.cue ? '<p class="cs-body cs-val-cue">' + esc(v.cue) + '</p>' : '';
+    var findings = v.findings
+      ? '<ul class="cs-val-list">' + v.findings.map(function (f) {
+          return '<li class="cs-val-item">' + esc(f) + '</li>';
+        }).join('') + '</ul>'
+      : '';
     var quote = v.quote ? C.Quote(v.quote) : '';
     return (
       '<section class="section cs-split-section" id="cs-validation" data-reveal>' +
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(v.number, v.label) +
+              sectionNum(v.number, v.label, v.numSep) +
               '<h2 class="cs-section-headline">' + esc(v.headline) + '</h2>' +
             '</div>' +
-            '<div class="cs-split__right">' + paras + quote + '</div>' +
+            '<div class="cs-split__right">' + paras + cue + findings + quote + '</div>' +
           '</div>' +
           FullImages(v.images || (v.image && v.image.src ? [v.image] : [])) +
         '</div>' +
