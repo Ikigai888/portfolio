@@ -6,6 +6,15 @@ feed component functions in `js/components.js`, assembled by `js/app.js`
 (homepage) and `js/case-template.js` (case pages). Edit copy in the
 `*-content.js` data files, not the HTML.
 
+## Reference docs (local only — never publish)
+
+`reference/` holds the original internal PRDs behind the brand-governance
+case study (gitignored via `*.pdf`, along with anything else in the folder).
+When editing that case study's copy, sanity-check claims against these docs —
+they are the factual source of truth (hierarchy levels, feature scope, named
+risks, personas). They contain internal names and must never be committed,
+published, or quoted verbatim on the site.
+
 ## Before committing — run the build
 
 `npm run build` (see [README.md](README.md)) pre-renders `js/content.js` /
