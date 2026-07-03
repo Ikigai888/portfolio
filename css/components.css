@@ -344,6 +344,17 @@
 }
 .image-slot__img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
+/* Light card frame for external-tool exports (diagrams, flowcharts) so they
+   read as a held artifact rather than a raw screenshot bleeding onto the page. */
+.image-slot__frame {
+  background: #fff;
+  padding: 28px;
+  border-radius: var(--r-feature);
+  box-shadow: var(--shadow-ambient-rest);
+  transition: box-shadow var(--hover-dur);
+}
+.image-slot__frame .image-slot__img { height: auto; object-fit: contain; border-radius: 4px; }
+
 /* ---------- Statement closing line (How I Work) ---------- */
 .statement__closing {
   margin: 44px 0 0;

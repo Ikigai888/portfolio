@@ -177,6 +177,7 @@
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
           '</div>' +
+          FullImages(ai.images || (ai.image && ai.image.src ? [ai.image] : [])) +
         '</div>' +
       '</section>'
     );

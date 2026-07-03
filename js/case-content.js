@@ -46,7 +46,8 @@ window.CaseContent = {
           headline: 'Making the organizational hierarchy understandable',
           body: 'Brands cascade through broker → office → team → agent, each level needing to inherit or override. Exposed naively, that hierarchy overwhelmed admins.',
           options: 'Options considered · a flat list of all brands; an explicit org tree; an inheritance model with visible overrides.',
-          decision: 'An inheritance model that shows what is inherited and what can be overridden — presenting the hierarchy rather than hiding it.',
+          decision: 'An inheritance model that shows what\'s inherited and what can be overridden, keeping the hierarchy visible instead of hidden.',
+          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2333, h: 4016, frame: true, alt: 'High-level brand governance flow — how brand settings cascade and can be overridden from broker down to agent', caption: 'Brand hierarchy — broker to agent' },
         },
         {
           number: 2,
@@ -83,6 +84,7 @@ window.CaseContent = {
         'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — broker, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
         'AI increased the breadth of exploration; it didn’t replace the design thinking. The judgment about which model held up under governance constraints, and which would confuse admins, stayed firmly a design decision.',
       ],
+      image: { src: 'images/case-studies/brand-gov-org-governance.png', w: 1371, h: 737, alt: 'Organization Governance screen showing brand inheritance across a company hierarchy, with default, inherited, and overridden values', caption: 'One of the organizational models explored with AI' },
     },
 
     validation: {

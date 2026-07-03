@@ -101,7 +101,7 @@ window.Components = (function () {
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
      sources); else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h, poster } = {}) => {
+  const ImageSlot = ({ src, alt, caption, w, h, poster, frame } = {}) => {
     if (!src) {
       return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
@@ -111,9 +111,13 @@ window.Components = (function () {
     }
     const dims = w && h ? ` width="${w}" height="${h}"` : '';
     const posterAttr = poster ? ` poster="${esc(poster)}"` : '';
-    return /\.(mp4|webm)$/i.test(src)
+    const media = /\.(mp4|webm)$/i.test(src)
       ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
+    /* frame: true wraps light-background artifacts (diagrams, exports from
+       external tools) in a white card so they read as a held artifact rather
+       than a raw screenshot bleeding onto the dark page. */
+    return frame ? `<div class="image-slot__frame">${media}</div>` : media;
   };
 
   /* --- Quote: accent-bordered callout for a participant/session quote --- */
