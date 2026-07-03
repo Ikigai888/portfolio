@@ -90,7 +90,6 @@ window.CaseContent = {
     validation: {
       number: '05',
       label: 'Validation',
-      numSep: '·',
       headline: 'Testing with real admins and agents',
       body: [
         'I ran structured sessions with brokers, office admins, and agents at different points in the process: first with rough concepts to pressure-test the inheritance model, then with a higher-fidelity prototype to validate the Style Kit application flow.',

@@ -120,10 +120,10 @@ window.Components = (function () {
     return frame ? `<div class="image-slot__frame">${media}</div>` : media;
   };
 
-  /* --- Quote: accent-bordered callout for a participant/session quote --- */
+  /* --- Quote: leading-glyph callout for a participant/session quote --- */
   const Quote = ({ text, attribution } = {}) => `
     <blockquote class="cs-quote">
-      <p class="cs-quote__text">&ldquo;${esc(text)}&rdquo;</p>
+      <p class="cs-quote__text">${esc(text)}</p>
       ${attribution ? `<footer class="cs-quote__attribution">${esc(attribution)}</footer>` : ''}
     </blockquote>`;
 

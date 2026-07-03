@@ -15,8 +15,8 @@
      can never drift out of sync. */
   function slugify(label) { return label.toLowerCase().replace(/\s+/g, '-'); }
 
-  function sectionNum(n, label, sep) {
-    return '<span class="cs-section-num">' + esc(n) + ' ' + (sep || '—') + ' ' + esc(label.toUpperCase()) + '</span>';
+  function sectionNum(n, label) {
+    return '<span class="cs-section-num">' + esc(n) + ' &middot; ' + esc(label.toUpperCase()) + '</span>';
   }
 
   /* Arrow bullet used in summary outcomes and impact cards */
@@ -199,7 +199,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(v.number, v.label, v.numSep) +
+              sectionNum(v.number, v.label) +
               '<h2 class="cs-section-headline">' + esc(v.headline) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' + paras + cue + findings + quote + '</div>' +
