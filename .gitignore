@@ -144,3 +144,6 @@ dist
 
 # Claude Code personal settings (machine-local)
 .claude/settings.local.json
+
+# Internal reference docs (PRDs etc.) — never publish
+*.pdf

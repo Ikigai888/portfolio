@@ -30,8 +30,8 @@ window.CaseContent = {
       label: 'Context',
       headline: 'Why this project existed',
       body: [
-        'MoxiWorks serves real-estate brokerages whose brands live across hundreds of offices and thousands of agents. As the RISE product ecosystem grew, each product solved branding its own way — no shared system, no consistency, no governance.',
-        'The result was brand drift at scale. Admins spent hours manually reviewing assets. Agents worked around controls. New products duplicated the problem rather than inheriting a solution.',
+        'MoxiWorks serves real-estate brokerages whose brands live across hundreds of offices and thousands of agents. Branding existed, but it lived in a legacy service that wasn\'t self-serve — changes went through a service team, and admins had no way to see or manage their own brand system.',
+        'The result was guesswork and brand drift at scale. Admins couldn\'t verify what was set where. Agents worked around controls. And as the RISE product ecosystem grew, every new product needed brand — without a governed system to inherit it from.',
       ],
     },
 
@@ -44,9 +44,9 @@ window.CaseContent = {
         {
           number: 1,
           headline: 'Turning scattered brand assets into a single library',
-          body: 'Every brokerage\'s colors, fonts, logos, and legal disclaimers existed somewhere — old style guides, screenshots, tribal knowledge — but none of it was structured enough for a system to read, tag, or govern.',
-          options: 'Options considered · a shared design-file library; a static brand guidelines PDF; a structured Brand Library with named, taggable, lockable assets.',
-          decision: 'A Brand Library where every asset is named, tagged, and explicitly locked or open — the raw material everything else in this flow is built from.',
+          body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service — but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
+          options: 'Options considered · keep improving the service-managed model; expose raw asset settings to admins; a structured Brand Library with named, taggable, lockable assets.',
+          decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open — the raw material everything else in this flow is built from.',
           image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style — name, font family, weight, and tags', caption: 'Brand Library — defining the foundational assets' },
         },
         {
@@ -60,10 +60,10 @@ window.CaseContent = {
         {
           number: 3,
           headline: 'Making the organizational hierarchy understandable',
-          body: 'Once brand lived in Style Kits, it still had to reach thousands of agents through hundreds of offices. Brands cascade through broker → office → team → agent, each level needing to inherit or override. Exposed naively, that hierarchy overwhelmed admins.',
+          body: 'Once brand lived in Style Kits, it still had to reach thousands of agents through hundreds of offices. Brands cascade through brand → office → team → agent, each level needing to inherit or override. Exposed naively, that hierarchy overwhelmed admins.',
           options: 'Options considered · a flat list of all brands; an explicit org tree; an inheritance model with visible overrides.',
           decision: 'An inheritance model that shows what\'s inherited and what can be overridden, keeping the hierarchy visible instead of hidden.',
-          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2333, h: 4016, frame: true, alt: 'High-level brand governance flow — how brand settings cascade and can be overridden from broker down to agent', caption: 'How it all propagates — broker to agent' },
+          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 2333, h: 4016, frame: true, alt: 'High-level brand governance flow — how brand settings cascade and can be overridden from brand down to agent', caption: 'How it all propagates — brand to agent' },
         },
         {
           number: 4,
@@ -89,7 +89,7 @@ window.CaseContent = {
       label: 'AI Exploration',
       headline: 'Wider exploration, faster alignment',
       body: [
-        'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — broker, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
+        'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — brand, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
         'AI increased the breadth of exploration; it didn’t replace the design thinking. The judgment about which model held up under governance constraints, and which would confuse admins, stayed firmly a design decision.',
       ],
       image: { src: 'images/case-studies/brand-gov-org-governance.png', w: 1371, h: 737, alt: 'Organization Governance screen showing brand inheritance across a company hierarchy, with default, inherited, and overridden values', caption: 'One of the organizational models explored with AI' },
@@ -114,7 +114,7 @@ window.CaseContent = {
       impacts: [
         { label: 'Fewer manual brand reviews', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
         { label: 'Style Kits adopted across multiple RISE products', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
-        { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade broker → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
+        { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade brand → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
       ],
     },
 
@@ -123,8 +123,8 @@ window.CaseContent = {
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'The hardest part wasn’t designing the UI — it was convincing the team that branding was an infrastructure problem, not a content problem. Once the framing shifted, every design decision became easier to defend.',
-        'What carried forward: name the system before designing the screens. Every project since has started with the nouns — what inherits, what overrides, what owns the source of truth — and the interface questions get easier once those are right.',
+        'The hardest part was designing for both ends of the scale at once. The same system had to govern a brand spanning hundreds of offices and multiple levels of hierarchy — and still make sense to a small company with one admin and no appetite for "governance." Complexity overwhelming smaller organizations was the risk we named first, and it pressed on every design decision.',
+        'What carried forward: make the defaults do the governing. Inheritance meant most admins never had to configure anything — the brand cascaded correctly on its own, and the deeper controls surfaced only when an organization\'s structure actually demanded them. Progressive disclosure isn\'t a UI trick; it\'s how a complex system earns the right to feel simple.',
       ],
     },
 
