@@ -26,19 +26,23 @@
   --text-faint:     #736959; /* faint labels */
   --text-faint-2:   #8A8070; /* copyright */
 
-  /* ---------- Color: accent (signature mint, keyed to TN_Port_Logo) ---------- */
-  /* Use --accent for fills/solids, --accent-text for type on dark */
-  --accent:       oklch(0.81 0.084 179); /* fallback #83D4C3 — the mark's stroke cores as rendered */
-  --accent-text:  oklch(0.91 0.097 179); /* fallback #97F8E4 — the mark's file color; 15.0:1 on --bg */
-  --accent-hex:        #83D4C3;
-  --accent-text-hex:   #97F8E4;
+  /* ---------- Color: accent (warm copper, keyed to TN_Port_Logo) ---------- */
+  /* Use --accent for fills/solids, --accent-text for type on dark.
+     Recolored from the original signature mint (oklch hue 179) to a
+     warm copper/terracotta (hue 45) — chosen over straight orange
+     (hue ~60, a reflex default) to stay distinct from both the warm
+     neutral ramp (hue ~75-85) and a semantic-warning read. */
+  --accent:       oklch(0.74 0.13 45); /* fallback #EE8F63 */
+  --accent-text:  oklch(0.82 0.14 45); /* fallback #FFAE89 — 10.4:1 on --bg */
+  --accent-hex:        #EE8F63;
+  --accent-text-hex:   #FFAE89;
 
   /* ---------- Color: inverted "Outcome" band (case studies) ---------- */
-  --band-bg:    oklch(0.62 0.09 179);     /* fallback #3D9887 — same hue as the accent */
-  --band-bg-hex: #3D9887;
-  --band-text:  #0E1416;
-  --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
-  --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
+  --band-bg:    oklch(0.62 0.13 45);     /* fallback #C56A3E — same hue as the accent */
+  --band-bg-hex: #C56A3E;
+  --band-text:  #180904; /* warm near-black ink, same hue family as the accent */
+  --band-card:     rgba(24, 9, 4, 0.85);    /* impact cards on the band: ink surface, paper text */
+  --band-hairline: rgba(24, 9, 4, 0.2);     /* dividers between impact cards */
   /* Impact-card text: the card is a dark ink surface in BOTH themes,
      so its text is polarity-fixed paper — never theme-varying tokens. */
   --band-card-text:   #F1EBDF;
@@ -57,8 +61,8 @@
   --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #83D4C3; /* = --accent-hex; the wordmark as rendered */
-  --selection-text: #0E1416;
+  --selection-bg:   #EE8F63; /* = --accent-hex */
+  --selection-text: #180904;
 
   /* ---------- Typography: families ---------- */
   --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -109,7 +113,7 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* About status dot */
+  --dot-glow: 0 0 10px oklch(0.74 0.13 45); /* About status dot */
 
   /* ---------- Elevation (DESIGN.md §4) ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
@@ -148,12 +152,12 @@
   --text-faint:     #A79A80; /* decorative only, same as dark */
   --text-faint-2:   #675B42; /* copyright; 4.6:1 on --bg-footer */
 
-  /* Accent: same mint hue, deepened for light surfaces.
-     --accent-text is 5.9:1 on --bg (the dark theme's bright mint
+  /* Accent: same warm copper hue, deepened for light surfaces.
+     --accent-text is 6.75:1 on --bg (the dark theme's lighter copper
      would fail as text on paper). Band tokens are polarity-
      independent (own ink on own field) and stay unchanged. */
-  --accent:      oklch(0.66 0.11 179);  /* fallback #2FA48F */
-  --accent-text: oklch(0.46 0.085 179); /* fallback #10695C */
+  --accent:      oklch(0.60 0.15 45);  /* fallback #C65D26 */
+  --accent-text: oklch(0.46 0.155 45); /* fallback #913900 */
 
   /* Lines: ink-alpha instead of paper-alpha */
   --border:        rgba(36, 30, 19, 0.16);
@@ -171,7 +175,7 @@
   --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
   --shadow-ambient-hover: 0 8px 32px rgba(36, 30, 19, 0.16);
 
-  --dot-glow: 0 0 10px oklch(0.66 0.11 179);
+  --dot-glow: 0 0 10px oklch(0.60 0.15 45);
 
   /* Hero: the dark wireframe motif is hidden in light mode (see
      components.css); these keep the veil tokens self-consistent. */

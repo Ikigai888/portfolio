@@ -95,11 +95,17 @@
   display: block;
   height: 32px;
   width: auto; /* 201x45 intrinsic keeps the aspect */
+  /* The source asset is drawn in the original signature mint. It's a
+     single-hue mark (solid color, alpha-only anti-aliasing), so a
+     hue-rotate cleanly retargets it to the current warm copper accent
+     without a re-export. Both filters share the same hue-rotate(206deg)
+     and vary only saturate/brightness (matching how the two themes'
+     token values differ) — tuned empirically by sampling the actual
+     rendered pixel color against the accent-text hex per theme, since
+     filter hue-rotate isn't a literal HSL rotation. */
+  filter: hue-rotate(206deg) saturate(4) brightness(0.88); /* ~#E0A261, ~ accent-text-dark #FFAE89 */
 }
-/* The wordmark asset is bright mint drawn for the dark page; on paper
-   it washes out. It's a single-hue mark, so darkening it toward the
-   light theme's own deep-teal accent keeps it legible and on-palette. */
-[data-theme="light"] .site-header__logo { filter: brightness(0.44) saturate(1.5); }
+[data-theme="light"] .site-header__logo { filter: hue-rotate(206deg) saturate(15) brightness(0.56); } /* ~#8E3400, ~ accent-text-light #913900 */
 .site-header__cluster { display: flex; align-items: center; gap: 22px; }
 .site-header__nav { display: flex; gap: 28px; }
 .site-header__link {
