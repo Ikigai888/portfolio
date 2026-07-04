@@ -18,7 +18,7 @@ colors:
   band-bg: "oklch(0.62 0.13 45)"
   band-text: "#180904"
   band-card: "rgba(24, 9, 4, 0.85)"
-  band-hairline: "rgba(14, 20, 22, 0.2)"
+  band-hairline: "rgba(24, 9, 4, 0.2)"
   scrim: "rgba(21, 18, 13, 0.82)"
   border: "rgba(241, 235, 223, 0.12)"
   border-bright: "rgba(241, 235, 223, 0.26)"
