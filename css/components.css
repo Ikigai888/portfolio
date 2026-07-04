@@ -96,6 +96,11 @@
   height: 32px;
   width: auto; /* 201x45 intrinsic keeps the aspect */
 }
+/* The wordmark asset is bright mint drawn for the dark page; on paper
+   it washes out. It's a single-hue mark, so darkening it toward the
+   light theme's own deep-teal accent keeps it legible and on-palette. */
+[data-theme="light"] .site-header__logo { filter: brightness(0.44) saturate(1.5); }
+.site-header__cluster { display: flex; align-items: center; gap: 22px; }
 .site-header__nav { display: flex; gap: 28px; }
 .site-header__link {
   font-size: var(--fs-eyebrow);
@@ -135,6 +140,30 @@
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:first-child { transform: translateY(3.5px) rotate(45deg); }
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
+/* ---------- Theme toggle (light/dark) ----------
+   Same 44px tap box and quiet treatment as the nav toggle. The icon
+   shows the theme you'd switch TO. Needs JS to act, so it's gated on
+   html.js like the reveals. */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -10px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--hover-color-dur);
+}
+html.js .theme-toggle { display: flex; }
+.theme-toggle:hover { color: var(--text-primary); }
+.theme-toggle__icon { display: none; }
+:root:not([data-theme="light"]) .theme-toggle__icon--sun { display: block; }
+[data-theme="light"] .theme-toggle__icon--moon { display: block; }
+
 /* ---------- Hero (build-spec §3a) ---------- */
 /* Generative wireframe motif carried over from the brand's prior site.
    Anchored bottom + faded into --bg up top so the headline stays on clean
@@ -169,11 +198,17 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to bottom, var(--bg) 0%, rgba(21, 18, 13, 0.82) 58%, rgba(21, 18, 13, 0.40) 100%);
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--hero-fade-mid) 58%, var(--hero-fade-end) 100%);
 }
 #top > .container { position: relative; z-index: 2; }
 /* Insurance for the lead sitting over the brighter part of the motif */
-#top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
+#top .hero__lead { text-shadow: var(--hero-lead-shadow); }
+
+/* Light theme: the motif is a dark photographic asset — veiled behind
+   paper it turns muddy gray, so the hero sits on clean paper instead
+   and the mint accent line carries the identity. */
+[data-theme="light"] #top::before,
+[data-theme="light"] #top::after { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   #top::before { transform: none; }

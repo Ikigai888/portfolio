@@ -240,6 +240,7 @@
     initNavToggle();
     initThesisSettle();
     initHeroParallax();
+    C.initThemeToggle();
   }
 
   window.App = { render: render, buildPage: buildPage };

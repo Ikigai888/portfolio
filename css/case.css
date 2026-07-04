@@ -33,6 +33,7 @@
   transition: color var(--hover-color-dur);
 }
 .case-header__back:hover { color: var(--text-primary); }
+.case-header__cluster { display: flex; align-items: center; gap: 18px; }
 .case-header__tag {
   display: flex;
   align-items: center;
@@ -335,13 +336,13 @@
   margin: 0 0 10px;
   font-size: var(--fs-body);
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--band-card-text);
 }
 .cs-impact__desc {
   margin: 0;
   font-size: 0.9375rem;
   line-height: var(--lh-body);
-  color: var(--text-secondary);
+  color: var(--band-card-text-2);
 }
 
 /* ---------- Next case study link (Reflection section) ---------- */

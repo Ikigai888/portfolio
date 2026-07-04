@@ -9,6 +9,8 @@
    ============================================================ */
 
 :root {
+  color-scheme: dark; /* native form controls / scrollbars match the theme */
+
   /* ---------- Color: surfaces ---------- */
   --bg:            #15120D; /* page background (warm near-black) */
   --bg-footer:     #0F0D09; /* contact footer / deepest surface */
@@ -37,6 +39,10 @@
   --band-text:  #0E1416;
   --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
   --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
+  /* Impact-card text: the card is a dark ink surface in BOTH themes,
+     so its text is polarity-fixed paper — never theme-varying tokens. */
+  --band-card-text:   #F1EBDF;
+  --band-card-text-2: #D8CFC0;
 
   /* ---------- Color: lines ---------- */
   --border:        rgba(241, 235, 223, 0.12); /* default card/section */
@@ -108,6 +114,70 @@
   /* ---------- Elevation (DESIGN.md §4) ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
   --shadow-ambient-hover: 0 8px 32px rgba(0, 0, 0, 0.32);
+
+  /* ---------- Hero motif veil (page bg at opacity; see components.css #top) ---------- */
+  --hero-fade-mid:    rgba(21, 18, 13, 0.82);
+  --hero-fade-end:    rgba(21, 18, 13, 0.40);
+  --hero-lead-shadow: 0 1px 12px rgba(21, 18, 13, 0.6);
+}
+
+/* ============================================================
+   Light theme — set via <html data-theme="light"> by the header
+   toggle (persisted in localStorage; prefers-color-scheme is the
+   first-visit default). NOT an inversion of the dark ramp: same
+   warm hue family and the same One Accent Rule, with light-tuned
+   values. Depth shifts from tonal surface-stepping (dark) toward
+   the ambient shadow pair (light), per DESIGN.md §4.
+   Every value below is contrast-checked against WCAG 2.1 AA.
+   ============================================================ */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces: warm paper, cards lifted toward white + shadow */
+  --bg:        #F7F2E9;
+  --bg-footer: #EFE8DB;
+  --bg-card:   #FCFAF5;
+  --bg-inset:  #EAE2D3;
+
+  /* Text: warm ink ramp (primary 14.5:1, muted 5.2:1 on --bg) */
+  --text-primary:   #241E13;
+  --text-bright:    #191408;
+  --text-secondary: #3D3524;
+  --text-tertiary:  #554A33;
+  --text-muted:     #6E6249;
+  --text-faint:     #A79A80; /* decorative only, same as dark */
+  --text-faint-2:   #675B42; /* copyright; 4.6:1 on --bg-footer */
+
+  /* Accent: same mint hue, deepened for light surfaces.
+     --accent-text is 5.9:1 on --bg (the dark theme's bright mint
+     would fail as text on paper). Band tokens are polarity-
+     independent (own ink on own field) and stay unchanged. */
+  --accent:      oklch(0.66 0.11 179);  /* fallback #2FA48F */
+  --accent-text: oklch(0.46 0.085 179); /* fallback #10695C */
+
+  /* Lines: ink-alpha instead of paper-alpha */
+  --border:        rgba(36, 30, 19, 0.16);
+  --border-bright: rgba(36, 30, 19, 0.32);
+  --hairline:      rgba(36, 30, 19, 0.10);
+  --hairline-2:    rgba(36, 30, 19, 0.20);
+  --rule-strong:   #241E13;
+
+  /* Header scrims: light page bg at opacity */
+  --scrim-0:      rgba(247, 242, 233, 0);
+  --scrim:        rgba(247, 242, 233, 0.85);
+  --scrim-strong: rgba(247, 242, 233, 0.93);
+
+  /* Elevation: shadows carry more depth on light, so stay softer */
+  --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
+  --shadow-ambient-hover: 0 8px 32px rgba(36, 30, 19, 0.16);
+
+  --dot-glow: 0 0 10px oklch(0.66 0.11 179);
+
+  /* Hero: the dark wireframe motif is hidden in light mode (see
+     components.css); these keep the veil tokens self-consistent. */
+  --hero-fade-mid:    rgba(247, 242, 233, 0.82);
+  --hero-fade-end:    rgba(247, 242, 233, 0.40);
+  --hero-lead-shadow: none;
 }
 
 /* ---------- Global base (apply once, e.g. in globals.css) ---------- */

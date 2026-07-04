@@ -48,8 +48,11 @@
           '<a class="case-header__back" href="index.html">' +
             '<span aria-hidden="true">&larr;</span> Tad Natsuhara' +
           '</a>' +
-          '<span class="case-header__tag">' + Eyebrow('Case Study') + ' &middot; ' +
-            '<span class="case-header__client">' + esc(d.meta.client) + '</span>' +
+          '<span class="case-header__cluster">' +
+            '<span class="case-header__tag">' + Eyebrow('Case Study') + ' &middot; ' +
+              '<span class="case-header__client">' + esc(d.meta.client) + '</span>' +
+            '</span>' +
+            C.ThemeToggle() +
           '</span>' +
         '</div>' +
         '<nav class="case-header__subnav" aria-label="Case study sections">' +
@@ -388,6 +391,7 @@
     initReveal();
     initSubnav();
     initBackToTop();
+    C.initThemeToggle();
   }
 
   window.CaseTemplate = { render: render, buildPage: buildPage };
