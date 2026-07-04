@@ -95,16 +95,15 @@
   display: block;
   height: 32px;
   width: auto; /* 201x45 intrinsic keeps the aspect */
-  /* The source asset is drawn in the original signature mint. It's a
-     single-hue mark (solid color, alpha-only anti-aliasing), so a
-     hue-rotate cleanly retargets it to the current warm copper accent
-     without a re-export. Both filters share the same hue-rotate(206deg)
-     and vary only saturate/brightness (matching how the two themes'
-     token values differ) — tuned empirically by sampling the actual
-     rendered pixel color against the accent-text hex per theme, since
-     filter hue-rotate isn't a literal HSL rotation. */
-  filter: hue-rotate(206deg) saturate(4) brightness(0.88); /* ~#E0A261, ~ accent-text-dark #FFAE89 */
+  /* The source asset is drawn in the signature mint — the dark theme's
+     own accent, so it needs no filter there. */
 }
+/* Light theme uses a different accent hue (copper, not a lighter/darker
+   mint), so the mint asset needs retargeting. It's a single-hue mark
+   (solid color, alpha-only anti-aliasing), so a hue-rotate cleanly
+   retargets it without a re-export — tuned empirically by sampling the
+   actual rendered pixel color against accent-text-light, since filter
+   hue-rotate isn't a literal HSL rotation. */
 [data-theme="light"] .site-header__logo { filter: hue-rotate(206deg) saturate(15) brightness(0.56); } /* ~#8E3400, ~ accent-text-light #913900 */
 .site-header__cluster { display: flex; align-items: center; gap: 22px; }
 .site-header__nav { display: flex; gap: 28px; }
@@ -147,17 +146,18 @@
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
 /* ---------- Theme toggle (light/dark) ----------
-   Same 44px tap box and quiet treatment as the nav toggle. The icon
-   shows the theme you'd switch TO. Needs JS to act, so it's gated on
-   html.js like the reveals. */
+   Icon + a small eyebrow-style label naming the theme you'd switch TO —
+   the same uppercase/tracked treatment as .site-header__link, so the
+   toggle reads as part of the nav rather than an isolated icon-button.
+   44px tall tap target (nav-toggle convention), auto width. Needs JS to
+   act, so it's gated on html.js like the reveals. (impeccable live, Jul 2026) */
 .theme-toggle {
   display: none;
   align-items: center;
-  justify-content: center;
-  width: 44px;
+  gap: 8px;
   height: 44px;
-  margin: -10px;
-  padding: 0;
+  margin: 0 -4px;
+  padding: 0 4px;
   background: none;
   border: none;
   cursor: pointer;
@@ -169,6 +169,16 @@ html.js .theme-toggle { display: flex; }
 .theme-toggle__icon { display: none; }
 :root:not([data-theme="light"]) .theme-toggle__icon--sun { display: block; }
 [data-theme="light"] .theme-toggle__icon--moon { display: block; }
+.theme-toggle__label {
+  display: none;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: inherit;
+}
+:root:not([data-theme="light"]) .theme-toggle__label--to-light { display: block; }
+[data-theme="light"] .theme-toggle__label--to-dark { display: block; }
 
 /* ---------- Hero (build-spec §3a) ---------- */
 /* Generative wireframe motif carried over from the brand's prior site.

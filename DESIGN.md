@@ -1,6 +1,6 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A warm near-black portfolio for a senior product designer, lit by a single warm-copper accent.
+description: A warm near-black portfolio for a senior product designer, lit by a single accent — signature mint in dark theme, warm copper in light theme.
 colors:
   bg: "#15120D"
   bg-footer: "#0F0D09"
@@ -13,12 +13,12 @@ colors:
   text-muted: "#A1957F"
   text-faint: "#736959"
   text-faint-2: "#8A8070"
-  accent: "oklch(0.74 0.13 45)"
-  accent-text: "oklch(0.82 0.14 45)"
-  band-bg: "oklch(0.62 0.13 45)"
-  band-text: "#180904"
-  band-card: "rgba(24, 9, 4, 0.85)"
-  band-hairline: "rgba(24, 9, 4, 0.2)"
+  accent: "oklch(0.81 0.084 179)"
+  accent-text: "oklch(0.91 0.097 179)"
+  band-bg: "oklch(0.62 0.09 179)"
+  band-text: "#0E1416"
+  band-card: "rgba(14, 20, 22, 0.85)"
+  band-hairline: "rgba(14, 20, 22, 0.2)"
   scrim: "rgba(21, 18, 13, 0.82)"
   border: "rgba(241, 235, 223, 0.12)"
   border-bright: "rgba(241, 235, 223, 0.26)"
@@ -95,12 +95,12 @@ components:
 
 **Creative North Star: "The Quiet Confidence"**
 
-A warm near-black canvas (#15120D) holds the page; one warm-copper accent (oklch(0.74 0.13 45)) is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy.
+A warm near-black canvas (#15120D) holds the page; one accent is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy.
 
 This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no stock-photo sheen. Where a typical SaaS landing page reaches for a gradient to feel "modern," this system reaches for restraint and a single confident hue instead.
 
 **Key Characteristics:**
-- One accent color (signature warm copper), used sparingly, never diluted with a second hue
+- One accent color at a time — signature mint in the dark theme (the default), warm copper in the light theme — never diluted with a second hue on the same screen
 - Warm near-black base instead of true black or cool gray
 - A serif/grotesque type pairing on a real contrast axis — Alegreya (calligraphic serif, echoing the hand-lettered wordmark) for display, Bricolage Grotesque for body and UI
 - Flat-by-default surfaces with tonal layering, accented by soft ambient shadows for depth
@@ -110,16 +110,18 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 
 ## 2. Colors
 
-The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue (warm copper). Nothing else competes with the accent.
+The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue per theme. Nothing else competes with the accent.
 
-### Primary
-- **Signature Copper** (`oklch(0.74 0.13 45)` / `#EE8F63`): The single accent, keyed to the TN_Port_Logo wordmark (recolored via a CSS `hue-rotate`/`saturate` filter from the original signature mint, oklch hue 179). Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Chosen over a straight orange (hue ~60, a reflex default) to sit apart from both the warm-neutral ramp's own hue (~75-85) and a semantic-warning read. Appears on a small minority of any given screen — its rarity is what makes it land.
-- **Signature Copper, Text Variant** (`oklch(0.82 0.14 45)` / `#FFAE89`): Brighter sibling used specifically for accent text on dark backgrounds (hero accent line, case-card numerals) where the solid-fill version would be too dim to read. 10.4:1 on `--bg`.
+### Primary (Dark Theme — Signature Mint)
+- **Signature Mint** (`oklch(0.81 0.084 179)` / `#83D4C3`): The dark theme's accent, keyed to the TN_Port_Logo wordmark as drawn (the asset's native color — no filter needed here). Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Appears on a small minority of any given screen — its rarity is what makes it land.
+- **Signature Mint, Text Variant** (`oklch(0.91 0.097 179)` / `#97F8E4`): Brighter sibling (also the wordmark's rendered color) used specifically for accent text on dark backgrounds (hero accent line, case-card numerals) where the solid-fill version would be too dim to read. 15.0:1 on `--bg`.
 
-### Light Theme Accent
-The light theme (`[data-theme="light"]` in `tokens.css`) is not an inversion — it redefines the semantic accent tokens with deeper, more saturated values so they hold contrast on paper instead of near-black:
+### Light Theme Accent — Warm Copper
+The light theme (`[data-theme="light"]` in `tokens.css`) doesn't reuse the mint at a different lightness — it carries its **own accent hue**, a warm copper/terracotta (oklch hue 45, chosen over straight orange ~60, a reflex default, to sit apart from the warm-neutral ramp's own hue and a semantic-warning read). Each theme owns its identity rather than one hue serving both:
 - **accent**: `oklch(0.60 0.15 45)` / `#C65D26` — pill/fill contexts.
 - **accent-text**: `oklch(0.46 0.155 45)` / `#913900` — used as text color; 6.75:1 on the light `--bg`.
+- The wordmark PNG (drawn in mint) is retargeted to this copper via a CSS `hue-rotate`/`saturate`/`brightness` filter scoped to `[data-theme="light"]` — it's a single-hue asset (solid color, alpha-only anti-aliasing), so the filter carries it cleanly without a re-export. The dark theme applies no filter, since the asset already matches its accent.
+- Because the two themes don't share a hue, every other accent-hued token (Outcome band, selection, focus glow) also needs a per-theme value rather than living once in `:root` — see below.
 
 ### Neutral
 - **Warm Pitch** (`#15120D`): Page background. Warm near-black, not true black — keeps the page from feeling cold or clinical.
@@ -135,12 +137,13 @@ The light theme (`[data-theme="light"]` in `tokens.css`) is not an inversion —
 - **Faint Paper, Variant** (`#8A8070`): The dimmest text token in the system — copyright line and footer credits. (A near-black "Copyright Brown" tone was tried here but failed WCAG AA contrast against the footer background; this is the darkest tone that still clears 4.5:1.)
 
 ### Inverted Band (case-study "Outcome" section)
-- **Outcome Copper** (`oklch(0.62 0.13 45)` / `#C56A3E`): Background for the inverted "Outcome" band — the accent's own hue at mid lightness. A deliberate polarity flip (dark ink on a saturated field) that marks "this is the result," distinct from the surrounding dark sections. Headline and body use **Outcome Ink** (`#180904`, a warm near-black in the same hue family as the accent) directly on this field (5.1:1, clears AA for large text). This band is polarity-fixed — the same value in both themes, since it's already a deliberate flip.
-- **Band Card** (`rgba(24, 9, 4, 0.85)`): Impact cards sit *on* the band as dark ink-tinted surfaces carrying paper text (13.9:1 label, 10.7:1 description) — a second polarity flip back to light-on-dark, so the metrics read as inset panels rather than more band. Card text uses polarity-fixed tokens (`--band-card-text`, `--band-card-text-2`), not the theme-varying text ramp, since this surface never changes with the site theme.
-- **Band Hairline** (`rgba(24, 9, 4, 0.2)`): 1px dividers between impact cards, painted as grid gaps over the band.
+Unlike most of the palette, the band tracks each theme's own accent hue rather than staying invariant — since dark and light no longer share one hue, "the accent's own hue at mid lightness" means something different in each theme.
+- **Outcome Mint** (dark theme, `oklch(0.62 0.09 179)` / `#3D9887`) / **Outcome Copper** (light theme, `oklch(0.62 0.13 45)` / `#C56A3E`): Background for the inverted "Outcome" band. A deliberate polarity flip (dark ink on a saturated field) that marks "this is the result," distinct from the surrounding sections. Headline and body use that theme's **Outcome Ink** (`#0E1416` dark / `#180904` light — each a near-black in the same hue family as its theme's accent) directly on this field (5.1–5.3:1, clears AA for large text).
+- **Band Card** (`rgba(14, 20, 22, 0.85)` dark / `rgba(24, 9, 4, 0.85)` light): Impact cards sit *on* the band as dark ink-tinted surfaces carrying paper text (10.7–13.9:1) — a second polarity flip back to light-on-dark, so the metrics read as inset panels rather than more band. Card text uses **polarity-fixed** tokens (`--band-card-text`, `--band-card-text-2` — plain warm paper, not accent-hued), since this text just needs to read on a dark ink surface regardless of which ink or which theme.
+- **Band Hairline** (`rgba(14, 20, 22, 0.2)` dark / `rgba(24, 9, 4, 0.2)` light): 1px dividers between impact cards, painted as grid gaps over the band.
 
 ### Named Rules
-**The One Accent Rule.** The signature copper is the only saturated color in the system. If a new UI need calls for "another color," the answer is a neutral tone from the existing ramp, not a second hue.
+**The One Accent Rule.** Each theme has exactly one saturated color — signature mint in dark, warm copper in light — never both on screen together, and never diluted with a second hue. If a new UI need calls for "another color," the answer is a neutral tone from the existing ramp, not a second hue.
 
 ## 3. Typography
 
@@ -168,7 +171,7 @@ The system is flat-by-default with tonal layering: depth is primarily conveyed b
 ### Shadow Vocabulary
 - **Ambient Rest** (`box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25)`): Default soft shadow under case-study cards and other card-level containers, anchoring them gently above the page background.
 - **Ambient Hover** (`box-shadow: 0 8px 32px rgba(0, 0, 0, 0.32)`): Slightly deeper, larger-radius shadow on hover, paired with the existing border-brightening transition — the two effects move together, not separately.
-- **Accent Glow** (`box-shadow: 0 0 10px oklch(0.74 0.13 45)`, `oklch(0.60 0.15 45)` in light theme): Reserved for the live-status dot in the About section; the only shadow that carries color (signature copper), and only because it represents an active/live signal.
+- **Accent Glow** (`box-shadow: 0 0 10px oklch(0.81 0.084 179)` dark, `oklch(0.60 0.15 45)` light): Reserved for the live-status dot in the About section; the only shadow that carries color (that theme's accent), and only because it represents an active/live signal.
 - **Header scrim** (`--scrim: rgba(21, 18, 13, 0.82)` + 12px `backdrop-filter: blur`): the sticky header floats a translucent page-tinted scrim over content as it scrolls beneath. Not a shadow, but the same "depth by atmosphere, not hard edges" logic.
 
 ### Named Rules
@@ -205,7 +208,7 @@ A two-column grid (≈1.05fr / 0.95fr) pairing a compact text body against a rea
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep the signature copper (`oklch(0.74 0.13 45)`, text variant `oklch(0.82 0.14 45)`; deeper values in light theme) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.
+- **Do** keep each theme's single accent — signature mint (`oklch(0.81 0.084 179)`, text variant `oklch(0.91 0.097 179)`) in dark, warm copper (`oklch(0.60 0.15 45)`, text variant `oklch(0.46 0.155 45)`) in light — as the only saturated color on any screen; everything else stays within the warm-neutral ramp. Don't let the two hues mix on one screen.
 - **Do** use the Ambient Rest / Ambient Hover shadow pair (`0 4px 24px rgba(0,0,0,0.25)` → `0 8px 32px rgba(0,0,0,0.32)`) for any new card-level surface, paired with the existing border-brightening hover.
 - **Do** step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.
 - **Do** cap hero display type at 112px (`7rem`) and keep its line-height tight (0.94) so large type reads as composed, not sprawling. Don't raise the cap — at 118px the longest line overflows the 1180px container.

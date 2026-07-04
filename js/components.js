@@ -54,17 +54,22 @@ window.Components = (function () {
     return out;
   };
 
-  /* --- ThemeToggle: icon-only light/dark switch, header chrome ---
-     Same 44px tap box and quiet color treatment as the mobile nav
-     toggle. The icon shows the theme you'd switch TO (sun in dark
-     mode, moon in light) via CSS keyed on html[data-theme]. Hidden
-     without JS (html.js gate) since it can't act. Wired up by
-     initThemeToggle, called from app.js / case-template.js. */
+  /* --- ThemeToggle: icon + eyebrow-style label, header chrome ---
+     Same 44px-tall tap target as the mobile nav toggle, auto width.
+     Icon and label both show the theme you'd switch TO (sun/"Light" in
+     dark mode, moon/"Dark" in light) via CSS keyed on html[data-theme].
+     Hidden without JS (html.js gate) since it can't act. Wired up by
+     initThemeToggle, called from app.js / case-template.js.
+     (impeccable live, Jul 2026 — chosen over an icon-only toggle and a
+     segmented dual-icon toggle so it reads as part of the nav.) */
   const ThemeToggle = () => `
     <button class="theme-toggle" type="button" aria-label="Toggle color theme">
-      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
-      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
-    </button>`;
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
+      <span class="theme-toggle__label theme-toggle__label--to-light">Light</span>
+      <span class="theme-toggle__label theme-toggle__label--to-dark">Dark</span>
+    </button>
+  `;
 
   /* Runtime wiring for every .theme-toggle on the page. Persists the
      choice; while no explicit choice exists, follows the OS setting

@@ -26,23 +26,26 @@
   --text-faint:     #736959; /* faint labels */
   --text-faint-2:   #8A8070; /* copyright */
 
-  /* ---------- Color: accent (warm copper, keyed to TN_Port_Logo) ---------- */
+  /* ---------- Color: accent (signature mint, keyed to TN_Port_Logo) ---------- */
   /* Use --accent for fills/solids, --accent-text for type on dark.
-     Recolored from the original signature mint (oklch hue 179) to a
-     warm copper/terracotta (hue 45) — chosen over straight orange
-     (hue ~60, a reflex default) to stay distinct from both the warm
-     neutral ramp (hue ~75-85) and a semantic-warning read. */
-  --accent:       oklch(0.74 0.13 45); /* fallback #EE8F63 */
-  --accent-text:  oklch(0.82 0.14 45); /* fallback #FFAE89 — 10.4:1 on --bg */
-  --accent-hex:        #EE8F63;
-  --accent-text-hex:   #FFAE89;
+     Dark theme keeps the original signature mint; the light theme (see
+     [data-theme="light"] below) uses its own warm-copper accent instead
+     of a lighter/darker version of the same hue — each theme carries
+     its own hue identity by design, not a single hue reused at two
+     lightness levels. Every accent-hued token below (band included)
+     therefore has a light-theme override, since it can no longer stay
+     theme-invariant once the two themes don't share a hue. */
+  --accent:       oklch(0.81 0.084 179); /* fallback #83D4C3 */
+  --accent-text:  oklch(0.91 0.097 179); /* fallback #97F8E4 — 15.0:1 on --bg */
+  --accent-hex:        #83D4C3;
+  --accent-text-hex:   #97F8E4;
 
   /* ---------- Color: inverted "Outcome" band (case studies) ---------- */
-  --band-bg:    oklch(0.62 0.13 45);     /* fallback #C56A3E — same hue as the accent */
-  --band-bg-hex: #C56A3E;
-  --band-text:  #180904; /* warm near-black ink, same hue family as the accent */
-  --band-card:     rgba(24, 9, 4, 0.85);    /* impact cards on the band: ink surface, paper text */
-  --band-hairline: rgba(24, 9, 4, 0.2);     /* dividers between impact cards */
+  --band-bg:    oklch(0.62 0.09 179);     /* fallback #3D9887 — same hue as the accent */
+  --band-bg-hex: #3D9887;
+  --band-text:  #0E1416; /* near-black ink, same hue family as the accent */
+  --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
+  --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
   /* Impact-card text: the card is a dark ink surface in BOTH themes,
      so its text is polarity-fixed paper — never theme-varying tokens. */
   --band-card-text:   #F1EBDF;
@@ -61,8 +64,8 @@
   --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #EE8F63; /* = --accent-hex */
-  --selection-text: #180904;
+  --selection-bg:   #83D4C3; /* = --accent-hex */
+  --selection-text: #0E1416;
 
   /* ---------- Typography: families ---------- */
   --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -113,7 +116,7 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 10px oklch(0.74 0.13 45); /* About status dot */
+  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* About status dot */
 
   /* ---------- Elevation (DESIGN.md §4) ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
@@ -154,10 +157,21 @@
 
   /* Accent: same warm copper hue, deepened for light surfaces.
      --accent-text is 6.75:1 on --bg (the dark theme's lighter copper
-     would fail as text on paper). Band tokens are polarity-
-     independent (own ink on own field) and stay unchanged. */
+     would fail as text on paper). The two themes carry different accent
+     hues by design (mint in dark, copper in light) rather than one hue
+     at two lightness levels, so the Outcome band — "the accent's own
+     hue at mid lightness" — needs its own copper-hued override here
+     too; it can no longer stay theme-invariant in :root. */
   --accent:      oklch(0.60 0.15 45);  /* fallback #C65D26 */
   --accent-text: oklch(0.46 0.155 45); /* fallback #913900 */
+
+  --band-bg:       oklch(0.62 0.13 45);   /* fallback #C56A3E */
+  --band-text:     #180904;               /* warm near-black ink, same hue family as this theme's accent */
+  --band-card:     rgba(24, 9, 4, 0.85);
+  --band-hairline: rgba(24, 9, 4, 0.2);
+
+  --selection-bg:   #C65D26; /* = this theme's --accent */
+  --selection-text: #180904;
 
   /* Lines: ink-alpha instead of paper-alpha */
   --border:        rgba(36, 30, 19, 0.16);
