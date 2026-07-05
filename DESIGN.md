@@ -177,7 +177,8 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 ## 5. Components
 
 ### Buttons / CTAs
-- **No boxed buttons.** The primary CTA is the footer's oversized `Say hello ↗` in Fraunces at `clamp(2.75rem, 8vw, 7rem)` — the CTA *is* display type; only the arrow shifts color on hover.
+- **No boxed buttons.** The primary CTA is the footer's oversized `Say hello ↗` in Fraunces at `clamp(2.75rem, 8vw, 7rem)` — the CTA *is* display type; the arrow nudges up-right on hover.
+- **The drenched closer (signature moment).** The contact footer is the one place the page commits the accent to a full surface: after a whole page of warm-paper restraint, the final fold is a solid accent field (terracotta in light, mint in dark) with near-black band ink for every element. It reuses the Outcome-band tokens (`--band-bg` / `--band-text` / `--band-hairline`), so the homepage closer rhymes with the case-study Outcome bands and adds no new primitives. This is a deliberate *Committed* color moment (per the brand register) that breaks the monochromatic-restraint read; keep it to this one fold — the accent stays rare everywhere else. Focus rings inside it switch to band ink (the accent ring would vanish on its own field).
 - **Hero CTA** (`View selected work ↗`): an uppercase Inter link with a bottom hairline that brightens to terracotta on hover, the arrow nudging up-right.
 - **Case-card CTA**: inline `View case study →`, muted, brightening with a 4px arrow nudge on card hover.
 - **Only real `<button>`s** are the mobile nav toggle and the theme toggle. Everything else that acts is an `<a>`.
