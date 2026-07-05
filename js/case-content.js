@@ -195,8 +195,8 @@ window.CaseContent = {
           decision: 'A visually secondary fallback that is discoverable but doesn’t compete, so passkeys feel like the obvious path without removing the escape hatch.',
           impact: 'The management and security controls weren’t on the roadmap. I surfaced the need through research and conversations with the dev team, built the case for it, and got cross-functional and leadership buy-in to ship create, remove, and manage controls.',
           images: [
-            { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
-            { src: 'images/case-studies/passkeys-management-security.png', w: 1168, h: 1034, alt: 'Account security settings screen showing passkeys managed alongside the password fallback option', caption: 'Manage controls — create, remove, and fall back' },
+            { src: 'images/case-studies/passkeys-login-options.png', w: 1515, h: 1060, alt: 'Sign-in screen offering Sign in with Password, Use a Passkey, and Send One-Time Code as equal fallback options, shown on tablet and mobile', caption: 'Sign-in — the fallback stays available, not competing' },
+            { src: 'images/case-studies/passkeys-login-settings.png', w: 1627, h: 1021, alt: 'Account security settings on desktop and mobile showing the Passkeys section with Add a Passkey and Revoke controls', caption: 'Manage controls — create, remove, and fall back' },
           ],
         },
       ],
@@ -211,7 +211,7 @@ window.CaseContent = {
         'Rapid prototyping let me test the introduction flow with the team before investing in high fidelity. The early rounds surfaced that the animation sequence mattered as much as the copy: people understood passkeys better when they saw the device interaction before reading about it.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 490, alt: 'Three member personas (Sentiment & Efficiency, Product Education & Confidence, and Confidence) summarizing the research that shaped who we tested with', caption: 'Member research — who we tested with' },
+        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 460, bare: true, alt: 'Three member personas (Sentiment & Efficiency, Product Education & Confidence, and Confidence) summarizing the research that shaped who we tested with', caption: 'Member research — who we tested with' },
       ],
     },
 
