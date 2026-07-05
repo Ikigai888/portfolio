@@ -204,7 +204,10 @@ html.js .theme-toggle { display: flex; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
+  /* Tap target ≥44px (WCAG 2.5.8): most of the height is top padding so the
+     underline still hugs the text; margin-top carries the rest of the gap. */
+  margin-top: 12px;
+  padding: 22px 0 6px;
   font-size: var(--fs-chip);
   font-weight: 700;
   letter-spacing: var(--ls-eyebrow);
@@ -212,7 +215,6 @@ html.js .theme-toggle { display: flex; }
   color: var(--text-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--border-bright);
-  padding-bottom: 6px;
   transition: color var(--hover-color-dur), border-color var(--hover-color-dur);
 }
 .hero__cta:hover { color: var(--accent-text); border-color: var(--accent); }
@@ -562,8 +564,10 @@ button:focus-visible {
   top: -100px;
   left: var(--gutter);
   z-index: 60; /* one step above the sticky headers (50) */
-  background: var(--accent);
-  color: var(--band-text);
+  /* Paper text on the deeper accent-text terracotta/mint — ≥5.2:1 in both
+     themes (the brighter --accent fill only cleared ~3.5:1 on paper). */
+  background: var(--accent-text);
+  color: var(--bg);
   font-size: var(--fs-chip);
   font-weight: 700;
   padding: 10px 18px;

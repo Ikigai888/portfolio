@@ -20,7 +20,8 @@
     var p = d.portrait || {};
     var portrait = p.src
       ? '<img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '"' +
-          (p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '') + ' />'
+          (p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '') +
+          ' fetchpriority="high" decoding="async" />' /* hero portrait is the LCP element */
       : '';
 
     var content =
