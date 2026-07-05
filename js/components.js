@@ -54,6 +54,62 @@ window.Components = (function () {
     return out;
   };
 
+  /* --- ThemeToggle: icon + eyebrow-style label, header chrome ---
+     Same 44px-tall tap target as the mobile nav toggle, auto width.
+     Icon and label both show the theme you'd switch TO (sun/"Light" in
+     dark mode, moon/"Dark" in light) via CSS keyed on html[data-theme].
+     Hidden without JS (html.js gate) since it can't act. Wired up by
+     initThemeToggle, called from app.js / case-template.js.
+     (impeccable live, Jul 2026 — chosen over an icon-only toggle and a
+     segmented dual-icon toggle so it reads as part of the nav.) */
+  const ThemeToggle = () => `
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
+      <span class="theme-toggle__label theme-toggle__label--to-light">Light</span>
+      <span class="theme-toggle__label theme-toggle__label--to-dark">Dark</span>
+    </button>
+  `;
+
+  /* Runtime wiring for every .theme-toggle on the page. Persists the
+     choice; while no explicit choice exists, follows the OS setting
+     live. Safe to define in the Node build sandbox (only touches
+     document when called, which happens in-browser only). */
+  function initThemeToggle() {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('.theme-toggle');
+    if (!buttons.length) return;
+
+    function stored() {
+      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    }
+    function relabel() {
+      var light = root.getAttribute('data-theme') === 'light';
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        relabel();
+      });
+    });
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(prefers-color-scheme: light)');
+      var follow = function (e) {
+        if (stored()) return; /* explicit choice wins */
+        root.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+        relabel();
+      };
+      if (mq.addEventListener) mq.addEventListener('change', follow);
+      else if (mq.addListener) mq.addListener(follow);
+    }
+    relabel();
+  }
+
   /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
      Includes a mobile nav toggle (hidden on desktop via CSS) so the
      four nav links never have to wrap or crowd the name at narrow
@@ -62,15 +118,18 @@ window.Components = (function () {
     <header class="site-header">
       <div class="container site-header__inner">
         <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
-        <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
-          <span class="site-header__toggle-bar"></span>
-          <span class="site-header__toggle-bar"></span>
-        </button>
-        <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
-          ${(nav || []).map(function (i) {
-            return '<a class="site-header__link" href="' + esc(i.href) + '">' + esc(i.label) + '</a>';
-          }).join('')}
-        </nav>
+        <div class="site-header__cluster">
+          <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
+            ${(nav || []).map(function (i) {
+              return '<a class="site-header__link" href="' + esc(i.href) + '">' + esc(i.label) + '</a>';
+            }).join('')}
+          </nav>
+          ${ThemeToggle()}
+          <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+            <span class="site-header__toggle-bar"></span>
+            <span class="site-header__toggle-bar"></span>
+          </button>
+        </div>
       </div>
     </header>`;
 
@@ -111,8 +170,12 @@ window.Components = (function () {
     }
     const dims = w && h ? ` width="${w}" height="${h}"` : '';
     const posterAttr = poster ? ` poster="${esc(poster)}"` : '';
+    /* autoplay is gated client-side (data-autoplay, see initAutoplayVideos in
+       case-template.js) rather than the static attribute, so a
+       prefers-reduced-motion visitor lands on the poster frame and never sees
+       the clip start moving. */
     const media = /\.(mp4|webm)$/i.test(src)
-      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
+      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
     /* frame: true wraps light-background artifacts (diagrams, exports from
        external tools) in a white card so they read as a held artifact rather
@@ -182,6 +245,6 @@ window.Components = (function () {
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
     emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot, Quote,
-    PrincipleItem, PortraitSlot, SiteFooter,
+    PrincipleItem, PortraitSlot, SiteFooter, ThemeToggle, initThemeToggle,
   };
 })();

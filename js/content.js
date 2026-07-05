@@ -23,16 +23,17 @@ window.Content = {
 
   /* ---------- Hero ---------- */
   hero: {
-    pill: 'Senior Product Designer',
-    meta: 'Vancouver, BC · Open to Senior / Lead / Staff roles',
-    // headline rendered as two lines; `accent: true` marks the cyan line
+    eyebrow: 'Senior Product Designer — Vancouver, BC',
+    // headline rendered as lines; `accent: true` marks the italic terracotta line
     headline: [
       { text: 'Complexity is inevitable.' },
       { text: 'Confusion isn’t.', accent: true },
     ],
     lead:
       'Nobody should need a manual for the tools they use every day. ' +
-      'I design so they don\u2019t.',
+      'I design so they don\u2019t \u2014 for teams at MoxiWorks, lululemon, and SAP Concur.',
+    cta: { label: 'View selected work', href: '#work' },
+    portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
 
   /* ---------- What I Do ---------- */
@@ -95,6 +96,7 @@ window.Content = {
     statement:
       'Good software doesn’t become simpler by removing complexity. ' +
       'It becomes better by organizing complexity into systems people can understand.',
+    emphasize: ['organizing complexity'],
     principles: [
       { number: '01', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
       { number: '02', title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
@@ -110,6 +112,7 @@ window.Content = {
     statement:
       'I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy ' +
       'solving the kinds of product problems that don’t have obvious answers.',
+    emphasize: ['don’t have obvious answers'],
     body:
       'I work closest to the hard middle of products — where the system design, ' +
       'the interaction details, and the business logic all have to agree. Most ' +
@@ -120,7 +123,6 @@ window.Content = {
       after: ', Electronic Arts, and SAP Jam.',
     },
     name: 'Tad Natsuhara — Vancouver, BC',
-    portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
 
   /* ---------- Contact footer ---------- */

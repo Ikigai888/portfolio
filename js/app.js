@@ -17,14 +17,23 @@
         C.esc(line.text) + '</span>';
     }).join('');
 
+    var p = d.portrait || {};
+    var portrait = p.src
+      ? '<img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '"' +
+          (p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '') +
+          ' fetchpriority="high" decoding="async" />' /* hero portrait is the LCP element */
+      : '';
+
     var content =
-      '<div class="hero__badge">' +
-        C.Pill(d.pill) +
-        '<span class="hero__meta">' + C.esc(d.meta) + '</span>' +
-      '</div>' +
-      '<h1 class="hero__headline">' + headline + '</h1>' +
-      '<div class="hero__subtext">' +
-        '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
+      '<div class="hero">' +
+        '<div class="hero__text">' +
+          '<p class="eyebrow hero__eyebrow">' + C.esc(d.eyebrow) + '</p>' +
+          '<h1 class="hero__headline">' + headline + '</h1>' +
+          '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
+          '<a class="hero__cta" href="' + C.esc(d.cta.href) + '">' + C.esc(d.cta.label) +
+            ' <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a>' +
+        '</div>' +
+        '<figure class="hero__portrait">' + portrait + '</figure>' +
       '</div>';
 
     return C.Section({ id: 'top', content: content });
@@ -61,7 +70,7 @@
         d.principles.map(C.PrincipleItem).join('') +
       '</div>';
     var right =
-      '<p class="statement">' + C.esc(d.statement) + '</p>' +
+      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
       principles +
       '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
@@ -71,18 +80,18 @@
   }
 
   function About(d) {
-    // About reuses the .split layout primitive, but its left column is a
-    // sticky portrait (not an eyebrow), so the markup is composed directly.
+    // About reuses the sticky-label split: eyebrow + status-dot name in the
+    // left column, the serif statement + prose in the right. (The portrait
+    // that used to sit here now anchors the hero.)
     var content =
       '<div class="split split--about">' +
-        '<div class="split__label about__media">' +
-          C.PortraitSlot(d.portrait) +
+        '<div class="split__label about__meta">' +
+          C.SectionHeading(d.label) +
           '<p class="about__name"><span class="about__dot" aria-hidden="true"></span>' +
             C.esc(d.name) + '</p>' +
         '</div>' +
         '<div class="split__content">' +
-          C.SectionHeading(d.label) +
-          '<p class="statement about__statement">' + C.esc(d.statement) + '</p>' +
+          '<p class="statement about__statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
           '<p class="statement__body">' + C.esc(d.body) + '</p>' +
           '<p class="about__credential">' + C.esc(d.credential.before) +
             '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
@@ -195,27 +204,6 @@
     }).catch(function () { /* interrupted (e.g. nav away) — leave as-is */ });
   }
 
-  /* ---------- Hero parallax (homepage only) ----------
-     Drifts the hero motif at a fraction of scroll by setting --hero-parallax
-     on #top; the CSS ::before layer reads it as a GPU-composited translate.
-     rAF-throttled, passive listener, reduced-motion aware. If this never runs,
-     --hero-parallax stays unset (0px) and the background is simply static. */
-  function initHeroParallax() {
-    var hero = document.getElementById('top');
-    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var ticking = false;
-    function update() {
-      var y = Math.min(window.pageYOffset * 0.2, 70); /* slight: 0.2× scroll, capped at 70px (< 100px bleed) */
-      hero.style.setProperty('--hero-parallax', y.toFixed(1) + 'px');
-      ticking = false;
-    }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    update();
-  }
-
   /* ---------- Assemble ----------
      buildPage is pure (data -> HTML string) so it can also run in Node
      at build time (see scripts/build.mjs) to pre-render index.html. */
@@ -239,7 +227,7 @@
     initReveal();
     initNavToggle();
     initThesisSettle();
-    initHeroParallax();
+    C.initThemeToggle();
   }
 
   window.App = { render: render, buildPage: buildPage };

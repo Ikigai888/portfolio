@@ -33,6 +33,7 @@
   transition: color var(--hover-color-dur);
 }
 .case-header__back:hover { color: var(--text-primary); }
+.case-header__cluster { display: flex; align-items: center; gap: 18px; }
 .case-header__tag {
   display: flex;
   align-items: center;
@@ -93,7 +94,7 @@
   font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 
@@ -169,7 +170,7 @@
   font-size: var(--fs-section); /* page h1 must outrank the h2 section headlines */
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 .cs-summary__question {
@@ -238,7 +239,7 @@
   font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 .cs-options {
@@ -308,7 +309,7 @@
   font-size: var(--fs-section);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--band-text);
 }
 .cs-outcome__body {
@@ -335,13 +336,13 @@
   margin: 0 0 10px;
   font-size: var(--fs-body);
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--band-card-text);
 }
 .cs-impact__desc {
   margin: 0;
   font-size: 0.9375rem;
   line-height: var(--lh-body);
-  color: var(--text-secondary);
+  color: var(--band-card-text-2);
 }
 
 /* ---------- Next case study link (Reflection section) ---------- */
@@ -471,6 +472,12 @@
 .cs-back-to-top:hover { color: var(--text-primary); }
 .cs-back-to-top__arrow { color: var(--accent-text); transition: transform var(--hover-dur); }
 .cs-back-to-top:hover .cs-back-to-top__arrow { transform: translateY(-2px); }
+/* Over the Outcome band the muted ink + accent arrow drop below 3:1; switch to
+   band ink, mirroring the footer's focus-ring fix on the same accent field. */
+.cs-back-to-top.is-on-band,
+.cs-back-to-top.is-on-band:hover { color: var(--band-text); }
+.cs-back-to-top.is-on-band .cs-back-to-top__arrow { color: var(--band-text); }
+.cs-back-to-top.is-on-band:focus-visible { outline-color: var(--band-text); }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

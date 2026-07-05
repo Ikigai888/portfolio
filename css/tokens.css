@@ -9,63 +9,81 @@
    ============================================================ */
 
 :root {
-  /* ---------- Color: surfaces ---------- */
-  --bg:            #15120D; /* page background (warm near-black) */
-  --bg-footer:     #0F0D09; /* contact footer / deepest surface */
-  --bg-card:       #1A1610; /* cards */
-  --bg-inset:      #26211A; /* image slots + capability chips */
+  color-scheme: light; /* native form controls / scrollbars match the theme */
 
-  /* ---------- Color: text ---------- */
-  --text-primary:   #F1EBDF; /* body + most headings */
-  --text-bright:    #E7DFD2; /* emphasized inline names */
-  --text-secondary: #D8CFC0; /* lead paragraphs */
-  --text-tertiary:  #C9BCA6;
-  --text-muted:     #A1957F; /* eyebrows, supporting copy, nav */
-  --text-faint:     #736959; /* faint labels */
-  --text-faint-2:   #8A8070; /* copyright */
+  /* ---------- Color: surfaces (warm editorial paper) ---------- */
+  --bg:            #F4F0E8; /* page background (warm paper, sampled from the mockup) */
+  --bg-footer:     #EDE7DE; /* contact band / deepest surface */
+  --bg-card:       #FBF8F1; /* case-study cards lifted toward white */
+  --bg-inset:      #E9E1D2; /* image slots + chips */
 
-  /* ---------- Color: accent (signature mint, keyed to TN_Port_Logo) ---------- */
-  /* Use --accent for fills/solids, --accent-text for type on dark */
-  --accent:       oklch(0.81 0.084 179); /* fallback #83D4C3 — the mark's stroke cores as rendered */
-  --accent-text:  oklch(0.91 0.097 179); /* fallback #97F8E4 — the mark's file color; 15.0:1 on --bg */
-  --accent-hex:        #83D4C3;
-  --accent-text-hex:   #97F8E4;
+  /* ---------- Color: text (warm ink ramp; AA-checked on --bg) ---------- */
+  --text-primary:   #241E13; /* body + most headings — 13.9:1 */
+  --text-bright:    #17110A; /* wordmark, emphasized inline names */
+  --text-secondary: #3D3524; /* lead paragraphs — 9.1:1 */
+  --text-tertiary:  #554A33;
+  --text-muted:     #6E6249; /* eyebrows, supporting copy, nav — 5.2:1 */
+  --text-faint:     #A79A80; /* decorative labels */
+  --text-faint-2:   #675B42; /* copyright — 4.6:1 on --bg-footer */
 
-  /* ---------- Color: inverted "Outcome" band (case studies) ---------- */
-  --band-bg:    oklch(0.62 0.09 179);     /* fallback #3D9887 — same hue as the accent */
-  --band-bg-hex: #3D9887;
-  --band-text:  #0E1416;
-  --band-card:     rgba(14, 20, 22, 0.85);    /* impact cards on the band: ink surface, paper text */
-  --band-hairline: rgba(14, 20, 22, 0.2);     /* dividers between impact cards */
+  /* ---------- Color: accent (terracotta — the light theme's identity) ----------
+     --accent is the saturated fill/solid + large display accent; --accent-text
+     is the slightly deeper terracotta for small type, which needs ≥4.5:1 on
+     paper. The dark theme carries its OWN accent hue — the original signature
+     mint — rather than a lighter/darker terracotta (see [data-theme="dark"]),
+     so every accent-hued token below (band, selection, glow) has a mint
+     override there. The wordmark PNG is drawn in that mint, so the light
+     theme retargets it to terracotta via a filter (see .site-header__logo). */
+  --accent:       oklch(0.559 0.135 41.1); /* fallback #B4542E — mockup terracotta */
+  --accent-text:  oklch(0.515 0.137 40.8); /* fallback #A6461F — 5.25:1 on --bg */
+  --accent-hex:        #B4542E;
+  --accent-text-hex:   #A6461F;
 
-  /* ---------- Color: lines ---------- */
-  --border:        rgba(241, 235, 223, 0.12); /* default card/section */
-  --border-bright: rgba(241, 235, 223, 0.26); /* hover */
-  --hairline:      rgba(241, 235, 223, 0.08); /* faintest */
-  --hairline-2:    rgba(241, 235, 223, 0.16); /* stronger rule */
-  --rule-strong:   #F1EBDF;                    /* 2px section opener rule */
+  /* ---------- Color: inverted "Outcome" band (case studies) ----------
+     A saturated terracotta block with dark ink for the light theme. The dark
+     theme overrides this to mint (its own accent's hue at mid lightness),
+     since the two themes carry different accent hues. */
+  --band-bg:    oklch(0.621 0.13 45.2);     /* fallback #C56A3E */
+  --band-bg-hex: #C56A3E;
+  --band-text:  #2A140A; /* warm near-black ink on the band — 4.58:1 */
+  --band-card:     rgba(26, 13, 6, 0.86);    /* impact cards on the band: ink surface, paper text */
+  --band-hairline: rgba(26, 13, 6, 0.2);     /* dividers between impact cards */
+  /* Impact-card text: the card is a dark ink surface on the band in BOTH
+     themes, so its text is polarity-fixed paper — never theme-varying. */
+  --band-card-text:   #F6EFE4;
+  --band-card-text-2: #DCD2C2;
+
+  /* ---------- Color: lines (ink-alpha on paper) ---------- */
+  --border:        rgba(36, 30, 19, 0.14); /* default card/section */
+  --border-bright: rgba(36, 30, 19, 0.30); /* hover */
+  --hairline:      rgba(36, 30, 19, 0.09); /* faintest */
+  --hairline-2:    rgba(36, 30, 19, 0.18); /* stronger rule */
+  --rule-strong:   #241E13;                /* 2px section opener rule */
 
   /* ---------- Color: header scrims (page bg at opacity) ---------- */
-  --scrim-0:      rgba(21, 18, 13, 0);
-  --scrim:        rgba(21, 18, 13, 0.82); /* homepage sticky header */
-  --scrim-strong: rgba(21, 18, 13, 0.92); /* case header + subnav fade */
+  --scrim-0:      rgba(244, 240, 232, 0);
+  --scrim:        rgba(244, 240, 232, 0.85); /* homepage sticky header */
+  --scrim-strong: rgba(244, 240, 232, 0.93); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #83D4C3; /* = --accent-hex; the wordmark as rendered */
-  --selection-text: #0E1416;
+  --selection-bg:   #B4542E; /* = --accent-hex */
+  --selection-text: #F7F2E9;
 
-  /* ---------- Typography: families ---------- */
-  --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
-  /* weights in use: 400 500 600 700 800 */
-  --font-display: 'Alegreya', Georgia, serif; /* calligraphic serif paired to the signature wordmark; weights 600 700 800 */
-  --ls-serif: -0.012em; /* Alegreya needs looser tracking than the grotesque */
+  /* ---------- Typography: families ----------
+     Editorial pairing on a contrast axis: a high-contrast display serif
+     carries every headline/statement; a neutral grotesque carries body,
+     nav, and the wordmark. */
+  --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  /* weights in use: 400 500 600 700 */
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif; /* warm humanist serif with expressive italics; chosen off the reflex-reject list */
+  --ls-serif: -0.005em; /* Spectral sets comfortably near 0 */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
-  --fs-display:   clamp(2.5rem, 8.4vw, 7rem); /* hero headline; 112px cap + 8.4vw keep 'Complexity is inevitable.' (its widest string, ~1123px at the cap) on one line from ~500px up through the widest viewports — it wraps only on phones, where 3 lines is intended. Do not raise the cap past 7rem: at 118px the line is 1183px and overflows the 1180px container by 3px. */
-  --fs-section:   clamp(1.875rem, 4vw, 3.375rem); /* section headlines */
-  --fs-section-sm:clamp(1.75rem, 3.6vw, 2.875rem);
-  --fs-statement: clamp(1.5rem, 3.1vw, 2.75rem); /* big statements */
-  --fs-statement-sm: clamp(1.375rem, 2.7vw, 2.375rem);
+  --fs-display:   clamp(2.75rem, 6vw, 5.5rem); /* hero headline — now in the LEFT column of a two-column hero (portrait on the right), so it wraps to 2–3 lines by design (as in the mockup). Sized to sit comfortably in the ~600px text column at the cap. */
+  --fs-section:   clamp(1.875rem, 4vw, 3.25rem); /* section headlines */
+  --fs-section-sm:clamp(1.75rem, 3.4vw, 2.75rem);
+  --fs-statement: clamp(1.625rem, 3.1vw, 2.75rem); /* big statements */
+  --fs-statement-sm: clamp(1.5rem, 2.8vw, 2.375rem);
   --fs-coda:      clamp(1.25rem, 2vw, 1.6875rem); /* closing lines under statements */
   --fs-lead:      clamp(1.0625rem, 1.6vw, 1.3125rem); /* lead paragraphs */
   --fs-body:      1rem;                       /* body 15–17px range */
@@ -73,13 +91,13 @@
   --fs-chip:      0.8125rem;
 
   /* ---------- Typography: tracking / leading ---------- */
-  --ls-display:   -0.04em;
-  --ls-section:   -0.03em;
-  --ls-statement: -0.025em;
-  --ls-eyebrow:    0.10em;
-  --lh-display:    0.94;
-  --lh-tight:      1.1;
-  --lh-statement:  1.18; /* multi-line statements need more air than display */
+  --ls-display:   -0.02em; /* Spectral display sits comfortably near 0 */
+  --ls-section:   -0.018em;
+  --ls-statement: -0.014em;
+  --ls-eyebrow:    0.14em;  /* wide-tracked terracotta labels, per the mockup */
+  --lh-display:    0.98;    /* serif display needs a touch more than a sans */
+  --lh-tight:      1.08;
+  --lh-statement:  1.2;  /* multi-line statements need more air than display */
   --lh-body:       1.6;
 
   /* ---------- Layout ---------- */
@@ -103,11 +121,81 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* About status dot */
+  --dot-glow: 0 0 0 4px rgba(180, 84, 46, 0.16); /* About status dot — soft ring reads on paper */
 
-  /* ---------- Elevation (DESIGN.md §4) ---------- */
+  /* ---------- Elevation (DESIGN.md §4) — softer on paper ---------- */
+  --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
+  --shadow-ambient-hover: 0 10px 34px rgba(36, 30, 19, 0.16);
+}
+
+/* ============================================================
+   Dark theme (sibling) — set via <html data-theme="dark"> by the
+   header toggle (persisted in localStorage; prefers-color-scheme:
+   dark is the first-visit trigger). The editorial LIGHT theme above
+   is the canonical design; this is its dark counterpart: the SAME
+   Spectral/Hanken type and the SAME layouts. The two themes carry
+   DIFFERENT accent hues by design — light is terracotta, dark is the
+   original signature mint (keyed to the wordmark's native color). So
+   beyond surfaces/ink/lines/scrims/shadows, the accent, Outcome band,
+   selection, and status glow all get mint overrides here; they can't
+   stay theme-invariant when the hue itself differs.
+   Every value below is contrast-checked against WCAG 2.1 AA.
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces: warm near-black, stepped by tonal lift */
+  --bg:        #15120D;
+  --bg-footer: #100D08;
+  --bg-card:   #1B1710;
+  --bg-inset:  #26211A;
+
+  /* Text: warm paper ramp (primary 14.8:1, muted 5.9:1 on --bg) */
+  --text-primary:   #F1EBDF;
+  --text-bright:    #FBF6EC;
+  --text-secondary: #D8CFC0;
+  --text-tertiary:  #C9BCA6;
+  --text-muted:     #A1957F;
+  --text-faint:     #736959;
+  --text-faint-2:   #8A8070;
+
+  /* Accent: the dark theme carries the original signature mint (keyed to the
+     TN_Port_Logo wordmark's native color), not the light theme's terracotta —
+     each theme owns its own accent hue. --accent 11.9:1, --accent-text 15:1
+     on --bg. Because the two themes no longer share a hue, the Outcome band,
+     selection, and status glow below all need mint overrides too. */
+  --accent:      oklch(0.81 0.084 179);  /* fallback #83D4C3 — signature mint */
+  --accent-text: oklch(0.91 0.097 179);  /* fallback #97F8E4 */
+  --accent-hex:        #83D4C3;
+  --accent-text-hex:   #97F8E4;
+
+  /* Outcome band — mint (the dark theme's own hue at mid lightness) */
+  --band-bg:       oklch(0.62 0.09 179); /* fallback #3D9887 */
+  --band-text:     #0E1416;              /* near-black ink in the accent's hue family */
+  --band-card:     rgba(14, 20, 22, 0.85);
+  --band-hairline: rgba(14, 20, 22, 0.2);
+
+  /* Lines: paper-alpha instead of ink-alpha */
+  --border:        rgba(241, 235, 223, 0.12);
+  --border-bright: rgba(241, 235, 223, 0.26);
+  --hairline:      rgba(241, 235, 223, 0.08);
+  --hairline-2:    rgba(241, 235, 223, 0.16);
+  --rule-strong:   #F1EBDF;
+
+  /* Header scrims: dark page bg at opacity */
+  --scrim-0:      rgba(21, 18, 13, 0);
+  --scrim:        rgba(21, 18, 13, 0.82);
+  --scrim-strong: rgba(21, 18, 13, 0.92);
+
+  /* Selection */
+  --selection-bg:   #83D4C3;
+  --selection-text: #0E1416;
+
+  /* Elevation: deeper cast on the dark ground */
   --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
-  --shadow-ambient-hover: 0 8px 32px rgba(0, 0, 0, 0.32);
+  --shadow-ambient-hover: 0 10px 34px rgba(0, 0, 0, 0.34);
+
+  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* mint glow reads on dark */
 }
 
 /* ---------- Global base (apply once, e.g. in globals.css) ---------- */
@@ -118,7 +206,7 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-optical-sizing: auto; /* Bricolage carries a 12-96 opsz axis */
+  font-optical-sizing: auto; /* no-op for the current families; harmless if a future variable font carries an opsz axis */
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
 }
