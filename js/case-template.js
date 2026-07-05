@@ -123,16 +123,26 @@
 
   function ChallengeBlock(item, idx) {
     var isEven = idx % 2 === 0;
-    var hasImage = item.image && item.image.src;
-    var media = hasImage
-      ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
-      : '';
+    var hasImages = !!(item.images && item.images.length);
+    var hasImage = hasImages || !!(item.image && item.image.src);
+    var media = hasImages
+      ? '<div class="cs-challenge__media cs-challenge__media--row">' +
+          item.images.map(function (img) { return C.ImageSlot(img); }).join('') +
+        '</div>'
+      : hasImage
+        ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
+        : '';
     var impact = item.impact
       ? '<p class="cs-decision"><strong class="cs-decision__label">Impact · </strong>' + esc(item.impact) + '</p>'
       : '';
+    var innerModifier = hasImages
+      ? ' cs-challenge__inner--below'
+      : hasImage
+        ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right')
+        : ' cs-challenge__inner--solo';
     return (
       '<div class="cs-challenge" data-reveal>' +
-        '<div class="cs-challenge__inner' + (hasImage ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right') : ' cs-challenge__inner--solo') + '">' +
+        '<div class="cs-challenge__inner' + innerModifier + '">' +
           '<div class="cs-challenge__text">' +
             '<span class="cs-challenge__label">' + esc('Challenge ' + item.number) + '</span>' +
             '<h3 class="cs-challenge__headline">' + esc(item.headline) + '</h3>' +

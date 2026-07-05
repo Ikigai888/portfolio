@@ -157,11 +157,11 @@ window.CaseContent = {
       label: 'Context',
       headline: 'Why this project existed',
       body: [
-        'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts — every reset was friction at the exact moment someone wanted to engage with the brand.',
-        'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped — people had to be convinced it was safe, at the exact moment they were least patient.',
+        'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts. Every reset was friction at the exact moment someone wanted to engage with the brand.',
+        'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped. People had to be convinced it was safe, at the exact moment they were least patient.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 490, alt: 'Three member personas — Sentiment & Efficiency, Product Education & Confidence, and Confidence — summarizing research going into the passkey rollout', caption: 'Member research — three primary personas' },
+        { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Passkey onboarding prompt on desktop and mobile, reading “The fastest, most secure way to sign in,” with Create a passkey now and Maybe later options', caption: 'The passkey introduction — desktop and mobile' },
       ],
     },
 
@@ -169,32 +169,35 @@ window.CaseContent = {
       number: '03',
       label: 'Challenges',
       intro: 'Three questions that shaped the design',
-      body: 'The design problems weren’t about screens — they were about trust, timing, and clarity at moments of friction.',
+      body: 'The design problems weren’t about screens; they were about trust, timing, and clarity at moments of friction.',
       items: [
         {
           number: 1,
           headline: 'Introducing something unfamiliar without creating anxiety',
-          body: 'Passkeys are safer and faster than passwords, but most people had never heard of them. Introducing a new mechanism at login — the highest-stakes moment in the experience — risked abandonment.',
+          body: 'Passkeys are safer and faster than passwords, but most people had never heard of them. Login is the highest-stakes moment in the experience, so introducing a new mechanism there risked abandonment.',
           options: 'silent rollout; opt-in prompt; explained introduction with progressive disclosure.',
-          decision: 'A contextual introduction that explains what’s happening and why before asking anything — earning trust before requesting action.',
+          decision: 'A contextual introduction that explains what’s happening and why before asking anything, so trust is earned before any action is requested.',
           image: { src: 'images/case-studies/passkeys-introduction.png', w: 1439, h: 1081, alt: 'lululemon sign-in screen with a "Use a Passkey" option and Face ID prompt', caption: 'Passkey introduction flow' },
         },
         {
           number: 2,
           headline: 'Designing for people who don’t fully understand biometrics',
-          body: 'Face ID and Touch ID are familiar, but their relationship to account security isn’t. Many customers assumed biometrics replaced their password — not that they were the key.',
+          body: 'Face ID and Touch ID are familiar, but their relationship to account security isn’t. Many customers assumed biometrics replaced their password, when in fact biometrics were the key itself.',
           options: 'technical explanation; metaphor-first framing; show-don’t-tell interaction.',
-          decision: 'A progressive disclosure pattern that shows the mechanism in action before explaining it — letting the experience teach rather than the copy.',
-          image: { src: 'images/case-studies/passkeys-biometric-education.png', w: 1188, h: 819, alt: '"What is a Passkey?" education modal explaining Face ID and Touch ID security', caption: 'Biometric trust model' },
+          decision: 'A progressive disclosure pattern that shows the mechanism in action before explaining it, so the experience teaches rather than the copy.',
+          image: { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Face ID passkey setup showing the “Use Face ID to sign in?” system prompt, followed by a “passkey created” confirmation', caption: 'Face ID setup — the mechanism in action' },
         },
         {
           number: 3,
           headline: 'Keeping the fallback from becoming the default',
           body: 'If the passkey flow felt uncertain, customers would retreat to passwords. The fallback had to exist without advertising itself as the safer choice.',
           options: 'hide the fallback; deprioritize it visually; make it available but secondary.',
-          decision: 'A visually secondary fallback that is discoverable but doesn’t compete — making passkeys feel like the obvious path without removing the escape hatch.',
-          image: { src: 'images/case-studies/passkeys-management-security.png', w: 1168, h: 1034, alt: 'Account security settings showing passkeys alongside password manager fallback options', caption: 'Fallback flow design' },
+          decision: 'A visually secondary fallback that is discoverable but doesn’t compete, so passkeys feel like the obvious path without removing the escape hatch.',
           impact: 'The management and security controls weren’t on the roadmap. I surfaced the need through research and conversations with the dev team, built the case for it, and got cross-functional and leadership buy-in to ship create, remove, and manage controls.',
+          images: [
+            { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
+            { src: 'images/case-studies/passkeys-management-security.png', w: 1168, h: 1034, alt: 'Account security settings screen showing passkeys managed alongside the password fallback option', caption: 'Manage controls — create, remove, and fall back' },
+          ],
         },
       ],
     },
@@ -204,8 +207,11 @@ window.CaseContent = {
       label: 'Exploration',
       headline: 'Mapping the trust curve',
       body: [
-        'I mapped the emotional journey from first encounter to confident use — identifying every moment where trust could be gained or lost. This let me prioritize which screens needed the most design attention and where copy was carrying more weight than the interaction.',
-        'Rapid prototyping let me test the introduction flow with the team before investing in high fidelity. The early rounds surfaced that the animation sequence mattered as much as the copy — people understood passkeys better when they saw the device interaction before reading about it.',
+        'I mapped the emotional journey from first encounter to confident use, identifying every moment where trust could be gained or lost. This let me prioritize which screens needed the most design attention and where copy was carrying more weight than the interaction.',
+        'Rapid prototyping let me test the introduction flow with the team before investing in high fidelity. The early rounds surfaced that the animation sequence mattered as much as the copy: people understood passkeys better when they saw the device interaction before reading about it.',
+      ],
+      images: [
+        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 490, alt: 'Three member personas (Sentiment & Efficiency, Product Education & Confidence, and Confidence) summarizing the research that shaped who we tested with', caption: 'Member research — who we tested with' },
       ],
     },
 
@@ -215,12 +221,9 @@ window.CaseContent = {
       headline: 'Testing the trust model',
       body: [
         'I ran usability sessions focused on the moments of highest uncertainty: the initial introduction, the first-time setup, and recovery when something went wrong. Participants ranged from tech-comfortable to tech-avoidant.',
-        'The sessions confirmed the progressive disclosure approach — participants who saw the interaction before the explanation consistently rated their confidence higher. They also surfaced a gap: customers needed reassurance that their old password still worked as a backup.',
+        'The sessions confirmed the progressive disclosure approach. Participants who saw the interaction before the explanation consistently rated their confidence higher. They also surfaced a gap: customers needed reassurance that their old password still worked as a backup.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-signin-hero.png', w: 1680, h: 1243, alt: 'lululemon x Peloton co-branded sign-in and create-account screen used in usability sessions', caption: 'Create-account screen used in testing' },
-        { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Animated walkthrough of the passkey onboarding prompt on desktop and mobile', caption: 'Onboarding prompt — full flow' },
-        { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Animated walkthrough of the Face ID setup and passkey confirmation screens', caption: 'Face ID setup — full flow' },
         { src: 'images/case-studies/passkeys-login-movie.mp4', poster: 'images/case-studies/passkeys-login-movie-poster.jpg', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login — full flow' },
       ],
       quote: { text: 'Sometimes it will forget what my password is, I have to type in my e-mail and send a link which I don’t like because then I have to exit and wait for the e-mail.', attribution: '— usability session participant' },
@@ -233,7 +236,7 @@ window.CaseContent = {
       body: 'Passkeys shipped across app, web, and in-store. The pattern established for this feature became the foundation for introducing other unfamiliar capabilities to a consumer audience.',
       impacts: [
         { label: '90% fewer password resets', desc: 'Removed the single biggest source of failed logins and support contacts, reframing authentication from a security checkbox into a trust-building moment.' },
-        { label: 'Zero security breaches via phishing', desc: 'Passkeys removed the credential-phishing attack surface entirely — a security outcome, not just a UX one.' },
+        { label: 'Zero security breaches via phishing', desc: 'Passkeys removed the credential-phishing attack surface entirely, a security outcome as much as a UX one.' },
         { label: 'Cross-surface delivery', desc: 'Passkey sign-in delivered across app, web, and in-store with a consistent, reusable pattern the team applied to subsequent work.' },
       ],
     },
@@ -243,7 +246,7 @@ window.CaseContent = {
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'Authentication design is really trust design. The challenge wasn’t getting the interaction right — it was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon.',
+        'Authentication design is really trust design. The real challenge was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon, not simply getting the interaction right.',
         'I came in expecting to design a faster login. What shipped was closer to a method: a repeatable way to introduce something unfamiliar to people who have every reason to be cautious.',
       ],
     },
