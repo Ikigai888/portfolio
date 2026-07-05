@@ -503,6 +503,23 @@
   transition: opacity var(--hover-color-dur);
 }
 .case-header__subnav.has-more::after { opacity: 1; }
+/* Chevron over the scrim: the fade alone reads as a soft vignette (it tints
+   toward the header's own tone), not an unambiguous "more tabs" cue. */
+.case-header__subnav::before {
+  content: '\2192';
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  z-index: 1;
+  transform: translate(6px, -50%);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--hover-color-dur), transform var(--hover-dur);
+}
+.case-header__subnav.has-more::before { opacity: 1; transform: translate(0, -50%); }
 
 /* ---------- Back-to-top: quick exit on a long single-scroll page ---------- */
 .cs-back-to-top {
