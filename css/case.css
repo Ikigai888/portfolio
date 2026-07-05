@@ -472,6 +472,12 @@
 .cs-back-to-top:hover { color: var(--text-primary); }
 .cs-back-to-top__arrow { color: var(--accent-text); transition: transform var(--hover-dur); }
 .cs-back-to-top:hover .cs-back-to-top__arrow { transform: translateY(-2px); }
+/* Over the Outcome band the muted ink + accent arrow drop below 3:1; switch to
+   band ink, mirroring the footer's focus-ring fix on the same accent field. */
+.cs-back-to-top.is-on-band,
+.cs-back-to-top.is-on-band:hover { color: var(--band-text); }
+.cs-back-to-top.is-on-band .cs-back-to-top__arrow { color: var(--band-text); }
+.cs-back-to-top.is-on-band:focus-visible { outline-color: var(--band-text); }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

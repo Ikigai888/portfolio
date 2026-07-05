@@ -170,8 +170,12 @@ window.Components = (function () {
     }
     const dims = w && h ? ` width="${w}" height="${h}"` : '';
     const posterAttr = poster ? ` poster="${esc(poster)}"` : '';
+    /* autoplay is gated client-side (data-autoplay, see initAutoplayVideos in
+       case-template.js) rather than the static attribute, so a
+       prefers-reduced-motion visitor lands on the poster frame and never sees
+       the clip start moving. */
     const media = /\.(mp4|webm)$/i.test(src)
-      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
+      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
     /* frame: true wraps light-background artifacts (diagrams, exports from
        external tools) in a white card so they read as a held artifact rather

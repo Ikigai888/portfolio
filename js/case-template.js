@@ -295,10 +295,31 @@
   function initBackToTop() {
     var link = document.querySelector('.cs-back-to-top');
     if (!link) return;
+    var band = document.getElementById('cs-outcome');
     var threshold = window.innerHeight * 0.8;
-    function update() { link.classList.toggle('is-visible', window.scrollY > threshold); }
+    // The band is the one section the fixed control overlaps; swap to band ink
+    // while it sits behind the control so the label clears contrast.
+    function overBand() {
+      if (!band) return false;
+      var c = link.getBoundingClientRect();
+      var b = band.getBoundingClientRect();
+      return b.top < c.bottom && b.bottom > c.top;
+    }
+    function update() {
+      link.classList.toggle('is-visible', window.scrollY > threshold);
+      link.classList.toggle('is-on-band', overBand());
+    }
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', function () { threshold = window.innerHeight * 0.8; update(); });
     update();
+  }
+
+  /* ---- Autoplay video: gated on reduced-motion, poster frame is the fallback ---- */
+  function initAutoplayVideos() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('video[data-autoplay]').forEach(function (v) {
+      v.play().catch(function () {});
+    });
   }
 
   /* ---- Reveal utility (same as homepage) ---- */
@@ -333,6 +354,15 @@
     scroller.addEventListener('scroll', updateFade, { passive: true });
     window.addEventListener('resize', updateFade);
     updateFade();
+
+    // Scrollspy nudges the scroller to a later tab; when the reader returns to
+    // the top, resync it to the first tab so the current section stays in view.
+    window.addEventListener('scroll', function () {
+      if (window.scrollY < window.innerHeight * 0.5 && scroller.scrollLeft !== 0) {
+        scroller.scrollLeft = 0;
+        updateFade();
+      }
+    }, { passive: true });
 
     if (!('IntersectionObserver' in window)) return;
     var linkFor = {};
@@ -391,6 +421,7 @@
     initReveal();
     initSubnav();
     initBackToTop();
+    initAutoplayVideos();
     C.initThemeToggle();
   }
 
