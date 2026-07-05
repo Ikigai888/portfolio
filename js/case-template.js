@@ -49,7 +49,8 @@
             '<span aria-hidden="true">&larr;</span> Tad Natsuhara' +
           '</a>' +
           '<span class="case-header__cluster">' +
-            '<span class="case-header__tag">' + Eyebrow('Case Study') + ' &middot; ' +
+            '<span class="case-header__tag">' +
+              '<span class="case-header__tag-label">' + Eyebrow('Case Study') + ' &middot; </span>' +
               '<span class="case-header__client">' + esc(d.meta.client) + '</span>' +
             '</span>' +
             C.ThemeToggle() +

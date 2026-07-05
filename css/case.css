@@ -30,6 +30,7 @@
   gap: 8px;
   padding-block: 13px;   /* 44px tap box */
   margin-block: -13px;
+  white-space: nowrap;
   transition: color var(--hover-color-dur);
 }
 .case-header__back:hover { color: var(--text-primary); }
@@ -446,6 +447,10 @@
      which strands the separator dot at the start of the wrapped line. */
   .cs-summary__theme { flex-basis: 100%; }
   .cs-summary__sep { display: none; }
+  /* The back link's own name always wins the top row; drop the redundant
+     "Case Study ·" label and the toggle's text so "Tad Natsuhara" never wraps. */
+  .case-header__tag-label { display: none; }
+  .case-header .theme-toggle__label { display: none; }
 }
 
 /* ---------- Subnav scrollspy + overflow fade ---------- */
