@@ -136,9 +136,9 @@
             '<span class="cs-challenge__label">' + esc('Challenge ' + item.number) + '</span>' +
             '<h3 class="cs-challenge__headline">' + esc(item.headline) + '</h3>' +
             '<p class="cs-body">' + esc(item.body) + '</p>' +
-            '<p class="cs-options">' + esc(item.options) + '</p>' +
             '<p class="cs-decision"><strong class="cs-decision__label">Decision · </strong>' + esc(item.decision) + '</p>' +
             impact +
+            '<p class="cs-options"><strong class="cs-options__label">Options considered</strong>' + esc(item.options) + '</p>' +
           '</div>' +
           media +
         '</div>' +
@@ -167,8 +167,13 @@
   }
 
   function AiSection(ai) {
-    var paras = ai.body.map(function (p) {
-      return '<p class="cs-body">' + esc(p) + '</p>';
+    var hasImages = !!(ai.images && ai.images.length) || !!(ai.image && ai.image.src);
+    // No supporting artifact for this beat: give the closing line the
+    // homepage's Statement scale so the quiet section reads as a considered
+    // pause between image-heavy sections, not a gap where an image is missing.
+    var paras = ai.body.map(function (p, i) {
+      var isClosingStatement = !hasImages && i === ai.body.length - 1;
+      return '<p class="' + (isClosingStatement ? 'statement cs-exploration-statement' : 'cs-body') + '">' + esc(p) + '</p>';
     }).join('');
     return (
       '<section class="section cs-split-section" id="cs-' + slugify(ai.label) + '" data-reveal>' +
