@@ -91,7 +91,7 @@
   --fs-chip:      0.8125rem;
 
   /* ---------- Typography: tracking / leading ---------- */
-  --ls-display:   -0.02em; /* Fraunces display sits comfortably near 0 */
+  --ls-display:   -0.02em; /* Spectral display sits comfortably near 0 */
   --ls-section:   -0.018em;
   --ls-statement: -0.014em;
   --ls-eyebrow:    0.14em;  /* wide-tracked terracotta labels, per the mockup */
@@ -133,7 +133,7 @@
    header toggle (persisted in localStorage; prefers-color-scheme:
    dark is the first-visit trigger). The editorial LIGHT theme above
    is the canonical design; this is its dark counterpart: the SAME
-   Fraunces/Inter type and the SAME layouts. The two themes carry
+   Spectral/Hanken type and the SAME layouts. The two themes carry
    DIFFERENT accent hues by design — light is terracotta, dark is the
    original signature mint (keyed to the wordmark's native color). So
    beyond surfaces/ink/lines/scrims/shadows, the accent, Outcome band,
@@ -206,7 +206,7 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-optical-sizing: auto; /* Bricolage carries a 12-96 opsz axis */
+  font-optical-sizing: auto; /* no-op for the current families; harmless if a future variable font carries an opsz axis */
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
 }
