@@ -117,7 +117,7 @@ window.Components = (function () {
   const SiteHeader = ({ name, nav }) => `
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
+        <a class="site-header__name" href="#top">${esc(name)}</a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
             ${(nav || []).map(function (i) {

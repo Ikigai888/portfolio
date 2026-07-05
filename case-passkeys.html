@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <script>
     document.documentElement.className += ' js';
-    /* Theme before first paint: saved choice, else OS preference, else dark. */
+    /* Theme before first paint: saved choice, else OS preference, else light
+       (light is the canonical editorial default; :root holds the light tokens). */
     (function () {
       var t; try { t = localStorage.getItem('theme'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
       document.documentElement.setAttribute('data-theme', t);
     })();
@@ -16,13 +17,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Passwordless Authentication — lululemon · Tad Natsuhara</title>
   <meta name="description" content="Earning customer trust for passkey sign-in at lululemon — an unfamiliar authentication method introduced across app, web, and in-store. Case study by Tad Natsuhara." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2315120D'/%3E%3Ctext x='50' y='68' font-size='56' font-family='system-ui,sans-serif' font-weight='800' fill='%2397F8E4' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23B4542E'/%3E%3Ctext x='50' y='68' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23F4F0E8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/tokens.css?v=53" />
-  <link rel="stylesheet" href="css/components.css?v=53" />
-  <link rel="stylesheet" href="css/case.css?v=53" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css?v=54" />
+  <link rel="stylesheet" href="css/components.css?v=54" />
+  <link rel="stylesheet" href="css/case.css?v=54" />
 </head>
 <body>
   <div id="app"><!-- BUILD:START --><a class="skip-link" href="#content">Skip to content</a><header class="case-header"><div class="container case-header__top"><a class="case-header__back" href="index.html"><span aria-hidden="true">&larr;</span> Tad Natsuhara</a><span class="case-header__cluster"><span class="case-header__tag"><span class="eyebrow">Case Study</span> &middot; <span class="case-header__client">lululemon</span></span>
@@ -43,9 +44,9 @@
     </div>
   </noscript>
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/components.js?v=53"></script>
-  <script src="js/case-content.js?v=53"></script>
-  <script src="js/case-template.js?v=53"></script>
+  <script src="js/components.js?v=54"></script>
+  <script src="js/case-content.js?v=54"></script>
+  <script src="js/case-template.js?v=54"></script>
   <script>CaseTemplate.render('passkeys');</script>
 </body>
 </html>

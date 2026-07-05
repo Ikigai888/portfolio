@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <script>
     document.documentElement.className += ' js';
-    /* Theme before first paint: saved choice, else OS preference, else dark. */
+    /* Theme before first paint: saved choice, else OS preference, else light
+       (light is the canonical editorial default; :root holds the light tokens). */
     (function () {
       var t; try { t = localStorage.getItem('theme'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
       document.documentElement.setAttribute('data-theme', t);
     })();
@@ -28,17 +29,17 @@
   <meta name="twitter:description" content="I design products that simplify complex systems. Case studies with MoxiWorks, lululemon, and SAP Concur." />
   <meta name="twitter:image" content="https://ikigai888.github.io/portfolio/images/portrait.jpg" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2315120D'/%3E%3Ctext x='50' y='68' font-size='56' font-family='system-ui,sans-serif' font-weight='800' fill='%2397F8E4' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23B4542E'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23F4F0E8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
 
-  <!-- Bricolage Grotesque, weights 400–800 (build-spec §0) -->
+  <!-- Fraunces (display serif, optical sizing) + Inter (body/nav sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=53" />
+  <link rel="stylesheet" href="css/tokens.css?v=54" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=53" />
+  <link rel="stylesheet" href="css/components.css?v=54" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -48,7 +49,7 @@
   <div id="app"><!-- BUILD:START --><a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
+        <a class="site-header__name" href="#top">Tad Natsuhara</a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
             <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
@@ -69,7 +70,7 @@
       </div>
     </header><main id="content">
     <section class="section" id="top">
-      <div class="container"><div data-reveal><div class="hero__badge"><span class="pill">Senior Product Designer</span><span class="hero__meta">Vancouver, BC · Open to Senior / Lead / Staff roles</span></div><h1 class="hero__headline"><span class="hero__line">Complexity is inevitable.</span><span class="hero__line hero__line--accent">Confusion isn’t.</span></h1><div class="hero__subtext"><p class="hero__lead">Nobody should need a manual for the tools they use every day. I design so they don’t.</p></div></div></div>
+      <div class="container"><div data-reveal><div class="hero"><div class="hero__text"><p class="eyebrow hero__eyebrow">Senior Product Designer — Vancouver, BC</p><h1 class="hero__headline"><span class="hero__line">Complexity is inevitable.</span><span class="hero__line hero__line--accent">Confusion isn’t.</span></h1><p class="hero__lead">Nobody should need a manual for the tools they use every day. I design so they don’t — for teams at MoxiWorks, lululemon, and SAP Concur.</p><a class="hero__cta" href="#work">View selected work <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a></div><figure class="hero__portrait"><img src="images/portrait.jpg" alt="Tad Natsuhara" width="1230" height="1600" /></figure></div></div></div>
     </section>
     <section class="section">
       <div class="container"><div data-reveal>
@@ -154,7 +155,7 @@
       <div class="container"><div data-reveal>
     <div class="split split--approach">
       <div class="split__label"><h2 class="eyebrow">How I Work</h2></div>
-      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by organizing complexity into systems people can understand.</p><div class="principle-grid">
+      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <strong class="emph">organizing complexity</strong> into systems people can understand.</p><div class="principle-grid">
     <div class="principle">
       <span class="principle__num">01</span>
       <div class="principle__text">
@@ -186,7 +187,7 @@
     </div></div></div>
     </section>
     <section class="section" id="about">
-      <div class="container"><div data-reveal><div class="split split--about"><div class="split__label about__media"><img class="portrait__img" src="images/portrait.jpg" alt="Tad Natsuhara" width="1230" height="1600" loading="lazy" /><p class="about__name"><span class="about__dot" aria-hidden="true"></span>Tad Natsuhara — Vancouver, BC</p></div><div class="split__content"><h2 class="eyebrow">About</h2><p class="statement about__statement">I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy solving the kinds of product problems that don’t have obvious answers.</p><p class="statement__body">I work closest to the hard middle of products — where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p></div></div></div></div>
+      <div class="container"><div data-reveal><div class="split split--about"><div class="split__label about__meta"><h2 class="eyebrow">About</h2><p class="about__name"><span class="about__dot" aria-hidden="true"></span>Tad Natsuhara — Vancouver, BC</p></div><div class="split__content"><p class="statement about__statement">I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy solving the kinds of product problems that <strong class="emph">don’t have obvious answers</strong>.</p><p class="statement__body">I work closest to the hard middle of products — where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p></div></div></div></div>
     </section></main>
     <footer class="site-footer section--footer" id="contact">
       <div class="container" data-reveal>
@@ -221,8 +222,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=53"></script>
-  <script src="js/components.js?v=53"></script>
-  <script src="js/app.js?v=53"></script>
+  <script src="js/content.js?v=54"></script>
+  <script src="js/components.js?v=54"></script>
+  <script src="js/app.js?v=54"></script>
 </body>
 </html>

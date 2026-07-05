@@ -94,7 +94,7 @@
   font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 
@@ -170,7 +170,7 @@
   font-size: var(--fs-section); /* page h1 must outrank the h2 section headlines */
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 .cs-summary__question {
@@ -239,7 +239,7 @@
   font-size: var(--fs-section-sm);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
 }
 .cs-options {
@@ -309,7 +309,7 @@
   font-size: var(--fs-section);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-serif);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--band-text);
 }
 .cs-outcome__body {

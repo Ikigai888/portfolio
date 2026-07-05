@@ -1,64 +1,65 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A warm near-black portfolio for a senior product designer, lit by a single accent — signature mint in dark theme, warm copper in light theme.
+description: A warm editorial portfolio for a senior product designer — paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by a single terracotta accent.
+theme-model: "light default (:root), dark sibling ([data-theme=\"dark\"])"
 colors:
-  bg: "#15120D"
-  bg-footer: "#0F0D09"
-  bg-card: "#1A1610"
-  bg-inset: "#26211A"
-  text-primary: "#F1EBDF"
-  text-bright: "#E7DFD2"
-  text-secondary: "#D8CFC0"
-  text-tertiary: "#C9BCA6"
-  text-muted: "#A1957F"
-  text-faint: "#736959"
-  text-faint-2: "#8A8070"
-  accent: "oklch(0.81 0.084 179)"
-  accent-text: "oklch(0.91 0.097 179)"
-  band-bg: "oklch(0.62 0.09 179)"
-  band-text: "#0E1416"
-  band-card: "rgba(14, 20, 22, 0.85)"
-  band-hairline: "rgba(14, 20, 22, 0.2)"
-  scrim: "rgba(21, 18, 13, 0.82)"
-  border: "rgba(241, 235, 223, 0.12)"
-  border-bright: "rgba(241, 235, 223, 0.26)"
-  hairline: "rgba(241, 235, 223, 0.08)"
-  hairline-2: "rgba(241, 235, 223, 0.16)"
-  rule-strong: "#F1EBDF"
+  # Light theme (canonical / default)
+  bg: "#F4F0E8"
+  bg-footer: "#EDE7DE"
+  bg-card: "#FBF8F1"
+  bg-inset: "#E9E1D2"
+  text-primary: "#241E13"
+  text-bright: "#17110A"
+  text-secondary: "#3D3524"
+  text-tertiary: "#554A33"
+  text-muted: "#6E6249"
+  text-faint: "#A79A80"
+  text-faint-2: "#675B42"
+  accent: "oklch(0.559 0.135 41.1)"       # #B4542E
+  accent-text: "oklch(0.515 0.137 40.8)"  # #A6461F
+  # Dark sibling accent
+  accent-dark: "oklch(0.714 0.12 46.8)"       # #E08A5F
+  accent-text-dark: "oklch(0.755 0.108 47.7)" # #E89A72
+  # Outcome band (theme-invariant terracotta)
+  band-bg: "oklch(0.621 0.13 45.2)"       # #C56A3E
+  band-text: "#2A140A"
+  band-card: "rgba(26, 13, 6, 0.86)"
+  band-card-text: "#F6EFE4"
+  band-hairline: "rgba(26, 13, 6, 0.2)"
 typography:
   display:
-    fontFamily: "Alegreya, Georgia, serif"
-    fontSize: "clamp(40px, 8.4vw, 112px)"
-    fontWeight: 800
-    lineHeight: 0.94
-    letterSpacing: "-0.012em"
+    fontFamily: "Fraunces, Georgia, serif"
+    fontSize: "clamp(44px, 6vw, 88px)"
+    fontWeight: 500
+    lineHeight: 0.98
+    letterSpacing: "-0.02em"
   section:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(30px, 4vw, 54px)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    fontFamily: "Fraunces, Georgia, serif"
+    fontSize: "clamp(30px, 4vw, 52px)"
+    fontWeight: 500
+    lineHeight: 1.08
+    letterSpacing: "-0.018em"
   statement:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(24px, 3.1vw, 44px)"
-    fontWeight: 600
-    lineHeight: 1.1
-    letterSpacing: "-0.025em"
+    fontFamily: "Fraunces, Georgia, serif"
+    fontSize: "clamp(26px, 3.1vw, 44px)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.014em"
   lead:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "clamp(17px, 1.6vw, 21px)"
     fontWeight: 400
     lineHeight: 1.6
   body:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.6
   eyebrow:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "12px"
-    fontWeight: 600
-    letterSpacing: "0.10em"
+    fontWeight: 700
+    letterSpacing: "0.14em"
 rounded:
   card: "14px"
   feature: "20px"
@@ -85,140 +86,147 @@ components:
   case-card:
     backgroundColor: "{colors.bg-card}"
     rounded: "{rounded.feature}"
-  case-card-hover:
-    backgroundColor: "{colors.bg-card}"
 ---
 
 # Design System: Tad Natsuhara Portfolio
 
 ## 1. Overview
 
-**Creative North Star: "The Quiet Confidence"**
+**Creative North Star: "Editorial Restraint"**
 
-A warm near-black canvas (#15120D) holds the page; one accent is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It is the visual register of a senior designer presenting to other senior people: no flourish, no second accent fighting for attention, no decoration that doesn't serve hierarchy.
+Warm paper (`#F4F0E8`) holds the page; a high-contrast serif carries every headline like a magazine feature; one terracotta accent is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight warm-ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy.
 
-This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no stock-photo sheen. Where a typical SaaS landing page reaches for a gradient to feel "modern," this system reaches for restraint and a single confident hue instead.
+This is the *editorial* iteration (adopted Jul 2026 from the "Editorial Homepage" redesign). It replaces the earlier dark-default, mint/copper, Alegreya-Bricolage system. The content and information architecture are unchanged; the visual language is new.
+
+This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Warmth is carried by the paper ground, the serif, and the terracotta — never by a tinted-near-white body that reads as "AI beige."
 
 **Key Characteristics:**
-- One accent color at a time — signature mint in the dark theme (the default), warm copper in the light theme — never diluted with a second hue on the same screen
-- Warm near-black base instead of true black or cool gray
-- A serif/grotesque type pairing on a real contrast axis — Alegreya (calligraphic serif, echoing the hand-lettered wordmark) for display, Bricolage Grotesque for body and UI
-- Flat-by-default surfaces with tonal layering, accented by soft ambient shadows for depth
-- Display type goes large and tight (low line-height) while body copy stays generous and readable
-- Borders + soft shadow do the "this is interactive" signaling on hover, not color shifts
-- Progressive enhancement: content is JS-rendered but reveals are gated on `html.js` so the page paints without JS, a real-content `<noscript>` fallback ships, and all motion respects `prefers-reduced-motion`
+- **Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme="dark"]` is its dark counterpart — same type, same layouts, same single accent lifted for the dark ground. First visit follows OS preference, else light.
+- **One terracotta accent**, the same hue in both themes (deepened for paper, lifted for dark) — never a second saturated color on screen.
+- **Serif display / sans body on a real contrast axis** — Fraunces (variable, high-contrast display serif; optical sizing drives its thick/thin) for every headline, statement, numeral, and the footer CTA; Inter for body, nav, labels, and the wordmark.
+- **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Fraunces italic rather than bolded.
+- Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.
+- Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on `html.js`, a real `<noscript>` fallback ships, and all motion respects `prefers-reduced-motion`.
 
 ## 2. Colors
 
-The palette is built from one warm-neutral surface ramp, one warm-neutral text ramp, and exactly one accent hue per theme. Nothing else competes with the accent.
+One warm surface ramp, one warm-ink text ramp, and exactly one accent hue — terracotta — carried across both themes. Nothing else competes with the accent.
 
-### Primary (Dark Theme — Signature Mint)
-- **Signature Mint** (`oklch(0.81 0.084 179)` / `#83D4C3`): The dark theme's accent, keyed to the TN_Port_Logo wordmark as drawn (the asset's native color — no filter needed here). Used for the senior-title pill fill, accent headline lines, link/number emphasis, and focus glow. Appears on a small minority of any given screen — its rarity is what makes it land.
-- **Signature Mint, Text Variant** (`oklch(0.91 0.097 179)` / `#97F8E4`): Brighter sibling (also the wordmark's rendered color) used specifically for accent text on dark backgrounds (hero accent line, case-card numerals) where the solid-fill version would be too dim to read. 15.0:1 on `--bg`.
+### The Accent — Terracotta (both themes)
+The single identity color, sampled from the redesign mockup. It is the **same hue** in both themes, tuned to its ground rather than swapped for a different hue:
+- **Light — accent** `oklch(0.559 0.135 41.1)` / `#B4542E`: solid fills, the large italic display accent, the status dot, arrows, focus ring, skip-link.
+- **Light — accent-text** `oklch(0.515 0.137 40.8)` / `#A6461F`: the slightly deeper terracotta for *small* accent type (eyebrows, serif numerals, inline links) — 5.25:1 on `--bg`, clears AA where the brighter fill would not.
+- **Dark — accent** `oklch(0.714 0.12 46.8)` / `#E08A5F`: the same hue lifted to read on near-black — 7.1:1 on the dark `--bg`.
+- **Dark — accent-text** `oklch(0.755 0.108 47.7)` / `#E89A72`: 8.3:1 on the dark `--bg`.
 
-### Light Theme Accent — Warm Copper
-The light theme (`[data-theme="light"]` in `tokens.css`) doesn't reuse the mint at a different lightness — it carries its **own accent hue**, a warm copper/terracotta (oklch hue 45, chosen over straight orange ~60, a reflex default, to sit apart from the warm-neutral ramp's own hue and a semantic-warning read). Each theme owns its identity rather than one hue serving both:
-- **accent**: `oklch(0.60 0.15 45)` / `#C65D26` — pill/fill contexts.
-- **accent-text**: `oklch(0.46 0.155 45)` / `#913900` — used as text color; 6.75:1 on the light `--bg`.
-- The wordmark PNG (drawn in mint) is retargeted to this copper via a CSS `hue-rotate`/`saturate`/`brightness` filter scoped to `[data-theme="light"]` — it's a single-hue asset (solid color, alpha-only anti-aliasing), so the filter carries it cleanly without a re-export. The dark theme applies no filter, since the asset already matches its accent.
-- Because the two themes don't share a hue, every other accent-hued token (Outcome band, selection, focus glow) also needs a per-theme value rather than living once in `:root` — see below.
+The mint/copper split of the prior system is retired: there is now one hue, one identity, across the whole site.
 
-### Neutral
-- **Warm Pitch** (`#15120D`): Page background. Warm near-black, not true black — keeps the page from feeling cold or clinical.
-- **Deepest Brown** (`#0F0D09`): Footer / contact section background, the deepest surface in the ramp, used to signal "you've reached the end."
-- **Card Brown** (`#1A1610`): Card and case-study container background, one tonal step above page background.
-- **Inset Brown** (`#26211A`): Image placeholder slots and capability chips — the lightest neutral surface, used for content that should read as "inset" or "contained."
-- **Warm Paper** (`#F1EBDF`): Primary text and most headings; also the 2px section-opener rule color at full opacity.
-- **Bright Paper** (`#E7DFD2`): Emphasized inline names and proper nouns within body copy.
-- **Secondary Paper** (`#D8CFC0`): Lead paragraph text — one step down in emphasis from headings.
-- **Tertiary Paper** (`#C9BCA6`): Supporting descriptive copy (case-card descriptions).
-- **Muted Paper** (`#A1957F`): Eyebrows, nav links, supporting copy at rest.
-- **Faint Paper** (`#736959`): Faint labels, the dimmest text that still needs to be legible.
-- **Faint Paper, Variant** (`#8A8070`): The dimmest text token in the system — copyright line and footer credits. (A near-black "Copyright Brown" tone was tried here but failed WCAG AA contrast against the footer background; this is the darkest tone that still clears 4.5:1.)
+### Surfaces & Ink — Light (default)
+- **Warm Paper** (`#F4F0E8`): page background. Warm, not a tinted near-white; the warmth is real, not "AI beige."
+- **Deeper Paper** (`#EDE7DE`): contact band / footer — the deepest surface, signalling "you've reached the end."
+- **Card Paper** (`#FBF8F1`): case-study cards, lifted toward white and carried by a soft shadow.
+- **Inset Paper** (`#E9E1D2`): image slots, chips, the summary card's evidence panel.
+- **Ink ramp** (on paper): primary `#241E13` (13.9:1) body & headings · bright `#17110A` wordmark & inline emphasis · secondary `#3D3524` (9.1:1) leads · tertiary `#554A33` · muted `#6E6249` (5.2:1) eyebrows/nav/support · faint `#A79A80` decorative only · faint-2 `#675B42` (4.6:1 on footer) copyright.
+
+### Surfaces & Ink — Dark (sibling)
+- **Surfaces**: bg `#15120D` · footer `#100D08` · card `#1B1710` · inset `#26211A` — warm near-black, stepped by tonal lift.
+- **Paper ramp** (on dark): primary `#F1EBDF` (14.8:1) · bright `#FBF6EC` · secondary `#D8CFC0` · tertiary `#C9BCA6` · muted `#A1957F` (5.9:1) · faint `#736959` decorative · faint-2 `#8A8070`.
 
 ### Inverted Band (case-study "Outcome" section)
-Unlike most of the palette, the band tracks each theme's own accent hue rather than staying invariant — since dark and light no longer share one hue, "the accent's own hue at mid lightness" means something different in each theme.
-- **Outcome Mint** (dark theme, `oklch(0.62 0.09 179)` / `#3D9887`) / **Outcome Copper** (light theme, `oklch(0.62 0.13 45)` / `#C56A3E`): Background for the inverted "Outcome" band. A deliberate polarity flip (dark ink on a saturated field) that marks "this is the result," distinct from the surrounding sections. Headline and body use that theme's **Outcome Ink** (`#0E1416` dark / `#180904` light — each a near-black in the same hue family as its theme's accent) directly on this field (5.1–5.3:1, clears AA for large text).
-- **Band Card** (`rgba(14, 20, 22, 0.85)` dark / `rgba(24, 9, 4, 0.85)` light): Impact cards sit *on* the band as dark ink-tinted surfaces carrying paper text (10.7–13.9:1) — a second polarity flip back to light-on-dark, so the metrics read as inset panels rather than more band. Card text uses **polarity-fixed** tokens (`--band-card-text`, `--band-card-text-2` — plain warm paper, not accent-hued), since this text just needs to read on a dark ink surface regardless of which ink or which theme.
-- **Band Hairline** (`rgba(14, 20, 22, 0.2)` dark / `rgba(24, 9, 4, 0.2)` light): 1px dividers between impact cards, painted as grid gaps over the band.
+The Outcome band is a self-contained saturated terracotta surface and is **theme-invariant** — defined once in `:root`, never overridden in the dark theme, so it looks identical in both (a single terracotta hue makes this possible again, where the prior two-hue system had to fork it).
+- **Band background** `oklch(0.621 0.13 45.2)` / `#C56A3E`. Headline and body sit directly on it in **Band Ink** `#2A140A` (4.58:1 — clears AA for the large serif headline and body).
+- **Band Card** `rgba(26, 13, 6, 0.86)`: impact cards sit *on* the band as dark ink surfaces carrying paper text — a second polarity flip so the metrics read as inset panels. Their text uses **polarity-fixed** tokens (`--band-card-text` `#F6EFE4`, `--band-card-text-2` `#DCD2C2`), never theme-varying, since the card is a dark surface in both themes.
+- **Band Hairline** `rgba(26, 13, 6, 0.2)`: dividers between impact cards.
 
 ### Named Rules
-**The One Accent Rule.** Each theme has exactly one saturated color — signature mint in dark, warm copper in light — never both on screen together, and never diluted with a second hue. If a new UI need calls for "another color," the answer is a neutral tone from the existing ramp, not a second hue.
+**The One Accent Rule.** Exactly one saturated color — terracotta — on any screen, the same hue in both themes. If a new UI need calls for "another color," the answer is a neutral from the ramp, not a second hue.
 
 ## 3. Typography
 
-**Display Font:** Alegreya (calligraphic serif, with Georgia fallback) — paired to the signature wordmark
-**Body Font:** Bricolage Grotesque (with system-ui, sans-serif fallback)
+**Display Font:** Fraunces (variable high-contrast serif; opsz 9–144, wght 400–600, roman + italic; Georgia fallback)
+**Body Font:** Inter (system-ui, sans-serif fallback)
 
-**Character:** A serif/grotesque pairing on a real contrast axis: Alegreya (drawn with calligraphic pen logic, echoing the signature wordmark) carries display roles — hero, statements, titles, the footer CTA — while Bricolage Grotesque carries body, UI, and labels across five weights. Serif roles use the looser --ls-serif tracking.
+**Character:** A serif/sans pairing on a real contrast axis. Fraunces carries every expressive role — hero, section headlines, statements, serif numerals, the footer CTA — with `font-optical-sizing: auto` driving its dramatic thick/thin contrast at large sizes (so display weight stays a light-ish **500** and the contrast comes from optical size, not heft). Inter carries body, nav, labels, and the wordmark across weights 400–700. Emphasis is done with **Fraunces italic**, not bolding.
 
 ### Hierarchy
-- **Display** (Alegreya, 800, `clamp(40px, 8.4vw, 112px)`, line-height 0.94, letter-spacing -0.012em / `--ls-serif`): Hero headline, big statements, statement codas, and the footer CTA — the serif carries every oversized moment. Tight leading makes large type feel compressed and intentional rather than sprawling.
-- **Section** (Bricolage, 700, `clamp(30px, 4vw, 54px)`, line-height 1.1, letter-spacing -0.03em): Case-card and case-study section headlines.
-- **Statement** (Bricolage, 600, `clamp(24px, 3.1vw, 44px)`, line-height 1.1–1.18): Mid-weight declarative statements. Note: the hero/footer "statement" moments render in Alegreya; the in-flow statement blocks use Bricolage.
-- **Lead** (Bricolage, 400, `clamp(17px, 1.6vw, 21px)`, line-height 1.6): Lead paragraphs directly under a headline; capped ≈62ch.
-- **Body** (Bricolage, 400, 16px, line-height 1.6): Default running copy.
-- **Eyebrow** (Bricolage, 600–700, 12px, letter-spacing 0.10em, uppercase): Section labels (as real `<h2>`s), nav links, case-card metadata.
+- **Display** (Fraunces, 500, `clamp(44px, 6vw, 88px)`, line-height 0.98, letter-spacing -0.02em): hero headline. Now sits in the *left column* of a two-column hero (portrait right), so it wraps to 2–3 lines by design. The accent line is Fraunces **italic** in terracotta.
+- **Section** (Fraunces, 500, `clamp(30px, 4vw, 52px)`, line-height 1.08): case-study section headlines, the case page H1, the footer "Say hello" CTA.
+- **Statement** (Fraunces, 500, `clamp(26px, 3.1vw, 44px)`, line-height 1.2): declarative statement blocks (What I Do, How I Work, About). Inline emphasis (company names, key phrases) is italic, same ink.
+- **Coda** (Fraunces, 500 **italic**, `--fs-coda`): the closing line under How I Work.
+- **Serif numerals** (Fraunces, 500, terracotta `--accent-text`): the 01/02/03 markers in numbered lists.
+- **Lead** (Inter, 400, `clamp(17px, 1.6vw, 21px)`, line-height 1.6): lead paragraphs; capped ≈46–65ch.
+- **Body** (Inter, 400, 16px, line-height 1.6): running copy.
+- **Eyebrow** (Inter, 700, 12px, letter-spacing 0.14em, uppercase): terracotta section labels, nav links (muted), case-card metadata.
 
 ### Named Rules
-**The Display Ceiling Rule.** Hero display type caps at **112px** (`7rem`), *not* 118px: at 118px the longest headline line ("Complexity is inevitable.") renders ~1183px and overflows the 1180px container by 3px, wrapping to two lines. 112px leaves ~57px of headroom. Paired with an `8.4vw` fluid term, the line stays single from ~500px up; phones wrap to 3 lines, which is intended. If the headline copy changes, re-derive both the cap and the vw term.
-**The Serif-For-Scale Rule.** Alegreya appears only at display scale (hero, statements, footer CTA). Body, UI, labels, and anything ≤ section size stay Bricolage. The two never trade roles.
+**The Serif-For-Scale Rule.** Fraunces appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, nav, and the wordmark stay Inter. The two never trade roles.
+**The Optical-Contrast Rule.** Big serif type gets its drama from optical sizing at weight ~500, not from bumping weight to 700/800. Keep display weights light; let `font-optical-sizing: auto` do the work.
+**The Italic-Emphasis Rule.** Lift a phrase with Fraunces italic in the same ink, not with bold or color (the accent line is the one exception — italic *and* terracotta).
 
 ## 4. Elevation
 
-The system is flat-by-default with tonal layering: depth is primarily conveyed by stepping through the neutral background ramp (Warm Pitch → Card Brown → Inset Brown) rather than by shadows, and interactive hover states brighten a border rather than lifting a shadow. On top of that base, a soft ambient shadow is used sparingly on card-level surfaces to add quiet depth at rest, deepening slightly on hover — never a hard drop-shadow, always a diffuse, low-contrast glow consistent with the system's restraint.
+Flat-by-default with tonal layering: depth comes from stepping the surface ramp and from a soft ambient shadow on card-level surfaces, deepening slightly on hover. Never a hard drop shadow.
 
 ### Shadow Vocabulary
-- **Ambient Rest** (`box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25)`): Default soft shadow under case-study cards and other card-level containers, anchoring them gently above the page background.
-- **Ambient Hover** (`box-shadow: 0 8px 32px rgba(0, 0, 0, 0.32)`): Slightly deeper, larger-radius shadow on hover, paired with the existing border-brightening transition — the two effects move together, not separately.
-- **Accent Glow** (`box-shadow: 0 0 10px oklch(0.81 0.084 179)` dark, `oklch(0.60 0.15 45)` light): Reserved for the live-status dot in the About section; the only shadow that carries color (that theme's accent), and only because it represents an active/live signal.
-- **Header scrim** (`--scrim: rgba(21, 18, 13, 0.82)` + 12px `backdrop-filter: blur`): the sticky header floats a translucent page-tinted scrim over content as it scrolls beneath. Not a shadow, but the same "depth by atmosphere, not hard edges" logic.
+- **Ambient Rest** — light: `0 4px 24px rgba(36, 30, 19, 0.10)` · dark: `0 4px 24px rgba(0, 0, 0, 0.25)`. Default under case-study cards.
+- **Ambient Hover** — light: `0 10px 34px rgba(36, 30, 19, 0.16)` · dark: `0 10px 34px rgba(0, 0, 0, 0.34)`. Paired with border-brightening on hover.
+- **Status Ring / Glow** — the About live-status dot. On paper a real glow disappears, so light uses a soft ring `0 0 0 4px rgba(180, 84, 46, 0.16)`; dark uses a true glow `0 0 10px rgba(224, 138, 95, 0.7)`.
+- **Header scrim** (`--scrim` page-tint at ~0.85 + 12px `backdrop-filter: blur`): the sticky header floats a translucent scrim over content — depth by atmosphere, not edges.
 
 ### Named Rules
-**The Diffuse-Not-Dark Rule.** Shadows stay low-opacity and large-radius (soft ambient glow), never small-radius/high-opacity "2014 app" drop shadows. If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.
+**The Diffuse-Not-Dark Rule.** Shadows stay low-opacity, large-radius. A visible hard edge means the radius is too small and the opacity too high.
 
 ## 5. Components
 
 ### Buttons / CTAs
-- **No boxed buttons.** The system has none. The primary call to action is the footer's oversized mailto link ("Say hello ↗") set in Alegreya at `clamp(2.5rem, 8.5vw, 8rem)` — the CTA *is* display type. On hover only the arrow shifts from `accent-text` to `accent`; the words don't change color.
-- **Case-card CTA** is inline text ("View case study →"), muted at rest, brightening to primary with a 4px arrow nudge on card hover.
-- **Only real `<button>`** is the mobile nav toggle (below). Everything else that acts is an `<a>`.
-- **Focus:** all links/buttons get a 2px `accent` outline at 3px offset, `--r-focus` (4px) corners.
+- **No boxed buttons.** The primary CTA is the footer's oversized `Say hello ↗` in Fraunces at `clamp(2.75rem, 8vw, 7rem)` — the CTA *is* display type; only the arrow shifts color on hover.
+- **Hero CTA** (`View selected work ↗`): an uppercase Inter link with a bottom hairline that brightens to terracotta on hover, the arrow nudging up-right.
+- **Case-card CTA**: inline `View case study →`, muted, brightening with a 4px arrow nudge on card hover.
+- **Only real `<button>`s** are the mobile nav toggle and the theme toggle. Everything else that acts is an `<a>`.
+- **Focus:** 2px `accent` outline, 3px offset, 4px corners.
 
 ### Chips / Pills
-- **Pill:** Solid accent fill (`--accent`), `band-text` (near-black) text, 700 weight, 7px/14px padding, full pill radius. Used for the single highest-status label per context (e.g. "Senior Product Designer").
-- **Chip:** Inset-brown background, tertiary-paper text, 500 weight, 7px/13px padding, full pill radius. Used for secondary metadata (capability tags, case-study tech chips) — visually quieter than the Pill so the two never compete.
+- **Pill:** solid `--accent` fill, `--band-text` ink, 700, full pill radius. Highest-status single label.
+- **Chip:** inset background, tertiary-ink text, 500. Secondary metadata — quieter than the Pill.
 
 ### Cards / Containers
-- **Corner Style:** Feature cards (case studies) use 20px radius; summary cards 18px; general cards 14px.
-- **Background:** Card Brown (`#1A1610`) at rest.
-- **Shadow Strategy:** Ambient Rest shadow at rest (see Elevation), deepening to Ambient Hover on hover, paired with border-color brightening from `border` to `border-bright`.
-- **Border:** 1px solid `border` at rest, brightening to `border-bright` on hover — the two-property hover effect (border + shadow) reinforces interactivity without changing layout.
-- **Internal Padding:** 48px vertical / 50px horizontal for case-card bodies.
+- **Corners:** feature 20px, summary 18px, general 14px.
+- **Background:** Card Paper (light) / Card (dark) at rest.
+- **Hover:** border `border` → `border-bright` + Ambient Rest → Ambient Hover, together.
+- **Case-card padding:** 48/50px body.
 
 ### Navigation
-- **Logo:** the hand-lettered **TN wordmark** (`images/TN_Port_Logo.png`, 32px tall) — a script mark that anchors the serif/calligraphic identity. It is an image, not text; its `alt` is the full name.
-- **Style:** sticky header over the `--scrim` translucent tint + 12px backdrop blur, 1px bottom hairline.
-- **Links:** uppercase eyebrow treatment (12px, 700, `0.10em` tracking) — muted at rest, brightening to primary on hover. Each link is padded to a 44px tap box (`padding-block: 15px; margin-block: -15px`).
-- **Mobile (≤600px):** the four links collapse behind a 44×44 hamburger toggle (`.site-header__toggle`, the system's only `<button>`) with `aria-expanded` / `aria-controls`; open state drops a full-width panel below the header.
+- **Wordmark:** a **text wordmark** — `Tad Natsuhara` in Inter 700, ink (`--text-bright`), tight tracking. (The prior single-hue PNG mark and its per-theme `hue-rotate` filter are retired; text is theme-correct for free and matches the mockup.)
+- **Style:** sticky header over the `--scrim` tint + 12px blur, 1px bottom hairline.
+- **Links:** uppercase eyebrow treatment (12px, 700, 0.14em), muted → primary on hover, 44px tap boxes.
+- **Theme toggle:** icon + eyebrow-style label naming the theme you'd switch *to* (moon/"Dark" while light, sun/"Light" while dark), keyed on `[data-theme]`. Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored.
+- **Mobile (≤600px):** nav links collapse behind a 44×44 hamburger; the theme toggle stays inline.
+
+### Hero (signature layout)
+A two-column grid (≈1.12fr / 0.88fr): left column is eyebrow → serif headline (with the italic terracotta accent line) → lead → CTA; right column is the **portrait** on a soft color block (the portrait moved here from About in the editorial redesign). Collapses to a single column (text then portrait, portrait capped at 420px) ≤900px.
 
 ### Case Study Card (signature component)
-A two-column grid (≈1.05fr / 0.95fr) pairing a compact text body against a real screenshot (or a labelled `image-slot` placeholder when no asset exists yet). **Distilled** (impeccable live, Jul 2026) down to four elements: an eyebrow row (accent-text number · bright-paper client · faint dot · theme), the `<h3>` title, an italic driving question, and the "View case study →" CTA — no description paragraph, no capability chips. The whole card is one `<a>`; at rest it carries the Ambient Rest shadow, on hover the border brightens and the shadow deepens together.
+A two-column `<a>` (≈1.05fr / 0.95fr): a compact text body (terracotta serif number · client · theme eyebrow, Fraunces `<h3>` title, italic driving question, `View case study →`) against a real screenshot. Kept as a **card** (a deliberate divergence from the mockup's open-row layout) so the work list stays scannable. Ambient Rest shadow at rest; border + shadow deepen together on hover.
+
+### What I Do — ledger rows
+The three "kinds of complexity" render as editorial ledger rows: Fraunces terracotta numeral | bold title | muted description, split by hairlines (not the stacked principle-grid used by How I Work). Collapses to stacked title/description ≤600px.
 
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep each theme's single accent — signature mint (`oklch(0.81 0.084 179)`, text variant `oklch(0.91 0.097 179)`) in dark, warm copper (`oklch(0.60 0.15 45)`, text variant `oklch(0.46 0.155 45)`) in light — as the only saturated color on any screen; everything else stays within the warm-neutral ramp. Don't let the two hues mix on one screen.
-- **Do** use the Ambient Rest / Ambient Hover shadow pair (`0 4px 24px rgba(0,0,0,0.25)` → `0 8px 32px rgba(0,0,0,0.32)`) for any new card-level surface, paired with the existing border-brightening hover.
-- **Do** step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.
-- **Do** cap hero display type at 112px (`7rem`) and keep its line-height tight (0.94) so large type reads as composed, not sprawling. Don't raise the cap — at 118px the longest line overflows the 1180px container.
-- **Do** keep the type system to the two committed families — Alegreya (calligraphic serif; display, statements, footer CTA) and Bricolage Grotesque (body, UI, labels). They pair on a real contrast axis (serif vs. grotesque).
+- **Do** keep terracotta the only saturated color — light `#B4542E` (text `#A6461F`), dark `#E08A5F` (text `#E89A72`) — one hue across both themes; everything else stays in the warm-neutral ramp.
+- **Do** carry every headline in Fraunces at weight ~500 and let `font-optical-sizing: auto` supply the contrast; emphasize phrases with Fraunces *italic*, not bold.
+- **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type, layouts, and single accent, only surfaces/ink/shadows inverting.
+- **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
+- **Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.
 - **Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice.
 
 ### Don't:
-- **Don't** introduce a second saturated accent color (no purple, no magenta, no multi-color gradient) — this breaks the One Accent Rule and reads as generic AI-template styling.
-- **Don't** use purple gradients, glassmorphism, interchangeable stock-photo hero sections, or any other generic SaaS-landing-page clichés — these are explicit anti-references from PRODUCT.md.
-- **Don't** use hard, small-radius drop shadows (the "2014 app" look). If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.
-- **Don't** add a third type family, and don't swap the display serif for a reflex default (Fraunces, Playfair, Cormorant, Recoleta). Alegreya is the committed, deliberate choice.
-- **Don't** let muted/faint text fall below the 4.5:1 contrast ratio against its background. `--text-faint` (#736959) is decorative-only (separator dots, placeholder icons) — it's below AA as text; never use it for readable copy. On lighter surfaces (`--bg-inset`) use `--text-muted`.
-- **Don't** commit the local live-mode `<script src="localhost:8400/live.js">` injection or leave hard-coded `?v=` cache tokens un-bumped when JS/CSS changes (see CLAUDE.md).
+- **Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.
+- **Don't** reintroduce a per-theme accent *hue* split — the identity is one terracotta, tuned per ground, not two hues.
+- **Don't** bump display type to 700/800 to make it "pop" — that flattens Fraunces' optical contrast. Keep it ~500 and larger.
+- **Don't** use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.
+- **Don't** use hard, small-radius drop shadows (the "2014 app" look).
+- **Don't** add a third type family. Fraunces + Inter are the committed pair.
+- **Don't** let muted/faint text fall below 4.5:1. `--text-faint` is decorative-only; never body copy.
+- **Don't** commit the local live-mode `<script src="localhost:8400/live.js">` injection or leave `?v=` cache tokens un-bumped when JS/CSS changes (see CLAUDE.md).
