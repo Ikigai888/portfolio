@@ -571,9 +571,12 @@ button:focus-visible {
   .site-header__nav.is-open { display: flex; }
   .site-header__link {
     padding: 16px var(--gutter);
+    margin-block: 0;            /* reset the desktop tap-box negative margin so rows don't overlap */
     border-top: 1px solid var(--hairline);
     font-size: 0.9375rem;
   }
+  /* The header's own bottom border already rules off the first row */
+  .site-header__nav .site-header__link:first-child { border-top: none; }
 }
 
 /* ---------- Skip link (a11y): hidden until keyboard focus ---------- */
