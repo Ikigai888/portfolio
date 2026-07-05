@@ -89,8 +89,8 @@
 }
 .site-header__logo {
   display: block;
-  height: 32px;
-  width: auto; /* 201x45 intrinsic keeps the aspect */
+  height: 40px;
+  width: auto; /* 201x45 intrinsic keeps the aspect; 40px stays under native height so it stays crisp */
   /* The source asset is drawn in the signature mint — the dark theme's own
      accent — so the DEFAULT (light) rule retargets it, and dark needs none. */
   filter: hue-rotate(198deg) saturate(10) brightness(0.7); /* mint → terracotta ~#B4542E, tuned by sampling rendered pixels */
