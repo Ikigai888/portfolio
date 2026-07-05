@@ -37,9 +37,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=54" />
+  <link rel="stylesheet" href="css/tokens.css?v=55" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=54" />
+  <link rel="stylesheet" href="css/components.css?v=55" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -49,7 +49,7 @@
   <div id="app"><!-- BUILD:START --><a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__name" href="#top">Tad Natsuhara</a>
+        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
             <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
@@ -222,8 +222,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=54"></script>
-  <script src="js/components.js?v=54"></script>
-  <script src="js/app.js?v=54"></script>
+  <script src="js/content.js?v=55"></script>
+  <script src="js/components.js?v=55"></script>
+  <script src="js/app.js?v=55"></script>
 </body>
 </html>

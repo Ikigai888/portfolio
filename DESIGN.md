@@ -1,6 +1,6 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A warm editorial portfolio for a senior product designer — paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by a single terracotta accent.
+description: A warm editorial portfolio for a senior product designer — paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by one accent per theme — terracotta in light, signature mint in dark.
 theme-model: "light default (:root), dark sibling ([data-theme=\"dark\"])"
 colors:
   # Light theme (canonical / default)
@@ -15,13 +15,13 @@ colors:
   text-muted: "#6E6249"
   text-faint: "#A79A80"
   text-faint-2: "#675B42"
-  accent: "oklch(0.559 0.135 41.1)"       # #B4542E
+  accent: "oklch(0.559 0.135 41.1)"       # #B4542E terracotta (light)
   accent-text: "oklch(0.515 0.137 40.8)"  # #A6461F
-  # Dark sibling accent
-  accent-dark: "oklch(0.714 0.12 46.8)"       # #E08A5F
-  accent-text-dark: "oklch(0.755 0.108 47.7)" # #E89A72
-  # Outcome band (theme-invariant terracotta)
-  band-bg: "oklch(0.621 0.13 45.2)"       # #C56A3E
+  # Dark sibling accent — signature mint
+  accent-dark: "oklch(0.81 0.084 179)"       # #83D4C3
+  accent-text-dark: "oklch(0.91 0.097 179)"  # #97F8E4
+  # Outcome band — terracotta in light, mint in dark
+  band-bg: "oklch(0.621 0.13 45.2)"       # #C56A3E (light) / dark: oklch(0.62 0.09 179) #3D9887
   band-text: "#2A140A"
   band-card: "rgba(26, 13, 6, 0.86)"
   band-card-text: "#F6EFE4"
@@ -102,7 +102,7 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 
 **Key Characteristics:**
 - **Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme="dark"]` is its dark counterpart — same type, same layouts, same single accent lifted for the dark ground. First visit follows OS preference, else light.
-- **One terracotta accent**, the same hue in both themes (deepened for paper, lifted for dark) — never a second saturated color on screen.
+- **One accent per theme** — terracotta in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.
 - **Serif display / sans body on a real contrast axis** — Fraunces (variable, high-contrast display serif; optical sizing drives its thick/thin) for every headline, statement, numeral, and the footer CTA; Inter for body, nav, labels, and the wordmark.
 - **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Fraunces italic rather than bolded.
 - Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.
@@ -110,16 +110,14 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 
 ## 2. Colors
 
-One warm surface ramp, one warm-ink text ramp, and exactly one accent hue — terracotta — carried across both themes. Nothing else competes with the accent.
+One warm surface ramp, one warm-ink text ramp, and exactly one accent hue *per theme* — terracotta in light, signature mint in dark. Nothing else competes with the accent.
 
-### The Accent — Terracotta (both themes)
-The single identity color, sampled from the redesign mockup. It is the **same hue** in both themes, tuned to its ground rather than swapped for a different hue:
-- **Light — accent** `oklch(0.559 0.135 41.1)` / `#B4542E`: solid fills, the large italic display accent, the status dot, arrows, focus ring, skip-link.
-- **Light — accent-text** `oklch(0.515 0.137 40.8)` / `#A6461F`: the slightly deeper terracotta for *small* accent type (eyebrows, serif numerals, inline links) — 5.25:1 on `--bg`, clears AA where the brighter fill would not.
-- **Dark — accent** `oklch(0.714 0.12 46.8)` / `#E08A5F`: the same hue lifted to read on near-black — 7.1:1 on the dark `--bg`.
-- **Dark — accent-text** `oklch(0.755 0.108 47.7)` / `#E89A72`: 8.3:1 on the dark `--bg`.
+### The Accent — one hue per theme
+Each theme owns a single saturated hue; they are genuinely different hues, not one hue at two lightnesses.
+- **Light — Terracotta** (sampled from the redesign mockup): accent `oklch(0.559 0.135 41.1)` / `#B4542E` for solid fills, the large italic display accent, status dot, arrows, focus ring, skip-link; accent-text `oklch(0.515 0.137 40.8)` / `#A6461F` (5.25:1 on paper) for *small* accent type — eyebrows, serif numerals, inline links.
+- **Dark — Signature Mint** (keyed to the TN_Port_Logo wordmark's native color): accent `oklch(0.81 0.084 179)` / `#83D4C3` (11.9:1 on the dark `--bg`); accent-text `oklch(0.91 0.097 179)` / `#97F8E4` (15:1) for accent type on dark.
 
-The mint/copper split of the prior system is retired: there is now one hue, one identity, across the whole site.
+Because the hues differ, every accent-hued token (Outcome band, selection, status glow) has a mint override in the dark theme. The wordmark PNG is drawn in the mint, so the *light* theme retargets it to terracotta with a CSS filter (see §5); dark uses it unfiltered.
 
 ### Surfaces & Ink — Light (default)
 - **Warm Paper** (`#F4F0E8`): page background. Warm, not a tinted near-white; the warmth is real, not "AI beige."
@@ -133,13 +131,13 @@ The mint/copper split of the prior system is retired: there is now one hue, one 
 - **Paper ramp** (on dark): primary `#F1EBDF` (14.8:1) · bright `#FBF6EC` · secondary `#D8CFC0` · tertiary `#C9BCA6` · muted `#A1957F` (5.9:1) · faint `#736959` decorative · faint-2 `#8A8070`.
 
 ### Inverted Band (case-study "Outcome" section)
-The Outcome band is a self-contained saturated terracotta surface and is **theme-invariant** — defined once in `:root`, never overridden in the dark theme, so it looks identical in both (a single terracotta hue makes this possible again, where the prior two-hue system had to fork it).
-- **Band background** `oklch(0.621 0.13 45.2)` / `#C56A3E`. Headline and body sit directly on it in **Band Ink** `#2A140A` (4.58:1 — clears AA for the large serif headline and body).
+The Outcome band is a self-contained saturated surface that tracks each theme's own accent hue: **terracotta** `oklch(0.621 0.13 45.2)` / `#C56A3E` in light, **mint** `oklch(0.62 0.09 179)` / `#3D9887` in dark (defined in `:root`, overridden under `[data-theme="dark"]`).
+- Headline and body sit directly on it in **Band Ink** (`#2A140A` light / `#0E1416` dark — each a near-black in that theme's accent hue family; ≥4.58:1, clears AA for the large serif headline and body).
 - **Band Card** `rgba(26, 13, 6, 0.86)`: impact cards sit *on* the band as dark ink surfaces carrying paper text — a second polarity flip so the metrics read as inset panels. Their text uses **polarity-fixed** tokens (`--band-card-text` `#F6EFE4`, `--band-card-text-2` `#DCD2C2`), never theme-varying, since the card is a dark surface in both themes.
 - **Band Hairline** `rgba(26, 13, 6, 0.2)`: dividers between impact cards.
 
 ### Named Rules
-**The One Accent Rule.** Exactly one saturated color — terracotta — on any screen, the same hue in both themes. If a new UI need calls for "another color," the answer is a neutral from the ramp, not a second hue.
+**The One Accent Rule.** Exactly one saturated color on any screen — terracotta in the light theme, signature mint in the dark. Never both at once, never a third hue. If a new UI need calls for "another color," the answer is a neutral from the ramp.
 
 ## 3. Typography
 
@@ -170,7 +168,7 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 ### Shadow Vocabulary
 - **Ambient Rest** — light: `0 4px 24px rgba(36, 30, 19, 0.10)` · dark: `0 4px 24px rgba(0, 0, 0, 0.25)`. Default under case-study cards.
 - **Ambient Hover** — light: `0 10px 34px rgba(36, 30, 19, 0.16)` · dark: `0 10px 34px rgba(0, 0, 0, 0.34)`. Paired with border-brightening on hover.
-- **Status Ring / Glow** — the About live-status dot. On paper a real glow disappears, so light uses a soft ring `0 0 0 4px rgba(180, 84, 46, 0.16)`; dark uses a true glow `0 0 10px rgba(224, 138, 95, 0.7)`.
+- **Status Ring / Glow** — the About live-status dot. On paper a real glow disappears, so light uses a soft terracotta ring `0 0 0 4px rgba(180, 84, 46, 0.16)`; dark uses a true mint glow `0 0 10px oklch(0.81 0.084 179)`.
 - **Header scrim** (`--scrim` page-tint at ~0.85 + 12px `backdrop-filter: blur`): the sticky header floats a translucent scrim over content — depth by atmosphere, not edges.
 
 ### Named Rules
@@ -196,7 +194,7 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 - **Case-card padding:** 48/50px body.
 
 ### Navigation
-- **Wordmark:** a **text wordmark** — `Tad Natsuhara` in Inter 700, ink (`--text-bright`), tight tracking. (The prior single-hue PNG mark and its per-theme `hue-rotate` filter are retired; text is theme-correct for free and matches the mockup.)
+- **Wordmark:** the hand-lettered **TN wordmark PNG** (`images/TN_Port_Logo.png`, 32px tall) — a single-hue mint asset. The **light** theme retargets it to terracotta with a tuned `hue-rotate(198deg) saturate(10) brightness(0.7)` filter (derived by sampling the rendered pixels against `#B4542E`); the **dark** theme shows it unfiltered, since its own accent is that native mint. Its `alt` is the full name.
 - **Style:** sticky header over the `--scrim` tint + 12px blur, 1px bottom hairline.
 - **Links:** uppercase eyebrow treatment (12px, 700, 0.14em), muted → primary on hover, 44px tap boxes.
 - **Theme toggle:** icon + eyebrow-style label naming the theme you'd switch *to* (moon/"Dark" while light, sun/"Light" while dark), keyed on `[data-theme]`. Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored.
@@ -214,16 +212,16 @@ The three "kinds of complexity" render as editorial ledger rows: Fraunces terrac
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep terracotta the only saturated color — light `#B4542E` (text `#A6461F`), dark `#E08A5F` (text `#E89A72`) — one hue across both themes; everything else stays in the warm-neutral ramp.
+- **Do** keep exactly one accent per theme — terracotta in light (`#B4542E` / text `#A6461F`), signature mint in dark (`#83D4C3` / text `#97F8E4`); everything else stays in the warm-neutral ramp, and the two hues never share a screen.
 - **Do** carry every headline in Fraunces at weight ~500 and let `font-optical-sizing: auto` supply the contrast; emphasize phrases with Fraunces *italic*, not bold.
-- **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type, layouts, and single accent, only surfaces/ink/shadows inverting.
+- **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type and layouts; surfaces/ink/shadows invert and the accent shifts to its own theme's hue (mint).
 - **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
 - **Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.
 - **Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice.
 
 ### Don't:
 - **Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.
-- **Don't** reintroduce a per-theme accent *hue* split — the identity is one terracotta, tuned per ground, not two hues.
+- **Don't** let a theme show the other theme's accent — light is terracotta only, dark is mint only. When the two themes' accent-hued tokens (band, selection, glow, wordmark filter) diverge, keep them overridden per theme rather than shared.
 - **Don't** bump display type to 700/800 to make it "pop" — that flattens Fraunces' optical contrast. Keep it ~500 and larger.
 - **Don't** use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.
 - **Don't** use hard, small-radius drop shadows (the "2014 app" look).

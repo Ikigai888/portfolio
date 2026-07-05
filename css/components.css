@@ -82,18 +82,21 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* Text wordmark in the neutral sans (ink), matching the mockup — retires
-   the old single-hue PNG and its per-theme hue-rotate filter entirely. */
 .site-header__name {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-bright);
   text-decoration: none;
 }
+.site-header__logo {
+  display: block;
+  height: 32px;
+  width: auto; /* 201x45 intrinsic keeps the aspect */
+  /* The source asset is drawn in the signature mint — the dark theme's own
+     accent — so the DEFAULT (light) rule retargets it, and dark needs none. */
+  filter: hue-rotate(198deg) saturate(10) brightness(0.7); /* mint → terracotta ~#B4542E, tuned by sampling rendered pixels */
+}
+/* Dark theme's accent IS the mint the asset is drawn in, so drop the filter. */
+[data-theme="dark"] .site-header__logo { filter: none; }
 .site-header__cluster { display: flex; align-items: center; gap: 22px; }
 .site-header__nav { display: flex; gap: 28px; }
 .site-header__link {
