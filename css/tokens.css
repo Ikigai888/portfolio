@@ -84,7 +84,7 @@
   --fs-section-sm:clamp(1.75rem, 3.4vw, 2.75rem);
   --fs-statement: clamp(1.625rem, 3.1vw, 2.75rem); /* big statements */
   --fs-statement-sm: clamp(1.5rem, 2.8vw, 2.375rem);
-  --fs-coda:      clamp(1.25rem, 2vw, 1.6875rem); /* closing lines under statements */
+  --fs-coda:      clamp(1.375rem, 2.2vw, 1.875rem); /* closing lines under statements (impeccable live, Jul 2026 — sized up so the coda reads as a confident capstone) */
   --fs-lead:      clamp(1.0625rem, 1.6vw, 1.3125rem); /* lead paragraphs */
   --fs-body:      1rem;                       /* body 15–17px range */
   --fs-eyebrow:   0.75rem;                        /* uppercase labels */
