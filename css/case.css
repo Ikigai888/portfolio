@@ -102,6 +102,7 @@
 /* ---------- Body copy ---------- */
 .cs-body {
   margin: 0 0 20px;
+  max-width: 65ch;
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--text-secondary);
@@ -232,18 +233,13 @@
   gap: var(--gap-split);
   align-items: start;
 }
-.cs-challenge__inner--below {
+.cs-challenge__media--stack {
+  display: grid;
   grid-template-columns: 1fr;
   gap: var(--gap-stack);
+  justify-items: center;
 }
-/* No max-width cap here: the text spans the same full measure as the media
-   row beneath it, so the block reads as one full-width unit instead of an
-   orphaned half-column left over from the two-column challenge layout. */
-.cs-challenge__media--row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--gap-stack);
-}
+.cs-challenge__media--stack .image-slot__img { height: auto; max-height: 500px; width: auto; max-width: 100%; object-fit: contain; }
 .cs-challenge__inner--right { direction: rtl; }
 .cs-challenge__inner--right > * { direction: ltr; }
 .cs-challenge__label {
@@ -266,17 +262,22 @@
 }
 .cs-decision {
   margin: 0;
+  max-width: 65ch;
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--text-secondary);
 }
 .cs-decision__label { color: var(--accent-text); font-weight: 700; }
+/* Impact follows Decision in the same challenge (Challenge 3): give it its
+   own beat instead of reading as a continuation of the Decision paragraph. */
+.cs-decision + .cs-decision { margin-top: 16px; }
 
 /* Options considered: a footnote below the decision, not competing with it —
    Decision leads with the answer, this rewards the reader who wants the
    rejected alternatives. */
 .cs-options {
   margin: 20px 0 0;
+  max-width: 65ch;
   padding-top: 16px;
   border-top: 1px solid var(--border);
   font-size: 0.9375rem;
@@ -332,6 +333,20 @@
 }
 .cs-full-image .image-slot { min-height: 360px; }
 .cs-full-image .image-slot__img { width: 100%; max-height: 640px; object-fit: contain; }
+
+/* bare: asset already reads as a held artifact (own rounded card / shadow /
+   transparent canvas) — drop the letterbox mat so it isn't nested in a card. */
+.cs-full-image--bare { background: none; border-radius: 0; }
+
+/* ---------- Context with media (plain two-column: text block | image, no letterbox card) ---------- */
+.cs-context__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-split);
+  align-items: start;
+}
+.cs-context__text .cs-section-headline { margin-bottom: 20px; }
+.cs-context__media .image-slot__img { height: auto; object-fit: contain; }
 
 /* ---------- Outcome band (cyan teal, build-spec §07) ---------- */
 .cs-outcome {
@@ -445,6 +460,7 @@
   .cs-split { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .cs-split__left { position: static; }
   .cs-split__right { padding-top: 0; }
+  .cs-context__inner { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .cs-summary__card { grid-template-columns: 1fr; }
   .cs-challenge__inner { grid-template-columns: 1fr; }
   .cs-challenge__inner--right { direction: ltr; }

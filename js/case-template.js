@@ -27,7 +27,11 @@
   function FullImages(images) {
     if (!images || !images.length) return '';
     if (images.length === 1) {
-      return '<div class="cs-full-image" data-reveal>' + C.ImageSlot(images[0]) + '</div>';
+      // bare: the asset is already a self-framed artifact (rounded card, drop
+      // shadow, or transparent canvas baked in) — the letterbox mat would just
+      // nest a card inside a card, so skip the background/inset treatment.
+      var cls = images[0].bare ? 'cs-full-image cs-full-image--bare' : 'cs-full-image';
+      return '<div class="' + cls + '" data-reveal>' + C.ImageSlot(images[0]) + '</div>';
     }
     return '<div class="cs-full-image-grid" data-reveal>' +
       images.map(function (img) {
@@ -105,6 +109,26 @@
     var paras = ctx.body.map(function (p) {
       return '<p class="cs-body">' + esc(p) + '</p>';
     }).join('');
+    // A single supporting image sits beside the full text block (already a
+    // self-framed artifact, no letterbox mat) as a plain two-column layout;
+    // multiple images fall back to the shared full-width treatment below.
+    var hasSingleImage = !!(ctx.images && ctx.images.length === 1);
+    if (hasSingleImage) {
+      return (
+        '<section class="section cs-split-section" id="cs-context" data-reveal>' +
+          '<div class="container">' +
+            '<div class="cs-context__inner">' +
+              '<div class="cs-context__text">' +
+                sectionNum(ctx.number, ctx.label) +
+                '<h2 class="cs-section-headline">' + esc(ctx.headline) + '</h2>' +
+                paras +
+              '</div>' +
+              '<div class="cs-context__media" data-reveal>' + C.ImageSlot(ctx.images[0]) + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</section>'
+      );
+    }
     return (
       '<section class="section cs-split-section" id="cs-context" data-reveal>' +
         '<div class="container">' +
@@ -126,7 +150,7 @@
     var hasImages = !!(item.images && item.images.length);
     var hasImage = hasImages || !!(item.image && item.image.src);
     var media = hasImages
-      ? '<div class="cs-challenge__media cs-challenge__media--row">' +
+      ? '<div class="cs-challenge__media cs-challenge__media--stack">' +
           item.images.map(function (img) { return C.ImageSlot(img); }).join('') +
         '</div>'
       : hasImage
@@ -135,11 +159,9 @@
     var impact = item.impact
       ? '<p class="cs-decision"><strong class="cs-decision__label">Impact · </strong>' + esc(item.impact) + '</p>'
       : '';
-    var innerModifier = hasImages
-      ? ' cs-challenge__inner--below'
-      : hasImage
-        ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right')
-        : ' cs-challenge__inner--solo';
+    var innerModifier = hasImage
+      ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right')
+      : ' cs-challenge__inner--solo';
     return (
       '<div class="cs-challenge" data-reveal>' +
         '<div class="cs-challenge__inner' + innerModifier + '">' +
