@@ -28,35 +28,35 @@ colors:
   band-hairline: "rgba(26, 13, 6, 0.2)"
 typography:
   display:
-    fontFamily: "Fraunces, Georgia, serif"
+    fontFamily: "Spectral, Georgia, serif"
     fontSize: "clamp(44px, 6vw, 88px)"
     fontWeight: 500
     lineHeight: 0.98
     letterSpacing: "-0.02em"
   section:
-    fontFamily: "Fraunces, Georgia, serif"
+    fontFamily: "Spectral, Georgia, serif"
     fontSize: "clamp(30px, 4vw, 52px)"
     fontWeight: 500
     lineHeight: 1.08
     letterSpacing: "-0.018em"
   statement:
-    fontFamily: "Fraunces, Georgia, serif"
+    fontFamily: "Spectral, Georgia, serif"
     fontSize: "clamp(26px, 3.1vw, 44px)"
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "-0.014em"
   lead:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "clamp(17px, 1.6vw, 21px)"
     fontWeight: 400
     lineHeight: 1.6
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.6
   eyebrow:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "12px"
     fontWeight: 700
     letterSpacing: "0.14em"
@@ -103,8 +103,8 @@ This system explicitly rejects the generic AI-template look: no purple gradients
 **Key Characteristics:**
 - **Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme="dark"]` is its dark counterpart — same type, same layouts, same single accent lifted for the dark ground. First visit follows OS preference, else light.
 - **One accent per theme** — terracotta in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.
-- **Serif display / sans body on a real contrast axis** — Fraunces (variable, high-contrast display serif; optical sizing drives its thick/thin) for every headline, statement, numeral, and the footer CTA; Inter for body, nav, labels, and the wordmark.
-- **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Fraunces italic rather than bolded.
+- **Serif display / sans body on a real contrast axis** — Spectral (warm humanist serif with expressive italics) for every headline, statement, numeral, and the footer CTA; Hanken Grotesk (warm neo-grotesque) for body, nav, and labels. Both chosen deliberately off the reflex-reject list — not Fraunces/Playfair, not Inter/DM.
+- **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Spectral italic rather than bolded.
 - Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.
 - Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on `html.js`, a real `<noscript>` fallback ships, and all motion respects `prefers-reduced-motion`.
 
@@ -144,22 +144,22 @@ The Outcome band is a self-contained saturated surface that tracks each theme's 
 **Display Font:** Fraunces (variable high-contrast serif; opsz 9–144, wght 400–600, roman + italic; Georgia fallback)
 **Body Font:** Inter (system-ui, sans-serif fallback)
 
-**Character:** A serif/sans pairing on a real contrast axis. Fraunces carries every expressive role — hero, section headlines, statements, serif numerals, the footer CTA — with `font-optical-sizing: auto` driving its dramatic thick/thin contrast at large sizes (so display weight stays a light-ish **500** and the contrast comes from optical size, not heft). Inter carries body, nav, labels, and the wordmark across weights 400–700. Emphasis is done with **Fraunces italic**, not bolding.
+**Character:** A serif/sans pairing on a real contrast axis. Spectral carries every expressive role — hero, section headlines, statements, serif numerals, the footer CTA — at weight **500**, its own moderate thick/thin contrast reading as warm and considered rather than dramatic-Didone. Hanken Grotesk carries body, nav, and labels across weights 400–700. Emphasis is done with **Spectral italic**, not bolding. (The wordmark is the hand-lettered PNG, not a font.)
 
 ### Hierarchy
-- **Display** (Fraunces, 500, `clamp(44px, 6vw, 88px)`, line-height 0.98, letter-spacing -0.02em): hero headline. Now sits in the *left column* of a two-column hero (portrait right), so it wraps to 2–3 lines by design. The accent line is Fraunces **italic** in terracotta.
-- **Section** (Fraunces, 500, `clamp(30px, 4vw, 52px)`, line-height 1.08): case-study section headlines, the case page H1, the footer "Say hello" CTA.
-- **Statement** (Fraunces, 500, `clamp(26px, 3.1vw, 44px)`, line-height 1.2): declarative statement blocks (What I Do, How I Work, About). Inline emphasis (company names, key phrases) is italic, same ink.
-- **Coda** (Fraunces, 500 **italic**, `--fs-coda`): the closing line under How I Work.
-- **Serif numerals** (Fraunces, 500, terracotta `--accent-text`): the 01/02/03 markers in numbered lists.
-- **Lead** (Inter, 400, `clamp(17px, 1.6vw, 21px)`, line-height 1.6): lead paragraphs; capped ≈46–65ch.
-- **Body** (Inter, 400, 16px, line-height 1.6): running copy.
-- **Eyebrow** (Inter, 700, 12px, letter-spacing 0.14em, uppercase): terracotta section labels, nav links (muted), case-card metadata.
+- **Display** (Spectral, 500, `clamp(44px, 6vw, 88px)`, line-height 0.98, letter-spacing -0.02em): hero headline. Sits in the *left column* of a two-column hero (portrait right), so it wraps to 2–3 lines by design. The accent line is Spectral **italic** in the theme accent.
+- **Section** (Spectral, 500, `clamp(30px, 4vw, 52px)`, line-height 1.08): case-study section headlines, the case page H1, the footer "Say hello" CTA.
+- **Statement** (Spectral, 500, `clamp(26px, 3.1vw, 44px)`, line-height 1.2): declarative statement blocks (What I Do, How I Work, About). Inline emphasis (company names, key phrases) is italic, same ink.
+- **Coda** (Spectral, 500 **italic**, `--fs-coda`): the closing line under How I Work.
+- **Serif numerals** (Spectral, 500, accent `--accent-text`): the 01/02/03 markers in numbered lists.
+- **Lead** (Hanken Grotesk, 400, `clamp(17px, 1.6vw, 21px)`, line-height 1.6): lead paragraphs; capped ≈46–65ch.
+- **Body** (Hanken Grotesk, 400, 16px, line-height 1.6): running copy.
+- **Eyebrow** (Hanken Grotesk, 700, 12px, letter-spacing 0.14em, uppercase): accent section labels, nav links (muted), case-card metadata.
 
 ### Named Rules
-**The Serif-For-Scale Rule.** Fraunces appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, nav, and the wordmark stay Inter. The two never trade roles.
-**The Optical-Contrast Rule.** Big serif type gets its drama from optical sizing at weight ~500, not from bumping weight to 700/800. Keep display weights light; let `font-optical-sizing: auto` do the work.
-**The Italic-Emphasis Rule.** Lift a phrase with Fraunces italic in the same ink, not with bold or color (the accent line is the one exception — italic *and* terracotta).
+**The Serif-For-Scale Rule.** Spectral appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, and nav stay Hanken Grotesk. The two never trade roles.
+**The Display-Weight Rule.** Big serif type stays at weight ~500 — Spectral's built-in contrast carries the elegance; don't bump display to 700/800 (that flattens it into a generic bold serif).
+**The Italic-Emphasis Rule.** Lift a phrase with Spectral italic in the same ink, not with bold or color (the accent line is the one exception — italic *and* the accent hue).
 
 ## 4. Elevation
 
@@ -214,7 +214,7 @@ The three "kinds of complexity" render as editorial ledger rows: Fraunces terrac
 
 ### Do:
 - **Do** keep exactly one accent per theme — terracotta in light (`#B4542E` / text `#A6461F`), signature mint in dark (`#83D4C3` / text `#97F8E4`); everything else stays in the warm-neutral ramp, and the two hues never share a screen.
-- **Do** carry every headline in Fraunces at weight ~500 and let `font-optical-sizing: auto` supply the contrast; emphasize phrases with Fraunces *italic*, not bold.
+- **Do** carry every headline in Spectral at weight ~500 (its built-in contrast is the elegance); emphasize phrases with Spectral *italic*, not bold.
 - **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type and layouts; surfaces/ink/shadows invert and the accent shifts to its own theme's hue (mint).
 - **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
 - **Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.
@@ -223,9 +223,9 @@ The three "kinds of complexity" render as editorial ledger rows: Fraunces terrac
 ### Don't:
 - **Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.
 - **Don't** let a theme show the other theme's accent — light is terracotta only, dark is mint only. When the two themes' accent-hued tokens (band, selection, glow, wordmark filter) diverge, keep them overridden per theme rather than shared.
-- **Don't** bump display type to 700/800 to make it "pop" — that flattens Fraunces' optical contrast. Keep it ~500 and larger.
+- **Don't** bump display type to 700/800 to make it "pop" — that flattens Spectral into a generic bold serif. Keep it ~500 and larger.
 - **Don't** use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.
 - **Don't** use hard, small-radius drop shadows (the "2014 app" look).
-- **Don't** add a third type family. Fraunces + Inter are the committed pair.
+- **Don't** add a third type family. Spectral + Hanken Grotesk are the committed pair.
 - **Don't** let muted/faint text fall below 4.5:1. `--text-faint` is decorative-only; never body copy.
 - **Don't** commit the local live-mode `<script src="localhost:8400/live.js">` injection or leave `?v=` cache tokens un-bumped when JS/CSS changes (see CLAUDE.md).

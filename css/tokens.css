@@ -73,10 +73,10 @@
      Editorial pairing on a contrast axis: a high-contrast display serif
      carries every headline/statement; a neutral grotesque carries body,
      nav, and the wordmark. */
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
   /* weights in use: 400 500 600 700 */
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif; /* variable serif; optical sizing drives the thick/thin contrast at large sizes */
-  --ls-serif: -0.01em; /* Fraunces wants only a hair of negative tracking */
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif; /* warm humanist serif with expressive italics; chosen off the reflex-reject list */
+  --ls-serif: -0.005em; /* Spectral sets comfortably near 0 */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
   --fs-display:   clamp(2.75rem, 6vw, 5.5rem); /* hero headline — now in the LEFT column of a two-column hero (portrait on the right), so it wraps to 2–3 lines by design (as in the mockup). Sized to sit comfortably in the ~600px text column at the cap. */
