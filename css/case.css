@@ -239,9 +239,6 @@
 /* No max-width cap here: the text spans the same full measure as the media
    row beneath it, so the block reads as one full-width unit instead of an
    orphaned half-column left over from the two-column challenge layout. */
-.cs-challenge__inner--below .cs-challenge__text .cs-body,
-.cs-challenge__inner--below .cs-challenge__text .cs-decision,
-.cs-challenge__inner--below .cs-challenge__text .cs-options { max-width: 75ch; }
 .cs-challenge__media--row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
