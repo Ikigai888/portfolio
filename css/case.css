@@ -30,6 +30,7 @@
   gap: 8px;
   padding-block: 13px;   /* 44px tap box */
   margin-block: -13px;
+  white-space: nowrap;
   transition: color var(--hover-color-dur);
 }
 .case-header__back:hover { color: var(--text-primary); }
@@ -104,6 +105,15 @@
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--text-secondary);
+}
+
+/* No-artifact narrative beat (e.g. Exploration without a supporting image):
+   closing line takes the homepage's Statement scale, capped for readability,
+   so the section reads as a deliberate pause, not a missing screenshot. */
+.cs-exploration-statement {
+  margin-top: 8px;
+  max-width: 46ch;
+  text-wrap: pretty;
 }
 .cs-body:last-child { margin-bottom: 0; }
 .cs-body--lead { color: var(--text-muted); }
@@ -222,6 +232,21 @@
   gap: var(--gap-split);
   align-items: start;
 }
+.cs-challenge__inner--below {
+  grid-template-columns: 1fr;
+  gap: var(--gap-stack);
+}
+/* No max-width cap here: the text spans the same full measure as the media
+   row beneath it, so the block reads as one full-width unit instead of an
+   orphaned half-column left over from the two-column challenge layout. */
+.cs-challenge__inner--below .cs-challenge__text .cs-body,
+.cs-challenge__inner--below .cs-challenge__text .cs-decision,
+.cs-challenge__inner--below .cs-challenge__text .cs-options { max-width: 75ch; }
+.cs-challenge__media--row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-stack);
+}
 .cs-challenge__inner--right { direction: rtl; }
 .cs-challenge__inner--right > * { direction: ltr; }
 .cs-challenge__label {
@@ -242,12 +267,6 @@
   font-weight: 500;
   color: var(--text-primary);
 }
-.cs-options {
-  margin: 20px 0 12px;
-  font-size: 0.9375rem;
-  line-height: var(--lh-body);
-  color: var(--text-muted);
-}
 .cs-decision {
   margin: 0;
   font-size: var(--fs-body);
@@ -255,6 +274,27 @@
   color: var(--text-secondary);
 }
 .cs-decision__label { color: var(--accent-text); font-weight: 700; }
+
+/* Options considered: a footnote below the decision, not competing with it —
+   Decision leads with the answer, this rewards the reader who wants the
+   rejected alternatives. */
+.cs-options {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: var(--lh-body);
+  color: var(--text-tertiary);
+}
+.cs-options__label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-faint-2);
+}
 
 /* ---------- Quote (participant/session callout) ---------- */
 .cs-quote {
@@ -422,6 +462,10 @@
      which strands the separator dot at the start of the wrapped line. */
   .cs-summary__theme { flex-basis: 100%; }
   .cs-summary__sep { display: none; }
+  /* The back link's own name always wins the top row; drop the redundant
+     "Case Study ·" label and the toggle's text so "Tad Natsuhara" never wraps. */
+  .case-header__tag-label { display: none; }
+  .case-header .theme-toggle__label { display: none; }
 }
 
 /* ---------- Subnav scrollspy + overflow fade ---------- */

@@ -49,7 +49,8 @@
             '<span aria-hidden="true">&larr;</span> Tad Natsuhara' +
           '</a>' +
           '<span class="case-header__cluster">' +
-            '<span class="case-header__tag">' + Eyebrow('Case Study') + ' &middot; ' +
+            '<span class="case-header__tag">' +
+              '<span class="case-header__tag-label">' + Eyebrow('Case Study') + ' &middot; </span>' +
               '<span class="case-header__client">' + esc(d.meta.client) + '</span>' +
             '</span>' +
             C.ThemeToggle() +
@@ -122,23 +123,33 @@
 
   function ChallengeBlock(item, idx) {
     var isEven = idx % 2 === 0;
-    var hasImage = item.image && item.image.src;
-    var media = hasImage
-      ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
-      : '';
+    var hasImages = !!(item.images && item.images.length);
+    var hasImage = hasImages || !!(item.image && item.image.src);
+    var media = hasImages
+      ? '<div class="cs-challenge__media cs-challenge__media--row">' +
+          item.images.map(function (img) { return C.ImageSlot(img); }).join('') +
+        '</div>'
+      : hasImage
+        ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
+        : '';
     var impact = item.impact
       ? '<p class="cs-decision"><strong class="cs-decision__label">Impact · </strong>' + esc(item.impact) + '</p>'
       : '';
+    var innerModifier = hasImages
+      ? ' cs-challenge__inner--below'
+      : hasImage
+        ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right')
+        : ' cs-challenge__inner--solo';
     return (
       '<div class="cs-challenge" data-reveal>' +
-        '<div class="cs-challenge__inner' + (hasImage ? ' cs-challenge__inner--' + (isEven ? 'left' : 'right') : ' cs-challenge__inner--solo') + '">' +
+        '<div class="cs-challenge__inner' + innerModifier + '">' +
           '<div class="cs-challenge__text">' +
             '<span class="cs-challenge__label">' + esc('Challenge ' + item.number) + '</span>' +
             '<h3 class="cs-challenge__headline">' + esc(item.headline) + '</h3>' +
             '<p class="cs-body">' + esc(item.body) + '</p>' +
-            '<p class="cs-options">' + esc(item.options) + '</p>' +
             '<p class="cs-decision"><strong class="cs-decision__label">Decision · </strong>' + esc(item.decision) + '</p>' +
             impact +
+            '<p class="cs-options"><strong class="cs-options__label">Options considered</strong>' + esc(item.options) + '</p>' +
           '</div>' +
           media +
         '</div>' +
@@ -167,8 +178,13 @@
   }
 
   function AiSection(ai) {
-    var paras = ai.body.map(function (p) {
-      return '<p class="cs-body">' + esc(p) + '</p>';
+    var hasImages = !!(ai.images && ai.images.length) || !!(ai.image && ai.image.src);
+    // No supporting artifact for this beat: give the closing line the
+    // homepage's Statement scale so the quiet section reads as a considered
+    // pause between image-heavy sections, not a gap where an image is missing.
+    var paras = ai.body.map(function (p, i) {
+      var isClosingStatement = !hasImages && i === ai.body.length - 1;
+      return '<p class="' + (isClosingStatement ? 'statement cs-exploration-statement' : 'cs-body') + '">' + esc(p) + '</p>';
     }).join('');
     return (
       '<section class="section cs-split-section" id="cs-' + slugify(ai.label) + '" data-reveal>' +

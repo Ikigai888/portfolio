@@ -390,13 +390,17 @@ html.js .theme-toggle { display: flex; }
 }
 .image-slot__frame--dark .image-slot__img { border-radius: 4px; }
 
-/* ---------- Statement closing line (How I Work) ---------- */
+/* ---------- Statement closing line (How I Work) ----------
+   Sized up and tightened (impeccable live, Jul 2026 — chosen over a
+   quieter Hanken Grotesk aside and an upright right-aligned marginal
+   note) so the coda reads as a confident capstone to the section. */
 .statement__closing {
-  margin: 44px 0 0;
+  margin: 52px 0 0;
+  max-width: 46ch;
   font-family: var(--font-display);
   font-size: var(--fs-coda);
-  line-height: var(--lh-statement);
-  letter-spacing: var(--ls-serif);
+  line-height: 1.25;
+  letter-spacing: var(--ls-statement);
   font-weight: 500;
   font-style: italic; /* the italic serif coda, per the mockup */
   color: var(--text-primary);
