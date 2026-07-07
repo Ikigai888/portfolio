@@ -11,7 +11,6 @@ window.CaseContent = {
     next: { label: 'Passwordless Authentication', href: 'case-passkeys.html' },
 
     summary: {
-      number: '01',
       client: 'MoxiWorks',
       theme: 'Organizational Complexity',
       title: 'Designing Brand Governance for Enterprise Scale',
@@ -26,7 +25,6 @@ window.CaseContent = {
     },
 
     context: {
-      number: '02',
       label: 'Context',
       headline: 'Why this project existed',
       body: [
@@ -36,7 +34,6 @@ window.CaseContent = {
     },
 
     challenges: {
-      number: '03',
       label: 'Challenges',
       intro: 'Four decisions, built in the order they actually happen',
       body: 'This is the real sequence: define the brand once, package it, make it cascade under control, and prove it scales beyond one screen — the problem, the options, and the reasoning behind each one.',
@@ -77,7 +74,6 @@ window.CaseContent = {
     },
 
     aiExploration: {
-      number: '04',
       label: 'AI Exploration',
       headline: 'Wider exploration, faster alignment',
       body: [
@@ -88,7 +84,6 @@ window.CaseContent = {
     },
 
     validation: {
-      number: '05',
       label: 'Validation',
       headline: 'Testing with real admins and agents',
       body: [
@@ -102,7 +97,6 @@ window.CaseContent = {
     },
 
     outcome: {
-      number: '06',
       label: 'Outcome',
       headline: 'A foundation the ecosystem builds on',
       body: 'The work established branding as a governed platform capability rather than a per-product feature — setting the direction for how RISE products consume brand going forward.',
@@ -114,7 +108,6 @@ window.CaseContent = {
     },
 
     reflection: {
-      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
@@ -138,7 +131,6 @@ window.CaseContent = {
     next: { label: 'Accessible Rail Booking', href: 'case-rail-booking.html' },
 
     summary: {
-      number: '01',
       client: 'lululemon',
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
@@ -153,7 +145,6 @@ window.CaseContent = {
     },
 
     context: {
-      number: '02',
       label: 'Context',
       headline: 'Why this project existed',
       body: [
@@ -166,7 +157,6 @@ window.CaseContent = {
     },
 
     challenges: {
-      number: '03',
       label: 'Challenges',
       intro: 'Three questions that shaped the design',
       body: 'The design problems weren’t about screens; they were about trust, timing, and clarity at moments of friction.',
@@ -203,7 +193,6 @@ window.CaseContent = {
     },
 
     aiExploration: {
-      number: '04',
       label: 'Exploration',
       headline: 'Mapping the trust curve',
       body: [
@@ -216,7 +205,6 @@ window.CaseContent = {
     },
 
     validation: {
-      number: '05',
       label: 'Validation',
       headline: 'Testing the trust model',
       body: [
@@ -230,7 +218,6 @@ window.CaseContent = {
     },
 
     outcome: {
-      number: '06',
       label: 'Outcome',
       headline: 'Confidence without complexity',
       body: 'Passkeys shipped across app, web, and in-store. The pattern established for this feature became the foundation for introducing other unfamiliar capabilities to a consumer audience.',
@@ -242,7 +229,6 @@ window.CaseContent = {
     },
 
     reflection: {
-      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
@@ -266,7 +252,6 @@ window.CaseContent = {
     next: null,
 
     summary: {
-      number: '01',
       client: 'SAP Concur',
       theme: 'Interaction Complexity',
       title: 'Designing an Accessible Rail Booking Experience',
@@ -276,22 +261,22 @@ window.CaseContent = {
       outcomes: [
         '20% increase in completed bookings.',
         '35% reduction in seat selection errors.',
-        'Components subsequently adopted by the Air seat map team.',
+        'Concur’s first interactive seat map; its patterns later shaped the Air team’s.',
       ],
     },
 
     context: {
-      number: '02',
       label: 'Context',
       headline: 'Why this project existed',
       body: [
-        'SAP Concur’s rail booking experience handled complex routing, multi-leg journeys, and seat availability across dozens of rail operators — each with different data formats, seating models, and booking rules.',
-        'The existing seat selection experience collapsed under that complexity. Business travelers — already navigating policy rules, approval workflows, and tight itineraries — hit an interface that required expertise they didn’t have to use.',
+        'SAP Concur’s rail booking experience handled complex routing, multi-leg journeys, and seat availability across dozens of rail operators, each with its own data formats, seating models, and booking rules.',
+        'The existing seat selection experience collapsed under that complexity. Business travelers, already navigating policy rules, approval workflows, and tight itineraries, hit an interface that required expertise they didn’t have to use.',
+        'No interactive seat map existed at Concur, rail or air. There was no pattern to inherit; this project had to establish one.',
       ],
+      images: [{ src: 'images/case-studies/rail-checkout-review-and-book.png', w: 1200, h: 1515, alt: 'The existing Review and Book screen for a round-trip journey, with a plain "Select Seat" button and no seat map yet in view', caption: 'Where seat selection had to fit: the booking flow before this project' }],
     },
 
     challenges: {
-      number: '03',
       label: 'Challenges',
       intro: 'Three constraints that defined the design',
       body: 'Rail is the most information-dense booking surface in travel. Every design decision had to hold up under the data load.',
@@ -299,73 +284,77 @@ window.CaseContent = {
         {
           number: 1,
           headline: 'Making seat data scannable, not just displayable',
-          body: 'Seat selection data includes car type, seat class, direction of travel, table vs. window, reservation status, and accessibility needs — all variable by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
+          body: 'Seat selection data includes car type, seat class, direction of travel, table vs. window, reservation status, and accessibility needs, all variable by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
           options: 'progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
-          decision: 'A spatial seat map with progressive detail — the map shows position, selection reveals the relevant attributes for that seat.',
-          image: { src: 'images/case-studies/rail-seatmap-iteration.png', w: 1732, h: 742, alt: 'Seat-map design iterations across web and mobile, showing coach layout and seat-attribute detail', caption: 'Seat map spatial layout' },
+          decision: 'A spatial seat map with progressive detail: the map shows position, selection reveals the relevant attributes for that seat.',
+          images: [
+            { src: 'images/case-studies/rail-seatmap-default.png', w: 1200, h: 1647, alt: 'The shipped seat map showing coach layout, an available/unavailable/wheelchair legend, and the selected seat’s amenities', caption: 'The spatial map: position first' },
+            { src: 'images/case-studies/rail-seatmap-tooltips.png', w: 1200, h: 1647, alt: 'A seat tooltip revealing rear-facing, reclining, and free wifi attributes on hover or focus', caption: 'Selection reveals the attributes' },
+          ],
         },
         {
           number: 2,
           headline: 'Designing for accessibility without removing capability',
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
-          options: 'visual-only map; list alternative with no map; parallel accessible map with ARIA region labelling.',
-          decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to — same data, appropriate for each mode.',
-          image: { src: 'images/case-studies/rail-a11y-documentation.png', w: 921, h: 1070, alt: 'Keyboard navigation order and tab-flow documentation for the seat map', caption: 'Accessibility dual-mode design' },
+          options: 'a visual-only map, which failed screen reader users outright; a list-only alternative, which threw away the spatial sense sighted travelers relied on; or a parallel accessible map with ARIA region labelling.',
+          decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to (same data, appropriate for each mode).',
+          image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
         },
         {
           number: 3,
           headline: 'Handling policy constraints without punishing the traveler',
-          body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. Surfacing policy violations after selection — the existing behaviour — was the primary source of rebooking.',
+          body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. The existing flow surfaced policy violations only after selection, which was the primary source of rebooking.',
           options: 'hide restricted seats; grey them with a tooltip; pre-filter to policy-compliant options with an override path.',
-          decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override — policy-forward without policy-punishing.',
-          image: { src: 'images/case-studies/rail-early-concepts.png', w: 1232, h: 903, alt: 'Early seat-selection concept screens used to test layout and seat-attribute clarity', caption: 'Policy constraint flow' },
+          decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override: policy-forward without policy-punishing.',
+          image: { src: 'images/case-studies/rail-seatmap-final-opt.webp', w: 1100, h: 1022, alt: 'The finished seat map on desktop and mobile, with an amenity tooltip surfaced on selection', caption: 'The shipped seat map, web and mobile' },
         },
       ],
     },
 
     aiExploration: {
-      number: '04',
       label: 'Exploration',
       headline: 'Mapping seat complexity',
       body: [
-        'The seat data model varied significantly across rail operators. I mapped the full matrix of variables — car type, class, direction, reservation status, accessibility attributes — to find the minimum viable representation that worked across all operators without requiring operator-specific design.',
-        'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation — a significant engineering investment that needed to be right before build began.',
+        'The seat data model varied significantly across rail operators. I mapped the full matrix of variables (car type, class, direction, reservation status, accessibility attributes) to find the minimum viable representation that worked across all operators without requiring operator-specific design.',
+        'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
+        'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
+      image: { src: 'images/case-studies/rail-keyboard-tab-order-iteration.png', w: 1200, h: 1647, alt: 'An earlier iteration of the tab-order documentation, grouping the train navigation, coach carousel, and seat grid before the traversal rules were finalized', caption: 'An early pass at the tab-order logic' },
     },
 
     validation: {
-      number: '05',
       label: 'Validation',
       headline: 'Testing with business travelers',
       body: [
-        'I ran sessions with frequent business rail travelers — people booking multi-leg journeys under policy constraints with limited time to make decisions. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
-        'The dual-mode accessibility approach was validated in the first round — screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override — a gap we closed before launch.',
+        'I owned the research end to end: writing the brief, crafting the questions, building the prototype, and moderating sessions with frequent business rail travelers booking multi-leg journeys under policy constraints. I partnered with the UX research team in synthesis workshops to make sense of what we heard. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
+        'The dual-mode accessibility approach was validated in the first round: screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override, a gap we closed before launch.',
         'Stakeholders pushed back on the accessibility investment early — "Does everything need to be tabbed? Can we skip some items?" Rather than debate it in a conference room, I interviewed visually impaired travelers directly.',
         'One finding reset our assumptions: guide dog owners consistently preferred table seats for the extra space on long journeys. That changed the screen-reader priority order and told us exactly which components were safe to skip. My documentation of the findings became the reference engineering built the implementation from.',
       ],
-      image: { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
+      images: [
+        { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
+        { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, bare: true, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow — prototype, tasks, and participant survey' },
+      ],
       quote: { text: 'It was a bit hard to tell what each seat offers. I want to see options like power outlets or extra space right away, not guess.', attribution: '— usability session participant' },
     },
 
     outcome: {
-      number: '06',
       label: 'Outcome',
       headline: 'Clarity inside complexity',
-      body: 'The seat selection experience shipped across responsive breakpoints. Accessibility compliance was validated against WCAG 2.1 AA. The data model held across all rail operators in the initial launch set.',
+      body: 'The seat selection experience shipped across responsive breakpoints. Accessibility compliance was validated against WCAG 2.1 AA: 4.5:1 contrast, a documented tab order, semantic heading structure, and ARIA labelling throughout, tested up to 200% zoom. The data model held across all rail operators in the initial launch set.',
       impacts: [
         { label: '20% increase in completed bookings', desc: 'Simplifying the most information-dense step in the flow reduced abandonment at seat selection.' },
         { label: '35% reduction in seat selection errors', desc: 'Pre-filtering to policy-compliant options and clarifying seat attributes reduced mis-selections and the rebooking they caused.' },
-        { label: 'Adopted by the Air seat map team', desc: 'The spatial seat map and dual-mode accessibility pattern were subsequently reused outside rail — validation the model generalized beyond its original scope.' },
+        { label: 'Set the pattern for seat selection at Concur', desc: 'No interactive seat map existed before this, rail or air. The spatial map and dual-mode accessibility pattern became the reference the Air team designed against.' },
       ],
     },
 
     reflection: {
-      number: '07',
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'Four stakeholders pulled this design in four directions — traveler, admin, policy team, rail operator — and each had a legitimate case. The work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
-        'Accessibility forced better design decisions across the board. The structured list mode I built for screen reader users turned out to be what keyboard-only users preferred too — and it revealed information hierarchy problems in the visual map that I’d missed.',
+        'Four stakeholders pulled this design in four directions (traveler, admin, policy team, rail operator), and each had a legitimate case. The work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
+        'The guide dog finding is the one I still think about. I would have designed a defensible screen-reader priority order without ever talking to a visually impaired traveler, and gotten it wrong in a way no amount of internal debate would have caught. Now I treat "we’ve reasoned our way to the right order" as a hypothesis to test, not a decision to ship, especially in accessibility work where the wrong assumption is invisible until a real user hits it.',
       ],
     },
 
