@@ -22,6 +22,30 @@
   /* Arrow bullet used in summary outcomes and impact cards */
   function Arrow() { return '<span class="cs-arrow" aria-hidden="true">&#x2192;</span>'; }
 
+  /* Plain two-column layout for a narrative section reduced to exactly one
+     supporting image: eyebrow/headline/copy in one block, image beside it,
+     no letterbox card. Shared by Context, Exploration, and Validation.
+     reverse: true flips media to the left (same rtl trick as
+     .cs-challenge__inner--right) so consecutive sections alternate sides
+     down the page instead of always pinning the image to the right. */
+  function SplitMedia(id, label, headline, rightHtml, image, reverse) {
+    var cls = reverse ? 'cs-split-media cs-split-media--reverse' : 'cs-split-media';
+    return (
+      '<section class="section cs-split-section" id="' + id + '" data-reveal>' +
+        '<div class="container">' +
+          '<div class="' + cls + '">' +
+            '<div class="cs-split-media__text">' +
+              sectionNum(label) +
+              '<h2 class="cs-section-headline">' + esc(headline) + '</h2>' +
+              rightHtml +
+            '</div>' +
+            '<div class="cs-split-media__media" data-reveal>' + C.ImageSlot(image) + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</section>'
+    );
+  }
+
   /* Renders one or more full-width supporting images/GIFs. Single item stays
      full-bleed (existing behavior); 2+ lay out as a responsive gallery. */
   function FullImages(images) {
@@ -114,20 +138,7 @@
     // multiple images fall back to the shared full-width treatment below.
     var hasSingleImage = !!(ctx.images && ctx.images.length === 1);
     if (hasSingleImage) {
-      return (
-        '<section class="section cs-split-section" id="cs-context" data-reveal>' +
-          '<div class="container">' +
-            '<div class="cs-context__inner">' +
-              '<div class="cs-context__text">' +
-                sectionNum(ctx.label) +
-                '<h2 class="cs-section-headline">' + esc(ctx.headline) + '</h2>' +
-                paras +
-              '</div>' +
-              '<div class="cs-context__media" data-reveal>' + C.ImageSlot(ctx.images[0]) + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</section>'
-      );
+      return SplitMedia('cs-context', ctx.label, ctx.headline, paras, ctx.images[0], false);
     }
     return (
       '<section class="section cs-split-section" id="cs-context" data-reveal>' +
@@ -149,8 +160,15 @@
     var isEven = idx % 2 === 0;
     var hasImages = !!(item.images && item.images.length);
     var hasImage = hasImages || !!(item.image && item.image.src);
+    // Portrait pairs stacked vertically compound their own tallness (two
+    // 1200x1647s run far taller than the text beside them); side by side
+    // halves the total height and reads as two states of one screen rather
+    // than a long scroll. Landscape pairs stay stacked — splitting those
+    // narrows them to the point of illegibility.
+    var isPortraitPair = hasImages && item.images.length === 2 &&
+      item.images.every(function (img) { return img.h > img.w; });
     var media = hasImages
-      ? '<div class="cs-challenge__media cs-challenge__media--stack">' +
+      ? '<div class="cs-challenge__media ' + (isPortraitPair ? 'cs-challenge__media--grid' : 'cs-challenge__media--stack') + '">' +
           item.images.map(function (img) { return C.ImageSlot(img); }).join('') +
         '</div>'
       : hasImage
@@ -200,7 +218,8 @@
   }
 
   function AiSection(ai) {
-    var hasImages = !!(ai.images && ai.images.length) || !!(ai.image && ai.image.src);
+    var images = ai.images || (ai.image && ai.image.src ? [ai.image] : []);
+    var hasImages = !!images.length;
     // No supporting artifact for this beat: give the closing line the
     // homepage's Statement scale so the quiet section reads as a considered
     // pause between image-heavy sections, not a gap where an image is missing.
@@ -208,8 +227,14 @@
       var isClosingStatement = !hasImages && i === ai.body.length - 1;
       return '<p class="' + (isClosingStatement ? 'statement cs-exploration-statement' : 'cs-body') + '">' + esc(p) + '</p>';
     }).join('');
+    var id = 'cs-' + slugify(ai.label);
+    // Exactly one image sits beside the copy (Context's plain split-media
+    // layout); 0 or 2+ fall back to the shared full-width treatment below.
+    if (images.length === 1) {
+      return SplitMedia(id, ai.label, ai.headline, paras, images[0], true);
+    }
     return (
-      '<section class="section cs-split-section" id="cs-' + slugify(ai.label) + '" data-reveal>' +
+      '<section class="section cs-split-section" id="' + id + '" data-reveal>' +
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
@@ -218,7 +243,7 @@
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
           '</div>' +
-          FullImages(ai.images || (ai.image && ai.image.src ? [ai.image] : [])) +
+          FullImages(images) +
         '</div>' +
       '</section>'
     );
@@ -235,6 +260,13 @@
         }).join('') + '</ul>'
       : '';
     var quote = v.quote ? C.Quote(v.quote) : '';
+    var rightHtml = paras + cue + findings + quote;
+    var images = v.images || (v.image && v.image.src ? [v.image] : []);
+    // Exactly one image sits beside the copy (Context's plain split-media
+    // layout); 0 or 2+ fall back to the shared full-width treatment below.
+    if (images.length === 1) {
+      return SplitMedia('cs-validation', v.label, v.headline, rightHtml, images[0], false);
+    }
     return (
       '<section class="section cs-split-section" id="cs-validation" data-reveal>' +
         '<div class="container">' +
@@ -243,9 +275,9 @@
               sectionNum(v.label) +
               '<h2 class="cs-section-headline">' + esc(v.headline) + '</h2>' +
             '</div>' +
-            '<div class="cs-split__right">' + paras + cue + findings + quote + '</div>' +
+            '<div class="cs-split__right">' + rightHtml + '</div>' +
           '</div>' +
-          FullImages(v.images || (v.image && v.image.src ? [v.image] : [])) +
+          FullImages(images) +
         '</div>' +
       '</section>'
     );

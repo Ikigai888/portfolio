@@ -239,6 +239,16 @@
   justify-items: center;
 }
 .cs-challenge__media--stack .image-slot__img { height: auto; max-height: 500px; width: auto; max-width: 100%; object-fit: contain; }
+/* Two portrait screenshots side by side instead of stacked — half the total
+   height of two tall images, reading as two states of one screen. Same
+   breakpoint-free technique as .cs-full-image-grid. */
+.cs-challenge__media--grid {
+  display: grid;
+  gap: var(--gap-stack);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: start;
+}
+.cs-challenge__media--grid .image-slot__img { height: auto; width: 100%; object-fit: contain; }
 .cs-challenge__inner--right { direction: rtl; }
 .cs-challenge__inner--right > * { direction: ltr; }
 .cs-challenge__label {
@@ -337,15 +347,21 @@
    transparent canvas) — drop the letterbox mat so it isn't nested in a card. */
 .cs-full-image--bare { background: none; border-radius: 0; }
 
-/* ---------- Context with media (plain two-column: text block | image, no letterbox card) ---------- */
-.cs-context__inner {
+/* ---------- Split with single media (plain two-column: text block | image,
+   no letterbox card) — shared by any narrative section reduced to exactly
+   one supporting image (Context, Exploration, Validation). ---------- */
+.cs-split-media {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap-split);
   align-items: start;
 }
-.cs-context__text .cs-section-headline { margin-bottom: 20px; }
-.cs-context__media .image-slot__img { height: auto; object-fit: contain; }
+.cs-split-media__text .cs-section-headline { margin-bottom: 20px; }
+.cs-split-media__media .image-slot__img { height: auto; object-fit: contain; }
+/* Alternates the section rhythm (same rtl trick as .cs-challenge__inner--right):
+   text stays reading-order LTR, only its grid position flips to the right. */
+.cs-split-media--reverse { direction: rtl; }
+.cs-split-media--reverse > * { direction: ltr; }
 
 /* ---------- Outcome band (cyan teal, build-spec §07) ---------- */
 .cs-outcome {
@@ -459,7 +475,8 @@
   .cs-split { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .cs-split__left { position: static; }
   .cs-split__right { padding-top: 0; }
-  .cs-context__inner { grid-template-columns: 1fr; gap: var(--gap-stack); }
+  .cs-split-media { grid-template-columns: 1fr; gap: var(--gap-stack); }
+  .cs-split-media--reverse { direction: ltr; }
   .cs-summary__card { grid-template-columns: 1fr; }
   .cs-challenge__inner { grid-template-columns: 1fr; }
   .cs-challenge__inner--right { direction: ltr; }
