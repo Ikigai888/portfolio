@@ -345,7 +345,12 @@ html.js .theme-toggle { display: flex; }
 .case-card:hover .case-card__cta { color: var(--text-primary); }
 .case-card:hover .case-card__arrow { transform: translateX(4px); }
 
-.case-card__media { background: var(--bg-inset); min-height: 420px; }
+/* The three thumbnails are all white-background product screenshots; matching
+   the mat to that white (rather than the theme's own surface) means the
+   `contain`-fitted image reads as one continuous surface, not a cropped
+   photo floating in a mismatched frame. */
+.case-card__media { background: #fff; min-height: 420px; }
+.case-card__media .image-slot__img { object-fit: contain; }
 
 /* ---------- ImageSlot placeholder ---------- */
 .image-slot {

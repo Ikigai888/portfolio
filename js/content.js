@@ -84,7 +84,7 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb.png', w: 1680, h: 876, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
       },
     ],
     cta: 'View case study',
