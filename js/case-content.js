@@ -319,7 +319,7 @@ window.CaseContent = {
         'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
         'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
-      image: { src: 'images/case-studies/rail-keyboard-tab-order-iteration.png', w: 1200, h: 1647, alt: 'An earlier iteration of the tab-order documentation, grouping the train navigation, coach carousel, and seat grid before the traversal rules were finalized', caption: 'An early pass at the tab-order logic' },
+      image: { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow — prototype, tasks, and participant survey' },
     },
 
     validation: {
@@ -332,7 +332,6 @@ window.CaseContent = {
         'One finding reset our assumptions: guide dog owners consistently preferred table seats for the extra space on long journeys. That changed the screen-reader priority order and told us exactly which components were safe to skip. My documentation of the findings became the reference engineering built the implementation from.',
       ],
       images: [
-        { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, bare: true, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow — prototype, tasks, and participant survey' },
         { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
       ],
       quote: { text: 'It was a bit hard to tell what each seat offers. I want to see options like power outlets or extra space right away, not guess.', attribution: '— usability session participant' },
