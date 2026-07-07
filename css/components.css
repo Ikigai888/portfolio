@@ -174,6 +174,22 @@ html.js .theme-toggle { display: flex; }
 
 /* ---------- Hero (editorial two-column: text left, portrait right) ---------- */
 #top { background-color: var(--bg); }
+/* Generative wireframe motif carried over from the brand's prior site —
+   dark theme only for now; a light-theme version is coming separately, so
+   this stays scoped to [data-theme="dark"] rather than applying to #top
+   unconditionally. Anchored bottom + faded into --bg up top so the headline
+   and lead stay on clean canvas and the image's black seams invisibly into
+   the dark page bg. Decorative only (CSS background, no DOM node, no alt). */
+[data-theme="dark"] #top {
+  background-image:
+    linear-gradient(to bottom, var(--bg) 0%, rgba(21, 18, 13, 0.82) 58%, rgba(21, 18, 13, 0.40) 100%),
+    url('../images/hero-bg.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center bottom, center bottom;
+  background-size: cover, cover;
+}
+/* Insurance for the lead sitting over the brighter part of the motif */
+[data-theme="dark"] #top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
 .hero {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
