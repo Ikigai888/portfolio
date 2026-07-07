@@ -153,7 +153,7 @@ window.Components = (function () {
         <span class="case-card__cta">${esc(cta)} <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
       </div>
       <div class="case-card__media">
-        ${ImageSlot(image)}
+        ${ImageSlot({ src: image.src, alt: image.alt, w: image.w, h: image.h, poster: image.poster, frame: image.frame })}
       </div>
     </a>`;
 
@@ -183,8 +183,14 @@ window.Components = (function () {
        light-mode product screenshot in the system's own dark surface instead,
        so off-brand UI colors (e.g. blue accents) read as windowed evidence
        rather than a second accent competing with the mint. */
-    if (frame === 'dark') return `<div class="image-slot__frame image-slot__frame--dark">${media}</div>`;
-    return frame ? `<div class="image-slot__frame">${media}</div>` : media;
+    const framed = frame === 'dark'
+      ? `<div class="image-slot__frame image-slot__frame--dark">${media}</div>`
+      : frame ? `<div class="image-slot__frame">${media}</div>` : media;
+    /* caption was previously write-only data on real images (only the empty
+       placeholder rendered it); every image in case-content.js carries one,
+       so surface it as a real figcaption instead of silently dropping it. */
+    if (!caption) return framed;
+    return `<figure class="image-slot__figure">${framed}<figcaption class="image-slot__figcaption">${esc(caption)}</figcaption></figure>`;
   };
 
   /* --- Quote: leading-glyph callout for a participant/session quote --- */

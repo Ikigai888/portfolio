@@ -15,8 +15,8 @@
      can never drift out of sync. */
   function slugify(label) { return label.toLowerCase().replace(/\s+/g, '-'); }
 
-  function sectionNum(n, label) {
-    return '<span class="cs-section-num">' + esc(n) + ' &middot; ' + esc(label.toUpperCase()) + '</span>';
+  function sectionNum(label) {
+    return '<span class="cs-section-num">' + esc(label.toUpperCase()) + '</span>';
   }
 
   /* Arrow bullet used in summary outcomes and impact cards */
@@ -35,7 +35,8 @@
     }
     return '<div class="cs-full-image-grid" data-reveal>' +
       images.map(function (img) {
-        return '<div class="cs-full-image cs-full-image--grid">' + C.ImageSlot(img) + '</div>';
+        var cls = img.bare ? 'cs-full-image cs-full-image--grid cs-full-image--bare' : 'cs-full-image cs-full-image--grid';
+        return '<div class="' + cls + '">' + C.ImageSlot(img) + '</div>';
       }).join('') +
     '</div>';
   }
@@ -79,7 +80,6 @@
           '<div class="cs-summary__card">' +
             '<div class="cs-summary__left">' +
               '<div class="cs-summary__eyebrow">' +
-                '<span class="cs-summary__num">' + esc(s.number) + '</span>' +
                 '<span class="cs-summary__client">' + esc(s.client) + '</span>' +
                 '<span class="cs-summary__theme"><span class="cs-summary__sep" aria-hidden="true">&middot;&nbsp;</span>' + esc(s.theme) + '</span>' +
               '</div>' +
@@ -119,7 +119,7 @@
           '<div class="container">' +
             '<div class="cs-context__inner">' +
               '<div class="cs-context__text">' +
-                sectionNum(ctx.number, ctx.label) +
+                sectionNum(ctx.label) +
                 '<h2 class="cs-section-headline">' + esc(ctx.headline) + '</h2>' +
                 paras +
               '</div>' +
@@ -134,7 +134,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(ctx.number, ctx.label) +
+              sectionNum(ctx.label) +
               '<h2 class="cs-section-headline">' + esc(ctx.headline) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
@@ -186,7 +186,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(ch.number, ch.label) +
+              sectionNum(ch.label) +
               '<h2 class="cs-section-headline">' + esc(ch.intro) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' +
@@ -213,7 +213,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(ai.number, ai.label) +
+              sectionNum(ai.label) +
               '<h2 class="cs-section-headline">' + esc(ai.headline) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
@@ -240,7 +240,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(v.number, v.label) +
+              sectionNum(v.label) +
               '<h2 class="cs-section-headline">' + esc(v.headline) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' + paras + cue + findings + quote + '</div>' +
@@ -263,7 +263,7 @@
     return (
       '<section class="cs-outcome" id="cs-outcome" data-reveal>' +
         '<div class="container">' +
-          sectionNum(o.number, o.label) +
+          sectionNum(o.label) +
           '<h2 class="cs-outcome__headline">' + esc(o.headline) + '</h2>' +
           '<p class="cs-outcome__body">' + esc(o.body) + '</p>' +
           '<div class="cs-impact-grid">' + impacts + '</div>' +
@@ -295,7 +295,7 @@
         '<div class="container">' +
           '<div class="cs-split">' +
             '<div class="cs-split__left">' +
-              sectionNum(r.number, r.label) +
+              sectionNum(r.label) +
               '<h2 class="cs-section-headline">' + esc(r.headline) + '</h2>' +
             '</div>' +
             '<div class="cs-split__right">' + paras + '</div>' +
