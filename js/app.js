@@ -99,22 +99,39 @@
     return C.Section({ id: 'about', content: content });
   }
 
-  /* ---------- Mobile nav toggle: shows/hides .site-header__nav below 600px ---------- */
+  /* ---------- Mobile nav toggle: shows/hides .site-header__nav below 600px ----------
+     Closes on link click (was already handled), plus two real-world paths a
+     visitor expects to work: pressing Escape, and tapping/clicking anywhere
+     outside the open dropdown. Neither is optional — a menu that only closes
+     by re-tapping the same icon reads as stuck. */
   function initNavToggle() {
     var toggle = document.querySelector('.site-header__toggle');
     var nav = document.getElementById('primary-nav');
     if (!toggle || !nav) return;
 
+    function isOpen() { return nav.classList.contains('is-open'); }
     function close() {
       nav.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     }
+    function open() {
+      nav.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (isOpen()) close(); else open();
     });
     nav.addEventListener('click', function (e) {
       if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !isOpen()) return;
+      close();
+      toggle.focus(); // return keyboard focus to the control that opened it
+    });
+    document.addEventListener('click', function (e) {
+      if (!isOpen() || nav.contains(e.target) || toggle.contains(e.target)) return;
+      close();
     });
   }
 

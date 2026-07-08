@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script>
+    document.documentElement.className += ' js';
+    /* Theme before first paint: saved choice, else light.
+       Light is the canonical editorial default regardless of OS preference;
+       :root holds the light tokens. */
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') { t = 'light'; }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found · Tad Natsuhara</title>
+  <meta name="description" content="This page doesn’t exist. Find Tad Natsuhara’s case studies and contact info from the homepage." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2359644C'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23F4F0E8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+
+  <!-- Spectral (display serif, italics) + Hanken Grotesk (body/nav sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Single source of truth for all design values -->
+  <link rel="stylesheet" href="css/tokens.css?v=118" />
+  <!-- Component + layout styles (tokens only, no hardcoded values) -->
+  <link rel="stylesheet" href="css/components.css?v=118" />
+</head>
+<body>
+  <!-- Served by GitHub Pages for any unmatched path under this repo (root
+       404.html is the documented convention). Hand-authored rather than
+       rendered from js/content.js: it sits outside the normal page
+       pipeline (scripts/build.mjs only maps index.html + case-*.html), and
+       its copy never changes with the rest of the site content. Header and
+       footer markup mirror SiteHeader()/SiteFooter() in js/components.js so
+       it reads as the same site, not a dead end. -->
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__name" href="index.html"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
+      <div class="site-header__cluster">
+        <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
+          <a class="site-header__link" href="index.html#work">Work</a><a class="site-header__link" href="index.html#approach">Approach</a><a class="site-header__link" href="index.html#about">About</a><a class="site-header__link" href="index.html#contact">Contact</a>
+        </nav>
+        <div class="theme-toggle" role="group" aria-label="Color theme">
+          <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
+          <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+        </div>
+        <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+          <span class="site-header__toggle-bar"></span>
+          <span class="site-header__toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="content">
+    <section class="section" id="top">
+      <div class="container">
+        <div class="hero">
+          <hr class="hero__rule" />
+          <p class="eyebrow hero__eyebrow">Error 404</p>
+          <h1 class="hero__headline"><span class="hero__line">This page went missing.</span><span class="hero__line hero__line--accent">The work didn’t.</span></h1>
+          <p class="hero__lead">The link may be broken, or the page may have moved. Start from the homepage, or jump straight to the case studies.</p>
+          <a class="hero__cta" href="index.html">Back to homepage <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer section--footer" id="contact">
+    <div class="container">
+      <h2 class="eyebrow">Let’s work together</h2>
+      <a class="site-footer__cta" href="mailto:1tadashi8@gmail.com">Say hello
+        <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+      <div class="site-footer__details">
+        <div class="site-footer__col">
+          <span class="eyebrow">Email</span>
+          <a class="site-footer__link" href="mailto:1tadashi8@gmail.com">1tadashi8@gmail.com</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="eyebrow">Phone</span>
+          <a class="site-footer__link" href="tel:+17788466994">+1 778 846 6994</a>
+        </div>
+        <div class="site-footer__col">
+          <span class="eyebrow">Social</span>
+          <a class="site-footer__link" href="https://www.linkedin.com/in/tad-natsuhara-design" target="_blank" rel="noopener">
+            LinkedIn <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+      <p class="site-footer__copyright">&copy; 2026 Tad Natsuhara</p>
+    </div>
+  </footer>
+
+  <!-- Same nav-toggle/theme-toggle wiring as js/app.js, kept inline since
+       this page sits outside the content pipeline and doesn't load
+       js/content.js or js/app.js (which would re-render #app as the
+       homepage). components.js is the only shared script it needs. -->
+  <script src="js/components.js?v=118"></script>
+  <script>
+    (function () {
+      var toggle = document.querySelector('.site-header__toggle');
+      var nav = document.getElementById('primary-nav');
+      function isOpen() { return nav.classList.contains('is-open'); }
+      function close() { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+      function open() { nav.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); }
+      toggle.addEventListener('click', function () { isOpen() ? close() : open(); });
+      nav.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape' || !isOpen()) return;
+        close();
+        toggle.focus();
+      });
+      document.addEventListener('click', function (e) {
+        if (!isOpen() || nav.contains(e.target) || toggle.contains(e.target)) return;
+        close();
+      });
+      window.Components.initThemeToggle();
+    })();
+  </script>
+</body>
+</html>

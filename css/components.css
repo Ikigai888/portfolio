@@ -150,39 +150,74 @@
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
 /* ---------- Theme toggle (light/dark) ----------
-   Icon + a small eyebrow-style label naming the theme you'd switch TO —
-   the same uppercase/tracked treatment as .site-header__link, so the
-   toggle reads as part of the nav rather than an isolated icon-button.
-   44px tall tap target (nav-toggle convention), auto width. Needs JS to
-   act, so it's gated on html.js like the reveals. (impeccable live, Jul 2026) */
+   An icon-only sliding switch: both icons sit in a pill track, a solid
+   accent capsule sits behind whichever one is active and slides between
+   them on click. No text labels — position + color are the only state
+   cues needed, so it stays compact next to the eyebrow nav. Needs JS to
+   act, so the group is gated on html.js like the reveals. (impeccable
+   live, Jul 2026 — third iteration: single "switch to X" button, then a
+   two-option fading-label pair, then this per direct feedback that the
+   labeled pair read as cluttered.) */
 .theme-toggle {
+  --toggle-size: 24px; /* small and quiet by design (see note below); real hit area, not
+    padding-expanded — the two icons sit close enough together that an invisible-padding
+    tap-target trick (the site's usual approach, e.g. .site-header__link) would make their
+    expanded hit zones overlap and misroute clicks between them near the boundary. */
   display: none;
+  position: relative;
   align-items: center;
-  gap: 8px;
-  height: 44px;
-  margin: 0 -4px;
-  padding: 0 4px;
-  background: none;
+  gap: 2px;
+  /* No explicit height: an explicit height here (content-box) stacks on TOP of the padding
+     below instead of including it, inflating the track and — because the thumb's absolute
+     top:3px is measured from the padding edge while flex centers the buttons inside the
+     now-taller content box — throwing the thumb and the buttons out of alignment by the
+     centering offset. Let the track auto-size to button height + padding instead. */
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: var(--bg-inset);
+}
+html.js .theme-toggle { display: inline-flex; }
+.theme-toggle__item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
   border: none;
+  background: none;
+  border-radius: 50%;
+  padding: 0;
   cursor: pointer;
   color: var(--text-muted);
   transition: color var(--hover-color-dur);
 }
-html.js .theme-toggle { display: flex; }
-.theme-toggle:hover { color: var(--text-primary); }
-.theme-toggle__icon { display: none; }
-[data-theme="dark"] .theme-toggle__icon--sun { display: block; }
-:root:not([data-theme="dark"]) .theme-toggle__icon--moon { display: block; }
-.theme-toggle__label {
-  display: none;
-  font-size: var(--fs-eyebrow);
-  font-weight: 700;
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: inherit;
+/* Active icon needs its OWN ink per theme, not --band-text as-is: --band-text is tuned
+   against --band-bg (a mid-tone olive/mint similar in both themes), but this capsule uses
+   --accent, which is dark-ish in light mode and very light in dark mode — opposite
+   lightness profiles. --band-card-text (light) reads ~5.5:1 on light-mode's dark olive
+   accent; dark-mode's own --band-text (near-black) reads ~10.8:1 on its light mint accent.
+   The old single value read ~2.8:1 in light mode — a real contrast failure. */
+.theme-toggle__item[aria-pressed="true"] { color: var(--band-card-text); }
+[data-theme="dark"] .theme-toggle__item[aria-pressed="true"] { color: var(--band-text); }
+.theme-toggle__item:hover:not([aria-pressed="true"]) { color: var(--text-primary); }
+.theme-toggle__item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle__thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform 0.35s var(--reveal-ease);
 }
-[data-theme="dark"] .theme-toggle__label--to-light { display: block; }
-:root:not([data-theme="dark"]) .theme-toggle__label--to-dark { display: block; }
+[data-theme="dark"] .theme-toggle__thumb { transform: translateX(calc(var(--toggle-size) + 2px)); }
+:root:not([data-theme="dark"]) .theme-toggle__thumb { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__thumb { transition: none; }
+}
 
 /* ---------- Hero (editorial two-column: text left, portrait right) ---------- */
 /* Shorter than the standard .section rhythm — the hero's wireframe motif
