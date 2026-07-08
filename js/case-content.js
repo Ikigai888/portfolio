@@ -15,7 +15,7 @@ window.CaseContent = {
       theme: 'Organizational Complexity',
       title: 'Designing Brand Governance for Enterprise Scale',
       question: 'How do you help thousands of agents stay on brand without relying on manual processes?',
-      role: 'Senior Product Designer — strategy, IA, interaction design, customer validation',
+      role: 'Senior Product Designer · strategy, IA, interaction design, customer validation',
       capabilities: ['Product Strategy', 'Enterprise SaaS', 'Systems Thinking', 'Information Architecture', 'AI-assisted Design', 'Customer Validation'],
       outcomes: [
         'Centralized brand management for thousands of agents into a single source of truth.',
@@ -28,47 +28,47 @@ window.CaseContent = {
       label: 'Context',
       headline: 'Why this project existed',
       body: [
-        'MoxiWorks serves real-estate brokerages whose brands live across hundreds of offices and thousands of agents. Branding existed, but it lived in a legacy service that wasn\'t self-serve — changes went through a service team, and admins had no way to see or manage their own brand system.',
-        'The result was guesswork and brand drift at scale. Admins couldn\'t verify what was set where. Agents worked around controls. And as the RISE product ecosystem grew, every new product needed brand — without a governed system to inherit it from.',
+        'MoxiWorks serves real-estate brokerages whose brands live across hundreds of offices and thousands of agents. Branding existed, but it lived in a legacy service that wasn\'t self-serve: changes went through a service team, and admins had no way to see or manage their own brand system.',
+        'The result was guesswork and brand drift at scale. Admins couldn\'t verify what was set where. Agents worked around controls. And as the RISE product ecosystem grew, every new product needed brand, with no governed system to inherit it from.',
       ],
     },
 
     challenges: {
       label: 'Challenges',
       intro: 'Four decisions, built in the order they actually happen',
-      body: 'This is the real sequence: define the brand once, package it, make it cascade under control, and prove it scales beyond one screen — the problem, the options, and the reasoning behind each one.',
+      body: 'This is the real sequence: define the brand once, package it, make it cascade under control, and prove it scales beyond one screen. The problem, the options, and the reasoning behind each one.',
       items: [
         {
           number: 1,
           headline: 'Turning scattered brand assets into a single library',
-          body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service — but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
+          body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service, but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
           options: 'keep improving the service-managed model; expose raw asset settings to admins; a structured Brand Library with named, taggable, lockable assets.',
-          decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open — the raw material everything else in this flow is built from.',
-          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style — name, font family, weight, and tags', caption: 'Brand Library — defining the foundational assets' },
+          decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open: the raw material everything else in this flow is built from.',
+          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style: name, font family, weight, and tags', caption: 'Brand Library · defining the foundational assets' },
         },
         {
           number: 2,
           headline: 'Packaging brand into something agents can apply',
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'per-asset templates; a raw token system; packaged Style Kits.',
-          decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit — the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — bundling the library into one applied unit' },
+          decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit: the source of truth other products read from.',
+          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor: color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits · bundling the library into one applied unit' },
         },
         {
           number: 3,
-          headline: 'Making the hierarchy cascade — under control',
+          headline: 'Making the hierarchy cascade, under control',
           body: 'Brand still had to reach thousands of agents through hundreds of offices, cascading brand → office → team → agent, each level inheriting or overriding. Exposed naively, that hierarchy overwhelmed admins. And the moment Style Kits cascaded automatically, a second question opened: how much could an agent still change locally? Too much admin control creates friction; too little invites brand drift.',
           options: 'a flat list of all brands or an explicit org tree; full admin lock or full agent freedom; an inheritance model with visible overrides plus explicit lock/unlock per element.',
-          decision: 'An inheritance model that shows what\'s inherited and what can be overridden, paired with a permission layer where admins lock the elements that matter and unlock the rest — the hierarchy stays visible and control stays intentional.',
-          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 1700, h: 3600, alt: 'High-level brand governance flow — brand settings cascade from admin through the Brand Library and Style Kits down to agents, with inheritance, overrides, and permissions at each level', caption: 'How brand cascades and stays governed — admin to agent' },
+          decision: 'An inheritance model that shows what\'s inherited and what can be overridden, paired with a permission layer where admins lock the elements that matter and unlock the rest: the hierarchy stays visible and control stays intentional.',
+          image: { src: 'images/case-studies/brand-gov-hierarchy-flow.png', w: 1700, h: 3600, alt: 'High-level brand governance flow: brand settings cascade from admin through the Brand Library and Style Kits down to agents, with inheritance, overrides, and permissions at each level', caption: 'How brand cascades and stays governed · admin to agent' },
         },
         {
           number: 4,
           headline: 'Architecting for the platform, not the page',
-          body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one — and hold up as the ecosystem grew.',
+          body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one, and hold up as the ecosystem grew.',
           options: 'a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
-          decision: 'A platform capability — branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits — consumed inside Presentations, not rebuilt per product' },
+          decision: 'A platform capability: branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
+          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits · consumed inside Presentations, not rebuilt per product' },
         },
       ],
     },
@@ -77,7 +77,7 @@ window.CaseContent = {
       label: 'Exploration',
       headline: 'Wider exploration, faster alignment',
       body: [
-        'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — brand, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
+        'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy: brand, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
         'AI increased the breadth of exploration; it didn’t replace the design thinking. The judgment about which model held up under governance constraints, and which would confuse admins, stayed firmly a design decision.',
       ],
       image: { src: 'images/case-studies/brand-gov-org-governance.png', w: 1371, h: 737, alt: 'Organization Governance screen showing brand inheritance across a company hierarchy, with default, inherited, and overridden values', caption: 'One of the organizational models explored with AI' },
@@ -99,11 +99,11 @@ window.CaseContent = {
     outcome: {
       label: 'Outcome',
       headline: 'A foundation the ecosystem builds on',
-      body: 'The work established branding as a governed platform capability rather than a per-product feature — setting the direction for how RISE products consume brand going forward.',
+      body: 'The work established branding as a governed platform capability rather than a per-product feature, setting the direction for how RISE products consume brand going forward.',
       impacts: [
         { label: 'Fewer manual brand reviews', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
         { label: 'Style Kits adopted across multiple RISE products', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
-        { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade brand → office → team → agent with visible overrides — one hierarchy the whole ecosystem shares.' },
+        { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade brand → office → team → agent with visible overrides: one hierarchy the whole ecosystem shares.' },
       ],
     },
 
@@ -111,8 +111,8 @@ window.CaseContent = {
       label: 'Reflection',
       headline: 'What this project taught me',
       body: [
-        'The hardest part was designing for both ends of the scale at once. The same system had to govern a brand spanning hundreds of offices and multiple levels of hierarchy — and still make sense to a small company with one admin and no appetite for "governance." Complexity overwhelming smaller organizations was the risk we named first, and it pressed on every design decision.',
-        'What carried forward: make the defaults do the governing. Inheritance meant most admins never had to configure anything — the brand cascaded correctly on its own, and the deeper controls surfaced only when an organization\'s structure actually demanded them. Progressive disclosure isn\'t a UI trick; it\'s how a complex system earns the right to feel simple.',
+        'The hardest part was designing for both ends of the scale at once. The same system had to govern a brand spanning hundreds of offices and multiple levels of hierarchy, and still make sense to a small company with one admin and no appetite for "governance." Complexity overwhelming smaller organizations was the risk we named first, and it pressed on every design decision.',
+        'What carried forward: make the defaults do the governing. Inheritance meant most admins never had to configure anything: the brand cascaded correctly on its own, and the deeper controls surfaced only when an organization\'s structure actually demanded them. Progressive disclosure isn\'t a UI trick; it\'s how a complex system earns the right to feel simple.',
       ],
     },
 
@@ -135,7 +135,7 @@ window.CaseContent = {
       theme: 'Behavioral Complexity',
       title: 'Designing a Passwordless Authentication Experience',
       question: 'How do you convince people to trust a sign-in method they’ve never used before?',
-      role: 'Senior Product Designer — UX strategy, interaction design, accessibility, design systems',
+      role: 'Senior Product Designer · UX strategy, interaction design, accessibility, design systems',
       capabilities: ['Trust Design', 'Cross-platform UX', 'Accessibility', 'Design Systems', 'Product Collaboration'],
       outcomes: [
         '90% fewer password resets after passkey rollout.',
@@ -152,7 +152,7 @@ window.CaseContent = {
         'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped. People had to be convinced it was safe, at the exact moment they were least patient.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Passkey onboarding prompt on desktop and mobile, reading “The fastest, most secure way to sign in,” with Create a passkey now and Maybe later options', caption: 'The passkey introduction — desktop and mobile' },
+        { src: 'images/case-studies/passkeys-onboard-animation.gif', w: 1524, h: 1328, alt: 'Passkey onboarding prompt on desktop and mobile, reading “The fastest, most secure way to sign in,” with Create a passkey now and Maybe later options', caption: 'The passkey introduction · desktop and mobile' },
       ],
     },
 
@@ -175,7 +175,7 @@ window.CaseContent = {
           body: 'Face ID and Touch ID are familiar, but their relationship to account security isn’t. Many customers assumed biometrics replaced their password, when in fact biometrics were the key itself.',
           options: 'technical explanation; metaphor-first framing; show-don’t-tell interaction.',
           decision: 'A progressive disclosure pattern that shows the mechanism in action before explaining it, so the experience teaches rather than the copy.',
-          image: { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Face ID passkey setup showing the “Use Face ID to sign in?” system prompt, followed by a “passkey created” confirmation', caption: 'Face ID setup — the mechanism in action' },
+          image: { src: 'images/case-studies/passkeys-faceid-animation.gif', w: 1150, h: 1246, alt: 'Face ID passkey setup showing the “Use Face ID to sign in?” system prompt, followed by a “passkey created” confirmation', caption: 'Face ID setup · the mechanism in action' },
         },
         {
           number: 3,
@@ -185,8 +185,8 @@ window.CaseContent = {
           decision: 'A visually secondary fallback that is discoverable but doesn’t compete, so passkeys feel like the obvious path without removing the escape hatch.',
           impact: 'The management and security controls weren’t on the roadmap. I surfaced the need through research and conversations with the dev team, built the case for it, and got cross-functional and leadership buy-in to ship create, remove, and manage controls.',
           images: [
-            { src: 'images/case-studies/passkeys-login-options.png', w: 1515, h: 1060, alt: 'Sign-in screen offering Sign in with Password, Use a Passkey, and Send One-Time Code as equal fallback options, shown on tablet and mobile', caption: 'Sign-in — the fallback stays available, not competing' },
-            { src: 'images/case-studies/passkeys-login-settings.png', w: 1627, h: 1021, alt: 'Account security settings on desktop and mobile showing the Passkeys section with Add a Passkey and Revoke controls', caption: 'Manage controls — create, remove, and fall back' },
+            { src: 'images/case-studies/passkeys-login-options.png', w: 1515, h: 1060, alt: 'Sign-in screen offering Sign in with Password, Use a Passkey, and Send One-Time Code as equal fallback options, shown on tablet and mobile', caption: 'Sign-in · the fallback stays available, not competing' },
+            { src: 'images/case-studies/passkeys-login-settings.png', w: 1627, h: 1021, alt: 'Account security settings on desktop and mobile showing the Passkeys section with Add a Passkey and Revoke controls', caption: 'Manage controls · create, remove, and fall back' },
           ],
         },
       ],
@@ -200,7 +200,7 @@ window.CaseContent = {
         'Rapid prototyping let me test the introduction flow with the team before investing in high fidelity. The early rounds surfaced that the animation sequence mattered as much as the copy: people understood passkeys better when they saw the device interaction before reading about it.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 460, bare: true, alt: 'Three member personas (Sentiment & Efficiency, Product Education & Confidence, and Confidence) summarizing the research that shaped who we tested with', caption: 'Member research — who we tested with' },
+        { src: 'images/case-studies/passkeys-personas.png', w: 1286, h: 460, bare: true, alt: 'Three member personas (Sentiment & Efficiency, Product Education & Confidence, and Confidence) summarizing the research that shaped who we tested with', caption: 'Member research · who we tested with' },
       ],
     },
 
@@ -212,9 +212,9 @@ window.CaseContent = {
         'The sessions confirmed the progressive disclosure approach. Participants who saw the interaction before the explanation consistently rated their confidence higher. They also surfaced a gap: customers needed reassurance that their old password still worked as a backup.',
       ],
       images: [
-        { src: 'images/case-studies/passkeys-login-movie.mp4', poster: 'images/case-studies/passkeys-login-movie-poster.jpg', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login — full flow' },
+        { src: 'images/case-studies/passkeys-login-movie.mp4', poster: 'images/case-studies/passkeys-login-movie-poster.jpg', w: 960, h: 540, alt: 'Screen recording of the passkey login flow end to end', caption: 'Passkey login · full flow' },
       ],
-      quote: { text: 'Sometimes it will forget what my password is, I have to type in my e-mail and send a link which I don’t like because then I have to exit and wait for the e-mail.', attribution: '— usability session participant' },
+      quote: { text: 'Sometimes it will forget what my password is, I have to type in my e-mail and send a link which I don’t like because then I have to exit and wait for the e-mail.', attribution: 'Usability session participant' },
     },
 
     outcome: {
@@ -256,7 +256,7 @@ window.CaseContent = {
       theme: 'Interaction Complexity',
       title: 'Designing an Accessible Rail Booking Experience',
       question: 'How do you simplify one of the most information-dense experiences in travel?',
-      role: 'Senior Product Designer — interaction design, accessibility, responsive UX',
+      role: 'Senior Product Designer · interaction design, accessibility, responsive UX',
       capabilities: ['Complex Interaction Design', 'Accessibility', 'Responsive UX', 'Enterprise Product Design'],
       outcomes: [
         '20% increase in completed bookings.',
@@ -284,7 +284,7 @@ window.CaseContent = {
         {
           number: 1,
           headline: 'Making seat data scannable, not just displayable',
-          body: 'Seat selection data — car type, seat class, accessibility needs, and more — varies by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
+          body: 'Seat selection data (car type, seat class, accessibility needs, and more) varies by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
           options: 'progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
           decision: 'A spatial seat map with progressive detail: the map shows position, selection reveals the relevant attributes for that seat.',
           images: [
@@ -319,20 +319,20 @@ window.CaseContent = {
         'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
         'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
-      image: { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow — prototype, tasks, and participant survey' },
+      image: { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
     },
 
     validation: {
       label: 'Validation',
       headline: 'Testing with business travelers',
       body: [
-        'I wrote the brief, built the prototype, and moderated sessions with frequent business travelers booking multi-leg journeys under policy constraints, then partnered with the UX research team to synthesize what we heard. The dual-mode accessibility approach held up immediately — screen reader participants navigated the structured list without needing the map — and the sessions surfaced one gap we closed before launch: travelers wanted to see their previously selected seats when returning from a policy override.',
-        'Stakeholders had pushed back on the accessibility investment early — "Does everything need to be tabbed? Can we skip some items?" Interviewing visually impaired travelers directly settled it: guide dog owners consistently preferred table seats for the extra space on long journeys, a finding that reset our screen-reader priority order and told us exactly which components were safe to skip. My documentation of that work became the reference engineering built the implementation from.',
+        'I wrote the brief, built the prototype, and moderated sessions with frequent business travelers booking multi-leg journeys under policy constraints, then partnered with the UX research team to synthesize what we heard. The dual-mode accessibility approach held up immediately: screen reader participants navigated the structured list without needing the map. And the sessions surfaced one gap we closed before launch: travelers wanted to see their previously selected seats when returning from a policy override.',
+        'Stakeholders had pushed back on the accessibility investment early: "Does everything need to be tabbed? Can we skip some items?" Interviewing visually impaired travelers directly settled it: guide dog owners consistently preferred table seats for the extra space on long journeys, a finding that reset our screen-reader priority order and told us exactly which components were safe to skip. My documentation of that work became the reference engineering built the implementation from.',
       ],
       images: [
         { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
       ],
-      quote: { text: 'It was a bit hard to tell what each seat offers. I want to see options like power outlets or extra space right away, not guess.', attribution: '— usability session participant' },
+      quote: { text: 'It was a bit hard to tell what each seat offers. I want to see options like power outlets or extra space right away, not guess.', attribution: 'Usability session participant' },
     },
 
     outcome: {

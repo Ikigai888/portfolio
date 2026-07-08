@@ -54,60 +54,61 @@ window.Components = (function () {
     return out;
   };
 
-  /* --- ThemeToggle: icon + eyebrow-style label, header chrome ---
-     Same 44px-tall tap target as the mobile nav toggle, auto width.
-     Icon and label both show the theme you'd switch TO (sun/"Light" in
-     dark mode, moon/"Dark" in light) via CSS keyed on html[data-theme].
-     Hidden without JS (html.js gate) since it can't act. Wired up by
-     initThemeToggle, called from app.js / case-template.js.
-     (impeccable live, Jul 2026 — chosen over an icon-only toggle and a
-     segmented dual-icon toggle so it reads as part of the nav.) */
+  /* --- ThemeToggle: icon-only sliding switch, header chrome ---
+     A pill track holds both icons; a solid accent capsule sits behind
+     whichever one is active and slides between them on click. No text
+     labels — the position of the capsule (and each icon's own color) is
+     the only state cue needed. Hidden without JS (html.js gate) since it
+     can't act. Wired up by initThemeToggle, called from app.js /
+     case-template.js. (impeccable live, Jul 2026 — third iteration: the
+     original single "switch to X" button, then a two-option fading-label
+     pair, then this icon-only sliding switch per direct feedback that the
+     labeled pair read as cluttered next to the eyebrow nav.) */
   const ThemeToggle = () => `
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme">
-      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
-      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
-      <span class="theme-toggle__label theme-toggle__label--to-light">Light</span>
-      <span class="theme-toggle__label theme-toggle__label--to-dark">Dark</span>
-    </button>
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
+      <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
+      <span class="theme-toggle__thumb" aria-hidden="true"></span>
+    </div>
   `;
 
-  /* Runtime wiring for every .theme-toggle on the page. Persists the
-     choice; while no explicit choice exists, follows the OS setting
-     live. Safe to define in the Node build sandbox (only touches
-     document when called, which happens in-browser only). */
+  /* Runtime wiring for every .theme-toggle group on the page. Persists the
+     choice; while no explicit choice exists, follows the OS setting live.
+     Safe to define in the Node build sandbox (only touches document when
+     called, which happens in-browser only). */
   function initThemeToggle() {
     var root = document.documentElement;
-    var buttons = document.querySelectorAll('.theme-toggle');
+    var buttons = document.querySelectorAll('.theme-toggle__item');
     if (!buttons.length) return;
 
     function stored() {
       try { return localStorage.getItem('theme'); } catch (e) { return null; }
     }
-    function relabel() {
-      var light = root.getAttribute('data-theme') === 'light';
+    function sync() {
+      var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       buttons.forEach(function (btn) {
-        btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-theme-btn') === current ? 'true' : 'false');
       });
     }
+    function set(next) {
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    }
     buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-        relabel();
-      });
+      btn.addEventListener('click', function () { set(btn.getAttribute('data-theme-btn')); });
     });
     if (window.matchMedia) {
       var mq = window.matchMedia('(prefers-color-scheme: light)');
       var follow = function (e) {
         if (stored()) return; /* explicit choice wins */
         root.setAttribute('data-theme', e.matches ? 'light' : 'dark');
-        relabel();
+        sync();
       };
       if (mq.addEventListener) mq.addEventListener('change', follow);
       else if (mq.addListener) mq.addListener(follow);
     }
-    relabel();
+    sync();
   }
 
   /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
