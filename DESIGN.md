@@ -1,6 +1,6 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A warm editorial portfolio for a senior product designer — paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by one accent per theme — terracotta in light, signature mint in dark.
+description: A warm editorial portfolio for a senior product designer — paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by one accent per theme — olive in light, signature mint in dark.
 theme-model: "light default (:root), dark sibling ([data-theme=\"dark\"])"
 colors:
   # Light theme (canonical / default)
@@ -15,13 +15,13 @@ colors:
   text-muted: "#6E6249"
   text-faint: "#A79A80"
   text-faint-2: "#675B42"
-  accent: "oklch(0.559 0.135 41.1)"       # #B4542E terracotta (light)
-  accent-text: "oklch(0.515 0.137 40.8)"  # #A6461F
+  accent: "oklch(0.487 0.0395 127.8)"     # #59644C olive (light)
+  accent-text: "oklch(0.437 0.075 127.8)"  # #46592A — more chroma than a straight darken of --accent (see §2)
   # Dark sibling accent — signature mint
   accent-dark: "oklch(0.81 0.084 179)"       # #83D4C3
   accent-text-dark: "oklch(0.91 0.097 179)"  # #97F8E4
-  # Outcome band — terracotta in light, mint in dark
-  band-bg: "oklch(0.621 0.13 45.2)"       # #C56A3E (light) / dark: oklch(0.62 0.09 179) #3D9887
+  # Outcome band — olive in light, mint in dark
+  band-bg: "oklch(0.605 0.045 127.8)"       # #7A876A (light) / dark: oklch(0.62 0.09 179) #3D9887
   band-text: "#2A140A"
   band-card: "rgba(26, 13, 6, 0.86)"
   band-card-text: "#F6EFE4"
@@ -94,30 +94,33 @@ components:
 
 **Creative North Star: "Editorial Restraint"**
 
-Warm paper (`#F4F0E8`) holds the page; a high-contrast serif carries every headline like a magazine feature; one terracotta accent is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight warm-ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy.
+Warm paper (`#F4F0E8`) holds the page; a high-contrast serif carries every headline like a magazine feature; one olive accent is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight warm-ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy.
 
-This is the *editorial* iteration (adopted Jul 2026 from the "Editorial Homepage" redesign). It replaces the earlier dark-default, mint/copper, Alegreya-Bricolage system. The content and information architecture are unchanged; the visual language is new.
+This is the *editorial* iteration (adopted Jul 2026 from the "Editorial Homepage" redesign; the accent moved from terracotta to olive shortly after). It replaces the earlier dark-default, mint/copper, Alegreya-Bricolage system. The content and information architecture are unchanged; the visual language is new.
 
-This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Warmth is carried by the paper ground, the serif, and the terracotta — never by a tinted-near-white body that reads as "AI beige."
+This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Warmth is carried by the paper ground, the serif, and the olive accent — never by a tinted-near-white body that reads as "AI beige."
 
 **Key Characteristics:**
 - **Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme="dark"]` is its dark counterpart — same type, same layouts, same single accent lifted for the dark ground. First visit follows OS preference, else light.
-- **One accent per theme** — terracotta in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.
+- **One accent per theme** — olive in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.
 - **Serif display / sans body on a real contrast axis** — Spectral (warm humanist serif with expressive italics) for every headline, statement, numeral, and the footer CTA; Hanken Grotesk (warm neo-grotesque) for body, nav, and labels. Both chosen deliberately off the reflex-reject list — not Fraunces/Playfair, not Inter/DM.
 - **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Spectral italic rather than bolded.
+- **Hero wireframe motif, both themes.** A generative fern/wireframe illustration anchors the bottom of the hero (`#top`), faded into `--bg` toward the top so headline and lead sit on clean canvas. Each theme renders its own asset (`hero-bg.jpg` dark, `hero-bg-light.png` light) rather than filtering one image, since the motif's tones need to invert, not just shift hue.
 - Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.
 - Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on `html.js`, a real `<noscript>` fallback ships, and all motion respects `prefers-reduced-motion`.
 
 ## 2. Colors
 
-One warm surface ramp, one warm-ink text ramp, and exactly one accent hue *per theme* — terracotta in light, signature mint in dark. Nothing else competes with the accent.
+One warm surface ramp, one warm-ink text ramp, and exactly one accent hue *per theme* — olive in light, signature mint in dark. Nothing else competes with the accent.
 
 ### The Accent — one hue per theme
 Each theme owns a single saturated hue; they are genuinely different hues, not one hue at two lightnesses.
-- **Light — Terracotta** (sampled from the redesign mockup): accent `oklch(0.559 0.135 41.1)` / `#B4542E` for solid fills, the large italic display accent, status dot, arrows, focus ring, skip-link; accent-text `oklch(0.515 0.137 40.8)` / `#A6461F` (5.25:1 on paper) for *small* accent type — eyebrows, serif numerals, inline links.
+- **Light — Olive**: accent `oklch(0.487 0.0395 127.8)` / `#59644C` (5.51:1 on paper) for solid fills, the large italic display accent, status dot, arrows, focus ring, skip-link; accent-text `oklch(0.437 0.075 127.8)` / `#46592A` (6.79:1 on paper) for *small* accent type — eyebrows, serif numerals, inline links, quote marks, Decision/Options labels.
 - **Dark — Signature Mint** (keyed to the TN_Port_Logo wordmark's native color): accent `oklch(0.81 0.084 179)` / `#83D4C3` (11.9:1 on the dark `--bg`); accent-text `oklch(0.91 0.097 179)` / `#97F8E4` (15:1) for accent type on dark.
 
-Because the hues differ, every accent-hued token (Outcome band, selection, status glow) has a mint override in the dark theme. The wordmark PNG is drawn in the mint, so the *light* theme retargets it to terracotta with a CSS filter (see §5); dark uses it unfiltered.
+Because the hues differ, every accent-hued token (Outcome band, selection, status glow) has a mint override in the dark theme. The wordmark PNG is drawn in the mint, so the *light* theme retargets it to olive with a CSS filter (see §5); dark uses it unfiltered.
+
+**accent-text carries more chroma than a straight darken of --accent.** Both share hue 127.8, but accent-text bumps chroma from 0.0395 to 0.075. A same-chroma darken of the requested `#59644C` reads as a muddy, ambiguous neutral-brown at small sizes — easy to mistake for a leftover terracotta shade rather than a deliberate olive — since low-chroma colors lose their hue identity as they darken. The higher-chroma version is unambiguously green while staying inside the muted, understated palette (nowhere near a bright/saturated green). Found and fixed during a polish pass shortly after the terracotta→olive migration.
 
 ### Surfaces & Ink — Light (default)
 - **Warm Paper** (`#F4F0E8`): page background. Warm, not a tinted near-white; the warmth is real, not "AI beige."
@@ -131,13 +134,13 @@ Because the hues differ, every accent-hued token (Outcome band, selection, statu
 - **Paper ramp** (on dark): primary `#F1EBDF` (14.8:1) · bright `#FBF6EC` · secondary `#D8CFC0` · tertiary `#C9BCA6` · muted `#A1957F` (5.9:1) · faint `#736959` decorative · faint-2 `#8A8070`.
 
 ### Inverted Band (case-study "Outcome" section)
-The Outcome band is a self-contained saturated surface that tracks each theme's own accent hue: **terracotta** `oklch(0.621 0.13 45.2)` / `#C56A3E` in light, **mint** `oklch(0.62 0.09 179)` / `#3D9887` in dark (defined in `:root`, overridden under `[data-theme="dark"]`).
+The Outcome band is a self-contained saturated surface that tracks each theme's own accent hue: **olive** `oklch(0.605 0.045 127.8)` / `#7A876A` in light, **mint** `oklch(0.62 0.09 179)` / `#3D9887` in dark (defined in `:root`, overridden under `[data-theme="dark"]`). The light-mode band's lightness/chroma is tuned independently of `--accent` (lighter and slightly more saturated) — a straight fill of `--accent` itself reads flat across a full-bleed surface this large; `--band-bg` is deliberately its own value in the same hue family, not a derived shade.
 - Headline and body sit directly on it in **Band Ink** (`#2A140A` light / `#0E1416` dark — each a near-black in that theme's accent hue family; ≥4.58:1, clears AA for the large serif headline and body).
 - **Band Card** `rgba(26, 13, 6, 0.86)`: impact cards sit *on* the band as dark ink surfaces carrying paper text — a second polarity flip so the metrics read as inset panels. Their text uses **polarity-fixed** tokens (`--band-card-text` `#F6EFE4`, `--band-card-text-2` `#DCD2C2`), never theme-varying, since the card is a dark surface in both themes.
 - **Band Hairline** `rgba(26, 13, 6, 0.2)`: dividers between impact cards.
 
 ### Named Rules
-**The One Accent Rule.** Exactly one saturated color on any screen — terracotta in the light theme, signature mint in the dark. Never both at once, never a third hue. If a new UI need calls for "another color," the answer is a neutral from the ramp.
+**The One Accent Rule.** Exactly one saturated color on any screen — olive in the light theme, signature mint in the dark. Never both at once, never a third hue. If a new UI need calls for "another color," the answer is a neutral from the ramp.
 
 ## 3. Typography
 
@@ -168,7 +171,7 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 ### Shadow Vocabulary
 - **Ambient Rest** — light: `0 4px 24px rgba(36, 30, 19, 0.10)` · dark: `0 4px 24px rgba(0, 0, 0, 0.25)`. Default under case-study cards.
 - **Ambient Hover** — light: `0 10px 34px rgba(36, 30, 19, 0.16)` · dark: `0 10px 34px rgba(0, 0, 0, 0.34)`. Paired with border-brightening on hover.
-- **Status Ring / Glow** — the About live-status dot. On paper a real glow disappears, so light uses a soft terracotta ring `0 0 0 4px rgba(180, 84, 46, 0.16)`; dark uses a true mint glow `0 0 10px oklch(0.81 0.084 179)`.
+- **Status Ring / Glow** — the About live-status dot. On paper a real glow disappears, so light uses a soft olive ring `0 0 0 4px rgba(89, 100, 76, 0.16)`; dark uses a true mint glow `0 0 10px oklch(0.81 0.084 179)`.
 - **Header scrim** (`--scrim` page-tint at ~0.85 + 12px `backdrop-filter: blur`): the sticky header floats a translucent scrim over content — depth by atmosphere, not edges.
 
 ### Named Rules
@@ -178,8 +181,8 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 
 ### Buttons / CTAs
 - **No boxed buttons.** The primary CTA is the footer's oversized `Say hello ↗` in Fraunces at `clamp(2.75rem, 8vw, 7rem)` — the CTA *is* display type; the arrow nudges up-right on hover.
-- **The drenched closer (signature moment).** The contact footer is the one place the page commits the accent to a full surface: after a whole page of warm-paper restraint, the final fold is a solid accent field (terracotta in light, mint in dark) with near-black band ink for every element. It reuses the Outcome-band tokens (`--band-bg` / `--band-text` / `--band-hairline`), so the homepage closer rhymes with the case-study Outcome bands and adds no new primitives. This is a deliberate *Committed* color moment (per the brand register) that breaks the monochromatic-restraint read; keep it to this one fold — the accent stays rare everywhere else. Focus rings inside it switch to band ink (the accent ring would vanish on its own field).
-- **Hero CTA** (`View selected work ↗`): an uppercase Inter link with a bottom hairline that brightens to terracotta on hover, the arrow nudging up-right.
+- **The drenched closer (signature moment).** The contact footer is the one place the page commits the accent to a full surface: after a whole page of warm-paper restraint, the final fold is a solid accent field (olive in light, mint in dark) with near-black band ink for every element. It reuses the Outcome-band tokens (`--band-bg` / `--band-text` / `--band-hairline`), so the homepage closer rhymes with the case-study Outcome bands and adds no new primitives. This is a deliberate *Committed* color moment (per the brand register) that breaks the monochromatic-restraint read; keep it to this one fold — the accent stays rare everywhere else. Focus rings inside it switch to band ink (the accent ring would vanish on its own field).
+- **Hero CTA** (`View selected work ↗`): an uppercase Inter link with a bottom hairline that brightens to olive on hover, the arrow nudging up-right.
 - **Case-card CTA**: inline `View case study →`, muted, brightening with a 4px arrow nudge on card hover.
 - **Only real `<button>`s** are the mobile nav toggle and the theme toggle. Everything else that acts is an `<a>`.
 - **Focus:** 2px `accent` outline, 3px offset, 4px corners.
@@ -195,17 +198,17 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 - **Case-card padding:** 48/50px body.
 
 ### Navigation
-- **Wordmark:** the hand-lettered **TN wordmark PNG** (`images/TN_Port_Logo.png`, 32px tall) — a single-hue mint asset. The **light** theme retargets it to terracotta with a tuned `hue-rotate(198deg) saturate(10) brightness(0.7)` filter (derived by sampling the rendered pixels against `#B4542E`); the **dark** theme shows it unfiltered, since its own accent is that native mint. Its `alt` is the full name.
+- **Wordmark:** the hand-lettered **TN wordmark PNG** (`images/TN_Port_Logo.png`, 32px tall) — a single-hue mint asset. The **light** theme retargets it to olive with a tuned `hue-rotate(287.5deg) saturate(0.68) brightness(0.43)` filter (derived by sampling the rendered pixels against `#59644C`); the **dark** theme shows it unfiltered, since its own accent is that native mint. Its `alt` is the full name.
 - **Style:** sticky header over the `--scrim` tint + 12px blur, 1px bottom hairline.
 - **Links:** uppercase eyebrow treatment (12px, 700, 0.14em), muted → primary on hover, 44px tap boxes.
 - **Theme toggle:** icon + eyebrow-style label naming the theme you'd switch *to* (moon/"Dark" while light, sun/"Light" while dark), keyed on `[data-theme]`. Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored.
 - **Mobile (≤600px):** nav links collapse behind a 44×44 hamburger; the theme toggle stays inline.
 
 ### Hero (signature layout)
-A two-column grid (≈1.12fr / 0.88fr): left column is eyebrow → serif headline (with the italic terracotta accent line) → lead → CTA; right column is the **portrait** on a soft color block (the portrait moved here from About in the editorial redesign). Collapses to a single column (text then portrait, portrait capped at 420px) ≤900px.
+A two-column grid (≈1.12fr / 0.88fr): left column is eyebrow → serif headline (with the italic olive accent line) → lead → CTA; right column is the **portrait** on a soft color block (the portrait moved here from About in the editorial redesign). Collapses to a single column (text then portrait, portrait capped at 420px) ≤900px.
 
 ### Case Study Card (signature component)
-A two-column `<a>` (≈1.05fr / 0.95fr): a compact text body (terracotta serif number · client · theme eyebrow, Fraunces `<h3>` title, italic driving question, `View case study →`) against a real screenshot. Kept as a **card** (a deliberate divergence from the mockup's open-row layout) so the work list stays scannable. Ambient Rest shadow at rest; border + shadow deepen together on hover.
+A two-column `<a>` (≈1.05fr / 0.95fr): a compact text body (olive serif number · client · theme eyebrow, Fraunces `<h3>` title, italic driving question, `View case study →`) against a real screenshot. Kept as a **card** (a deliberate divergence from the mockup's open-row layout) so the work list stays scannable. Ambient Rest shadow at rest; border + shadow deepen together on hover.
 - **Media fit:** the thumbnail always uses `object-fit: contain` on a fixed **white** mat (`.case-card__media`, `#fff` regardless of theme) — never `cover`. These are device-mockup screenshots with their own baked-in background (white or transparent); `cover` crops them unpredictably, and matching the mat to their own background reads as one continuous surface instead of a cropped photo in a mismatched frame. If a new thumbnail ships with a *non-white* opaque background, re-cut the asset (flood-fill the background to transparent, crop tight to the device cluster) rather than special-casing the mat color per card.
 
 ### Split-Media (case-study single-image sections)
@@ -217,12 +220,12 @@ Shared layout for any case-study narrative section — Context, Exploration, Val
 A Challenge item with exactly two images chooses its own arrangement in `ChallengeBlock()` (`case-template.js`) by checking `img.h > img.w` on both: **portrait pairs go side by side** (`.cs-challenge__media--grid`, breakpoint-free `repeat(auto-fit, minmax(200px, 1fr))`, same technique as `.cs-full-image-grid`); **landscape pairs stay stacked** (`.cs-challenge__media--stack`, the original vertical treatment). Two tall portrait screenshots stacked compound their own height and run far taller than the text column beside them; splitting them side by side roughly halves the total height and reads as two states of one screen instead of a long scroll. Splitting a landscape pair instead would squeeze each image too narrow to read — don't apply the portrait fix universally. Both variants collapse to one column on narrow viewports (`--grid` via its own auto-fit; `--stack` is already single-column).
 
 ### What I Do — ledger rows
-The three "kinds of complexity" render as editorial ledger rows: Fraunces terracotta numeral | bold title | muted description, split by hairlines (not the stacked principle-grid used by How I Work). Collapses to stacked title/description ≤600px.
+The three "kinds of complexity" render as editorial ledger rows: Fraunces olive numeral | bold title | muted description, split by hairlines (not the stacked principle-grid used by How I Work). Collapses to stacked title/description ≤600px.
 
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** keep exactly one accent per theme — terracotta in light (`#B4542E` / text `#A6461F`), signature mint in dark (`#83D4C3` / text `#97F8E4`); everything else stays in the warm-neutral ramp, and the two hues never share a screen.
+- **Do** keep exactly one accent per theme — olive in light (`#59644C` / text `#46592A`), signature mint in dark (`#83D4C3` / text `#97F8E4`); everything else stays in the warm-neutral ramp, and the two hues never share a screen.
 - **Do** carry every headline in Spectral at weight ~500 (its built-in contrast is the elegance); emphasize phrases with Spectral *italic*, not bold.
 - **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type and layouts; surfaces/ink/shadows invert and the accent shifts to its own theme's hue (mint).
 - **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
@@ -231,7 +234,7 @@ The three "kinds of complexity" render as editorial ledger rows: Fraunces terrac
 
 ### Don't:
 - **Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.
-- **Don't** let a theme show the other theme's accent — light is terracotta only, dark is mint only. When the two themes' accent-hued tokens (band, selection, glow, wordmark filter) diverge, keep them overridden per theme rather than shared.
+- **Don't** let a theme show the other theme's accent — light is olive only, dark is mint only. When the two themes' accent-hued tokens (band, selection, glow, wordmark filter) diverge, keep them overridden per theme rather than shared. (The Outcome band is the one standing exception right now — see §2.)
 - **Don't** bump display type to 700/800 to make it "pop" — that flattens Spectral into a generic bold serif. Keep it ~500 and larger.
 - **Don't** use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.
 - **Don't** use hard, small-radius drop shadows (the "2014 app" look).

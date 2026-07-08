@@ -93,7 +93,7 @@
   width: auto; /* 201x45 intrinsic keeps the aspect; 40px stays under native height so it stays crisp */
   /* The source asset is drawn in the signature mint — the dark theme's own
      accent — so the DEFAULT (light) rule retargets it, and dark needs none. */
-  filter: hue-rotate(198deg) saturate(10) brightness(0.7); /* mint → terracotta ~#B4542E, tuned by sampling rendered pixels */
+  filter: hue-rotate(287.5deg) saturate(0.68) brightness(0.43); /* mint → olive ~#59644C, tuned by sampling rendered pixels */
 }
 /* Dark theme's accent IS the mint the asset is drawn in, so drop the filter. */
 [data-theme="dark"] .site-header__logo { filter: none; }
@@ -111,6 +111,15 @@
   margin-block: -15px;
 }
 .site-header__link:hover { color: var(--text-primary); }
+/* Scrollspy (js/app.js initNavScrollSpy) — same treatment as the case-study
+   subnav's [aria-current] (css/case.css) so "you are here" reads identically
+   across the site. */
+.site-header__link[aria-current] {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+}
 
 /* ---------- Mobile nav toggle (hidden on desktop) ---------- */
 .site-header__toggle {
@@ -173,13 +182,18 @@ html.js .theme-toggle { display: flex; }
 :root:not([data-theme="dark"]) .theme-toggle__label--to-dark { display: block; }
 
 /* ---------- Hero (editorial two-column: text left, portrait right) ---------- */
-#top { background-color: var(--bg); }
-/* Generative wireframe motif carried over from the brand's prior site —
-   dark theme only for now; a light-theme version is coming separately, so
-   this stays scoped to [data-theme="dark"] rather than applying to #top
-   unconditionally. Anchored bottom + faded into --bg up top so the headline
-   and lead stay on clean canvas and the image's black seams invisibly into
-   the dark page bg. Decorative only (CSS background, no DOM node, no alt). */
+/* Shorter than the standard .section rhythm — the hero's wireframe motif
+   anchors to the section's bottom edge, so trimming this section's own
+   height (mostly the bottom half) pulls the motif higher up the page
+   instead of leaving it stranded under a tall band of empty paper. */
+#top { background-color: var(--bg); padding-top: 72px; padding-bottom: 48px; }
+/* Generative wireframe motif carried over from the brand's prior site — each
+   theme gets its own render (dark: hero-bg.jpg on near-black; light:
+   hero-bg-light.png on warm paper) rather than filtering one asset, since
+   the motif's own tones need to invert, not just its hue. Anchored bottom +
+   faded into --bg up top so the headline and lead stay on clean canvas and
+   the image's edge seams invisibly into the page bg. Decorative only (CSS
+   background, no DOM node, no alt). */
 [data-theme="dark"] #top {
   background-image:
     linear-gradient(to bottom, var(--bg) 0%, rgba(21, 18, 13, 0.82) 58%, rgba(21, 18, 13, 0.40) 100%),
@@ -188,8 +202,17 @@ html.js .theme-toggle { display: flex; }
   background-position: center bottom, center bottom;
   background-size: cover, cover;
 }
+:root:not([data-theme="dark"]) #top {
+  background-image:
+    linear-gradient(to bottom, var(--bg) 0%, rgba(244, 240, 232, 0.82) 58%, rgba(244, 240, 232, 0.40) 100%),
+    url('../images/hero-bg-light.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center bottom, center bottom;
+  background-size: cover, cover;
+}
 /* Insurance for the lead sitting over the brighter part of the motif */
 [data-theme="dark"] #top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
+:root:not([data-theme="dark"]) #top .hero__lead { text-shadow: 0 1px 12px rgba(244, 240, 232, 0.6); }
 /* No-image hero: typography alone carries the full weight, so the headline
    is pushed to its documented ceiling (6rem / --fs-display max) and given
    a wider column and more generous pacing than the split-column layout had
@@ -439,6 +462,10 @@ html.js .theme-toggle { display: flex; }
   border-top: 1px solid var(--border);
 }
 .principle { display: grid; grid-template-columns: auto 1fr; gap: 20px; }
+/* No numeral column: How I Work's principles are parallel, not a sequence
+   (see PrincipleItem in components.js) — the title carries the same weight
+   a numeral would, just without implying an order. */
+.principle--unnumbered { grid-template-columns: 1fr; }
 .principle__num {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -599,6 +626,12 @@ button:focus-visible {
 @media (max-width: 600px) {
   .case-card__body { padding: 32px 26px; }
   .kind-list .principle__text { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Client + theme stack instead of wrapping mid-relationship (a wrapped
+     "· THEME" starting a line read as an orphaned fragment at this width). */
+  .case-card__eyebrow { row-gap: 4px; }
+  .case-card__dot { display: none; }
+  .case-card__theme { flex-basis: 100%; }
 
   /* Collapse the primary nav into a toggleable dropdown so the site
      name never has to wrap or fight the nav links for space. */
