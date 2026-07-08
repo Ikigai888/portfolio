@@ -31,7 +31,7 @@ window.Content = {
     ],
     lead:
       'Nobody should need a manual for the tools they use every day. ' +
-      'I design so they don\u2019t, for teams at MoxiWorks, lululemon, and SAP Concur.',
+      'I design so they don\u2019t, for teams at lululemon, SAP, and MoxiWorks.',
     cta: { label: 'View selected work', href: '#work' },
     portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
@@ -40,9 +40,9 @@ window.Content = {
   whatIDo: {
     label: 'What I Do',
     statement:
-      'For teams at MoxiWorks, lululemon, and SAP Concur, I\u2019ve designed ' +
+      'For teams at lululemon, SAP, and MoxiWorks, I\u2019ve designed ' +
       'through three recurring kinds of complexity.',
-    emphasize: ['MoxiWorks', 'lululemon', 'SAP Concur'],
+    emphasize: ['lululemon', 'SAP', 'MoxiWorks'],
     kinds: [
       { number: '01', title: 'Organizational', description: 'Systems too big for any one person to hold in their head.' },
       { number: '02', title: 'Behavioral', description: 'Asking people to trust something unfamiliar.' },
@@ -132,6 +132,6 @@ window.Content = {
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',
     linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
-    copyright: '© 2026 Tad Natsuhara',
+    copyrightName: 'Tad Natsuhara',
   },
 };

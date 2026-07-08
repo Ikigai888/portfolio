@@ -160,7 +160,7 @@ window.Components = (function () {
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
      sources); else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h, poster, frame } = {}) => {
+  const ImageSlot = ({ src, alt, caption, w, h, poster } = {}) => {
     if (!src) {
       return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
@@ -177,20 +177,11 @@ window.Components = (function () {
     const media = /\.(mp4|webm)$/i.test(src)
       ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
-    /* frame: true wraps light-background artifacts (diagrams, exports from
-       external tools) in a white card so they read as a held artifact rather
-       than a raw screenshot bleeding onto the dark page. frame: 'dark' mats a
-       light-mode product screenshot in the system's own dark surface instead,
-       so off-brand UI colors (e.g. blue accents) read as windowed evidence
-       rather than a second accent competing with the mint. */
-    const framed = frame === 'dark'
-      ? `<div class="image-slot__frame image-slot__frame--dark">${media}</div>`
-      : frame ? `<div class="image-slot__frame">${media}</div>` : media;
     /* caption was previously write-only data on real images (only the empty
        placeholder rendered it); every image in case-content.js carries one,
        so surface it as a real figcaption instead of silently dropping it. */
-    if (!caption) return framed;
-    return `<figure class="image-slot__figure">${framed}<figcaption class="image-slot__figcaption">${esc(caption)}</figcaption></figure>`;
+    if (!caption) return media;
+    return `<figure class="image-slot__figure">${media}<figcaption class="image-slot__figcaption">${esc(caption)}</figcaption></figure>`;
   };
 
   /* --- Quote: leading-glyph callout for a participant/session quote --- */
@@ -248,7 +239,7 @@ window.Components = (function () {
             </a>
           </div>
         </div>
-        <p class="site-footer__copyright">${esc(d.copyright)}</p>
+        <p class="site-footer__copyright">&copy; ${new Date().getFullYear()} ${esc(d.copyrightName)}</p>
       </div>
     </footer>`;
 

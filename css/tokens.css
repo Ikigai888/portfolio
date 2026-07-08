@@ -56,6 +56,14 @@
   --band-text:  #2A140A; /* warm near-black ink on the band — 4.58:1 */
   --band-card:     rgba(26, 13, 6, 0.86);    /* impact cards on the band: ink surface, paper text */
   --band-hairline: rgba(26, 13, 6, 0.2);     /* dividers between impact cards */
+  /* Committed Split surface (case-summary right panel, capability chips):
+     a softer, lighter tint of the band than the full-bleed Outcome band.
+     Mixing toward --bg-inset (light paper here) pushes it brighter than
+     --band-bg alone, so --band-text keeps its documented ~4.5:1+ margin.
+     The dark-theme override below uses a much smaller inset share, since
+     --bg-inset is dark there and would drag the mix (and its contrast with
+     --band-text) down instead of up — see that override's comment. */
+  --surface-committed: color-mix(in oklch, var(--bg-inset) 46%, var(--band-bg) 54%);
   /* Impact-card text: the card is a dark ink surface on the band in BOTH
      themes, so its text is polarity-fixed paper — never theme-varying. */
   --band-card-text:   #F6EFE4;
@@ -182,6 +190,13 @@
   --band-text:     #0E1416;              /* near-black ink in the accent's hue family */
   --band-card:     rgba(14, 20, 22, 0.85);
   --band-hairline: rgba(14, 20, 22, 0.2);
+  /* Committed Split surface — dark --bg-inset would darken this mix and
+     collapse its contrast with the (also near-black) --band-text, so the
+     dark theme leans almost entirely on --band-bg instead of the light
+     theme's ~46/54 split (4.98:1 vs. the light mix's own 7.8:1; both clear
+     AA's 4.5:1 with margin — measured via canvas-rendered luminance, not
+     assumed from the oklch inputs). */
+  --surface-committed: color-mix(in oklch, var(--bg-inset) 5%, var(--band-bg) 95%);
 
   /* Lines: paper-alpha instead of ink-alpha */
   --border:        rgba(241, 235, 223, 0.12);

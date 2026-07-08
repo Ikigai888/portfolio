@@ -149,17 +149,27 @@
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  /* Lighter edge than the flat --border line: a near-invisible hairline plus
+     the same Ambient Rest shadow the case-study cards use, so depth comes
+     from elevation rather than a heavier ink border. */
+  border: 1px solid var(--hairline);
   border-radius: var(--r-feature);
+  box-shadow: var(--shadow-ambient-rest);
   overflow: hidden;
 }
 .cs-summary__left { padding: 48px 50px; }
 .cs-summary__right {
-  background: var(--bg-inset);
+  /* Committed split: the outcomes panel commits to the accent hue (reusing
+     the Outcome band's own tokens), while the left stays plain paper — a
+     bolder two-tone contrast than a flat inset background. */
+  background: var(--surface-committed);
+  color: var(--band-text);
   padding: 48px 50px;
   display: flex;
   align-items: center;
 }
+.cs-summary__right .cs-summary__outcome { color: inherit; }
+.cs-summary__right .cs-arrow { color: inherit; }
 .cs-summary__eyebrow {
   display: flex;
   align-items: center;
