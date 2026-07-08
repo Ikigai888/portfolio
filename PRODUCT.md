@@ -25,6 +25,7 @@ Avoid the generic AI-template / cookie-cutter SaaS-landing-page look: purple gra
 - Let the work speak — restraint over decoration; craft is demonstrated, not narrated.
 - One confident accent per theme, not a palette of distractions — olive in light, signature mint in dark, always singular and intentional.
 - Write like a senior designer talks to a peer — clear, specific, no jargon padding.
+- No em-dashes in site copy. Use a period, comma, colon, or parentheses instead, or rewrite the sentence so it doesn't lean on a dash. (Applies to visible copy; en-dashes in numeric ranges are fine.)
 - Every section should make a hiring manager trust the work faster, not just look nicer.
 - Preserve the existing token-driven system; extend it rather than reinventing it per page.
 

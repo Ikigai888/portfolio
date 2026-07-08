@@ -31,7 +31,7 @@ window.Content = {
     ],
     lead:
       'Nobody should need a manual for the tools they use every day. ' +
-      'I design so they don\u2019t, for teams at lululemon, SAP, and MoxiWorks.',
+      'I design so they don\u2019t, making even the most complicated products feel obvious.',
     cta: { label: 'View selected work', href: '#work' },
     portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
