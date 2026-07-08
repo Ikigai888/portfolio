@@ -543,21 +543,29 @@ html.js .theme-toggle { display: inline-flex; }
   box-shadow: var(--dot-glow);
 }
 .about__statement { margin-top: 0; }
+/* Coda treatment (same device as .statement__closing under How I Work):
+   italic Spectral instead of muted Hanken Grotesk body text, with real
+   space above it, so it reads as a confident closing line rather than a
+   footnote tacked onto the paragraph above it. */
 .about__credential {
-  margin: 20px 0 0;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  color: var(--text-muted);
+  margin: 40px 0 0;
+  max-width: 46ch;
+  font-family: var(--font-display);
+  font-size: var(--fs-coda);
+  line-height: 1.25;
+  letter-spacing: var(--ls-statement);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-primary);
 }
 .about__credential a {
-  color: var(--accent-text);
-  font-weight: 600;
+  color: inherit;
   text-decoration: underline;
-  text-decoration-color: currentColor;
-  text-underline-offset: 3px;
-  transition: color var(--hover-color-dur);
+  text-decoration-color: var(--accent-text);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--hover-color-dur);
 }
-.about__credential a:hover { color: var(--accent); }
+.about__credential a:hover { text-decoration-color: var(--accent); }
 
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
@@ -756,8 +764,6 @@ button:focus-visible {
   color: var(--text-muted);
 }
 
-/* ---------- About credential: cap the only 75ch+ measure ---------- */
-.about__credential { max-width: 66ch; }
 
 /* ---------- Typeset: even heading rags, orphan-free prose ---------- */
 .case-card__title,
