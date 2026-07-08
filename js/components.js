@@ -141,7 +141,7 @@ window.Components = (function () {
     number, client, theme, title, question,
     href, image = {}, cta = 'View case study',
   }) => `
-    <a class="case-card" href="${esc(href)}" data-reveal>
+    <a class="case-card" id="${esc(href.replace(/\.html$/, ''))}" href="${esc(href)}" data-reveal>
       <div class="case-card__body">
         <div class="case-card__eyebrow">
           <span class="case-card__num">${esc(number)}</span>
