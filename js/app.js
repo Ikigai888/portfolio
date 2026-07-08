@@ -17,23 +17,14 @@
         C.esc(line.text) + '</span>';
     }).join('');
 
-    var p = d.portrait || {};
-    var portrait = p.src
-      ? '<img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '"' +
-          (p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '') +
-          ' fetchpriority="high" decoding="async" />' /* hero portrait is the LCP element */
-      : '';
-
     var content =
       '<div class="hero">' +
-        '<div class="hero__text">' +
-          '<p class="eyebrow hero__eyebrow">' + C.esc(d.eyebrow) + '</p>' +
-          '<h1 class="hero__headline">' + headline + '</h1>' +
-          '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
-          '<a class="hero__cta" href="' + C.esc(d.cta.href) + '">' + C.esc(d.cta.label) +
-            ' <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a>' +
-        '</div>' +
-        '<figure class="hero__portrait">' + portrait + '</figure>' +
+        '<hr class="hero__rule" />' +
+        '<p class="eyebrow hero__eyebrow">' + C.esc(d.eyebrow) + '</p>' +
+        '<h1 class="hero__headline">' + headline + '</h1>' +
+        '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
+        '<a class="hero__cta" href="' + C.esc(d.cta.href) + '">' + C.esc(d.cta.label) +
+          ' <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a>' +
       '</div>';
 
     return C.Section({ id: 'top', content: content });
@@ -81,11 +72,17 @@
 
   function About(d) {
     // About reuses the sticky-label split: eyebrow + status-dot name in the
-    // left column, the serif statement + prose in the right. (The portrait
-    // that used to sit here now anchors the hero.)
+    // left column, the serif statement + prose in the right. A small
+    // circular portrait sits above the name as a byline photo.
+    var p = d.portrait || {};
+    var avatar = p.src
+      ? '<span class="about__avatar"><img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '" loading="lazy" /></span>'
+      : '';
+
     var content =
       '<div class="split split--about">' +
         '<div class="split__label about__meta">' +
+          avatar +
           C.SectionHeading(d.label) +
           '<p class="about__name"><span class="about__dot" aria-hidden="true"></span>' +
             C.esc(d.name) + '</p>' +
@@ -216,7 +213,7 @@
         WhatIDo(D.whatIDo) +
         CaseStudies(D.caseStudies) +
         HowIWork(D.howIWork) +
-        About(D.about) +
+        About(Object.assign({ portrait: D.hero.portrait }, D.about)) +
       '</main>' +
       C.SiteFooter(D.contact)
     );
