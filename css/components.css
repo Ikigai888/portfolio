@@ -163,10 +163,11 @@
     padding-expanded — the two icons sit close enough together that an invisible-padding
     tap-target trick (the site's usual approach, e.g. .site-header__link) would make their
     expanded hit zones overlap and misroute clicks between them near the boundary. */
+  --toggle-gap: 6px;
   display: none;
   position: relative;
   align-items: center;
-  gap: 2px;
+  gap: var(--toggle-gap);
   /* No explicit height: an explicit height here (content-box) stacks on TOP of the padding
      below instead of including it, inflating the track and — because the thumb's absolute
      top:3px is measured from the padding edge while flex centers the buttons inside the
@@ -213,7 +214,7 @@ html.js .theme-toggle { display: inline-flex; }
   background: var(--accent);
   transition: transform 0.35s var(--reveal-ease);
 }
-[data-theme="dark"] .theme-toggle__thumb { transform: translateX(calc(var(--toggle-size) + 2px)); }
+[data-theme="dark"] .theme-toggle__thumb { transform: translateX(calc(var(--toggle-size) + var(--toggle-gap))); }
 :root:not([data-theme="dark"]) .theme-toggle__thumb { transform: translateX(0); }
 @media (prefers-reduced-motion: reduce) {
   .theme-toggle__thumb { transition: none; }
