@@ -347,7 +347,7 @@
           '<a class="cs-footer__link" href="' + esc(f.linkedin.href) + '" target="_blank" rel="noopener">' +
             esc(f.linkedin.label) + ' <span aria-hidden="true">&#8599;</span>' +
           '</a>' +
-          '<span class="cs-footer__copy">' + esc(f.copyright) + '</span>' +
+          '<span class="cs-footer__copy">&copy; ' + new Date().getFullYear() + ' ' + esc(f.copyrightName) + '</span>' +
         '</div>' +
       '</footer>'
     );

@@ -57,8 +57,11 @@
 
 .chip {
   display: inline-block;
-  background: var(--bg-inset);
-  color: var(--text-tertiary);
+  /* Matches the summary card's Committed Split treatment (case.css
+     .cs-summary__right) so the capability chips read as part of the same
+     accent-committed system, not a leftover neutral inset fill. */
+  background: var(--surface-committed);
+  color: var(--band-text);
   font-size: var(--fs-chip);
   font-weight: 500;
   padding: 7px 13px;
@@ -407,34 +410,13 @@ html.js .theme-toggle { display: flex; }
 
 /* ---------- ImageSlot figcaption: real images, not the empty placeholder ---------- */
 .image-slot__figure { margin: 0; display: flex; flex-direction: column; height: 100%; }
-.image-slot__figure .image-slot__img,
-.image-slot__figure .image-slot__frame { flex: 1 1 auto; min-height: 0; }
+.image-slot__figure .image-slot__img { flex: 1 1 auto; min-height: 0; }
 .image-slot__figcaption {
   margin-top: 10px;
   font-size: var(--fs-chip);
   color: var(--text-muted);
   text-align: center;
 }
-
-/* Light card frame for external-tool exports (diagrams, flowcharts) so they
-   read as a held artifact rather than a raw screenshot bleeding onto the page. */
-.image-slot__frame {
-  background: #fff;
-  padding: 28px;
-  border-radius: var(--r-feature);
-  box-shadow: var(--shadow-ambient-rest);
-  transition: box-shadow var(--hover-dur);
-}
-.image-slot__frame .image-slot__img { height: auto; object-fit: contain; border-radius: 4px; }
-
-/* Dark mat for light-mode product screenshots: contains off-brand UI colors
-   (e.g. a blue accent) inside the system's own surface ramp instead of a
-   second saturated hue competing with the mint accent on the page itself. */
-.image-slot__frame--dark {
-  background: var(--bg-inset);
-  border: 1px solid var(--border);
-}
-.image-slot__frame--dark .image-slot__img { border-radius: 4px; }
 
 /* ---------- Statement closing line (How I Work) ----------
    Sized up and tightened (impeccable live, Jul 2026 — chosen over a
@@ -531,7 +513,14 @@ html.js .theme-toggle { display: flex; }
   line-height: var(--lh-body);
   color: var(--text-muted);
 }
-.about__credential a { color: var(--accent-text); }
+.about__credential a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--hover-color-dur);
+}
+.about__credential a:hover { text-decoration-color: currentColor; }
 
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
@@ -591,7 +580,6 @@ html.js .theme-toggle { display: flex; }
   margin: 56px 0 0;
   font-size: var(--fs-chip);
   color: var(--band-text);
-  opacity: 0.72;
 }
 /* On the accent field the default terracotta/mint focus ring would vanish */
 .site-footer a:focus-visible { outline-color: var(--band-text); }

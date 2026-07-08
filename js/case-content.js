@@ -44,7 +44,7 @@ window.CaseContent = {
           body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service — but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
           options: 'keep improving the service-managed model; expose raw asset settings to admins; a structured Brand Library with named, taggable, lockable assets.',
           decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open — the raw material everything else in this flow is built from.',
-          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, frame: 'dark', alt: 'Brand Library screen adding a governed text style — name, font family, weight, and tags', caption: 'Brand Library — defining the foundational assets' },
+          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style — name, font family, weight, and tags', caption: 'Brand Library — defining the foundational assets' },
         },
         {
           number: 2,
@@ -52,7 +52,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit — the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, frame: 'dark', alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — bundling the library into one applied unit' },
+          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor — color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits — bundling the library into one applied unit' },
         },
         {
           number: 3,
@@ -68,7 +68,7 @@ window.CaseContent = {
           body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one — and hold up as the ecosystem grew.',
           options: 'a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability — branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, frame: 'dark', alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits — consumed inside Presentations, not rebuilt per product' },
+          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits — consumed inside Presentations, not rebuilt per product' },
         },
       ],
     },
@@ -119,7 +119,7 @@ window.CaseContent = {
     caseFooter: {
       email: '1tadashi8@gmail.com',
       linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
-      copyright: '© 2026 Tad Natsuhara',
+      copyrightName: 'Tad Natsuhara',
     },
   },
 
@@ -240,7 +240,7 @@ window.CaseContent = {
     caseFooter: {
       email: '1tadashi8@gmail.com',
       linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
-      copyright: '© 2026 Tad Natsuhara',
+      copyrightName: 'Tad Natsuhara',
     },
   },
 
@@ -273,7 +273,7 @@ window.CaseContent = {
         'The existing seat selection experience collapsed under that complexity. Business travelers, already navigating policy rules, approval workflows, and tight itineraries, hit an interface that required expertise they didn’t have to use.',
         'No interactive seat map existed at Concur, rail or air. There was no pattern to inherit; this project had to establish one.',
       ],
-      images: [{ src: 'images/case-studies/rail-checkout-review-and-book.png', w: 1200, h: 1515, frame: 'dark', alt: 'The existing Review and Book screen for a round-trip journey, with a plain "Select Seat" button and no seat map yet in view', caption: 'Where seat selection had to fit: the booking flow before this project' }],
+      images: [{ src: 'images/case-studies/rail-checkout-review-and-book.png', w: 1200, h: 1515, alt: 'The existing Review and Book screen for a round-trip journey, with a plain "Select Seat" button and no seat map yet in view', caption: 'Where seat selection had to fit: the booking flow before this project' }],
     },
 
     challenges: {
@@ -288,8 +288,8 @@ window.CaseContent = {
           options: 'progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
           decision: 'A spatial seat map with progressive detail: the map shows position, selection reveals the relevant attributes for that seat.',
           images: [
-            { src: 'images/case-studies/rail-seatmap-default.png', w: 1200, h: 1647, frame: 'dark', alt: 'The shipped seat map showing coach layout, an available/unavailable/wheelchair legend, and the selected seat’s amenities', caption: 'The spatial map: position first' },
-            { src: 'images/case-studies/rail-seatmap-tooltips.png', w: 1200, h: 1647, frame: 'dark', alt: 'A seat tooltip revealing rear-facing, reclining, and free wifi attributes on hover or focus', caption: 'Selection reveals the attributes' },
+            { src: 'images/case-studies/rail-seatmap-default.png', w: 1200, h: 1647, alt: 'The shipped seat map showing coach layout, an available/unavailable/wheelchair legend, and the selected seat’s amenities', caption: 'The spatial map: position first' },
+            { src: 'images/case-studies/rail-seatmap-tooltips.png', w: 1200, h: 1647, alt: 'A seat tooltip revealing rear-facing, reclining, and free wifi attributes on hover or focus', caption: 'Selection reveals the attributes' },
           ],
         },
         {
@@ -298,7 +298,7 @@ window.CaseContent = {
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
           options: 'a visual-only map, which failed screen reader users outright; a list-only alternative, which threw away the spatial sense sighted travelers relied on; or a parallel accessible map with ARIA region labelling.',
           decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to (same data, appropriate for each mode).',
-          image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, frame: 'dark', alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
+          image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
         },
         {
           number: 3,
@@ -358,7 +358,7 @@ window.CaseContent = {
     caseFooter: {
       email: '1tadashi8@gmail.com',
       linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tad-natsuhara-design' },
-      copyright: '© 2026 Tad Natsuhara',
+      copyrightName: 'Tad Natsuhara',
     },
   },
 };
