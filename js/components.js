@@ -200,10 +200,14 @@ window.Components = (function () {
       ${attribution ? `<footer class="cs-quote__attribution">${esc(attribution)}</footer>` : ''}
     </blockquote>`;
 
-  /* --- PrincipleItem: numbered principle (build-spec §3d) --- */
+  /* --- PrincipleItem: optionally-numbered principle (build-spec §3d).
+     "What I Do" numbers its kinds (a fixed taxonomy the case studies below
+     map onto 1:1); "How I Work" principles are parallel, not sequential, so
+     they render without a numeral — avoids reusing the same 01-0N device
+     twice in three sections. */
   const PrincipleItem = ({ number, title, description }) => `
-    <div class="principle">
-      <span class="principle__num">${esc(number)}</span>
+    <div class="principle${number ? '' : ' principle--unnumbered'}">
+      ${number ? `<span class="principle__num">${esc(number)}</span>` : ''}
       <div class="principle__text">
         <h3 class="principle__title">${esc(title)}</h3>
         <p class="principle__desc">${esc(description)}</p>

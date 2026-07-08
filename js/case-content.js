@@ -7,7 +7,7 @@ window.CaseContent = {
 
   'brand-governance': {
     meta: { client: 'MoxiWorks', slug: 'brand-governance' },
-    nav: ['Summary', 'Context', 'Challenges', 'AI Exploration', 'Validation', 'Outcome', 'Reflection'],
+    nav: ['Summary', 'Context', 'Challenges', 'Exploration', 'Validation', 'Outcome', 'Reflection'],
     next: { label: 'Passwordless Authentication', href: 'case-passkeys.html' },
 
     summary: {
@@ -74,7 +74,7 @@ window.CaseContent = {
     },
 
     aiExploration: {
-      label: 'AI Exploration',
+      label: 'Exploration',
       headline: 'Wider exploration, faster alignment',
       body: [
         'I used Figma Make to rapidly generate multiple organizational models for how brands could inherit settings across the hierarchy — brand, office, team, agent. Generating working variations in hours rather than days let me compare structures side by side and bring stakeholders into the tradeoffs with something concrete to react to.',
@@ -273,7 +273,7 @@ window.CaseContent = {
         'The existing seat selection experience collapsed under that complexity. Business travelers, already navigating policy rules, approval workflows, and tight itineraries, hit an interface that required expertise they didn’t have to use.',
         'No interactive seat map existed at Concur, rail or air. There was no pattern to inherit; this project had to establish one.',
       ],
-      images: [{ src: 'images/case-studies/rail-checkout-review-and-book.png', w: 1200, h: 1515, alt: 'The existing Review and Book screen for a round-trip journey, with a plain "Select Seat" button and no seat map yet in view', caption: 'Where seat selection had to fit: the booking flow before this project' }],
+      images: [{ src: 'images/case-studies/rail-checkout-review-and-book.png', w: 1200, h: 1515, frame: 'dark', alt: 'The existing Review and Book screen for a round-trip journey, with a plain "Select Seat" button and no seat map yet in view', caption: 'Where seat selection had to fit: the booking flow before this project' }],
     },
 
     challenges: {
@@ -284,12 +284,12 @@ window.CaseContent = {
         {
           number: 1,
           headline: 'Making seat data scannable, not just displayable',
-          body: 'Seat selection data includes car type, seat class, direction of travel, table vs. window, reservation status, and accessibility needs, all variable by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
+          body: 'Seat selection data — car type, seat class, accessibility needs, and more — varies by operator. Displaying it all created cognitive overload; hiding it caused misbookings.',
           options: 'progressive disclosure by seat type; a filter-first approach; spatial representation with summary on selection.',
           decision: 'A spatial seat map with progressive detail: the map shows position, selection reveals the relevant attributes for that seat.',
           images: [
-            { src: 'images/case-studies/rail-seatmap-default.png', w: 1200, h: 1647, alt: 'The shipped seat map showing coach layout, an available/unavailable/wheelchair legend, and the selected seat’s amenities', caption: 'The spatial map: position first' },
-            { src: 'images/case-studies/rail-seatmap-tooltips.png', w: 1200, h: 1647, alt: 'A seat tooltip revealing rear-facing, reclining, and free wifi attributes on hover or focus', caption: 'Selection reveals the attributes' },
+            { src: 'images/case-studies/rail-seatmap-default.png', w: 1200, h: 1647, frame: 'dark', alt: 'The shipped seat map showing coach layout, an available/unavailable/wheelchair legend, and the selected seat’s amenities', caption: 'The spatial map: position first' },
+            { src: 'images/case-studies/rail-seatmap-tooltips.png', w: 1200, h: 1647, frame: 'dark', alt: 'A seat tooltip revealing rear-facing, reclining, and free wifi attributes on hover or focus', caption: 'Selection reveals the attributes' },
           ],
         },
         {
@@ -298,7 +298,7 @@ window.CaseContent = {
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
           options: 'a visual-only map, which failed screen reader users outright; a list-only alternative, which threw away the spatial sense sighted travelers relied on; or a parallel accessible map with ARIA region labelling.',
           decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to (same data, appropriate for each mode).',
-          image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
+          image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, frame: 'dark', alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
         },
         {
           number: 3,
@@ -326,10 +326,8 @@ window.CaseContent = {
       label: 'Validation',
       headline: 'Testing with business travelers',
       body: [
-        'I owned the research end to end: writing the brief, crafting the questions, building the prototype, and moderating sessions with frequent business rail travelers booking multi-leg journeys under policy constraints. I partnered with the UX research team in synthesis workshops to make sense of what we heard. The sessions focused on seat selection time, confidence in the choice, and successful navigation by screen reader users.',
-        'The dual-mode accessibility approach was validated in the first round: screen reader participants navigated the structured list without needing the map. The sessions also surfaced that travelers wanted to see their previously selected seats when returning from a policy override, a gap we closed before launch.',
-        'Stakeholders pushed back on the accessibility investment early — "Does everything need to be tabbed? Can we skip some items?" Rather than debate it in a conference room, I interviewed visually impaired travelers directly.',
-        'One finding reset our assumptions: guide dog owners consistently preferred table seats for the extra space on long journeys. That changed the screen-reader priority order and told us exactly which components were safe to skip. My documentation of the findings became the reference engineering built the implementation from.',
+        'I wrote the brief, built the prototype, and moderated sessions with frequent business travelers booking multi-leg journeys under policy constraints, then partnered with the UX research team to synthesize what we heard. The dual-mode accessibility approach held up immediately — screen reader participants navigated the structured list without needing the map — and the sessions surfaced one gap we closed before launch: travelers wanted to see their previously selected seats when returning from a policy override.',
+        'Stakeholders had pushed back on the accessibility investment early — "Does everything need to be tabbed? Can we skip some items?" Interviewing visually impaired travelers directly settled it: guide dog owners consistently preferred table seats for the extra space on long journeys, a finding that reset our screen-reader priority order and told us exactly which components were safe to skip. My documentation of that work became the reference engineering built the implementation from.',
       ],
       images: [
         { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },

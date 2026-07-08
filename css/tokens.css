@@ -26,25 +26,33 @@
   --text-faint:     #A79A80; /* decorative labels */
   --text-faint-2:   #675B42; /* copyright — 4.6:1 on --bg-footer */
 
-  /* ---------- Color: accent (terracotta — the light theme's identity) ----------
+  /* ---------- Color: accent (olive — the light theme's identity) ----------
      --accent is the saturated fill/solid + large display accent; --accent-text
-     is the slightly deeper terracotta for small type, which needs ≥4.5:1 on
+     is the slightly deeper olive for small type, which needs ≥4.5:1 on
      paper. The dark theme carries its OWN accent hue — the original signature
-     mint — rather than a lighter/darker terracotta (see [data-theme="dark"]),
+     mint — rather than a lighter/darker olive (see [data-theme="dark"]),
      so every accent-hued token below (band, selection, glow) has a mint
      override there. The wordmark PNG is drawn in that mint, so the light
-     theme retargets it to terracotta via a filter (see .site-header__logo). */
-  --accent:       oklch(0.559 0.135 41.1); /* fallback #B4542E — mockup terracotta */
-  --accent-text:  oklch(0.515 0.137 40.8); /* fallback #A6461F — 5.25:1 on --bg */
-  --accent-hex:        #B4542E;
-  --accent-text-hex:   #A6461F;
+     theme retargets it to olive via a filter (see .site-header__logo). */
+  --accent:       oklch(0.487 0.0395 127.8); /* fallback #59644C — olive */
+  /* accent-text carries every small supporting highlight (eyebrows, quote
+     marks, Decision/Options labels, arrows) — kept at --accent's own hue but
+     with more chroma than a straight darken would give it. At --accent's low
+     chroma (0.0395), a same-chroma darken reads as a muddy neutral brown
+     instead of a legible olive (this is what shipped right after the
+     terracotta->olive swap and prompted this fix); 0.075 is the point it
+     reads unambiguously as green while staying well inside the muted,
+     understated palette (not a bright/saturated green). */
+  --accent-text:  oklch(0.437 0.075 127.8); /* fallback #46592A — 6.79:1 on --bg */
+  --accent-hex:        #59644C;
+  --accent-text-hex:   #46592A;
 
   /* ---------- Color: inverted "Outcome" band (case studies) ----------
-     A saturated terracotta block with dark ink for the light theme. The dark
+     A saturated olive block with dark ink for the light theme. The dark
      theme overrides this to mint (its own accent's hue at mid lightness),
      since the two themes carry different accent hues. */
-  --band-bg:    oklch(0.621 0.13 45.2);     /* fallback #C56A3E */
-  --band-bg-hex: #C56A3E;
+  --band-bg:    oklch(0.605 0.045 127.8);     /* fallback #7A876A — olive, ~4.57:1 with --band-text */
+  --band-bg-hex: #7A876A;
   --band-text:  #2A140A; /* warm near-black ink on the band — 4.58:1 */
   --band-card:     rgba(26, 13, 6, 0.86);    /* impact cards on the band: ink surface, paper text */
   --band-hairline: rgba(26, 13, 6, 0.2);     /* dividers between impact cards */
@@ -66,7 +74,7 @@
   --scrim-strong: rgba(244, 240, 232, 0.93); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   #B4542E; /* = --accent-hex */
+  --selection-bg:   var(--accent-hex);
   --selection-text: #F7F2E9;
 
   /* ---------- Typography: families ----------
@@ -79,7 +87,7 @@
   --ls-serif: -0.005em; /* Spectral sets comfortably near 0 */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
-  --fs-display:   clamp(3.25rem, 8.5vw, 6rem); /* hero headline — no-image variant: full-width column, no portrait competing for space, so pushed to the documented display ceiling (6rem) sooner and with a higher floor for a bolder, poster-like read across more of the viewport range. */
+  --fs-display:   clamp(3.25rem, 8vw, 5.25rem); /* hero headline — no-image variant, full-width column. Tuned (was 6rem max / 8.5vw) so "Complexity is inevitable." (the longest hero line) stays on one line across the fluid range, not just at the capped max: at 8.5vw it was a near-exact tie with the column width around tablet (~768px); 8vw carries a real safety margin there too, and the 5.25rem cap (not 6rem) keeps it on one line once the clamp saturates at wide desktop. */
   --fs-section:   clamp(1.875rem, 4vw, 3.25rem); /* section headlines */
   --fs-section-sm:clamp(1.75rem, 3.4vw, 2.75rem);
   --fs-statement: clamp(1.625rem, 3.1vw, 2.75rem); /* big statements */
@@ -121,7 +129,7 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 0 4px rgba(180, 84, 46, 0.16); /* About status dot — soft ring reads on paper */
+  --dot-glow: 0 0 0 4px rgba(89, 100, 76, 0.16); /* About status dot — soft ring reads on paper */
 
   /* ---------- Elevation (DESIGN.md §4) — softer on paper ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
@@ -134,7 +142,7 @@
    dark is the first-visit trigger). The editorial LIGHT theme above
    is the canonical design; this is its dark counterpart: the SAME
    Spectral/Hanken type and the SAME layouts. The two themes carry
-   DIFFERENT accent hues by design — light is terracotta, dark is the
+   DIFFERENT accent hues by design — light is olive, dark is the
    original signature mint (keyed to the wordmark's native color). So
    beyond surfaces/ink/lines/scrims/shadows, the accent, Outcome band,
    selection, and status glow all get mint overrides here; they can't
@@ -160,7 +168,7 @@
   --text-faint-2:   #8A8070;
 
   /* Accent: the dark theme carries the original signature mint (keyed to the
-     TN_Port_Logo wordmark's native color), not the light theme's terracotta —
+     TN_Port_Logo wordmark's native color), not the light theme's olive —
      each theme owns its own accent hue. --accent 11.9:1, --accent-text 15:1
      on --bg. Because the two themes no longer share a hue, the Outcome band,
      selection, and status glow below all need mint overrides too. */

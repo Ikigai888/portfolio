@@ -118,6 +118,35 @@
     });
   }
 
+  /* ---------- Nav scrollspy: aria-current on the section in view ----------
+     Same technique as the case-study subnav's scrollspy (case-template.js
+     initSubnav) — gives the sticky nav a "you are here" cue that was
+     previously missing on the homepage. */
+  function initNavScrollSpy() {
+    var links = document.querySelectorAll('.site-header__link');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var linkFor = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      if (id) linkFor[id] = a;
+    });
+    var active = null;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var link = linkFor[entry.target.id];
+        if (!link || link === active) return;
+        if (active) active.removeAttribute('aria-current');
+        active = link;
+        active.setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    Object.keys(linkFor).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) spy.observe(sec);
+    });
+  }
+
   /* ---------- Scroll-reveal: add .is-visible once on enter. Reduced-motion aware. ---------- */
   function initReveal() {
     var els = document.querySelectorAll('[data-reveal]');
@@ -223,6 +252,7 @@
     document.getElementById('app').innerHTML = buildPage();
     initReveal();
     initNavToggle();
+    initNavScrollSpy();
     initThesisSettle();
     C.initThemeToggle();
   }
