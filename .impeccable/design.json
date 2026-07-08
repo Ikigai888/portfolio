@@ -1,29 +1,32 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-02T00:00:00Z",
+  "generatedAt": "2026-07-07T00:00:00Z",
   "title": "Design System: Tad Natsuhara Portfolio",
   "extensions": {
     "colorMeta": {
-      "accent": { "role": "primary", "displayName": "Signature Mint", "canonical": "oklch(0.81 0.084 179)", "tonalRamp": ["oklch(0.20 0.03 179)", "oklch(0.32 0.05 179)", "oklch(0.44 0.06 179)", "oklch(0.56 0.07 179)", "oklch(0.68 0.08 179)", "oklch(0.81 0.084 179)", "oklch(0.90 0.06 179)", "oklch(0.96 0.03 179)"] },
-      "accent-text": { "role": "primary", "displayName": "Signature Mint (Text Variant)", "canonical": "oklch(0.91 0.097 179)" },
-      "bg": { "role": "neutral", "displayName": "Warm Pitch", "canonical": "#15120D" },
-      "bg-footer": { "role": "neutral", "displayName": "Deepest Brown", "canonical": "#0F0D09" },
-      "bg-card": { "role": "neutral", "displayName": "Card Brown", "canonical": "#1A1610" },
-      "bg-inset": { "role": "neutral", "displayName": "Inset Brown", "canonical": "#26211A" },
-      "band-bg": { "role": "tertiary", "displayName": "Outcome Mint", "canonical": "oklch(0.62 0.09 179)" }
+      "accent": { "role": "primary", "displayName": "Terracotta (light) / Signature Mint (dark)", "canonical": "oklch(0.559 0.135 41.1)", "tonalRamp": ["oklch(0.16 0.06 41.1)", "oklch(0.28 0.09 41.1)", "oklch(0.39 0.115 41.1)", "oklch(0.49 0.13 41.1)", "oklch(0.559 0.135 41.1)", "oklch(0.66 0.12 41.1)", "oklch(0.79 0.08 41.1)", "oklch(0.92 0.03 41.1)"] },
+      "accent-text": { "role": "primary", "displayName": "Terracotta Text (light)", "canonical": "oklch(0.515 0.137 40.8)" },
+      "accent-dark": { "role": "primary", "displayName": "Signature Mint (dark theme accent)", "canonical": "oklch(0.81 0.084 179)", "tonalRamp": ["oklch(0.20 0.03 179)", "oklch(0.32 0.05 179)", "oklch(0.44 0.06 179)", "oklch(0.56 0.07 179)", "oklch(0.68 0.08 179)", "oklch(0.81 0.084 179)", "oklch(0.90 0.06 179)", "oklch(0.96 0.03 179)"] },
+      "accent-text-dark": { "role": "primary", "displayName": "Signature Mint Text (dark)", "canonical": "oklch(0.91 0.097 179)" },
+      "bg": { "role": "neutral", "displayName": "Warm Paper (light) / Warm Pitch (dark)", "canonical": "#F4F0E8", "tonalRamp": ["#15120D", "#26211A", "#3D3524", "#554A33", "#6E6249", "#A79A80", "#E9E1D2", "#F4F0E8"] },
+      "bg-footer": { "role": "neutral", "displayName": "Deeper Paper", "canonical": "#EDE7DE" },
+      "bg-card": { "role": "neutral", "displayName": "Card Paper", "canonical": "#FBF8F1" },
+      "bg-inset": { "role": "neutral", "displayName": "Inset Paper", "canonical": "#E9E1D2" },
+      "text-primary": { "role": "neutral", "displayName": "Primary Ink", "canonical": "#241E13" },
+      "band-bg": { "role": "tertiary", "displayName": "Outcome Terracotta (light) / Outcome Mint (dark)", "canonical": "oklch(0.621 0.13 45.2)" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display (Alegreya serif)", "purpose": "Hero headline, big statements, statement codas, footer CTA — every oversized moment. clamp(40px, 8.4vw, 112px)." },
-      "section": { "displayName": "Section (Bricolage)", "purpose": "Case-card and case-study section headlines." },
-      "statement": { "displayName": "Statement (Bricolage)", "purpose": "Mid-weight in-flow declarative statements." },
-      "lead": { "displayName": "Lead (Bricolage)", "purpose": "Lead paragraph directly under a headline; capped ~62ch." },
-      "body": { "displayName": "Body (Bricolage)", "purpose": "Default running copy." },
-      "eyebrow": { "displayName": "Eyebrow (Bricolage)", "purpose": "Uppercase section labels (real h2s), nav links, card metadata." }
+      "display": { "displayName": "Display (Spectral serif)", "purpose": "Hero headline. Left column of the two-column hero, wraps 2-3 lines by design; the accent line is Spectral italic in the theme accent. clamp(44px, 6vw, 88px), line-height 0.98." },
+      "section": { "displayName": "Section (Spectral serif)", "purpose": "Case-study section headlines, the case page H1, the footer 'Say hello' CTA. clamp(30px, 4vw, 52px)." },
+      "statement": { "displayName": "Statement (Spectral serif)", "purpose": "Declarative statement blocks (What I Do, How I Work, About). Inline emphasis is Spectral italic, same ink. clamp(26px, 3.1vw, 44px)." },
+      "lead": { "displayName": "Lead (Hanken Grotesk)", "purpose": "Lead paragraphs; capped ~46-65ch. clamp(17px, 1.6vw, 21px)." },
+      "body": { "displayName": "Body (Hanken Grotesk)", "purpose": "Default running copy, 16px." },
+      "eyebrow": { "displayName": "Eyebrow (Hanken Grotesk)", "purpose": "Accent section labels, nav links (muted), case-card metadata. 12px, 700 weight, 0.14em tracking, uppercase." }
     },
     "shadows": [
-      { "name": "ambient-rest", "value": "0 4px 24px rgba(0, 0, 0, 0.25)", "purpose": "Default soft shadow under card-level surfaces." },
-      { "name": "ambient-hover", "value": "0 8px 32px rgba(0, 0, 0, 0.32)", "purpose": "Deeper shadow on hover, paired with border-brightening." },
-      { "name": "accent-glow", "value": "0 0 10px oklch(0.81 0.084 179)", "purpose": "Live-status dot glow in About section; the only colored shadow (signature mint)." }
+      { "name": "ambient-rest", "value": "0 4px 24px rgba(36, 30, 19, 0.10)", "purpose": "Default soft shadow under case-study cards (light theme; dark theme uses 0 4px 24px rgba(0,0,0,0.25))." },
+      { "name": "ambient-hover", "value": "0 10px 34px rgba(36, 30, 19, 0.16)", "purpose": "Deeper shadow on hover, paired with border-brightening (dark theme: 0 10px 34px rgba(0,0,0,0.34))." },
+      { "name": "status-glow", "value": "0 0 0 4px rgba(180, 84, 46, 0.16)", "purpose": "About live-status dot ring (light, soft terracotta ring since a real glow disappears on paper); dark theme uses a true mint glow 0 0 10px oklch(0.81 0.084 179)." }
     ],
     "motion": [
       { "name": "reveal", "value": "0.7s cubic-bezier(0.2, 0.7, 0.2, 1)", "purpose": "Scroll-reveal entrance (gated on html.js, disabled under prefers-reduced-motion)." },
@@ -37,85 +40,81 @@
   },
   "components": [
     {
-      "name": "Pill",
-      "kind": "chip",
-      "refersTo": "pill",
-      "description": "Highest-status label per context (e.g. role title) — solid mint fill, near-black text.",
-      "html": "<span class=\"ds-pill\">Senior Product Designer</span>",
-      "css": ".ds-pill { display: inline-block; background: #83D4C3; color: #0E1416; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 100px; }"
-    },
-    {
       "name": "Chip",
       "kind": "chip",
       "refersTo": "chip",
-      "description": "Quieter secondary metadata tag on an inset surface.",
-      "html": "<span class=\"ds-chip\">Systems Thinking</span>",
-      "css": ".ds-chip { display: inline-block; background: #26211A; color: #C9BCA6; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 100px; }"
+      "description": "Secondary metadata tag on an inset surface (case-study Key Capabilities row).",
+      "html": "<span class=\"ds-chip\">Product Strategy</span>",
+      "css": ".ds-chip { display: inline-block; background: var(--bg-inset); color: var(--text-tertiary); font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 100px; }"
     },
     {
       "name": "Case Study Card",
       "kind": "card",
       "refersTo": "case-card",
-      "description": "Distilled two-column card: eyebrow (num · client · theme), title, italic question, CTA. No description paragraph, no chips. Whole card is one link.",
+      "description": "Two-column card (~1.05fr/0.95fr): terracotta serif number, client, theme eyebrow, Spectral h3 title, italic driving question, 'View case study →' CTA, against a real screenshot on a fixed white mat. Ambient Rest shadow at rest; border + shadow deepen together on hover.",
       "html": "<a class=\"ds-case-card\" href=\"#\"><div class=\"ds-case-card__body\"><div class=\"ds-case-card__eyebrow\"><span class=\"ds-case-card__num\">01</span><span class=\"ds-case-card__client\">MoxiWorks</span><span class=\"ds-case-card__dot\">·</span><span>Organizational Complexity</span></div><h3 class=\"ds-case-card__title\">Designing Brand Governance for Enterprise Scale</h3><p class=\"ds-case-card__q\">How do you help thousands of agents stay on brand without manual processes?</p><span class=\"ds-case-card__cta\">View case study →</span></div><div class=\"ds-case-card__media\"></div></a>",
-      "css": ".ds-case-card { display: grid; grid-template-columns: 1.05fr 0.95fr; background: #1A1610; border: 1px solid rgba(241,235,223,0.12); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25); text-decoration: none; color: inherit; transition: border-color 0.4s, box-shadow 0.4s; } .ds-case-card:hover, .ds-case-card:focus-visible { border-color: rgba(241,235,223,0.26); box-shadow: 0 8px 32px rgba(0,0,0,0.32); } .ds-case-card__body { padding: 48px 50px; } .ds-case-card__eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: #A1957F; margin-bottom: 22px; } .ds-case-card__num { color: #97F8E4; font-weight: 700; } .ds-case-card__client { color: #E7DFD2; } .ds-case-card__dot { color: #736959; } .ds-case-card__title { margin: 0 0 18px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; color: #F1EBDF; } .ds-case-card__q { margin: 0 0 18px; font-size: clamp(17px, 1.6vw, 21px); font-style: italic; font-weight: 600; line-height: 1.6; color: #D8CFC0; } .ds-case-card__cta { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #A1957F; transition: color 0.3s; } .ds-case-card:hover .ds-case-card__cta { color: #F1EBDF; } .ds-case-card__media { background: #26211A; min-height: 420px; }"
+      "css": ".ds-case-card { display: grid; grid-template-columns: 1.05fr 0.95fr; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow-ambient-rest); transition: border-color 0.4s, box-shadow 0.4s; } .ds-case-card:hover { border-color: var(--border-bright); box-shadow: var(--shadow-ambient-hover); } .ds-case-card__body { padding: 48px 50px; } .ds-case-card__eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px; } .ds-case-card__num { color: var(--accent-text); font-weight: 700; font-family: var(--font-display); } .ds-case-card__client { color: var(--text-bright); } .ds-case-card__title { margin: 0 0 18px; font-family: var(--font-display); font-size: clamp(1.75rem, 3.4vw, 2.75rem); font-weight: 500; color: var(--text-primary); } .ds-case-card__q { margin: 0 0 18px; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-style: italic; font-weight: 600; color: var(--text-secondary); } .ds-case-card__cta { display: inline-flex; align-items: center; gap: 10px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); } .ds-case-card__media { background: #fff; min-height: 420px; }"
     },
     {
-      "name": "Footer CTA",
-      "kind": "button",
-      "refersTo": "site-footer__cta",
-      "description": "The site's primary call to action: an oversized Alegreya mailto link. The CTA is display type; on hover only the arrow shifts mint.",
-      "html": "<a class=\"ds-footer-cta\" href=\"mailto:hello@example.com\">Say hello <span class=\"ds-footer-cta__arrow\">↗</span></a>",
-      "css": ".ds-footer-cta { display: block; font-family: 'Alegreya', Georgia, serif; font-size: clamp(2.5rem, 8.5vw, 8rem); line-height: 0.94; letter-spacing: -0.012em; font-weight: 800; color: #F1EBDF; text-decoration: none; } .ds-footer-cta__arrow { color: #97F8E4; transition: color 0.3s; } .ds-footer-cta:hover .ds-footer-cta__arrow { color: #83D4C3; }"
+      "name": "Hero CTA",
+      "kind": "custom",
+      "refersTo": "hero__cta",
+      "description": "Uppercase link with a bottom hairline that brightens to the theme accent on hover; the arrow nudges up-right.",
+      "html": "<a class=\"ds-hero-cta\" href=\"#\">View selected work <span class=\"ds-hero-cta__arrow\">↗</span></a>",
+      "css": ".ds-hero-cta { display: inline-flex; align-items: center; gap: 10px; padding: 22px 0 6px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-bright); transition: color 0.3s, border-color 0.3s; } .ds-hero-cta:hover { color: var(--accent-text); border-color: var(--accent); } .ds-hero-cta__arrow { transition: transform 0.3s; } .ds-hero-cta:hover .ds-hero-cta__arrow { transform: translate(3px, -3px); }"
     },
     {
-      "name": "Site Header Nav Link",
+      "name": "Drenched Footer CTA",
+      "kind": "custom",
+      "refersTo": "footer-cta",
+      "description": "The one signature moment the page commits the accent to a full surface — oversized Spectral 'Say hello ↗' as display type on a solid accent field (terracotta light / mint dark) with near-black band ink.",
+      "html": "<a class=\"ds-footer-cta\" href=\"#\">Say hello <span class=\"ds-footer-cta__arrow\">↗</span></a>",
+      "css": ".ds-footer-cta { display: inline-flex; align-items: baseline; gap: 16px; font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 8vw, 7rem); color: var(--band-text); text-decoration: none; } .ds-footer-cta__arrow { transition: transform 0.3s; } .ds-footer-cta:hover .ds-footer-cta__arrow { transform: translate(4px, -4px); }"
+    },
+    {
+      "name": "Navigation Link",
       "kind": "nav",
       "refersTo": "site-header__link",
-      "description": "Uppercase eyebrow-style sticky-header nav link with a 44px tap box.",
-      "html": "<a class=\"ds-nav-link\" href=\"#work\">Work</a>",
-      "css": ".ds-nav-link { font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #A1957F; text-decoration: none; padding-block: 15px; margin-block: -15px; transition: color 0.3s; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #F1EBDF; }"
-    },
-    {
-      "name": "Mobile Nav Toggle",
-      "kind": "button",
-      "refersTo": "site-header__toggle",
-      "description": "The only real <button>: a 44x44 hamburger shown below 600px; its two bars rotate into an X when expanded.",
-      "html": "<button class=\"ds-toggle\" type=\"button\" aria-expanded=\"false\" aria-controls=\"primary-nav\" aria-label=\"Toggle navigation menu\"><span class=\"ds-toggle__bar\"></span><span class=\"ds-toggle__bar\"></span></button>",
-      "css": ".ds-toggle { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; padding: 0; background: none; border: none; cursor: pointer; } .ds-toggle__bar { display: block; width: 20px; height: 2px; background: #F1EBDF; transition: transform 0.3s, opacity 0.3s; } .ds-toggle[aria-expanded=\"true\"] .ds-toggle__bar:first-child { transform: translateY(3.5px) rotate(45deg); } .ds-toggle[aria-expanded=\"true\"] .ds-toggle__bar:last-child { transform: translateY(-3.5px) rotate(-45deg); }"
+      "description": "Uppercase eyebrow-treatment nav link, muted → primary on hover, 44px tap box.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Work</a>",
+      "css": ".ds-nav-link { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.3s; padding-block: 15px; margin-block: -15px; } .ds-nav-link:hover { color: var(--text-primary); }"
     }
   ],
   "narrative": {
-    "northStar": "The Quiet Confidence",
-    "overview": "A warm near-black canvas (#15120D) holds the page; one signature mint accent (oklch(0.81 0.084 179), keyed to the hand-lettered TN wordmark) is the only thing allowed to call attention to itself. Everything else — type, chips, borders — recedes into a tight ramp of warm off-white to deep brown. Type is a serif/grotesque pairing on a real contrast axis: Alegreya (calligraphic, echoing the wordmark) for every oversized moment, Bricolage Grotesque for body and UI. The system speaks once, says something precise, and lets the case studies carry the rest of the argument. It rejects the generic AI-template look: no gradients, no glassmorphism, no interchangeable hero, no second accent.",
+    "northStar": "Editorial Restraint",
+    "overview": "Warm paper (#F4F0E8) holds the page; a high-contrast serif carries every headline like a magazine feature; one terracotta accent is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight warm-ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy. This is the editorial iteration (adopted Jul 2026 from the 'Editorial Homepage' redesign). It replaces the earlier dark-default, mint/copper, Alegreya-Bricolage system. The content and information architecture are unchanged; the visual language is new. This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Warmth is carried by the paper ground, the serif, and the terracotta — never by a tinted-near-white body that reads as 'AI beige.'",
     "keyCharacteristics": [
-      "One accent color (signature mint), used sparingly, never diluted with a second hue",
-      "Warm near-black base instead of true black or cool gray",
-      "A serif/grotesque pairing on a real contrast axis — Alegreya display, Bricolage Grotesque body/UI",
-      "Flat-by-default surfaces with tonal layering, accented by soft ambient shadows for depth",
-      "Borders + soft shadow signal interactivity on hover, not color shifts",
-      "Progressive enhancement: html.js-gated reveals, a real-content noscript fallback, and prefers-reduced-motion respected"
+      "Light by default, dark as sibling — :root holds the canonical light (paper) theme; [data-theme=\"dark\"] is its dark counterpart, same type, same layouts, same single accent lifted for the dark ground.",
+      "One accent per theme — terracotta in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.",
+      "Serif display / sans body on a real contrast axis — Spectral for every headline, statement, numeral, and the footer CTA; Hanken Grotesk for body, nav, and labels.",
+      "Italics as emphasis, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Spectral italic rather than bolded.",
+      "Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.",
+      "Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on html.js, a real <noscript> fallback ships, and all motion respects prefers-reduced-motion."
     ],
     "rules": [
-      { "name": "The One Accent Rule", "body": "Signature mint is the only saturated color in the system. If a new UI need calls for 'another color,' the answer is a neutral tone from the existing ramp, not a second hue.", "section": "colors" },
-      { "name": "The Display Ceiling Rule", "body": "Hero display type caps at 112px (7rem), not 118px: at 118px the longest line ('Complexity is inevitable.') renders ~1183px and overflows the 1180px container by 3px. Paired with an 8.4vw fluid term it stays one line from ~500px up; phones wrap to 3 lines by design.", "section": "typography" },
-      { "name": "The Serif-For-Scale Rule", "body": "Alegreya appears only at display scale (hero, statements, footer CTA). Body, UI, labels, and anything section-size or smaller stay Bricolage. The two never trade roles.", "section": "typography" },
-      { "name": "The Diffuse-Not-Dark Rule", "body": "Shadows stay low-opacity and large-radius (soft ambient glow), never small-radius/high-opacity '2014 app' drop shadows. If a shadow has a visible hard edge, the blur radius is too small and the opacity is too high.", "section": "elevation" }
+      { "name": "The One Accent Rule", "body": "Exactly one saturated color on any screen — terracotta in the light theme, signature mint in the dark. Never both at once, never a third hue. If a new UI need calls for 'another color,' the answer is a neutral from the ramp.", "section": "colors" },
+      { "name": "The Serif-For-Scale Rule", "body": "Spectral appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, and nav stay Hanken Grotesk. The two never trade roles.", "section": "typography" },
+      { "name": "The Display-Weight Rule", "body": "Big serif type stays at weight ~500 — Spectral's built-in contrast carries the elegance; don't bump display to 700/800 (that flattens it into a generic bold serif).", "section": "typography" },
+      { "name": "The Italic-Emphasis Rule", "body": "Lift a phrase with Spectral italic in the same ink, not with bold or color (the accent line is the one exception — italic and the accent hue).", "section": "typography" },
+      { "name": "The Diffuse-Not-Dark Rule", "body": "Shadows stay low-opacity, large-radius. A visible hard edge means the radius is too small and the opacity too high.", "section": "elevation" }
     ],
     "dos": [
-      "Do keep signature mint (oklch(0.81 0.084 179), text variant oklch(0.91 0.097 179)) as the only saturated accent on any screen; everything else stays within the warm-neutral ramp.",
-      "Do use the Ambient Rest / Ambient Hover shadow pair (0 4px 24px rgba(0,0,0,0.25) → 0 8px 32px rgba(0,0,0,0.32)) for any new card-level surface, paired with the existing border-brightening hover.",
-      "Do step through the neutral surface ramp (Warm Pitch → Card Brown → Inset Brown) to convey containment/depth before reaching for a new color.",
-      "Do cap hero display type at 112px (7rem) and keep line-height tight (0.94); don't raise the cap or the line overflows the container.",
-      "Do keep the type system to the two committed families — Alegreya (display) and Bricolage Grotesque (body/UI) — pairing on a serif-vs-grotesque contrast axis.",
+      "Do keep exactly one accent per theme — terracotta in light (#B4542E / text #A6461F), signature mint in dark (#83D4C3 / text #97F8E4); everything else stays in the warm-neutral ramp, and the two hues never share a screen.",
+      "Do carry every headline in Spectral at weight ~500; emphasize phrases with Spectral italic, not bold.",
+      "Do treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type and layouts; surfaces/ink/shadows invert and the accent shifts to its own theme's hue (mint).",
+      "Do step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.",
+      "Do use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.",
       "Do write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice."
     ],
     "donts": [
-      "Don't introduce a second saturated accent color (no purple, no magenta, no multi-color gradient) — this breaks the One Accent Rule and reads as generic AI-template styling.",
-      "Don't use purple gradients, glassmorphism, interchangeable stock-photo hero sections, or other generic SaaS-landing-page clichés — explicit anti-references from PRODUCT.md.",
+      "Don't introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.",
+      "Don't let a theme show the other theme's accent — light is terracotta only, dark is mint only.",
+      "Don't bump display type to 700/800 to make it 'pop' — that flattens Spectral into a generic bold serif. Keep it ~500 and larger.",
+      "Don't use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.",
       "Don't use hard, small-radius drop shadows (the '2014 app' look).",
-      "Don't add a third type family or swap the display serif for a reflex default (Fraunces, Playfair, Cormorant, Recoleta). Alegreya is the committed choice.",
-      "Don't let muted/faint text fall below 4.5:1. text-faint (#736959) is decorative-only (separator dots, placeholder icons); never use it for readable copy. On lighter surfaces (bg-inset) use text-muted."
+      "Don't add a third type family. Spectral + Hanken Grotesk are the committed pair.",
+      "Don't let muted/faint text fall below 4.5:1. --text-faint is decorative-only; never body copy.",
+      "Don't commit the local live-mode <script src=\"localhost:8400/live.js\"> injection or leave ?v= cache tokens un-bumped when JS/CSS changes."
     ]
   }
 }

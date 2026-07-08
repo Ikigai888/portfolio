@@ -190,13 +190,20 @@ html.js .theme-toggle { display: flex; }
 }
 /* Insurance for the lead sitting over the brighter part of the motif */
 [data-theme="dark"] #top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
-.hero {
-  display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  gap: var(--gap-split);
-  align-items: center;
+/* No-image hero: typography alone carries the full weight, so the headline
+   is pushed to its documented ceiling (6rem / --fs-display max) and given
+   a wider column and more generous pacing than the split-column layout had
+   room for. The rule above the eyebrow is the one graphic anchor standing
+   in for the photo — reuses --accent, no new token. */
+.hero { max-width: 920px; }
+.hero__rule {
+  width: 88px;
+  height: 4px;
+  margin: 0 0 32px;
+  background: var(--accent);
+  border: none;
 }
-.hero__eyebrow { margin-bottom: 26px; }
+.hero__eyebrow { margin-bottom: 28px; letter-spacing: calc(var(--ls-eyebrow) * 1.15); }
 
 .hero__headline {
   margin: 0;
@@ -210,8 +217,7 @@ html.js .theme-toggle { display: flex; }
 .hero__line--accent { font-style: italic; color: var(--accent); } /* the italic terracotta turn, per the mockup */
 
 .hero__lead {
-  margin: 34px 0 0;
-  max-width: 46ch;
+  margin: 40px 0 0;
   font-size: var(--fs-lead);
   line-height: var(--lh-body);
   color: var(--text-secondary);
@@ -222,7 +228,7 @@ html.js .theme-toggle { display: flex; }
   gap: 10px;
   /* Tap target ≥44px (WCAG 2.5.8): most of the height is top padding so the
      underline still hugs the text; margin-top carries the rest of the gap. */
-  margin-top: 12px;
+  margin-top: 16px;
   padding: 22px 0 6px;
   font-size: var(--fs-chip);
   font-weight: 700;
@@ -236,21 +242,6 @@ html.js .theme-toggle { display: flex; }
 .hero__cta:hover { color: var(--accent-text); border-color: var(--accent); }
 .hero__cta-arrow { transition: transform var(--hover-color-dur); }
 .hero__cta:hover .hero__cta-arrow { transform: translate(3px, -3px); }
-
-.hero__portrait {
-  margin: 0;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--r-portrait);
-  overflow: hidden;
-  background: var(--bg-inset);
-}
-.hero__portrait img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 /* ---------- Statement block (What I Do; reused by How I Work) ---------- */
 .statement {
@@ -469,11 +460,25 @@ html.js .theme-toggle { display: flex; }
   color: var(--text-muted);
 }
 
-/* ---------- About (build-spec §3f) — text-only; portrait now lives in the hero ---------- */
+/* ---------- About (build-spec §3f) ---------- */
 .about__meta {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 22px;
+}
+.about__avatar {
+  display: block;
+  width: 192px;
+  height: 192px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-inset);
+}
+.about__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .about__name {
   display: flex;
@@ -574,8 +579,13 @@ button:focus-visible {
 
 /* ---------- Responsive: collapse multi-column grids (build-spec §4) ---------- */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 40px; }
-  .hero__portrait { max-width: 420px; }
+  .hero__text { max-width: none; }
+  .hero__portrait {
+    position: static;
+    width: 160px;
+    margin: 28px 0 0;
+    transform: none;
+  }
   .split,
   .split--about { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .split__label { position: static; }

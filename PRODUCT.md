@@ -18,12 +18,12 @@ Confident and understated, warm and approachable. Quiet authority — the work a
 
 ## Anti-references
 
-Avoid the generic AI-template / cookie-cutter SaaS-landing-page look: purple gradients, interchangeable hero sections, generic stock photography, trend-chasing glassmorphism, or anything that reads as templated rather than authored. The existing warm dark (near-black) background with a single cyan accent and Bricolage Grotesque type is the established direction — lean into that distinct identity rather than defaulting to safe, generic patterns.
+Avoid the generic AI-template / cookie-cutter SaaS-landing-page look: purple gradients, interchangeable hero sections, generic stock photography, trend-chasing glassmorphism, or anything that reads as templated rather than authored. The warm paper background (light) with its dark sibling theme, a single terracotta/mint accent (per theme), and the Spectral + Hanken Grotesk serif/sans pairing is the established "Editorial Restraint" direction — lean into that distinct identity rather than defaulting to safe, generic patterns.
 
 ## Design Principles
 
 - Let the work speak — restraint over decoration; craft is demonstrated, not narrated.
-- One confident accent, not a palette of distractions — the cyan accent stays singular and intentional.
+- One confident accent per theme, not a palette of distractions — terracotta in light, signature mint in dark, always singular and intentional.
 - Write like a senior designer talks to a peer — clear, specific, no jargon padding.
 - Every section should make a hiring manager trust the work faster, not just look nicer.
 - Preserve the existing token-driven system; extend it rather than reinventing it per page.
