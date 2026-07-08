@@ -74,7 +74,7 @@
     return (
       '<header class="case-header">' +
         '<div class="container case-header__top">' +
-          '<a class="case-header__back" href="index.html">' +
+          '<a class="case-header__back" href="index.html#work">' +
             '<span aria-hidden="true">&larr;</span> Tad Natsuhara' +
           '</a>' +
           '<span class="case-header__cluster">' +
