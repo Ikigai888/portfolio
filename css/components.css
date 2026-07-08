@@ -515,12 +515,13 @@ html.js .theme-toggle { display: flex; }
 }
 .about__credential a {
   color: var(--accent-text);
+  font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: transparent;
+  text-decoration-color: currentColor;
   text-underline-offset: 3px;
-  transition: text-decoration-color var(--hover-color-dur);
+  transition: color var(--hover-color-dur);
 }
-.about__credential a:hover { text-decoration-color: currentColor; }
+.about__credential a:hover { color: var(--accent); }
 
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
@@ -669,7 +670,7 @@ button:focus-visible {
   padding-top: var(--section-pad);
   padding-bottom: var(--section-pad);
 }
-.noscript-notice a { color: var(--accent-text); }
+.noscript-notice a { color: var(--accent-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

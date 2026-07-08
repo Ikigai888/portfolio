@@ -23,7 +23,7 @@ window.Content = {
 
   /* ---------- Hero ---------- */
   hero: {
-    eyebrow: 'Senior Product Designer — Vancouver, BC',
+    eyebrow: 'Senior Product Designer · Vancouver, BC',
     // headline rendered as lines; `accent: true` marks the italic terracotta line
     headline: [
       { text: 'Complexity is inevitable.' },
@@ -64,7 +64,7 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Brand Governance Style Kit editor — color and typography tokens with share permissions', caption: 'Brand Governance — RISE platform' },
+        image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Brand Governance Style Kit editor: color and typography tokens with share permissions', caption: 'Brand Governance · RISE platform' },
       },
       {
         number: '02',
@@ -74,7 +74,7 @@ window.Content = {
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         href: 'case-passkeys.html',
-        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys — authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
       },
       {
         number: '03',
@@ -84,7 +84,7 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking — seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
       },
     ],
     cta: 'View case study',
@@ -100,7 +100,7 @@ window.Content = {
     principles: [
       { title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
       { title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
-      { title: 'Rapid exploration', description: 'More directions, earlier — prototyping in hours what used to take days, then throwing most of it away on purpose.' },
+      { title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
       { title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
     closing: 'The result is software people trust on the first try and rely on every day after.',
@@ -114,7 +114,7 @@ window.Content = {
       'solving the kinds of product problems that don’t have obvious answers.',
     emphasize: ['don’t have obvious answers'],
     body:
-      'I work closest to the hard middle of products — where the system design, ' +
+      'I work closest to the hard middle of products, where the system design, ' +
       'the interaction details, and the business logic all have to agree. Most ' +
       'days that means whiteboards with engineers and calls with customers.',
     credential: {
@@ -122,7 +122,7 @@ window.Content = {
       link: { label: 'Microsoft (6 inventor patents)', href: 'https://patents.justia.com/inventor/tad-natsuhara' },
       after: ', Electronic Arts, and SAP Jam.',
     },
-    name: 'Tad Natsuhara — Vancouver, BC',
+    name: 'Tad Natsuhara · Vancouver, BC',
   },
 
   /* ---------- Contact footer ---------- */
