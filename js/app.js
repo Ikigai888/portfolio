@@ -71,32 +71,39 @@
   }
 
   function About(d) {
-    // About reuses the sticky-label split: eyebrow + status-dot name in the
-    // left column, the serif statement + prose in the right. A small
-    // circular portrait sits above the name as a byline photo.
+    // About uses the same sticky-label split as What I Do / How I Work: the
+    // rail holds only the section label, so the three sections share one
+    // rhythm. The identity (portrait + name + role + location) lives once,
+    // as a contributor byline closing the content column.
     var p = d.portrait || {};
+    var b = d.byline || {};
     var avatar = p.src
       ? '<span class="about__avatar"><img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '" loading="lazy" /></span>'
       : '';
+    var meta = [b.role, b.location].filter(Boolean).map(C.esc).join(' &middot; ');
 
-    var content =
-      '<div class="split split--about">' +
-        '<div class="split__label about__meta">' +
-          avatar +
-          C.SectionHeading(d.label) +
-          '<p class="about__name"><span class="about__dot" aria-hidden="true"></span>' +
-            C.esc(d.name) + '</p>' +
-        '</div>' +
-        '<div class="split__content">' +
-          '<p class="statement about__statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-          '<p class="statement__body">' + C.esc(d.body) + '</p>' +
-          '<p class="about__credential">' + C.esc(d.credential.before) +
-            '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
-              C.esc(d.credential.link.label) + '</a>' +
-            C.esc(d.credential.after) + '</p>' +
+    var byline =
+      '<div class="about__byline">' +
+        avatar +
+        '<div class="about__byline-text">' +
+          '<span class="about__byline-name">' + C.esc(b.name) + '</span>' +
+          (meta ? '<span class="about__byline-meta">' + meta + '</span>' : '') +
         '</div>' +
       '</div>';
-    return C.Section({ id: 'about', content: content });
+
+    var right =
+      '<p class="statement about__statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
+      '<p class="statement__body">' + C.esc(d.body) + '</p>' +
+      '<p class="about__credential">' + C.esc(d.credential.before) +
+        '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
+          C.esc(d.credential.link.label) + '</a>' +
+        C.esc(d.credential.after) + '</p>' +
+      byline;
+
+    return C.Section({
+      id: 'about',
+      content: C.Split({ label: d.label, content: right, modifier: 'split--about' }),
+    });
   }
 
   /* ---------- Mobile nav toggle: shows/hides .site-header__nav below 600px ----------

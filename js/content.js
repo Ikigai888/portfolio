@@ -106,12 +106,15 @@ window.Content = {
     closing: 'The result is software people trust on the first try and rely on every day after.',
   },
 
-  /* ---------- About ---------- */
+  /* ---------- About ----------
+     Statement leads with point of view only; the identity (name, role,
+     location) lives once, in the contributor byline below the prose, so
+     nothing is said twice. The section's sticky rail now carries just the
+     'About' label, matching What I Do / How I Work. */
   about: {
     label: 'About',
     statement:
-      'I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy ' +
-      'solving the kinds of product problems that don’t have obvious answers.',
+      'I enjoy solving the kinds of product problems that don’t have obvious answers.',
     emphasize: ['don’t have obvious answers'],
     body:
       'I work closest to the hard middle of products, where the system design, ' +
@@ -122,7 +125,11 @@ window.Content = {
       link: { label: 'Microsoft (6 inventor patents)', href: 'https://patents.justia.com/inventor/tad-natsuhara' },
       after: ', Electronic Arts, and SAP Jam.',
     },
-    name: 'Tad Natsuhara · Vancouver, BC',
+    byline: {
+      name: 'Tad Natsuhara',
+      role: 'Senior Product Designer',
+      location: 'Vancouver, BC',
+    },
   },
 
   /* ---------- Contact footer ---------- */
