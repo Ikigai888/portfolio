@@ -36,9 +36,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=121" />
+  <link rel="stylesheet" href="css/tokens.css?v=122" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=121" />
+  <link rel="stylesheet" href="css/components.css?v=122" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -185,7 +185,11 @@
     </div></div></div>
     </section>
     <section class="section" id="about">
-      <div class="container"><div data-reveal><div class="split split--about"><div class="split__label about__meta"><span class="about__avatar"><img src="images/portrait.jpg" alt="Tad Natsuhara" loading="lazy" /></span><h2 class="eyebrow">About</h2><p class="about__name"><span class="about__dot" aria-hidden="true"></span>Tad Natsuhara · Vancouver, BC</p></div><div class="split__content"><p class="statement about__statement">I’m Tad Natsuhara, a Senior Product Designer based in Vancouver. I enjoy solving the kinds of product problems that <strong class="emph">don’t have obvious answers</strong>.</p><p class="statement__body">I work closest to the hard middle of products, where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p></div></div></div></div>
+      <div class="container"><div data-reveal>
+    <div class="split split--about">
+      <div class="split__label"><h2 class="eyebrow">About</h2></div>
+      <div class="split__content"><p class="statement about__statement">I enjoy solving the kinds of product problems that <strong class="emph">don’t have obvious answers</strong>.</p><p class="statement__body">I work closest to the hard middle of products, where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p><div class="about__byline"><span class="about__avatar"><img src="images/portrait.jpg" alt="Tad Natsuhara" loading="lazy" /></span><div class="about__byline-text"><span class="about__byline-name">Tad Natsuhara</span><span class="about__byline-meta">Senior Product Designer &middot; Vancouver, BC</span></div></div></div>
+    </div></div></div>
     </section></main>
     <footer class="site-footer section--footer" id="contact">
       <div class="container" data-reveal>
@@ -220,8 +224,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=121"></script>
-  <script src="js/components.js?v=121"></script>
-  <script src="js/app.js?v=121"></script>
+  <script src="js/content.js?v=122"></script>
+  <script src="js/components.js?v=122"></script>
+  <script src="js/app.js?v=122"></script>
 </body>
 </html>

@@ -53,9 +53,10 @@ grep -rl "localhost:8400\|impeccable-live" *.html   # should print nothing
 
 ## Cache-busting
 
-Script/style tags carry a `?v=N` query param (currently `?v=65`). Bump `N` on
-**every** tag across all four HTML files whenever any `js/` or `css/` file
-changes, so browsers don't serve stale cached assets. The browser HTTP cache is
+Script/style tags carry a `?v=N` query param (currently `?v=122`). Bump `N` on
+**every** tag across all five HTML files (`index.html`, `404.html`, and the
+three `case-*.html` pages) whenever any `js/` or `css/` file changes, so
+browsers don't serve stale cached assets. The browser HTTP cache is
 aggressive here — a plain reload can show old content even when the source on
 disk is current.
 
