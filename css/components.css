@@ -516,7 +516,7 @@ html.js .theme-toggle { display: inline-flex; }
 .about__byline {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   margin-top: 44px;
   padding-top: 26px;
   border-top: 1px solid var(--border);
@@ -524,8 +524,8 @@ html.js .theme-toggle { display: inline-flex; }
 .about__avatar {
   display: block;
   flex: none;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--bg-inset);
