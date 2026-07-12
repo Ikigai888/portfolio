@@ -77,8 +77,11 @@
     // as a contributor byline closing the content column.
     var p = d.portrait || {};
     var b = d.byline || {};
+    // alt="" (decorative): the visible byline name sits right beside the
+    // photo, so a named alt would make screen readers announce "Tad
+    // Natsuhara" twice in a row.
     var avatar = p.src
-      ? '<span class="about__avatar"><img src="' + C.esc(p.src) + '" alt="' + C.esc(p.alt) + '" loading="lazy" /></span>'
+      ? '<span class="about__avatar"><img src="' + C.esc(p.src) + '" alt="" loading="lazy" /></span>'
       : '';
     var meta = [b.role, b.location].filter(Boolean).map(C.esc).join(' &middot; ');
 

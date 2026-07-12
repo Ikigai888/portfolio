@@ -89,11 +89,18 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  min-width: 0; /* let the wordmark shrink as a flex child instead of forcing overflow */
 }
 .site-header__logo {
   display: block;
-  height: 40px;
-  width: auto; /* 201x45 intrinsic keeps the aspect; 40px stays under native height so it stays crisp */
+  /* Fluid sizing (hardening): caps at the designed 40px height, but shrinks
+     proportionally when the header runs out of room (320px devices with the
+     theme toggle + hamburger). Fixed height + width:auto forced a 179px
+     minimum that overflowed the viewport below ~380px. */
+  width: auto;
+  height: auto;
+  max-height: 40px;
+  max-width: 100%; /* 201x45 intrinsic keeps the aspect; 40px stays under native height so it stays crisp */
   /* The source asset is drawn in the signature mint — the dark theme's own
      accent — so the DEFAULT (light) rule retargets it, and dark needs none. */
   filter: hue-rotate(287.5deg) saturate(0.68) brightness(0.43); /* mint → olive ~#59644C, tuned by sampling rendered pixels */
@@ -683,6 +690,9 @@ button:focus-visible {
   /* Collapse the primary nav into a toggleable dropdown so the site
      name never has to wrap or fight the nav links for space. */
   .site-header__toggle { display: flex; }
+  /* Hardening: tighter cluster gap so wordmark + theme toggle + hamburger
+     all fit down to 320px without the wordmark shrinking more than needed. */
+  .site-header__cluster { gap: 14px; }
   .site-header__nav {
     display: none;
     position: absolute;
