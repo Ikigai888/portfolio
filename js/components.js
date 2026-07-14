@@ -174,9 +174,16 @@ window.Components = (function () {
     /* autoplay is gated client-side (data-autoplay, see initAutoplayVideos in
        case-template.js) rather than the static attribute, so a
        prefers-reduced-motion visitor lands on the poster frame and never sees
-       the clip start moving. */
+       the clip start moving. The tap-to-play button is the fallback for iOS
+       Low Power Mode, which blocks video autoplay outright — a real tap is a
+       genuine user gesture and always plays, even then. */
     const media = /\.(mp4|webm)$/i.test(src)
-      ? `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>`
+      ? `<span class="image-slot__video">` +
+          `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>` +
+          `<button type="button" class="image-slot__play" aria-label="Play video">` +
+            `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>` +
+          `</button>` +
+        `</span>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
     /* caption was previously write-only data on real images (only the empty
        placeholder rendered it); every image in case-content.js carries one,

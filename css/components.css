@@ -451,9 +451,41 @@ html.js .theme-toggle { display: inline-flex; }
 }
 .image-slot__img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
+/* ---------- ImageSlot video: tap-to-play fallback ----------
+   iOS Low Power Mode blocks video autoplay outright, in every browser, no
+   matter how playback is triggered in JS — a real tap is the only thing
+   guaranteed to work, since it's a genuine user gesture. The button is
+   always in the DOM (progressive enhancement hides it without JS, see
+   html.js below) and js/case-template.js toggles .is-paused to show it
+   whenever the video isn't actually playing. */
+.image-slot__video { position: relative; display: block; }
+.image-slot__play {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--media-control-bg);
+  color: var(--media-control-fg);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--hover-color-dur), background var(--hover-color-dur);
+}
+html.js .image-slot__play { display: flex; }
+.image-slot__video.is-paused .image-slot__play { opacity: 1; pointer-events: auto; }
+.image-slot__play:hover { background: var(--media-control-bg); filter: brightness(1.15); }
+.image-slot__play svg { width: 22px; height: 22px; fill: currentColor; margin-left: 3px; }
+
 /* ---------- ImageSlot figcaption: real images, not the empty placeholder ---------- */
 .image-slot__figure { margin: 0; display: flex; flex-direction: column; height: 100%; }
 .image-slot__figure .image-slot__img { flex: 1 1 auto; min-height: 0; }
+.image-slot__figure .image-slot__video { flex: 1 1 auto; min-height: 0; display: flex; }
 .image-slot__figcaption {
   margin-top: 10px;
   font-size: var(--fs-chip);

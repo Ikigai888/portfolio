@@ -391,14 +391,37 @@
      each video actually scrolls into view, and re-check muted since iOS ignores a
      play() call on an unmuted video even when the muted attribute is present.
 
-     Setup itself is deferred to window 'load': render() runs this synchronously
-     while images above the video are still loading, so the page is transiently
-     shorter than its final height and a video that ends up far below the fold
-     can register as "intersecting" on the observer's very first callback. Waiting
-     for 'load' guarantees layout has settled before anything is observed. */
+     None of that helps under iOS Low Power Mode, which blocks video autoplay
+     outright regardless of muted/playsinline or how play() is invoked — so
+     every video also gets a tap-to-play button (ImageSlot in components.js)
+     that's wired up unconditionally below. A real tap is a genuine user
+     gesture, which iOS always honors even in Low Power Mode.
+
+     Autoplay setup itself is deferred to window 'load': render() runs this
+     synchronously while images above the video are still loading, so the
+     page is transiently shorter than its final height and a video that ends
+     up far below the fold can register as "intersecting" on the observer's
+     very first callback. Waiting for 'load' guarantees layout has settled
+     before anything is observed. */
   function initAutoplayVideos() {
     var videos = document.querySelectorAll('video[data-autoplay]');
-    if (!videos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!videos.length) return;
+
+    videos.forEach(function (v) {
+      var wrap = v.closest('.image-slot__video');
+      var syncPaused = function () { if (wrap) wrap.classList.toggle('is-paused', v.paused); };
+      v.addEventListener('play', syncPaused);
+      v.addEventListener('pause', syncPaused);
+      syncPaused();
+      var toggle = function () {
+        if (v.paused) { v.muted = true; v.play().catch(function () {}); } else { v.pause(); }
+      };
+      v.addEventListener('click', toggle);
+      var btn = wrap && wrap.querySelector('.image-slot__play');
+      if (btn) btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!('IntersectionObserver' in window)) {
       videos.forEach(function (v) { v.muted = true; v.play().catch(function () {}); });
       return;

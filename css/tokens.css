@@ -142,6 +142,12 @@
   /* ---------- Elevation (DESIGN.md §4) — softer on paper ---------- */
   --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
   --shadow-ambient-hover: 0 10px 34px rgba(36, 30, 19, 0.16);
+
+  /* ---------- Media overlay control (video tap-to-play) ----------
+     Sits on top of arbitrary video frames, not page background, so it stays
+     constant across themes instead of following --bg/--text-primary. */
+  --media-control-bg: rgba(20, 16, 10, 0.55);
+  --media-control-fg: #F4F0E8;
 }
 
 /* ============================================================
