@@ -384,12 +384,40 @@
     update();
   }
 
-  /* ---- Autoplay video: gated on reduced-motion, poster frame is the fallback ---- */
+  /* ---- Autoplay video: gated on reduced-motion + visibility, poster frame is the fallback.
+     iOS Safari/Chrome silently refuses .play() on a video that isn't yet in the
+     viewport (no error, no retry) — calling play() unconditionally on render left
+     every video below the fold stuck on its poster on iOS. Only attempt play once
+     each video actually scrolls into view, and re-check muted since iOS ignores a
+     play() call on an unmuted video even when the muted attribute is present.
+
+     Setup itself is deferred to window 'load': render() runs this synchronously
+     while images above the video are still loading, so the page is transiently
+     shorter than its final height and a video that ends up far below the fold
+     can register as "intersecting" on the observer's very first callback. Waiting
+     for 'load' guarantees layout has settled before anything is observed. */
   function initAutoplayVideos() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    document.querySelectorAll('video[data-autoplay]').forEach(function (v) {
-      v.play().catch(function () {});
-    });
+    var videos = document.querySelectorAll('video[data-autoplay]');
+    if (!videos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(function (v) { v.muted = true; v.play().catch(function () {}); });
+      return;
+    }
+    function observeAll() {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.muted = true;
+            entry.target.play().catch(function () {});
+          } else {
+            entry.target.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      videos.forEach(function (v) { io.observe(v); });
+    }
+    if (document.readyState === 'complete') observeAll();
+    else window.addEventListener('load', observeAll);
   }
 
   /* ---- Reveal utility (same as homepage) ---- */
