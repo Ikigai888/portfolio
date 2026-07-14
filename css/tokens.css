@@ -95,7 +95,7 @@
   --ls-serif: -0.005em; /* Spectral sets comfortably near 0 */
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
-  --fs-display:   clamp(3.25rem, 8vw, 5.25rem); /* hero headline — no-image variant, full-width column. Tuned (was 6rem max / 8.5vw) so "Complexity is inevitable." (the longest hero line) stays on one line across the fluid range, not just at the capped max: at 8.5vw it was a near-exact tie with the column width around tablet (~768px); 8vw carries a real safety margin there too, and the 5.25rem cap (not 6rem) keeps it on one line once the clamp saturates at wide desktop. */
+  --fs-display:   clamp(min(3.25rem, 14.5vw), 8vw, 5.25rem); /* hero headline — no-image variant, full-width column. Tuned (was 6rem max / 8.5vw) so "Complexity is inevitable." (the longest hero line) stays on one line across the fluid range, not just at the capped max: at 8.5vw it was a near-exact tie with the column width around tablet (~768px); 8vw carries a real safety margin there too, and the 5.25rem cap (not 6rem) keeps it on one line once the clamp saturates at wide desktop. The min() floor is a hardening fix: a hard 3.25rem floor made "Complexity" (258px) overflow the 240px column on 320px viewports; 14.5vw only undercuts 3.25rem below ~359px, so 375px+ renders identically. */
   --fs-section:   clamp(1.875rem, 4vw, 3.25rem); /* section headlines */
   --fs-section-sm:clamp(1.75rem, 3.4vw, 2.75rem);
   --fs-statement: clamp(1.625rem, 3.1vw, 2.75rem); /* big statements */
@@ -232,6 +232,10 @@ body {
   font-optical-sizing: auto; /* no-op for the current families; harmless if a future variable font carries an opsz axis */
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
+  /* Hardening: inherited safety net so an unbroken long word (URL, email,
+     future copy) wraps instead of punching out of its column. Only fires
+     when a single word exceeds the line, so normal text is untouched. */
+  overflow-wrap: break-word;
 }
 
 ::selection { background: var(--selection-bg); color: var(--selection-text); }
