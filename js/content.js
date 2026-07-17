@@ -64,7 +64,7 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Brand Governance Style Kit editor: color and typography tokens with share permissions', caption: 'Brand Governance · RISE platform' },
+        image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'An agent applying a governed Style Kit inside a CMA presentation, choosing from Primary, Luxury, Commercial, Team, and Office kits', caption: 'Brand Governance · Style Kits, applied' },
       },
       {
         number: '02',
