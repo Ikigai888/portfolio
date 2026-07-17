@@ -44,7 +44,7 @@ window.CaseContent = {
           body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service, but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
           options: 'keep improving the service-managed model; expose raw asset settings to admins; a structured Brand Library with named, taggable, lockable assets.',
           decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open: the raw material everything else in this flow is built from.',
-          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style: name, font family, weight, and tags', caption: 'Brand Library · defining the foundational assets' },
+          image: { src: 'images/case-studies/brand-gov-brand-library.png', w: 1440, h: 1036, alt: 'Brand Library Colors table with named, tagged, and lockable color assets, and an Add Color panel showing preview, hex code, tags, and a lock toggle', caption: 'Brand Library · defining the foundational assets' },
         },
         {
           number: 2,
@@ -52,7 +52,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit: the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor: color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits · bundling the library into one applied unit' },
+          image: { src: 'images/case-studies/brand-gov-style-kits.png', w: 1440, h: 1024, alt: 'Style Kit editor bundling color and typography tokens, with a list of kits (Default, Luxury, Commercial), share permissions, and inheritance settings', caption: 'Style Kits · bundling the library into one applied unit' },
         },
         {
           number: 3,
