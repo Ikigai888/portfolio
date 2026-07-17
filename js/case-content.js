@@ -68,7 +68,7 @@ window.CaseContent = {
           body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one, and hold up as the ecosystem grew.',
           options: 'a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability: branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits · consumed inside Presentations, not rebuilt per product' },
+          image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'One branding service, many kits · consumed inside Presentations, not rebuilt per product' },
         },
       ],
     },
