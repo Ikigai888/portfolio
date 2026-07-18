@@ -271,10 +271,14 @@ window.Components = (function () {
      The CTA link doubles as this section's <h2> (wrapped, not a separate
      eyebrow above it) so the document outline still reads h1 > h2 per
      section > h3 even though the visible tracked-eyebrow label was
-     dropped here (see DESIGN.md §5, drenched closer). */
+     dropped here (see DESIGN.md §5, drenched closer).
+     The <footer> itself carries a second, independent data-reveal (see
+     components.css): the accent field wipes open on its own clip-path
+     animation, distinct from the inner container's ordinary fade+rise, so
+     the site's one Committed color moment also gets its own entrance. */
   const SiteFooter = (d) => `
-    <footer class="site-footer section--footer" id="contact">
-      <div class="container" data-reveal>
+    <footer class="site-footer section--footer" id="contact" data-reveal>
+      <div class="container">
         <h2 class="site-footer__cta-heading"><a class="site-footer__cta" href="mailto:${esc(d.email)}">${esc(d.cta)}
           <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
         </a></h2>

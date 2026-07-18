@@ -316,6 +316,24 @@ html.js .theme-toggle { display: inline-flex; }
   margin: 0 0 32px;
   background: var(--accent);
   border: none;
+  transform-origin: left center;
+}
+/* Draws left-to-right as the hero's own opening beat, ahead of the headline
+   glyphs settling (initThesisSettle in app.js) — one continuous "assembling
+   itself" sequence rather than a second, unrelated animation. Gated on the
+   same [data-reveal].is-visible trigger everything else uses; no-JS,
+   reduced-motion, and headless renders all just see the finished rule. */
+html.js [data-reveal] .hero__rule { transform: scaleX(0); }
+html.js [data-reveal].is-visible .hero__rule {
+  animation: heroRuleDraw 0.45s var(--reveal-ease) both;
+}
+@keyframes heroRuleDraw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] .hero__rule,
+  html.js [data-reveal].is-visible .hero__rule { transform: none; animation: none; }
 }
 
 .hero__headline {
@@ -708,11 +726,54 @@ html.js [data-reveal].is-visible .principle:nth-child(4) .principle__icon .draw 
      down, then commits fully to the accent for the final fold — olive in
      light, mint in dark. Reuses the Outcome-band tokens (no new primitives),
      rhyming this closer with the case-study Outcome bands. All type is the
-     band's near-black ink (≥4.58:1 light / 5.34:1 dark). */
-  background: var(--band-bg);
+     band's near-black ink (≥4.58:1 light / 5.34:1 dark).
+     The band color lives on the ::before layer (not this element's own
+     background) so the drenched-closer entrance can wipe the whole accent
+     field in, independent of the footer's own reveal — see below. */
+  position: relative;
+  isolation: isolate;
+  background: transparent;
   color: var(--band-text);
   padding-top: var(--section-pad);
   padding-bottom: var(--section-pad);
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--band-bg);
+}
+/* Drenched-closer entrance: the accent field itself pours in top-to-bottom.
+   The wipe clips the full-bleed ::before band AND the inner .container
+   content together, both driven off the footer's .is-visible class. The
+   observed <footer> element is never itself clipped — a clip-path on the
+   observed node collapses its geometry to zero for IntersectionObserver,
+   deadlocking is-visible so it would never fire (the footer would stay
+   hidden forever, which is exactly the bug this replaced). We also cancel
+   the generic fade+rise on the footer so the wipe is the whole entrance,
+   not a fade competing with it. */
+html.js .site-footer[data-reveal] {
+  opacity: 1;
+  animation: none;
+}
+html.js .site-footer[data-reveal]::before,
+html.js .site-footer[data-reveal] > .container {
+  clip-path: inset(0 0 100% 0);
+}
+html.js .site-footer[data-reveal].is-visible::before,
+html.js .site-footer[data-reveal].is-visible > .container {
+  animation: footerWipe 0.75s var(--reveal-ease) both;
+}
+@keyframes footerWipe {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .site-footer[data-reveal]::before,
+  html.js .site-footer[data-reveal] > .container { clip-path: none; }
+  html.js .site-footer[data-reveal].is-visible::before,
+  html.js .site-footer[data-reveal].is-visible > .container { animation: none; }
 }
 /* Footer eyebrows (Email/Phone/Social column labels) are ink on the band, not the accent */
 .site-footer .eyebrow { color: var(--band-text); }
@@ -808,8 +869,16 @@ button:focus-visible {
   /* Hardening: tighter cluster gap so wordmark + theme toggle + hamburger
      all fit down to 320px without the wordmark shrinking more than needed. */
   .site-header__cluster { gap: 14px; }
+  /* display:none can't transition, so the dropdown used to snap open/closed
+     instantly — the one motion-free state change on the interaction most
+     mobile visitors actually perform. visibility+opacity+transform animates
+     both directions while still fully removing the collapsed nav from the
+     tab order and accessibility tree (visibility:hidden does both, unlike
+     opacity alone). Exit is faster than enter per convention; the delayed
+     visibility transition on close keeps it non-interactive until the fade
+     finishes, and un-delays instantly on open so it's immediately usable. */
   .site-header__nav {
-    display: none;
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
@@ -818,8 +887,23 @@ button:focus-visible {
     gap: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.18s var(--reveal-ease), transform 0.18s var(--reveal-ease), visibility 0s linear 0.18s;
   }
-  .site-header__nav.is-open { display: flex; }
+  .site-header__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    transition: opacity 0.24s var(--reveal-ease), transform 0.24s var(--reveal-ease), visibility 0s linear 0s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-header__nav,
+    .site-header__nav.is-open { transition: none; }
+  }
   .site-header__link {
     padding: 16px var(--gutter);
     margin-block: 0;            /* reset the desktop tap-box negative margin so rows don't overlap */
