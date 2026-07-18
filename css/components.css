@@ -166,10 +166,15 @@
    two-option fading-label pair, then this per direct feedback that the
    labeled pair read as cluttered.) */
 .theme-toggle {
-  --toggle-size: 24px; /* small and quiet by design (see note below); real hit area, not
-    padding-expanded — the two icons sit close enough together that an invisible-padding
-    tap-target trick (the site's usual approach, e.g. .site-header__link) would make their
-    expanded hit zones overlap and misroute clicks between them near the boundary. */
+  --toggle-size: 32px; /* real hit area, not padding-expanded — the two icons sit close
+    enough together that an invisible-padding tap-target trick (the site's usual approach,
+    e.g. .site-header__link) would make their expanded hit zones overlap and misroute clicks
+    between them near the boundary. Grown from an original 24px (bare WCAG 2.5.8 floor,
+    flagged in a design critique as the smallest, easiest-to-mis-tap target on the page) to
+    32px by enlarging the real box itself — that sidesteps the overlap problem the padding
+    trick would cause, since the track and the gap between buttons grow together instead of
+    two invisible zones creeping into each other. Still short of the site's 44px convention
+    by design: two 44px circles here would crowd the eyebrow nav in the header cluster. */
   --toggle-gap: 6px;
   display: none;
   position: relative;
@@ -262,7 +267,7 @@ html.js .theme-toggle { display: inline-flex; }
 /* No-image hero: typography alone carries the full weight, so the headline
    is pushed to its documented ceiling (6rem / --fs-display max) and given
    a wider column and more generous pacing than the split-column layout had
-   room for. The rule above the eyebrow is the one graphic anchor standing
+   room for. The rule above the headline is the one graphic anchor standing
    in for the photo — reuses --accent, no new token. */
 .hero { max-width: 920px; }
 .hero__rule {
@@ -272,7 +277,6 @@ html.js .theme-toggle { display: inline-flex; }
   background: var(--accent);
   border: none;
 }
-.hero__eyebrow { margin-bottom: 28px; letter-spacing: calc(var(--ls-eyebrow) * 1.15); }
 
 .hero__headline {
   margin: 0;
@@ -283,7 +287,7 @@ html.js .theme-toggle { display: inline-flex; }
   font-weight: 500; /* the thick/thin contrast comes from optical sizing, not weight */
 }
 .hero__line { display: block; text-wrap: balance; }
-.hero__line--accent { font-style: italic; color: var(--accent); } /* the italic terracotta turn, per the mockup */
+.hero__line--accent { font-style: italic; color: var(--accent); } /* the italic accent turn, per the mockup */
 
 .hero__lead {
   margin: 40px 0 0;
@@ -623,7 +627,7 @@ html.js .image-slot__play { display: flex; }
 /* ---------- SiteFooter (build-spec §3g) ---------- */
 .site-footer {
   /* Drenched accent closer: the page holds warm-paper restraint the whole way
-     down, then commits fully to the accent for the final fold — terracotta in
+     down, then commits fully to the accent for the final fold — olive in
      light, mint in dark. Reuses the Outcome-band tokens (no new primitives),
      rhyming this closer with the case-study Outcome bands. All type is the
      band's near-black ink (≥4.58:1 light / 5.34:1 dark). */
@@ -632,12 +636,20 @@ html.js .image-slot__play { display: flex; }
   padding-top: var(--section-pad);
   padding-bottom: var(--section-pad);
 }
-/* Footer eyebrow ("Let's work together") is ink on the band, not the accent */
+/* Footer eyebrows (Email/Phone/Social column labels) are ink on the band, not the accent */
 .site-footer .eyebrow { color: var(--band-text); }
+.site-footer__cta-heading {
+  margin: 0;
+  font: inherit;
+  font-weight: inherit;
+}
 .site-footer__cta {
   display: block;
   margin: 24px 0 0;
   font-family: var(--font-display);
+  /* Caps at 7rem/112px, past the site's general 6rem display-heading ceiling — a deliberate,
+     documented exception for this one signature moment (DESIGN.md §5, "the drenched
+     closer"), not a drift. Don't shrink this to match the general ceiling by reflex. */
   font-size: clamp(2.75rem, 8vw, 7rem);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
@@ -692,13 +704,6 @@ button:focus-visible {
 
 /* ---------- Responsive: collapse multi-column grids (build-spec §4) ---------- */
 @media (max-width: 900px) {
-  .hero__text { max-width: none; }
-  .hero__portrait {
-    position: static;
-    width: 160px;
-    margin: 28px 0 0;
-    transform: none;
-  }
   .split,
   .split--about { grid-template-columns: 1fr; gap: var(--gap-stack); }
   .split__label { position: static; }

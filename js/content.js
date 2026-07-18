@@ -23,8 +23,7 @@ window.Content = {
 
   /* ---------- Hero ---------- */
   hero: {
-    eyebrow: 'Senior Product Designer · Vancouver, BC',
-    // headline rendered as lines; `accent: true` marks the italic terracotta line
+    // headline rendered as lines; `accent: true` marks the italic accent line
     headline: [
       { text: 'Complexity is inevitable.' },
       { text: 'Confusion isn’t.', accent: true },
@@ -134,7 +133,6 @@ window.Content = {
 
   /* ---------- Contact footer ---------- */
   contact: {
-    eyebrow: 'Let’s work together',
     cta: 'Say hello',
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',

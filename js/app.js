@@ -20,7 +20,6 @@
     var content =
       '<div class="hero">' +
         '<hr class="hero__rule" />' +
-        '<p class="eyebrow hero__eyebrow">' + C.esc(d.eyebrow) + '</p>' +
         '<h1 class="hero__headline">' + headline + '</h1>' +
         '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
         '<a class="hero__cta" href="' + C.esc(d.cta.href) + '">' + C.esc(d.cta.label) +

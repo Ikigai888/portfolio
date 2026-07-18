@@ -110,7 +110,7 @@
   --ls-display:   -0.02em; /* Spectral display sits comfortably near 0 */
   --ls-section:   -0.018em;
   --ls-statement: -0.014em;
-  --ls-eyebrow:    0.14em;  /* wide-tracked terracotta labels, per the mockup */
+  --ls-eyebrow:    0.14em;  /* wide-tracked accent labels, per the mockup */
   --lh-display:    0.98;    /* serif display needs a touch more than a sans */
   --lh-tight:      1.08;
   --lh-statement:  1.2;  /* multi-line statements need more air than display */

@@ -66,8 +66,8 @@ window.Components = (function () {
      labeled pair read as cluttered next to the eyebrow nav.) */
   const ThemeToggle = () => `
     <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
-      <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
+      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
+      <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
       <span class="theme-toggle__thumb" aria-hidden="true"></span>
     </div>
   `;
@@ -223,14 +223,17 @@ window.Components = (function () {
            <span class="portrait__hint">portrait slot</span>
          </div>`;
 
-  /* --- SiteFooter: giant mailto + contact columns (build-spec §3g) --- */
+  /* --- SiteFooter: giant mailto + contact columns (build-spec §3g) ---
+     The CTA link doubles as this section's <h2> (wrapped, not a separate
+     eyebrow above it) so the document outline still reads h1 > h2 per
+     section > h3 even though the visible tracked-eyebrow label was
+     dropped here (see DESIGN.md §5, drenched closer). */
   const SiteFooter = (d) => `
     <footer class="site-footer section--footer" id="contact">
       <div class="container" data-reveal>
-        ${SectionHeading(d.eyebrow)}
-        <a class="site-footer__cta" href="mailto:${esc(d.email)}">${esc(d.cta)}
+        <h2 class="site-footer__cta-heading"><a class="site-footer__cta" href="mailto:${esc(d.email)}">${esc(d.cta)}
           <span class="site-footer__arrow" aria-hidden="true">&#8599;</span>
-        </a>
+        </a></h2>
         <div class="site-footer__details">
           <div class="site-footer__col">
             ${Eyebrow('Email')}
