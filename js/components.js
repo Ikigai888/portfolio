@@ -204,19 +204,58 @@ window.Components = (function () {
       ${attribution ? `<footer class="cs-quote__attribution">${esc(attribution)}</footer>` : ''}
     </blockquote>`;
 
-  /* --- PrincipleItem: optionally-numbered principle (build-spec §3d).
+  /* --- Principle line-art icons ---
+     Single-stroke glyphs echoing the hero's thin wireframe motif, one per
+     How I Work principle. Every drawable path/circle carries class="draw" +
+     pathLength="100" so one dash-offset value animates them uniformly (the
+     draw-in reveal lives in components.css, gated on html.js + the section's
+     reveal, and is fully drawn by default so no-JS/reduced-motion visitors
+     just see the finished icon). Decorative — the SVG is aria-hidden and the
+     principle title carries the meaning. Keyed by the `icon` name set in
+     content.js; What I Do's kinds have no `icon`, so they stay numeral-led. */
+  const principleIcons = {
+    /* three connected nodes — organizing parts into a system */
+    systems: '<circle class="draw" pathLength="100" cx="12" cy="5" r="2"/><circle class="draw" pathLength="100" cx="5" cy="19" r="2"/><circle class="draw" pathLength="100" cx="19" cy="19" r="2"/><path class="draw" pathLength="100" d="M10.7 6.6 6.3 17M13.3 6.6 17.7 17M7 19h10"/>',
+    /* two interlocking rings — working in lockstep */
+    collaboration: '<circle class="draw" pathLength="100" cx="9.5" cy="12" r="5.5"/><circle class="draw" pathLength="100" cx="14.5" cy="12" r="5.5"/>',
+    /* one trunk diverging into many directions — exploring more, earlier */
+    exploration: '<path class="draw" pathLength="100" d="M12 21V13M6 5.5 12 13 18 5.5M12 13V4"/>',
+    /* two arced arrows forming a refresh loop — continuous validation.
+       Feather's refresh-cw geometry, scaled ~0.72 about center so each arc
+       terminates exactly at its arrowhead corner (the earlier hand-rolled
+       version left the arrowheads detached from the arc ends); sized to sit
+       optically with the other three glyphs rather than filling the box. */
+    validation: '<path class="draw" pathLength="100" d="M5.89 9.84a6.5 6.5 0 0 1 10.69-2.42L19.92 10.56"/><path class="draw" pathLength="100" d="M19.92 6.24V10.56H15.6"/><path class="draw" pathLength="100" d="M4.08 13.44l3.34 3.14A6.5 6.5 0 0 0 18.11 14.16"/><path class="draw" pathLength="100" d="M4.08 17.76V13.44H8.4"/>',
+  };
+  const PrincipleIcon = (name) => {
+    const paths = principleIcons[name];
+    if (!paths) return '';
+    return '<span class="principle__icon" aria-hidden="true">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+      paths + '</svg></span>';
+  };
+
+  /* --- PrincipleItem: numbered, iconed, or bare (build-spec §3d).
      "What I Do" numbers its kinds (a fixed taxonomy the case studies below
-     map onto 1:1); "How I Work" principles are parallel, not sequential, so
-     they render without a numeral — avoids reusing the same 01-0N device
-     twice in three sections. */
-  const PrincipleItem = ({ number, title, description }) => `
-    <div class="principle${number ? '' : ' principle--unnumbered'}">
-      ${number ? `<span class="principle__num">${esc(number)}</span>` : ''}
+     map onto 1:1). "How I Work" principles are parallel, not sequential, so
+     instead of a numeral (which would reuse the 01-0N device twice) each
+     carries a line-art icon — a lead column in the same slot the numeral
+     would occupy. A principle with neither falls back to the bare
+     single-column layout. */
+  const PrincipleItem = ({ number, title, description, icon }) => {
+    const lead = number
+      ? `<span class="principle__num">${esc(number)}</span>`
+      : (icon ? PrincipleIcon(icon) : '');
+    const modifier = number ? '' : (icon ? ' principle--iconed' : ' principle--unnumbered');
+    return `
+    <div class="principle${modifier}">
+      ${lead}
       <div class="principle__text">
         <h3 class="principle__title">${esc(title)}</h3>
         <p class="principle__desc">${esc(description)}</p>
       </div>
     </div>`;
+  };
 
   /* --- PortraitSlot: About portrait (4/5), real <img> when src is set --- */
   const PortraitSlot = ({ src, alt, w, h } = {}) =>

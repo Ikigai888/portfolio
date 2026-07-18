@@ -96,11 +96,15 @@ window.Content = {
       'Good software doesn’t become simpler by removing complexity. ' +
       'It becomes better by organizing complexity into systems people can understand.',
     emphasize: ['organizing complexity'],
+    // `icon` names a line-art glyph from the icon map in components.js; it
+    // echoes the hero's thin-stroke wireframe motif and draws itself in as
+    // the section reveals. How I Work's principles carry icons; What I Do's
+    // kinds stay numeral-led (01/02/03), so the two sections read distinctly.
     principles: [
-      { title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
-      { title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
-      { title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
-      { title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
+      { icon: 'systems', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
+      { icon: 'collaboration', title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
+      { icon: 'exploration', title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
+      { icon: 'validation', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
     closing: 'The result is software people trust on the first try and rely on every day after.',
   },

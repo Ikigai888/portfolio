@@ -563,10 +563,11 @@ html.js .image-slot__play { display: flex; }
   border-top: 1px solid var(--border);
 }
 .principle { display: grid; grid-template-columns: auto 1fr; gap: 20px; }
-/* No numeral column: How I Work's principles are parallel, not a sequence
-   (see PrincipleItem in components.js) — the title carries the same weight
-   a numeral would, just without implying an order. */
+/* No lead column: What I Do's kinds are a numbered sequence; How I Work's
+   principles instead carry a line-art icon (.principle--iconed) in the same
+   lead slot. A principle with neither collapses to a single column. */
 .principle--unnumbered { grid-template-columns: 1fr; }
+.principle--iconed { grid-template-columns: auto 1fr; align-items: start; gap: 16px; }
 .principle__num {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -574,6 +575,43 @@ html.js .image-slot__play { display: flex; }
   font-feature-settings: 'lnum' 1; /* lining figures for the numerals */
   line-height: 1;
   color: var(--accent-text);
+}
+/* Line-art principle icon — thin single-stroke glyph in the small-accent ink,
+   echoing the hero wireframe. Optically nudged down so it aligns with the
+   title's cap height rather than its line box. */
+.principle__icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  color: var(--accent-text);
+}
+.principle__icon svg { display: block; width: 100%; height: 100%; overflow: visible; }
+/* Draw-in reveal: strokes are fully drawn by default (no-JS, reduced-motion,
+   or a headless render all just see the finished icon — never a blank slot).
+   Only when JS is on AND the section hasn't revealed yet do we hold the
+   strokes undrawn, then draw them to completion as the block reveals. The
+   parallel-render dedupe (see the reveal system in tokens.css) means this
+   rides the same IntersectionObserver the whole section already uses. */
+.principle__icon .draw { stroke-dasharray: 100; stroke-dashoffset: 0; }
+html.js [data-reveal]:not(.is-visible) .principle__icon .draw { stroke-dashoffset: 100; }
+html.js [data-reveal].is-visible .principle__icon .draw {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.85s var(--reveal-ease);
+}
+/* Stagger the four principles so they draw in sequence, not all at once —
+   a legitimate list stagger, keyed to the grid's own reading order. */
+html.js [data-reveal].is-visible .principle:nth-child(1) .principle__icon .draw { transition-delay: 0.10s; }
+html.js [data-reveal].is-visible .principle:nth-child(2) .principle__icon .draw { transition-delay: 0.20s; }
+html.js [data-reveal].is-visible .principle:nth-child(3) .principle__icon .draw { transition-delay: 0.30s; }
+html.js [data-reveal].is-visible .principle:nth-child(4) .principle__icon .draw { transition-delay: 0.40s; }
+@media (prefers-reduced-motion: reduce) {
+  .principle__icon .draw,
+  html.js [data-reveal]:not(.is-visible) .principle__icon .draw,
+  html.js [data-reveal].is-visible .principle__icon .draw {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
 }
 .principle__title {
   margin: 0 0 8px;
