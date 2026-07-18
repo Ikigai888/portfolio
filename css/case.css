@@ -17,11 +17,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Hardening: space-between only distributes leftover room — once the back
+     link + cluster content is wider than the row (long client names on
+     narrow phones, e.g. "SAP Concur" at 320-360px), it collapses to zero and
+     the two touch or overlap. A real gap guarantees breathing room even
+     then, and pairs with .case-header__client's own truncation below. */
+  gap: 16px;
   padding-top: 18px;
   padding-bottom: 14px;
 }
 .case-header__back {
-  font-size: 0.875rem;
+  font-size: var(--fs-nav);
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -31,18 +37,32 @@
   padding-block: 13px;   /* 44px tap box */
   margin-block: -13px;
   white-space: nowrap;
+  flex-shrink: 0; /* the back link is short and fixed; the tag truncates instead */
   transition: color var(--hover-color-dur);
 }
 .case-header__back:hover { color: var(--text-primary); }
-.case-header__cluster { display: flex; align-items: center; gap: 18px; }
+.case-header__cluster { display: flex; align-items: center; gap: 18px; min-width: 0; }
 .case-header__tag {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8125rem;
+  font-size: var(--fs-chip);
   color: var(--text-muted);
+  min-width: 0; /* let __client shrink + truncate instead of colliding with __back */
 }
-.case-header__client { font-weight: 600; color: var(--text-bright); }
+/* Hardening: on narrow phones the client name (data-driven, length varies
+   per case study) can outgrow the space left after the back link and theme
+   toggle claim theirs. Truncate with an ellipsis rather than wrapping or
+   overlapping — the full name is always repeated in the summary heading
+   just below the fold, so nothing here is lost. */
+.case-header__client {
+  font-weight: 600;
+  color: var(--text-bright);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
 .case-header__subnav { border-top: 1px solid var(--border); }
 .case-header__subnav-inner {
   display: flex;
@@ -56,7 +76,7 @@
   flex-shrink: 0;
   padding: 16px 20px 16px 0; /* 44px tap box */
   margin-block: -4px;
-  font-size: 0.8125rem;
+  font-size: var(--fs-chip);
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -299,7 +319,7 @@
   max-width: 65ch;
   padding-top: 16px;
   border-top: 1px solid var(--border);
-  font-size: 0.9375rem;
+  font-size: var(--fs-small);
   line-height: var(--lh-body);
   color: var(--text-tertiary);
 }
@@ -339,7 +359,7 @@
 }
 .cs-quote__attribution {
   margin: 12px 0 0;
-  font-size: 0.9375rem;
+  font-size: var(--fs-small);
   color: var(--text-muted);
 }
 
@@ -417,7 +437,7 @@
 }
 .cs-impact__desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: var(--fs-small);
   line-height: var(--lh-body);
   color: var(--band-card-text-2);
 }
@@ -459,7 +479,7 @@
   flex-wrap: wrap;
 }
 .cs-footer__back {
-  font-size: 0.875rem;
+  font-size: var(--fs-nav);
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -470,7 +490,7 @@
 }
 .cs-footer__back:hover { color: var(--text-primary); }
 .cs-footer__link {
-  font-size: 0.875rem;
+  font-size: var(--fs-nav);
   color: var(--text-muted);
   text-decoration: none;
   transition: color var(--hover-color-dur);
@@ -478,7 +498,7 @@
   margin-block: -14px;
 }
 .cs-footer__link:hover { color: var(--text-primary); }
-.cs-footer__copy { font-size: 0.8125rem; color: var(--text-faint-2); margin-left: auto; }
+.cs-footer__copy { font-size: var(--fs-chip); color: var(--text-faint-2); margin-left: auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -496,11 +516,11 @@
 @media (max-width: 600px) {
   .cs-summary__left,
   .cs-summary__right { padding: 32px 26px; }
-  .case-header__nav-link { padding: 10px 16px 10px 0; }
+  .case-header__nav-link { padding: 14px 16px 14px 0; } /* 44px tap box — was 37px measured */
   /* Narrow phones scroll the tab strip fast; widen the "more tabs" scrim so
      the cue survives a quick thumb-flick instead of needing a lingering look. */
   .case-header__subnav::after { width: 72px; }
-  .case-header__subnav::before { right: 20px; font-size: 0.9375rem; }
+  .case-header__subnav::before { right: 20px; font-size: var(--fs-small); }
   /* Theme drops to its own deliberate line instead of wrapping mid-flex,
      which strands the separator dot at the start of the wrapped line. */
   .cs-summary__theme { flex-basis: 100%; }
@@ -509,6 +529,16 @@
      "Case Study ·" label and the toggle's text so "Tad Natsuhara" never wraps. */
   .case-header__tag-label { display: none; }
   .case-header .theme-toggle__label { display: none; }
+}
+@media (max-width: 400px) {
+  /* Hardening: even with just the client name left (previous breakpoint),
+     the back link + theme toggle alone can fill the row on the smallest
+     phones — longer names (e.g. "SAP Concur") truncate to a bare "SA…"
+     fragment via .case-header__client's ellipsis, which reads as broken
+     rather than deliberate. Drop the tag outright here, the same way the
+     "Case Study ·" label was already dropped at 600px; the client name is
+     always repeated in the summary heading one scroll away. */
+  .case-header__tag { display: none; }
 }
 
 /* ---------- Subnav scrollspy + overflow fade ---------- */
@@ -542,7 +572,7 @@
   right: 16px;
   z-index: 1;
   transform: translate(6px, -50%);
-  font-size: 0.8125rem;
+  font-size: var(--fs-chip);
   font-weight: 700;
   color: var(--accent-text);
   opacity: 0;
@@ -560,7 +590,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 12px 16px;
+  padding: 14px 16px; /* 44px tap box — was 40px measured */
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);

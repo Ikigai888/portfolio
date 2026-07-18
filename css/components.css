@@ -237,33 +237,73 @@ html.js .theme-toggle { display: inline-flex; }
    anchors to the section's bottom edge, so trimming this section's own
    height (mostly the bottom half) pulls the motif higher up the page
    instead of leaving it stranded under a tall band of empty paper. */
-#top { background-color: var(--bg); padding-top: 72px; padding-bottom: 48px; }
+#top {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--bg);
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
 /* Generative wireframe motif carried over from the brand's prior site — each
    theme gets its own render (dark: hero-bg.jpg on near-black; light:
-   hero-bg-light.png on warm paper) rather than filtering one asset, since
+   hero-bg-light.avif on warm paper) rather than filtering one asset, since
    the motif's own tones need to invert, not just its hue. Anchored bottom +
    faded into --bg up top so the headline and lead stay on clean canvas and
    the image's edge seams invisibly into the page bg. Decorative only (CSS
-   background, no DOM node, no alt). */
-[data-theme="dark"] #top {
-  background-image:
-    linear-gradient(to bottom, var(--bg) 0%, rgba(21, 18, 13, 0.82) 58%, rgba(21, 18, 13, 0.40) 100%),
-    url('../images/hero-bg.jpg');
-  background-repeat: no-repeat, no-repeat;
-  background-position: center bottom, center bottom;
-  background-size: cover, cover;
+   background, no DOM node, no alt).
+
+   Split into two layers so the image alone can drift on scroll:
+   ::before carries the image and reads --hero-parallax (set rAF-throttled by
+   initHeroParallax in app.js) as a GPU-composited translate; ::after carries
+   the fade and stays fixed to the section so the headline keeps clean canvas
+   regardless of how far the image has drifted. The -100px top bleed on
+   ::before absorbs the downward drift (capped at 70px in JS) so no gap opens
+   at the bottom-anchored edge. No JS or reduced-motion => --hero-parallax
+   stays unset (0px) and this is simply a static bottom-anchored background. */
+[data-theme="dark"] #top::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: url('../images/hero-bg.jpg') center bottom / cover no-repeat;
+  transform: translate3d(0, var(--hero-parallax, 0px), 0);
+  will-change: transform;
 }
-:root:not([data-theme="dark"]) #top {
-  background-image:
-    linear-gradient(to bottom, var(--bg) 0%, rgba(244, 240, 232, 0.82) 58%, rgba(244, 240, 232, 0.40) 100%),
-    url('../images/hero-bg-light.png');
-  background-repeat: no-repeat, no-repeat;
-  background-position: center bottom, center bottom;
-  background-size: cover, cover;
+:root:not([data-theme="dark"]) #top::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: url('../images/hero-bg-light.avif') center bottom / cover no-repeat;
+  transform: translate3d(0, var(--hero-parallax, 0px), 0);
+  will-change: transform;
 }
-/* Insurance for the lead sitting over the brighter part of the motif */
-[data-theme="dark"] #top .hero__lead { text-shadow: 0 1px 12px rgba(21, 18, 13, 0.6); }
-:root:not([data-theme="dark"]) #top .hero__lead { text-shadow: 0 1px 12px rgba(244, 240, 232, 0.6); }
+/* Fade overlay — fixed to the section (no parallax), same math as before.
+   color-mix(in srgb, var(--bg) X%, transparent) derives the fade from --bg
+   directly instead of hardcoding its RGB decimal equivalent — repainting
+   --bg no longer silently desyncs this fade from the page background. */
+#top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 82%, transparent) 58%, color-mix(in srgb, var(--bg) 40%, transparent) 100%);
+}
+#top > .container { position: relative; z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  #top::before { transform: none; }
+}
+/* Insurance for the lead sitting over the brighter part of the motif. */
+[data-theme="dark"] #top .hero__lead { text-shadow: 0 1px 12px color-mix(in srgb, var(--bg) 60%, transparent); }
+:root:not([data-theme="dark"]) #top .hero__lead { text-shadow: 0 1px 12px color-mix(in srgb, var(--bg) 60%, transparent); }
 /* No-image hero: typography alone carries the full weight, so the headline
    is pushed to its documented ceiling (6rem / --fs-display max) and given
    a wider column and more generous pacing than the split-column layout had
@@ -543,7 +583,7 @@ html.js .image-slot__play { display: flex; }
 }
 .principle__desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: var(--fs-small);
   line-height: var(--lh-body);
   color: var(--text-muted);
 }
@@ -746,7 +786,7 @@ button:focus-visible {
     padding: 16px var(--gutter);
     margin-block: 0;            /* reset the desktop tap-box negative margin so rows don't overlap */
     border-top: 1px solid var(--hairline);
-    font-size: 0.9375rem;
+    font-size: var(--fs-small);
   }
   /* The header's own bottom border already rules off the first row */
   .site-header__nav .site-header__link:first-child { border-top: none; }

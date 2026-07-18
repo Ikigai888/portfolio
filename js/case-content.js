@@ -306,7 +306,7 @@ window.CaseContent = {
           body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. The existing flow surfaced policy violations only after selection, which was the primary source of rebooking.',
           options: 'hide restricted seats; grey them with a tooltip; pre-filter to policy-compliant options with an override path.',
           decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override: policy-forward without policy-punishing.',
-          image: { src: 'images/case-studies/rail-seatmap-final-opt.webp', w: 1100, h: 1022, alt: 'The finished seat map on desktop and mobile, with an amenity tooltip surfaced on selection', caption: 'The shipped seat map, web and mobile' },
+          image: { src: 'images/case-studies/rail-seatmap-final-opt.avif', w: 1100, h: 1022, alt: 'The finished seat map on desktop and mobile, with an amenity tooltip surfaced on selection', caption: 'The shipped seat map, web and mobile' },
         },
       ],
     },
@@ -319,7 +319,7 @@ window.CaseContent = {
         'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
         'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
-      image: { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
+      image: { src: 'images/case-studies/rail-usability-testing-opt.avif', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
     },
 
     validation: {

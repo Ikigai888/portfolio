@@ -114,11 +114,16 @@ window.Components = (function () {
   /* --- SiteHeader: sticky translucent chrome (build-spec §2) ---
      Includes a mobile nav toggle (hidden on desktop via CSS) so the
      four nav links never have to wrap or crowd the name at narrow
-     widths. Wired up by app.js. */
-  const SiteHeader = ({ name, nav }) => `
+     widths. Wired up by app.js.
+     homeHref defaults to '#top' (the homepage's own hero anchor); pages
+     that render this header without being the homepage (e.g. the
+     case-study not-found fallback in case-template.js) pass
+     'index.html' so the wordmark actually navigates home instead of
+     scrolling to a same-page anchor. */
+  const SiteHeader = ({ name, nav, homeHref = '#top' }) => `
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
+        <a class="site-header__name" href="${esc(homeHref)}"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="${esc(name)}" width="201" height="45" /></a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
             ${(nav || []).map(function (i) {
