@@ -63,7 +63,7 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'Brand Governance · Style Kits, applied' },
+        image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, pos: '62% top', alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'Brand Governance · Style Kits, applied' },
       },
       {
         number: '02',
@@ -73,7 +73,7 @@ window.Content = {
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         href: 'case-passkeys.html',
-        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, pos: '60% center', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
       },
       {
         number: '03',
@@ -83,7 +83,7 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, pos: '22% top', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
       },
     ],
     cta: 'View case study',

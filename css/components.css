@@ -483,12 +483,31 @@ html.js [data-reveal].is-visible .hero__rule {
 .case-card:hover .case-card__cta { color: var(--text-primary); }
 .case-card:hover .case-card__arrow { transform: translateX(4px); }
 
-/* The three thumbnails are all white-background product screenshots; matching
-   the mat to that white (rather than the theme's own surface) means the
-   `contain`-fitted image reads as one continuous surface, not a cropped
-   photo floating in a mismatched frame. */
-.case-card__media { background: #fff; min-height: 420px; }
-.case-card__media .image-slot__img { object-fit: contain; }
+/* The three thumbnails are white-background product screenshots. On the
+   homepage card their job is invitation, not information: a `contain` fit
+   shrank each whole artifact into the half-card until its UI was an
+   illegible wall of 6px labels. Instead we `cover`-crop to a confident,
+   legible detail — the focal point per image comes from content.js as
+   --case-img-pos (object-position), so each card frames its signature
+   moment (the Style-Kit switcher, the passkey prompt, a seat map) rather
+   than the entire screen. The white mat still matches the screenshots'
+   own white, so the crop reads as one continuous surface. */
+.case-card__media { position: relative; background: #fff; min-height: 420px; }
+.case-card__media .image-slot__img {
+  object-fit: cover;
+  object-position: var(--case-img-pos, center top);
+}
+/* Seam scrim: a soft fade along the inner edge where the media meets the
+   body, so the cropped detail reads as bleeding into the card, not a hard
+   rectangle abutting the text column. Vertical seam on desktop (media is
+   the right column), horizontal seam once the card stacks. */
+.case-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--bg-card) 0%, color-mix(in srgb, var(--bg-card) 0%, transparent) 12%);
+}
 
 /* ---------- ImageSlot placeholder ---------- */
 .image-slot {
@@ -849,6 +868,10 @@ button:focus-visible {
   .case-card { grid-template-columns: 1fr; }
   .case-card__media,
   .image-slot { min-height: 280px; }
+  /* Card is stacked now (media below body): fade the top edge, not the left. */
+  .case-card__media::after {
+    background: linear-gradient(to bottom, var(--bg-card) 0%, color-mix(in srgb, var(--bg-card) 0%, transparent) 12%);
+  }
   .principle-grid { grid-template-columns: 1fr; gap: 28px; }
   .site-footer__details { grid-template-columns: 1fr; gap: 28px; max-width: none; }
 }

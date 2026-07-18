@@ -159,14 +159,14 @@ window.Components = (function () {
         <span class="case-card__cta">${esc(cta)} <span class="case-card__arrow" aria-hidden="true">&rarr;</span></span>
       </div>
       <div class="case-card__media">
-        ${ImageSlot({ src: image.src, alt: image.alt, w: image.w, h: image.h, poster: image.poster, frame: image.frame })}
+        ${ImageSlot({ src: image.src, alt: image.alt, w: image.w, h: image.h, poster: image.poster, pos: image.pos })}
       </div>
     </a>`;
 
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
      sources); else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h, poster } = {}) => {
+  const ImageSlot = ({ src, alt, caption, w, h, poster, pos } = {}) => {
     if (!src) {
       return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
@@ -189,7 +189,7 @@ window.Components = (function () {
             `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>` +
           `</button>` +
         `</span>`
-      : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims} loading="lazy" />`;
+      : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims}${pos ? ` style="--case-img-pos:${esc(pos)}"` : ''} loading="lazy" />`;
     /* caption was previously write-only data on real images (only the empty
        placeholder rendered it); every image in case-content.js carries one,
        so surface it as a real figcaption instead of silently dropping it. */
