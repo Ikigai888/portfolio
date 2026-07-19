@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="30%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#c9a13b" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#c9a13b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101014"/>
+      <stop offset="100%" stop-color="#0b0b0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#base)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="120" cy="120" r="34" fill="#c9a13b"/>
+  <text x="120" y="131" font-family="Georgia, serif" font-size="34" fill="#0b0b0d" text-anchor="middle" font-weight="600">W</text>
+  <text x="120" y="220" font-family="Georgia, serif" font-size="56" fill="#f4f1ea" font-weight="500">Wetcoast Studio</text>
+  <text x="120" y="270" font-family="Arial, sans-serif" font-size="26" fill="#b9b6ae">Latex fashion, cast for the coast.</text>
+  <text x="120" y="560" font-family="Arial, sans-serif" font-size="20" letter-spacing="2" fill="#c9a13b">HANDCRAFTED IN VANCOUVER, BC</text>
+</svg>
