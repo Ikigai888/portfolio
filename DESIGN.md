@@ -150,7 +150,7 @@ The Outcome band is a self-contained saturated surface that tracks each theme's 
 **Character:** A serif/sans pairing on a real contrast axis. Spectral carries every expressive role — hero, section headlines, statements, serif numerals, the footer CTA — at weight **500**, its own moderate thick/thin contrast reading as warm and considered rather than dramatic-Didone. Hanken Grotesk carries body, nav, and labels across weights 400–700. Emphasis is done with **Spectral italic**, not bolding. (The wordmark is the hand-lettered PNG, not a font.)
 
 ### Hierarchy
-- **Display** (Spectral, 500, `clamp(44px, 6vw, 88px)`, line-height 0.98, letter-spacing -0.02em): hero headline. Sits in the *left column* of a two-column hero (portrait right), so it wraps to 2–3 lines by design. The accent line is Spectral **italic** in the theme accent.
+- **Display** (Spectral, 500, `clamp(44px, 6vw, 88px)`, line-height 0.98, letter-spacing -0.02em): hero headline, in a single 920px-max column with no eyebrow above it, so it wraps to 2–3 lines by design. The accent line is Spectral **italic** in the theme accent.
 - **Section** (Spectral, 500, `clamp(30px, 4vw, 52px)`, line-height 1.08): case-study section headlines, the case page H1, the footer "Say hello" CTA.
 - **Statement** (Spectral, 500, `clamp(26px, 3.1vw, 44px)`, line-height 1.2): declarative statement blocks (What I Do, How I Work, About). Inline emphasis (company names, key phrases) is italic, same ink.
 - **Coda** (Spectral, 500 **italic**, `--fs-coda`): the closing line under How I Work.
@@ -181,7 +181,7 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 
 ### Buttons / CTAs
 - **No boxed buttons.** The primary CTA is the footer's oversized `Say hello ↗` in Fraunces at `clamp(2.75rem, 8vw, 7rem)` — the CTA *is* display type; the arrow nudges up-right on hover.
-- **The drenched closer (signature moment).** The contact footer is the one place the page commits the accent to a full surface: after a whole page of warm-paper restraint, the final fold is a solid accent field (olive in light, mint in dark) with near-black band ink for every element. It reuses the Outcome-band tokens (`--band-bg` / `--band-text` / `--band-hairline`), so the homepage closer rhymes with the case-study Outcome bands and adds no new primitives. This is a deliberate *Committed* color moment (per the brand register) that breaks the monochromatic-restraint read; keep it to this one fold — the accent stays rare everywhere else. Focus rings inside it switch to band ink (the accent ring would vanish on its own field).
+- **The drenched closer (signature moment).** The contact footer is the one place the page commits the accent to a full surface: after a whole page of warm-paper restraint, the final fold is a solid accent field (olive in light, mint in dark) with near-black band ink for every element. It reuses the Outcome-band tokens (`--band-bg` / `--band-text` / `--band-hairline`), so the homepage closer rhymes with the case-study Outcome bands and adds no new primitives. This is a deliberate *Committed* color moment (per the brand register) that breaks the monochromatic-restraint read; keep it to this one fold — the accent stays rare everywhere else. Focus rings inside it switch to band ink (the accent ring would vanish on its own field). The oversized CTA runs straight into the giant `Say hello ↗` with no eyebrow label above it — the label was redundant next to type that size and was one of six repeating uppercase-tracked labels down the page; dropped in the same polish pass as the hero's.
 - **Hero CTA** (`View selected work ↗`): an uppercase Inter link with a bottom hairline that brightens to olive on hover, the arrow nudging up-right.
 - **Case-card CTA**: inline `View case study →`, muted, brightening with a 4px arrow nudge on card hover.
 - **Only real `<button>`s** are the mobile nav toggle and the theme toggle. Everything else that acts is an `<a>`.
@@ -201,11 +201,11 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 - **Wordmark:** the hand-lettered **TN wordmark PNG** (`images/TN_Port_Logo.png`, 32px tall) — a single-hue mint asset. The **light** theme retargets it to olive with a tuned `hue-rotate(287.5deg) saturate(0.68) brightness(0.43)` filter (derived by sampling the rendered pixels against `#59644C`); the **dark** theme shows it unfiltered, since its own accent is that native mint. Its `alt` is the full name.
 - **Style:** sticky header over the `--scrim` tint + 12px blur, 1px bottom hairline.
 - **Links:** uppercase eyebrow treatment (12px, 700, 0.14em), muted → primary on hover, 44px tap boxes.
-- **Theme toggle:** icon + eyebrow-style label naming the theme you'd switch *to* (moon/"Dark" while light, sun/"Light" while dark), keyed on `[data-theme]`. Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored.
+- **Theme toggle:** icon-only sliding switch — both icons sit in a pill track, a solid accent capsule slides behind whichever one is active, keyed on `[data-theme]`. No visible text label; position + icon color are the state cues (`aria-label`/`aria-pressed` carry it for assistive tech). 32px real hit area per icon (see `--toggle-size` in `components.css` for why real box growth, not padding, was used to keep it tappable). Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored. Third iteration (impeccable live, Jul 2026) after a single "switch to X" button and a labeled pair both read as cluttered next to the eyebrow nav.
 - **Mobile (≤600px):** nav links collapse behind a 44×44 hamburger; the theme toggle stays inline.
 
 ### Hero (signature layout)
-A two-column grid (≈1.12fr / 0.88fr): left column is eyebrow → serif headline (with the italic olive accent line) → lead → CTA; right column is the **portrait** on a soft color block (the portrait moved here from About in the editorial redesign). Collapses to a single column (text then portrait, portrait capped at 420px) ≤900px.
+A single column, max-width 920px: a short accent rule → serif headline (with the italic olive accent line) → lead → CTA. No eyebrow line above the headline (dropped in a polish pass — the headline carries the section on its own, and it was one of six near-identical uppercase-tracked labels repeating down the page). The **portrait** lives in the About section instead, as a small circular avatar beside the contributor byline, not in the hero.
 
 ### Case Study Card (signature component)
 A two-column `<a>` (≈1.05fr / 0.95fr): a compact text body (olive serif number · client · theme eyebrow, Fraunces `<h3>` title, italic driving question, `View case study →`) against a real screenshot. Kept as a **card** (a deliberate divergence from the mockup's open-row layout) so the work list stays scannable. Ambient Rest shadow at rest; border + shadow deepen together on hover.
@@ -231,6 +231,7 @@ The three "kinds of complexity" render as editorial ledger rows: Fraunces olive 
 - **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
 - **Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.
 - **Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice.
+- **Do** vary the section-opening device rather than repeating the tracked eyebrow label on every section. What I Do / How I Work / About keep it as a real sticky-rail orientation cue (`Split()`); Hero and Contact intentionally skip it — a design critique flagged six identical repeats as the AI-editorial "kicker on every section" tell.
 
 ### Don't:
 - **Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.

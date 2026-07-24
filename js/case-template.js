@@ -513,12 +513,90 @@
     });
   }
 
+  /* ---- Not-found fallback ----
+     Only reachable if a case page's inline CaseTemplate.render('slug') call
+     and window.CaseContent ever drift apart (e.g. a slug renamed in
+     case-content.js without updating the HTML) — not a path a visitor can
+     hit by normal navigation, but a real one for a solo-maintained site
+     where content edits happen by hand. Previously an unstyled <p> with a
+     hardcoded dark-theme text color (illegible on the light default theme),
+     no header, and no way back. Mirrors 404.html's on-brand recovery
+     pattern instead: same header chrome + hero-style message + a real link
+     home. Same nav vocabulary as 404.html (Work/Approach/About/Contact
+     anchors on the homepage), not a case-study list — this fallback isn't
+     the homepage, so it just needs a way back to it. */
+  function NotFound(slug) {
+    var nav = [
+      { href: 'index.html#work', label: 'Work' },
+      { href: 'index.html#approach', label: 'Approach' },
+      { href: 'index.html#about', label: 'About' },
+      { href: 'index.html#contact', label: 'Contact' },
+    ];
+    return (
+      '<a class="skip-link" href="#content">Skip to content</a>' +
+      C.SiteHeader({ name: 'Tad Natsuhara', nav: nav, homeHref: 'index.html' }) +
+      '<main id="content">' +
+        '<section class="section" id="top">' +
+          '<div class="container">' +
+            '<div class="hero">' +
+              '<hr class="hero__rule" />' +
+              '<p class="eyebrow hero__eyebrow">Case study not found</p>' +
+              '<h1 class="hero__headline">' +
+                '<span class="hero__line">This case study went missing.</span>' +
+                '<span class="hero__line hero__line--accent">The work didn’t.</span>' +
+              '</h1>' +
+              '<p class="hero__lead">"' + esc(slug) + '" doesn’t match any published case study. Start from the homepage, or jump straight to the work.</p>' +
+              '<a class="hero__cta" href="index.html#work">Back to homepage <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a>' +
+            '</div>' +
+          '</div>' +
+        '</section>' +
+      '</main>'
+    );
+  }
+
+  /* ---- Mobile nav toggle (not-found fallback only) ----
+     Regular case headers (CaseHeader above) have no nav links to collapse,
+     so this was never needed here — but NotFound() renders the full
+     C.SiteHeader, which does include the hamburger + nav, same as the
+     homepage. Same wiring as initNavToggle in app.js; guarded so it's a
+     no-op on every normal case page where these elements don't exist. */
+  function initNavToggle() {
+    var toggle = document.querySelector('.site-header__toggle');
+    var nav = document.getElementById('primary-nav');
+    if (!toggle || !nav) return;
+
+    function isOpen() { return nav.classList.contains('is-open'); }
+    function close() {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function open() {
+      nav.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    toggle.addEventListener('click', function () {
+      if (isOpen()) close(); else open();
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !isOpen()) return;
+      close();
+      toggle.focus();
+    });
+    document.addEventListener('click', function (e) {
+      if (!isOpen() || nav.contains(e.target) || toggle.contains(e.target)) return;
+      close();
+    });
+  }
+
   /* ---- Entry point ----
      buildPage is pure (slug -> HTML string) so it can also run in Node
      at build time (see scripts/build.mjs) to pre-render each case page. */
   function buildPage(slug) {
     var d = window.CaseContent[slug];
-    if (!d) { return '<p style="color:#F1EBDF;padding:40px">Case study not found: ' + esc(slug) + '</p>'; }
+    if (!d) { return NotFound(slug); }
 
     return (
       '<a class="skip-link" href="#content">Skip to content</a>' +
@@ -543,6 +621,7 @@
     initSubnav();
     initBackToTop();
     initAutoplayVideos();
+    initNavToggle();
     C.initThemeToggle();
   }
 

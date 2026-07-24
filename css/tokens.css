@@ -105,12 +105,26 @@
   --fs-body:      1rem;                       /* body 15–17px range */
   --fs-eyebrow:   0.75rem;                        /* uppercase labels */
   --fs-chip:      0.8125rem;
+  /* UI-chrome tier, distinct from the content ramp above: nav/meta links and
+     small supporting copy repeat this exact size across components (case
+     header/footer back-links; principle/impact/quote descriptions), so they
+     get real tokens rather than each hardcoding the value independently. */
+  --fs-nav:       0.875rem;  /* back-links, footer meta links */
+  --fs-small:     0.9375rem; /* small body copy — descriptions, attributions, mobile nav rows */
+  /* A handful of one-off sizes remain literal by choice, not drift: serif
+     numerals/headings at component-specific scale (.principle__num 1.5rem,
+     .kind-list variants 1.375rem/1.1875rem, .about__byline-name 1.25rem),
+     an icon glyph (1.125rem, coincidentally shared by an unrelated heading —
+     tokenizing would wrongly couple the two), a decorative quote mark
+     (2.75rem), and the image-slot placeholder hint (0.6875rem). Each recurs
+     0-1 times outside its own component, so a shared token would consolidate
+     nothing real. */
 
   /* ---------- Typography: tracking / leading ---------- */
   --ls-display:   -0.02em; /* Spectral display sits comfortably near 0 */
   --ls-section:   -0.018em;
   --ls-statement: -0.014em;
-  --ls-eyebrow:    0.14em;  /* wide-tracked terracotta labels, per the mockup */
+  --ls-eyebrow:    0.14em;  /* wide-tracked accent labels, per the mockup */
   --lh-display:    0.98;    /* serif display needs a touch more than a sans */
   --lh-tight:      1.08;
   --lh-statement:  1.2;  /* multi-line statements need more air than display */

@@ -44,7 +44,7 @@ window.CaseContent = {
           body: 'Colors, fonts, logos, and legal disclaimers already existed in a legacy branding service, but managing them required the service team, not the brand\'s own admins. Making governance self-serve meant restructuring those assets so a system could read, tag, and enforce them.',
           options: 'keep improving the service-managed model; expose raw asset settings to admins; a structured Brand Library with named, taggable, lockable assets.',
           decision: 'A self-serve Brand Library where every asset is named, tagged, and explicitly locked or open: the raw material everything else in this flow is built from.',
-          image: { src: 'images/case-studies/brand-gov-text-styles.png', w: 1440, h: 1010, alt: 'Brand Library screen adding a governed text style: name, font family, weight, and tags', caption: 'Brand Library · defining the foundational assets' },
+          image: { src: 'images/case-studies/brand-gov-brand-library.png', w: 1440, h: 1036, alt: 'Brand Library Colors table with named, tagged, and lockable color assets, and an Add Color panel showing preview, hex code, tags, and a lock toggle', caption: 'Brand Library · defining the foundational assets' },
         },
         {
           number: 2,
@@ -52,7 +52,7 @@ window.CaseContent = {
           body: 'Agents needed brand-correct assets without becoming designers. Defining brand once had to produce consistent outputs everywhere it was consumed.',
           options: 'per-asset templates; a raw token system; packaged Style Kits.',
           decision: 'Reusable Style Kits that bundle logos, color, type, and rules into a single applied unit: the source of truth other products read from.',
-          image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Style Kit editor: color tokens, typography tokens, and logo assets bundled into a shareable kit', caption: 'Style Kits · bundling the library into one applied unit' },
+          image: { src: 'images/case-studies/brand-gov-style-kits.png', w: 1440, h: 1024, alt: 'Style Kit editor bundling color and typography tokens, with a list of kits (Default, Luxury, Commercial), share permissions, and inheritance settings', caption: 'Style Kits · bundling the library into one applied unit' },
         },
         {
           number: 3,
@@ -68,7 +68,7 @@ window.CaseContent = {
           body: 'None of this mattered if it only worked for one screen. Whatever shipped had to be consumed by many RISE products, not just one, and hold up as the ecosystem grew.',
           options: 'a standalone branding tool; a branding service and Style Kit pattern other products subscribe to instead of rebuilding.',
           decision: 'A platform capability: branding as a shared service the ecosystem reads from, not a per-product feature that gets rebuilt.',
-          image: { src: 'images/case-studies/brand-gov-agent-style-switcher.png', w: 1400, h: 1000, alt: 'Agent-facing CMA presentation with a Style Kit switcher offering Primary, Luxury, Commercial, Team, and Office kits', caption: 'One branding service, many kits · consumed inside Presentations, not rebuilt per product' },
+          image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'One branding service, many kits · consumed inside Presentations, not rebuilt per product' },
         },
       ],
     },
@@ -306,7 +306,7 @@ window.CaseContent = {
           body: 'Corporate travel policies restricted certain seat classes, fare types, and booking windows. The existing flow surfaced policy violations only after selection, which was the primary source of rebooking.',
           options: 'hide restricted seats; grey them with a tooltip; pre-filter to policy-compliant options with an override path.',
           decision: 'Pre-filter to compliant options by default, with a clear path to view all seats for travelers with a legitimate reason to override: policy-forward without policy-punishing.',
-          image: { src: 'images/case-studies/rail-seatmap-final-opt.webp', w: 1100, h: 1022, alt: 'The finished seat map on desktop and mobile, with an amenity tooltip surfaced on selection', caption: 'The shipped seat map, web and mobile' },
+          image: { src: 'images/case-studies/rail-seatmap-final-opt.avif', w: 1100, h: 1022, alt: 'The finished seat map on desktop and mobile, with an amenity tooltip surfaced on selection', caption: 'The shipped seat map, web and mobile' },
         },
       ],
     },
@@ -319,7 +319,7 @@ window.CaseContent = {
         'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
         'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
-      image: { src: 'images/case-studies/rail-usability-testing-opt.webp', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
+      image: { src: 'images/case-studies/rail-usability-testing-opt.avif', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
     },
 
     validation: {

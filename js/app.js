@@ -20,7 +20,6 @@
     var content =
       '<div class="hero">' +
         '<hr class="hero__rule" />' +
-        '<p class="eyebrow hero__eyebrow">' + C.esc(d.eyebrow) + '</p>' +
         '<h1 class="hero__headline">' + headline + '</h1>' +
         '<p class="hero__lead">' + C.esc(d.lead) + '</p>' +
         '<a class="hero__cta" href="' + C.esc(d.cta.href) + '">' + C.esc(d.cta.label) +
@@ -257,6 +256,28 @@
     }).catch(function () { /* interrupted (e.g. nav away) — leave as-is */ });
   }
 
+  /* ---------- Hero parallax (homepage only) ----------
+     Drifts the hero motif at a fraction of scroll by setting --hero-parallax
+     on #top; the CSS ::before layer (components.css) reads it as a
+     GPU-composited translate. rAF-throttled, passive listener,
+     reduced-motion aware. If this never runs, --hero-parallax stays unset
+     (0px) and the background is simply static. */
+  function initHeroParallax() {
+    var hero = document.getElementById('top');
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ticking = false;
+    function update() {
+      var y = Math.min(window.pageYOffset * 0.2, 70); /* slight: 0.2× scroll, capped at 70px (< 100px bleed) */
+      hero.style.setProperty('--hero-parallax', y.toFixed(1) + 'px');
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+
   /* ---------- Assemble ----------
      buildPage is pure (data -> HTML string) so it can also run in Node
      at build time (see scripts/build.mjs) to pre-render index.html. */
@@ -281,6 +302,7 @@
     initNavToggle();
     initNavScrollSpy();
     initThesisSettle();
+    initHeroParallax();
     C.initThemeToggle();
   }
 

@@ -23,8 +23,7 @@ window.Content = {
 
   /* ---------- Hero ---------- */
   hero: {
-    eyebrow: 'Senior Product Designer · Vancouver, BC',
-    // headline rendered as lines; `accent: true` marks the italic terracotta line
+    // headline rendered as lines; `accent: true` marks the italic accent line
     headline: [
       { text: 'Complexity is inevitable.' },
       { text: 'Confusion isn’t.', accent: true },
@@ -64,7 +63,7 @@ window.Content = {
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-style-kits-2.png', w: 1440, h: 1451, alt: 'Brand Governance Style Kit editor: color and typography tokens with share permissions', caption: 'Brand Governance · RISE platform' },
+        image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, pos: '62% top', alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'Brand Governance · Style Kits, applied' },
       },
       {
         number: '02',
@@ -74,7 +73,7 @@ window.Content = {
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         href: 'case-passkeys.html',
-        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, pos: '60% center', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
       },
       {
         number: '03',
@@ -84,7 +83,7 @@ window.Content = {
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, pos: '22% top', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
       },
     ],
     cta: 'View case study',
@@ -97,11 +96,15 @@ window.Content = {
       'Good software doesn’t become simpler by removing complexity. ' +
       'It becomes better by organizing complexity into systems people can understand.',
     emphasize: ['organizing complexity'],
+    // `icon` names a line-art glyph from the icon map in components.js; it
+    // echoes the hero's thin-stroke wireframe motif and draws itself in as
+    // the section reveals. How I Work's principles carry icons; What I Do's
+    // kinds stay numeral-led (01/02/03), so the two sections read distinctly.
     principles: [
-      { title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
-      { title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
-      { title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
-      { title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
+      { icon: 'systems', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
+      { icon: 'collaboration', title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
+      { icon: 'exploration', title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
+      { icon: 'validation', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
     ],
     closing: 'The result is software people trust on the first try and rely on every day after.',
   },
@@ -134,7 +137,6 @@ window.Content = {
 
   /* ---------- Contact footer ---------- */
   contact: {
-    eyebrow: 'Let’s work together',
     cta: 'Say hello',
     email: '1tadashi8@gmail.com',
     phone: '+1 778 846 6994',
