@@ -53,16 +53,18 @@ grep -rl "localhost:8400\|impeccable-live" *.html   # should print nothing
 
 ## Cache-busting
 
-Script/style tags carry a `?v=N` query param (currently `?v=122`). Bump `N` on
-**every** tag across all five HTML files (`index.html`, `404.html`, and the
-three `case-*.html` pages) whenever any `js/` or `css/` file changes, so
-browsers don't serve stale cached assets. The browser HTTP cache is
-aggressive here — a plain reload can show old content even when the source on
-disk is current.
+Script/style tags carry a `?v=N` query param. Bump `N` on **every** tag across
+all five HTML files (`index.html`, `404.html`, and the three `case-*.html`
+pages) whenever any `js/` or `css/` file changes, so browsers don't serve
+stale cached assets. The browser HTTP cache is aggressive here — a plain
+reload can show old content even when the source on disk is current.
 
 ## Git
 
 - Remote: `git@github.com:Ikigai888/portfolio.git` (SSH; this Mac's key is
   registered). Pushes to `main` trigger the GitHub Pages deploy workflow.
+- Single-branch workflow: commit and push directly to `main`. Don't create
+  long-running feature branches — they drift out of sync with `main` as
+  other work lands, which then has to be reconciled by hand.
 - `.DS_Store`, `.impeccable/live/sessions/`, `.impeccable/live/server.json`,
   and `.claude/settings.local.json` are gitignored.
