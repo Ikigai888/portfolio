@@ -216,7 +216,29 @@
         var r = el.getBoundingClientRect();
         if (r.top < vh * 0.92 && r.bottom > 0) { show(el); io.unobserve(el); }
       });
+      var pending = els.some(function (el) { return el.hasAttribute('data-reveal-armed'); });
+      if (!pending) detach();
     }
+    // See the matching note in case-template.js: a hidden document never fires
+    // IntersectionObserver, so a headless renderer or a background tab that
+    // scrolls programmatically would leave everything past the first fold armed
+    // and invisible. The throttle is time-based because requestAnimationFrame is
+    // parked while hidden too. Both listeners detach once nothing is left armed.
+    var lastSweep = 0;
+    function onScroll() {
+      var now = Date.now();
+      if (now - lastSweep < 100) return;
+      lastSweep = now;
+      sweep();
+    }
+    function onVisibility() { if (!document.hidden) sweep(); }
+    function detach() {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('visibilitychange', onVisibility);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
+
     if (document.readyState === 'complete') sweep();
     else window.addEventListener('load', sweep);
     setTimeout(sweep, 1200);

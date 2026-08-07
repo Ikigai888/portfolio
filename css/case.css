@@ -256,6 +256,13 @@
   border-top: 1px solid var(--border);
   padding: var(--section-pad) 0;
 }
+/* The symmetric padding above pairs with border-top to space items from each
+   other. On the last item there is no next sibling to separate from, so its
+   bottom padding just stacks onto .cs-challenges' own padding-bottom and the
+   next section's padding-top: 331px at the Challenges/Exploration boundary
+   where every other boundary on the page (and every gap between challenge
+   items) measures 221px. The section's padding owns that edge. */
+.cs-challenge:last-child { padding-bottom: 0; }
 .cs-challenge__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
