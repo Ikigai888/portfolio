@@ -165,8 +165,18 @@ window.Components = (function () {
 
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
-     sources); else a labelled slot. */
-  const ImageSlot = ({ src, alt, caption, w, h, poster, pos } = {}) => {
+     sources); else a labelled slot. `zoomable` (set by case-template.js on
+     case-study body images only, never on the homepage card thumbnail) wraps
+     a static image in a button that opens js/case-template.js's lightbox —
+     the inline layouts cap these well below their native size, too small to
+     read UI detail on a phone.
+     `altSrc` is the alpha-fallback copy for transparent video: Safari is the
+     only engine that decodes HEVC's alpha channel, and the only one that
+     drops VP9/WebM's. A static <source> order can't resolve that (Chrome on
+     Apple silicon claims hvc1 and then ignores its alpha), so `src` carries
+     the WebM and initAutoplayVideos swaps to `altSrc` after a real per-frame
+     alpha probe. See case-template.js. */
+  const ImageSlot = ({ src, alt, caption, w, h, poster, pos, zoomable, altSrc } = {}) => {
     if (!src) {
       return `<div class="image-slot" role="img" aria-label="${esc(alt || caption)}">
            <span class="image-slot__icon" aria-hidden="true">&#9633;</span>
@@ -176,25 +186,32 @@ window.Components = (function () {
     }
     const dims = w && h ? ` width="${w}" height="${h}"` : '';
     const posterAttr = poster ? ` poster="${esc(poster)}"` : '';
+    const isVideo = /\.(mp4|webm)$/i.test(src);
     /* autoplay is gated client-side (data-autoplay, see initAutoplayVideos in
        case-template.js) rather than the static attribute, so a
        prefers-reduced-motion visitor lands on the poster frame and never sees
        the clip start moving. The tap-to-play button is the fallback for iOS
        Low Power Mode, which blocks video autoplay outright — a real tap is a
        genuine user gesture and always plays, even then. */
-    const media = /\.(mp4|webm)$/i.test(src)
+    const media = isVideo
       ? `<span class="image-slot__video">` +
-          `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>` +
+          `<video class="image-slot__img" src="${esc(src)}"${dims}${posterAttr}${altSrc ? ` data-alpha-fallback="${esc(altSrc)}"` : ''} preload="metadata" data-autoplay muted loop playsinline aria-label="${esc(alt)}"></video>` +
           `<button type="button" class="image-slot__play" aria-label="Play video">` +
             `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>` +
           `</button>` +
         `</span>`
       : `<img class="image-slot__img" src="${esc(src)}" alt="${esc(alt)}"${dims}${pos ? ` style="--case-img-pos:${esc(pos)}"` : ''} loading="lazy" />`;
+    const rendered = (zoomable && !isVideo)
+      ? `<button type="button" class="image-slot__zoom-trigger" data-lightbox-src="${esc(src)}" data-lightbox-alt="${esc(alt || '')}" data-lightbox-caption="${esc(caption || '')}" aria-label="${esc(alt ? 'View larger: ' + alt : 'View larger image')}">` +
+          media +
+          `<span class="image-slot__zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4v5M15 3h5v5M9 21H4v-5M15 21h5v-5"/></svg></span>` +
+        `</button>`
+      : media;
     /* caption was previously write-only data on real images (only the empty
        placeholder rendered it); every image in case-content.js carries one,
        so surface it as a real figcaption instead of silently dropping it. */
-    if (!caption) return media;
-    return `<figure class="image-slot__figure">${media}<figcaption class="image-slot__figcaption">${esc(caption)}</figcaption></figure>`;
+    if (!caption) return rendered;
+    return `<figure class="image-slot__figure">${rendered}<figcaption class="image-slot__figcaption">${esc(caption)}</figcaption></figure>`;
   };
 
   /* --- Quote: leading-glyph callout for a participant/session quote --- */

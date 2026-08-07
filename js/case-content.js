@@ -319,7 +319,7 @@ window.CaseContent = {
         'Rapid prototyping of the spatial layout let me test legibility at different data densities before committing to the ARIA implementation, a significant engineering investment that needed to be right before build began.',
         'As production ramped up, I delegated defined pieces of the work to a junior designer, directing the effort and giving feedback so we could move faster without losing consistency.',
       ],
-      image: { src: 'images/case-studies/rail-usability-testing-opt.avif', w: 1100, h: 835, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
+      image: { src: 'images/case-studies/rail-usability-testing.webm', altSrc: 'images/case-studies/rail-usability-testing.mp4', poster: 'images/case-studies/rail-usability-testing-poster.webp', w: 1100, h: 834, alt: 'Animated walkthrough of the usability test flow: the prototype task map, participant survey questions, and mobile testing screens', caption: 'The test flow · prototype, tasks, and participant survey' },
     },
 
     validation: {

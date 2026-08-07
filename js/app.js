@@ -175,22 +175,51 @@
 
   /* ---------- Scroll-reveal: add .is-visible once on enter. Reduced-motion aware. ---------- */
   function initReveal() {
-    var els = document.querySelectorAll('[data-reveal]');
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if (!els.length) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    function show(el) {
+      el.classList.add('is-visible');
+      el.removeAttribute('data-reveal-armed');
+    }
+
     if (reduce || !('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('is-visible'); });
+      els.forEach(show);
       return;
     }
+
+    // Arm only here, once the observer is known-good: an unarmed [data-reveal]
+    // paints at full opacity (see tokens.css), so nothing above this line can
+    // leave a section invisible.
+    els.forEach(function (el) { el.setAttribute('data-reveal-armed', ''); });
+
+    // threshold 0, never a fraction — see the matching note in case-template.js.
+    // For an element taller than the viewport the largest reachable ratio is
+    // (root height / element height); at the old 0.12 a full-height section
+    // could never reach it on a short window, and the section stayed blank
+    // while still holding its layout. rootMargin alone sets the trigger point.
     var io = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { show(entry.target); obs.unobserve(entry.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
+
+    // Backstop for anything the observer misses (deep-link landings, restored
+    // scroll positions, a tab that renders while hidden). Same -8% bottom edge
+    // as the observer so the trigger point doesn't shift.
+    function sweep() {
+      var vh = window.innerHeight || 0;
+      els.forEach(function (el) {
+        if (!el.hasAttribute('data-reveal-armed')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > 0) { show(el); io.unobserve(el); }
+      });
+    }
+    if (document.readyState === 'complete') sweep();
+    else window.addEventListener('load', sweep);
+    setTimeout(sweep, 1200);
   }
 
   /* ---------- Thesis settle (hero headline, homepage only) ----------

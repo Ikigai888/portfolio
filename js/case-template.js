@@ -39,7 +39,7 @@
               '<h2 class="cs-section-headline">' + esc(headline) + '</h2>' +
               rightHtml +
             '</div>' +
-            '<div class="cs-split-media__media" data-reveal>' + C.ImageSlot(image) + '</div>' +
+            '<div class="cs-split-media__media">' + C.ImageSlot(zoomable(image)) + '</div>' +
           '</div>' +
         '</div>' +
       '</section>'
@@ -55,14 +55,25 @@
       // shadow, or transparent canvas baked in) — the letterbox mat would just
       // nest a card inside a card, so skip the background/inset treatment.
       var cls = images[0].bare ? 'cs-full-image cs-full-image--bare' : 'cs-full-image';
-      return '<div class="' + cls + '" data-reveal>' + C.ImageSlot(images[0]) + '</div>';
+      return '<div class="' + cls + '" data-reveal>' + C.ImageSlot(zoomable(images[0])) + '</div>';
     }
     return '<div class="cs-full-image-grid" data-reveal>' +
       images.map(function (img) {
         var cls = img.bare ? 'cs-full-image cs-full-image--grid cs-full-image--bare' : 'cs-full-image cs-full-image--grid';
-        return '<div class="' + cls + '">' + C.ImageSlot(img) + '</div>';
+        return '<div class="' + cls + '">' + C.ImageSlot(zoomable(img)) + '</div>';
       }).join('') +
     '</div>';
+  }
+
+  /* Case-study body images open in the lightbox (see Lightbox/initLightbox
+     below) — the homepage card thumbnail (components.js: CaseStudyCard)
+     calls C.ImageSlot directly and never passes this flag. */
+  function zoomable(img) {
+    if (!img) return img;
+    var copy = {};
+    for (var key in img) { copy[key] = img[key]; }
+    copy.zoomable = true;
+    return copy;
   }
 
   /* ---- Section builders ---- */
@@ -169,10 +180,10 @@
       item.images.every(function (img) { return img.h > img.w; });
     var media = hasImages
       ? '<div class="cs-challenge__media ' + (isPortraitPair ? 'cs-challenge__media--grid' : 'cs-challenge__media--stack') + '">' +
-          item.images.map(function (img) { return C.ImageSlot(img); }).join('') +
+          item.images.map(function (img) { return C.ImageSlot(zoomable(img)); }).join('') +
         '</div>'
       : hasImage
-        ? '<div class="cs-challenge__media">' + C.ImageSlot(item.image) + '</div>'
+        ? '<div class="cs-challenge__media">' + C.ImageSlot(zoomable(item.image)) + '</div>'
         : '';
     var impact = item.impact
       ? '<p class="cs-decision"><strong class="cs-decision__label">Impact · </strong>' + esc(item.impact) + '</p>'
@@ -353,6 +364,55 @@
     );
   }
 
+  /* ---- Lightbox: tap a zoomable static image (see zoomable() above) to view
+     it at full size — the inline layouts cap these well below their native
+     resolution, too small to read UI detail on a phone. Native <dialog> +
+     showModal() gives focus-trapping, Escape-to-close, an inert background,
+     and focus-return-to-trigger on close for free, so there's no hand-rolled
+     a11y plumbing to get wrong. */
+  function Lightbox() {
+    return (
+      '<dialog class="cs-lightbox" data-lightbox>' +
+        '<button type="button" class="cs-lightbox__close" data-lightbox-close autofocus aria-label="Close image">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+        '</button>' +
+        '<figure class="cs-lightbox__figure">' +
+          '<img class="cs-lightbox__img" data-lightbox-img alt="" />' +
+          '<figcaption class="cs-lightbox__caption" data-lightbox-caption></figcaption>' +
+        '</figure>' +
+      '</dialog>'
+    );
+  }
+
+  function initLightbox() {
+    var dialog = document.querySelector('[data-lightbox]');
+    // No native <dialog> support: the zoom buttons still render (progressive
+    // enhancement — see html.js gate in case.css) but stay inert rather than
+    // half-working, same posture as initAutoplayVideos' IntersectionObserver check.
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    var img = dialog.querySelector('[data-lightbox-img]');
+    var caption = dialog.querySelector('[data-lightbox-caption]');
+    var closeBtn = dialog.querySelector('[data-lightbox-close]');
+
+    document.querySelectorAll('.image-slot__zoom-trigger').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        img.src = btn.getAttribute('data-lightbox-src');
+        img.alt = btn.getAttribute('data-lightbox-alt') || '';
+        var cap = btn.getAttribute('data-lightbox-caption') || '';
+        caption.textContent = cap;
+        caption.hidden = !cap;
+        dialog.showModal();
+      });
+    });
+    closeBtn.addEventListener('click', function () { dialog.close(); });
+    // Click on the dialog's own box (backdrop or empty padding around the
+    // centered figure) closes it; clicks on the figure/img/caption don't
+    // bubble a target === dialog since they're descendants.
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+
   /* ---- Back-to-top: quick exit from a long single-scroll page ---- */
   function BackToTop() {
     return (
@@ -403,6 +463,65 @@
      up far below the fold can register as "intersecting" on the observer's
      very first callback. Waiting for 'load' guarantees layout has settled
      before anything is observed. */
+  /* ---- Transparent video: serve the copy this engine decodes with alpha intact.
+     Safari is the only engine that reads HEVC's alpha channel, and the only one
+     that silently discards VP9/WebM's. Chrome on Apple silicon reports it can
+     play hvc1 and then ignores that alpha too, so a static <source> list picks
+     wrong on one engine or the other whichever way it's ordered — the decision
+     has to be made at runtime from what the engine actually produced.
+     The probe is a 593-byte fully-transparent VP9 frame inlined as a data URI:
+     no network request, and it resolves long before anything scrolls into view,
+     so the swap happens before a frame is ever painted (a post-hoc swap would
+     flash the black-backed copy first). If alpha survives the probe, the
+     already-correct WebM in `src` stays. ---- */
+  var ALPHA_PROBE = 'data:video/webm;base64,GkXfo59ChoEBQveBAULygQRC84EIQoKEd2VibUKHgQJChYECGFOAZwEAAAAAAAIhEU2bdLpNu4tTq4QVSalmU6yBoU27i1OrhBZUrmtTrIHYTbuMU6uEElTDZ1OsggEpTbuMU6uEHFO7a1OsggIL7AEAAAAAAABZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVSalmsirXsYMPQkBNgI1MYXZmNjIuMTIuMTAyV0GNTGF2ZjYyLjEyLjEwMkSJiEBEAAAAAAAAFlSua8yuAQAAAAAAAEPXgQFzxYjsfBG8i9XF35yBACK1nIN1bmSIgQCGhVZfVlA5g4EBI+ODhAJiWgDglLCBELqBEJqBAlPAgQFVsIRVuYEBElTDZ0CAc3OgY8CAZ8iaRaOHRU5DT0RFUkSHjUxhdmY2Mi4xMi4xMDJzc9pjwItjxYjsfBG8i9XF32fIpUWjh0VOQ09ERVJEh5hMYXZjNjIuMjguMTAyIGxpYnZweC12cDlnyKFFo4hEVVJBVElPTkSHkzAwOjAwOjAwLjA0MDAwMDAwMAAfQ7Z11+eBAKDSoaqBAAAAgkmDQgAA8AD2ADgkHBiMAAAwcAAAVeD//EYBv//4Ig///8uBwAB1oaOmoe6BAaWcgkmDQgAA8AD2ADgkHBiMAAAwYAAAEL//+2hoABxTu2uRu4+zgQC3iveBAfGCAa/wgQM=';
+
+  function initAlphaVideoFallback(done) {
+    var vids = document.querySelectorAll('video[data-alpha-fallback]');
+    if (!vids.length) { done(); return; }
+
+    function useFallback() {
+      vids.forEach(function (v) {
+        var fb = v.getAttribute('data-alpha-fallback');
+        v.removeAttribute('data-alpha-fallback');
+        if (!fb) return;
+        var playing = !v.paused;
+        v.src = fb;
+        v.load();
+        if (playing) { v.muted = true; v.play().catch(function () {}); }
+      });
+      done();
+    }
+
+    var probe = document.createElement('video');
+    probe.muted = true; probe.playsInline = true; probe.preload = 'auto';
+    var settled = false;
+    function finish(hasAlpha) {
+      if (settled) return;
+      settled = true;
+      probe.removeAttribute('src'); probe.load();
+      if (hasAlpha) done(); else useFallback();
+    }
+    probe.addEventListener('loadeddata', function () {
+      var c = document.createElement('canvas');
+      c.width = 8; c.height = 8;
+      var x = c.getContext && c.getContext('2d', { willReadFrequently: true });
+      if (!x) { finish(true); return; }
+      x.clearRect(0, 0, 8, 8);
+      try {
+        x.drawImage(probe, 0, 0, 8, 8);
+        var d = x.getImageData(0, 0, 8, 8).data;
+        var max = 0;
+        for (var i = 3; i < d.length; i += 4) { if (d[i] > max) max = d[i]; }
+        // Probe is fully transparent: any opacity means alpha was discarded.
+        finish(max < 16);
+      } catch (e) { finish(true); }
+    });
+    probe.addEventListener('error', function () { finish(true); });
+    setTimeout(function () { finish(true); }, 2500);
+    probe.src = ALPHA_PROBE;
+  }
+
   function initAutoplayVideos() {
     var videos = document.querySelectorAll('video[data-autoplay]');
     if (!videos.length) return;
@@ -445,21 +564,54 @@
 
   /* ---- Reveal utility (same as homepage) ---- */
   function initReveal() {
-    var els = document.querySelectorAll('[data-reveal]');
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if (!els.length) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(el) {
+      el.classList.add('is-visible');
+      el.removeAttribute('data-reveal-armed');
+    }
+
     if (reduce || !('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('is-visible'); });
+      els.forEach(show);
       return;
     }
+
+    // Arm only here, once the observer is known-good: an unarmed [data-reveal]
+    // paints at full opacity (see tokens.css), so nothing above this line can
+    // leave a section invisible.
+    els.forEach(function (el) { el.setAttribute('data-reveal-armed', ''); });
+
+    // threshold 0, never a fraction. For an element taller than the viewport
+    // the largest ratio reachable is (root height / element height), so a
+    // positive threshold silently becomes unreachable on tall sections and
+    // short windows. This shipped as a real bug: landing on #cs-exploration
+    // from the subnav parked .cs-split-media__media at ratio 0.0739 against a
+    // 0.08 threshold, and the image column sat invisible while still holding
+    // its 589px of layout. rootMargin alone sets the trigger point now.
     var io = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { show(entry.target); obs.unobserve(entry.target); }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
     els.forEach(function (el) { io.observe(el); });
+
+    // Backstop for anything the observer misses (deep-link landings, restored
+    // scroll positions, a tab that renders while hidden): reveal any armed
+    // element already inside the trigger box. Same -6% bottom edge as the
+    // observer so the trigger point doesn't shift.
+    function sweep() {
+      var vh = window.innerHeight || 0;
+      els.forEach(function (el) {
+        if (!el.hasAttribute('data-reveal-armed')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.94 && r.bottom > 0) { show(el); io.unobserve(el); }
+      });
+    }
+    if (document.readyState === 'complete') sweep();
+    else window.addEventListener('load', sweep);
+    setTimeout(sweep, 1200);
   }
 
   /* ---- Subnav: overflow fade + scrollspy (aria-current) ---- */
@@ -611,7 +763,8 @@
         ReflectionSection(d.reflection, d.next) +
       '</main>' +
       CaseFooter(d.caseFooter) +
-      BackToTop()
+      BackToTop() +
+      Lightbox()
     );
   }
 
@@ -620,8 +773,11 @@
     initReveal();
     initSubnav();
     initBackToTop();
-    initAutoplayVideos();
+    // Resolve the transparent-video source before autoplay observes anything,
+    // so no engine ever paints the copy whose alpha it dropped.
+    initAlphaVideoFallback(initAutoplayVideos);
     initNavToggle();
+    initLightbox();
     C.initThemeToggle();
   }
 

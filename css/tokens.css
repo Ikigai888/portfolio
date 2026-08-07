@@ -162,6 +162,13 @@
      constant across themes instead of following --bg/--text-primary. */
   --media-control-bg: rgba(20, 16, 10, 0.55);
   --media-control-fg: #F4F0E8;
+
+  /* ---------- Lightbox backdrop (case-study image viewer) ----------
+     Isolates an arbitrary screenshot/photo, not page content, so — like the
+     media overlay control above — it stays a fixed near-black regardless of
+     theme rather than following --scrim (which is page-bg-tinted, for
+     header blur over content). */
+  --lightbox-backdrop: rgba(10, 8, 6, 0.92);
 }
 
 /* ============================================================
@@ -276,15 +283,21 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: none; }
 }
-/* Gated on html.js (set inline in <head>): without JS everything paints visible */
-html.js [data-reveal] { opacity: 0; }
+/* Gated on html.js (set inline in <head>): without JS everything paints visible.
+   Gated a second time on [data-reveal-armed], which initReveal sets only after
+   it has confirmed IntersectionObserver exists and is about to observe. An
+   unarmed [data-reveal] paints normally, so a JS error, a headless render, or
+   an observer that never fires can't ship a blank section — the reveal is an
+   enhancement on top of visible content, never the thing that grants it. */
+html.js [data-reveal][data-reveal-armed]:not(.is-visible) { opacity: 0; }
 html.js [data-reveal].is-visible {
   animation: revealUp var(--reveal-dur) var(--reveal-ease) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  [data-reveal] { opacity: 1; }
+  [data-reveal],
+  html.js [data-reveal][data-reveal-armed]:not(.is-visible) { opacity: 1; }
   [data-reveal].is-visible { animation: none; }
 }
 
