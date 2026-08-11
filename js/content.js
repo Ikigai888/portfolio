@@ -25,12 +25,12 @@ window.Content = {
   hero: {
     // headline rendered as lines; `accent: true` marks the italic accent line
     headline: [
-      { text: 'Complexity is inevitable.' },
-      { text: 'Confusion isn’t.', accent: true },
+      { text: 'I make complicated software' },
+      { text: 'feel obvious.', accent: true },
     ],
     lead:
       'Nobody should need a manual for the tools they use every day. ' +
-      'I design so they don\u2019t, making even the most complicated products feel obvious.',
+      'I work on the products where that is hardest: dense, high-stakes, and used daily.',
     cta: { label: 'View selected work', href: '#work' },
     portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
   },
@@ -43,9 +43,9 @@ window.Content = {
       'through three recurring kinds of complexity.',
     emphasize: ['lululemon', 'SAP', 'MoxiWorks'],
     kinds: [
-      { number: '01', title: 'Organizational', description: 'Systems too big for any one person to hold in their head.' },
-      { number: '02', title: 'Behavioral', description: 'Asking people to trust something unfamiliar.' },
-      { number: '03', title: 'Interaction', description: 'Dense interfaces where every detail competes for attention.' },
+      { title: 'Organizational', description: 'Systems too big for any one person to hold in their head.' },
+      { title: 'Behavioral', description: 'Asking people to trust something unfamiliar.' },
+      { title: 'Interaction', description: 'Dense interfaces where every detail competes for attention.' },
     ],
     closing: 'The case studies below take one each.',
   },
@@ -56,57 +56,48 @@ window.Content = {
     meta: 'Three projects',
     items: [
       {
-        number: '01',
         client: 'MoxiWorks',
         theme: 'Organizational Complexity',
         title: 'Designing Brand Governance for Enterprise Scale',
         question:
           'How do you help thousands of agents stay on brand without relying on manual processes?',
         href: 'case-brand-governance.html',
-        image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, pos: '62% top', alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'Brand Governance · Style Kits, applied' },
+        image: { src: 'images/case-studies/brand-gov-multiple-style-kits.png', w: 1400, h: 1000, alt: 'Agent-facing CMA in the Presentation Builder with the Style Kit switcher open, offering Primary, Luxury, and Commercial kits', caption: 'Brand Governance · Style Kits, applied' },
       },
       {
-        number: '02',
         client: 'lululemon',
         theme: 'Behavioral Complexity',
         title: 'Designing a Passwordless Authentication Experience',
         question:
           'How do you convince people to trust a sign-in method they’ve never used before?',
         href: 'case-passkeys.html',
-        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, pos: '60% center', alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
+        image: { src: 'images/case-studies/passkeys-thumb.png', w: 1360, h: 824, alt: 'lululemon passkey sign-in flow shown on desktop and mobile', caption: 'Passkeys · authentication flow' },
       },
       {
-        number: '03',
         client: 'SAP Concur',
         theme: 'Interaction Complexity',
         title: 'Designing an Accessible Rail Booking Experience',
         question:
           'How do you simplify one of the most information-dense experiences in travel?',
         href: 'case-rail-booking.html',
-        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, pos: '22% top', alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
+        image: { src: 'images/case-studies/rail-booking-thumb-cropped.png', w: 1343, h: 832, alt: 'SAP Concur rail seat selection across desktop, tablet, and mobile', caption: 'Rail Booking · seat selection' },
       },
     ],
     cta: 'View case study',
   },
 
-  /* ---------- How I Work (PrincipleItem ×4) ---------- */
+  /* ---------- How I Work ---------- */
   howIWork: {
     label: 'How I Work',
     statement:
       'Good software doesn’t become simpler by removing complexity. ' +
       'It becomes better by organizing complexity into systems people can understand.',
     emphasize: ['organizing complexity'],
-    // `icon` names a line-art glyph from the icon map in components.js; it
-    // echoes the hero's thin-stroke wireframe motif and draws itself in as
-    // the section reveals. How I Work's principles carry icons; What I Do's
-    // kinds stay numeral-led (01/02/03), so the two sections read distinctly.
-    principles: [
-      { icon: 'systems', title: 'Systems thinking', description: 'Organizing complexity into structures people can understand, not hiding it.' },
-      { icon: 'collaboration', title: 'Close collaboration', description: 'Working in lockstep with Product and Engineering from problem to ship.' },
-      { icon: 'exploration', title: 'Rapid exploration', description: 'More directions, earlier: prototyping in hours what used to take days, then throwing most of it away on purpose.' },
-      { icon: 'validation', title: 'Continuous validation', description: 'Testing decisions with real customers and iterating on what they reveal.' },
+    body: [
+      'In practice that means I map the system before I draw a screen, and spend about as much time at a whiteboard with engineers as I do in Figma.',
+      'I build five directions when one would do, because the quickest way to find the right one is to make the other four and throw them away. Whatever survives that goes in front of a real customer before I trust it.',
     ],
-    closing: 'The result is software people trust on the first try and rely on every day after.',
+    closing: 'Software people trust on the first try, and rely on every day after.',
   },
 
   /* ---------- About ----------

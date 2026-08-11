@@ -55,13 +55,12 @@
   }
 
   function HowIWork(d) {
-    var principles =
-      '<div class="principle-grid">' +
-        d.principles.map(C.PrincipleItem).join('') +
-      '</div>';
+    var prose = d.body.map(function (p) {
+      return '<p class="statement__body">' + C.esc(p) + '</p>';
+    }).join('');
     var right =
       '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-      principles +
+      prose +
       '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
       id: 'approach',

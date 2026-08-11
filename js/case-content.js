@@ -26,7 +26,7 @@ window.CaseContent = {
 
     context: {
       label: 'Context',
-      headline: 'Why this project existed',
+      headline: 'Brand that lived in a service queue',
       body: [
         'MoxiWorks serves real-estate brokerages whose brands live across hundreds of offices and thousands of agents. Branding existed, but it lived in a legacy service that wasn\'t self-serve: changes went through a service team, and admins had no way to see or manage their own brand system.',
         'The result was guesswork and brand drift at scale. Admins couldn\'t verify what was set where. Agents worked around controls. And as the RISE product ecosystem grew, every new product needed brand, with no governed system to inherit it from.',
@@ -109,7 +109,7 @@ window.CaseContent = {
 
     reflection: {
       label: 'Reflection',
-      headline: 'What this project taught me',
+      headline: 'Designing for both ends of the scale',
       body: [
         'The hardest part was designing for both ends of the scale at once. The same system had to govern a brand spanning hundreds of offices and multiple levels of hierarchy, and still make sense to a small company with one admin and no appetite for "governance." Complexity overwhelming smaller organizations was the risk we named first, and it pressed on every design decision.',
         'What carried forward: make the defaults do the governing. Inheritance meant most admins never had to configure anything: the brand cascaded correctly on its own, and the deeper controls surfaced only when an organization\'s structure actually demanded them. Progressive disclosure isn\'t a UI trick; it\'s how a complex system earns the right to feel simple.',
@@ -146,7 +146,7 @@ window.CaseContent = {
 
     context: {
       label: 'Context',
-      headline: 'Why this project existed',
+      headline: 'Passwords were the friction',
       body: [
         'Members sign in across the app, web, and in-store experiences. Passwords were the single biggest source of failed logins, abandoned carts, and support contacts. Every reset was friction at the exact moment someone wanted to engage with the brand.',
         'Passkeys promised to remove that friction entirely while improving security. But nobody adopts an unfamiliar sign-in method just because it shipped. People had to be convinced it was safe, at the exact moment they were least patient.',
@@ -230,7 +230,7 @@ window.CaseContent = {
 
     reflection: {
       label: 'Reflection',
-      headline: 'What this project taught me',
+      headline: 'What authentication is actually about',
       body: [
         'Authentication design is really trust design. The real challenge was understanding what made people feel safe enough to try something new at the moment they were most likely to abandon, not simply getting the interaction right.',
         'I came in expecting to design a faster login. What shipped was closer to a method: a repeatable way to introduce something unfamiliar to people who have every reason to be cautious.',
@@ -267,7 +267,7 @@ window.CaseContent = {
 
     context: {
       label: 'Context',
-      headline: 'Why this project existed',
+      headline: 'The densest screen in travel',
       body: [
         'SAP Concur’s rail booking experience handled complex routing, multi-leg journeys, and seat availability across dozens of rail operators, each with its own data formats, seating models, and booking rules.',
         'The existing seat selection experience collapsed under that complexity. Business travelers, already navigating policy rules, approval workflows, and tight itineraries, hit an interface that required expertise they didn’t have to use.',
@@ -348,7 +348,7 @@ window.CaseContent = {
 
     reflection: {
       label: 'Reflection',
-      headline: 'What this project taught me',
+      headline: 'The finding I still think about',
       body: [
         'Four stakeholders pulled this design in four directions (traveler, admin, policy team, rail operator), and each had a legitimate case. The work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
         'The guide dog finding is the one I still think about. I would have designed a defensible screen-reader priority order without ever talking to a visually impaired traveler, and gotten it wrong in a way no amount of internal debate would have caught. Now I treat "we’ve reasoned our way to the right order" as a hypothesis to test, not a decision to ship, especially in accessibility work where the wrong assumption is invisible until a real user hits it.',
