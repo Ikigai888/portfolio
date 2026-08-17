@@ -101,7 +101,7 @@ window.CaseContent = {
       headline: 'A foundation the ecosystem builds on',
       body: 'The work established branding as a governed platform capability rather than a per-product feature, setting the direction for how RISE products consume brand going forward.',
       impacts: [
-        { label: 'Fewer manual brand reviews', desc: 'Reframed from "something we check" to "infrastructure we inherit," changing how Product and leadership scoped the work.' },
+        { label: 'Brand became infrastructure, not a checkpoint', desc: 'Correctness comes from inheritance and locks rather than after-the-fact review, which is why the work was scoped as a shared service instead of a per-product feature.' },
         { label: 'Style Kits adopted across multiple RISE products', desc: 'Style Kits became the pattern other products subscribe to instead of rebuilding their own branding solutions.' },
         { label: 'One hierarchy for thousands of agents', desc: 'Brand settings cascade brand → office → team → agent with visible overrides: one hierarchy the whole ecosystem shares.' },
       ],
@@ -297,7 +297,7 @@ window.CaseContent = {
           headline: 'Designing for accessibility without removing capability',
           body: 'A visual seat map is inaccessible to screen reader users by default. But replacing it with a list loses the spatial understanding that helps travelers choose confidently.',
           options: 'a visual-only map, which failed screen reader users outright; a list-only alternative, which threw away the spatial sense sighted travelers relied on; or a parallel accessible map with ARIA region labelling.',
-          decision: 'A dual-mode design: a visual map with full ARIA semantics, plus a structured list mode that keyboard and screen reader users can switch to (same data, appropriate for each mode).',
+          decision: 'One spatial map made fully navigable to assistive tech, designed against how screen readers actually operate: ARIA semantics so Read Mode announces each seat’s position and attributes, and a deliberate Direct Mode order so keyboard users move between selectable seats and coaches by hot key instead of tabbing the entire map.',
           image: { src: 'images/case-studies/rail-keyboard-tab-order.png', w: 1200, h: 1647, alt: 'Annotated keyboard tab order for the seat map: left-to-right, top-to-bottom seat traversal, next/previous coach hotkeys, and disabled seats excluded from the tab sequence', caption: 'The tab order documentation engineering built from' },
         },
         {
@@ -326,8 +326,8 @@ window.CaseContent = {
       label: 'Validation',
       headline: 'Testing with business travelers',
       body: [
-        'I wrote the brief, built the prototype, and moderated sessions with frequent business travelers booking multi-leg journeys under policy constraints, then partnered with the UX research team to synthesize what we heard. The dual-mode accessibility approach held up immediately: screen reader participants navigated the structured list without needing the map. And the sessions surfaced one gap we closed before launch: travelers wanted to see their previously selected seats when returning from a policy override.',
-        'Stakeholders had pushed back on the accessibility investment early: "Does everything need to be tabbed? Can we skip some items?" Interviewing visually impaired travelers directly settled it: guide dog owners consistently preferred table seats for the extra space on long journeys, a finding that reset our screen-reader priority order and told us exactly which components were safe to skip. My documentation of that work became the reference engineering built the implementation from.',
+        'I wrote the brief and built the prototype, then the work went through two studies. The seat map itself was validated in an unmoderated usability study, sixteen participants across web and mobile, which I synthesized with the UX research team. It surfaced one gap we closed before launch: travelers wanted to see their previously selected seats when returning from a policy override.',
+        'The accessibility questions came out of our A11y office hours: "Does everything need to be tabbed too? Can we skip some items?" and "What if we skip things that are disabled, how does the user know what is skipped?" Rather than reason our way to an answer, I moderated sessions with visually impaired travelers. Tabbing seat by seat proved exhausting, so navigation became spatial, with hot keys across rows and coaches. And skipping the unavailable seats was only safe once the interface announced how many it had skipped. My documentation of that work became the reference engineering built the implementation from.',
       ],
       images: [
         { src: 'images/case-studies/rail-usability-study.png', w: 1198, h: 1137, alt: 'Unmoderated usability study report with participant notes, affinity mapping, and findings', caption: 'Usability validation sessions' },
@@ -342,7 +342,7 @@ window.CaseContent = {
       impacts: [
         { label: '20% increase in completed bookings', desc: 'Simplifying the most information-dense step in the flow reduced abandonment at seat selection.' },
         { label: '35% reduction in seat selection errors', desc: 'Pre-filtering to policy-compliant options and clarifying seat attributes reduced mis-selections and the rebooking they caused.' },
-        { label: 'Set the pattern for seat selection at Concur', desc: 'No interactive seat map existed before this, rail or air. The spatial map and dual-mode accessibility pattern became the reference the Air team designed against.' },
+        { label: 'Set the pattern for seat selection at Concur', desc: 'No interactive seat map existed before this, rail or air. The spatial map and its accessibility pattern became the reference the Air team designed against.' },
       ],
     },
 
@@ -351,7 +351,7 @@ window.CaseContent = {
       headline: 'The finding I still think about',
       body: [
         'Four stakeholders pulled this design in four directions (traveler, admin, policy team, rail operator), and each had a legitimate case. The work was finding the arrangement that honored all of them without asking anyone to compromise more than they had to.',
-        'The guide dog finding is the one I still think about. I would have designed a defensible screen-reader priority order without ever talking to a visually impaired traveler, and gotten it wrong in a way no amount of internal debate would have caught. Now I treat "we’ve reasoned our way to the right order" as a hypothesis to test, not a decision to ship, especially in accessibility work where the wrong assumption is invisible until a real user hits it.',
+        'The tab order is the one I still think about. Left to reason alone, I would have shipped something defensible that stepped through every seat in sequence, and it would have been exhausting to actually use in a way no amount of internal debate would have caught. Now I treat "we’ve reasoned our way to the right order" as a hypothesis to test, not a decision to ship, especially in accessibility work where the wrong assumption is invisible until a real user hits it.',
       ],
     },
 
