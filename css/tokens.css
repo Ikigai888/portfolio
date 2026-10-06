@@ -1,5 +1,5 @@
 /* ============================================================
-   Tad Natsuhara — Portfolio Design Tokens (Statement concept)
+   Tad Natsuhara — Portfolio Design Tokens (Pantone palette, Newsreader + Public Sans)
    Single source of truth. Import once, reference everywhere.
    Never hardcode a raw value in a component — use a var() below.
 
@@ -11,88 +11,72 @@
 :root {
   color-scheme: light; /* native form controls / scrollbars match the theme */
 
-  /* ---------- Color: surfaces (warm editorial paper) ---------- */
-  --bg:            #F4F0E8; /* page background (warm paper, sampled from the mockup) */
-  --bg-footer:     #EDE7DE; /* contact band / deepest surface */
-  --bg-card:       #FBF8F1; /* case-study cards lifted toward white */
-  --bg-inset:      #E9E1D2; /* image slots + chips */
+  /* ---------- Color: surfaces (Pantone cool paper) ---------- */
+  --bg:            #EEF6F5; /* page background (Pantone-derived cool paper) */
+  --bg-footer:     #D5E8E7; /* deepest surface (contact band lives on --band-bg) */
+  --bg-card:       #FAFDFC; /* case-study cards lifted toward white */
+  --bg-inset:      #D5E8E7; /* image slots + chips + theme-toggle track */
 
-  /* ---------- Color: text (warm ink ramp; AA-checked on --bg) ---------- */
-  --text-primary:   #241E13; /* body + most headings — 13.9:1 */
-  --text-bright:    #17110A; /* wordmark, emphasized inline names */
-  --text-secondary: #3D3524; /* lead paragraphs — 9.1:1 */
-  --text-tertiary:  #554A33;
-  --text-muted:     #6E6249; /* eyebrows, supporting copy, nav — 5.2:1 */
-  --text-faint:     #A79A80; /* decorative labels */
-  --text-faint-2:   #675B42; /* copyright — 4.6:1 on --bg-footer */
+  /* ---------- Color: text (Anthracite ink ramp; AA-checked on --bg) ---------- */
+  --text-primary:   #2D3240; /* body + most headings */
+  --text-bright:    #2C2628; /* wordmark, display headings */
+  --text-secondary: #2D3240; /* lead paragraphs */
+  --text-tertiary:  #3F4553;
+  --text-muted:     #54553A; /* eyebrows, supporting copy, nav — 7.0:1 */
+  --text-faint:     #7C9B9A; /* decorative labels */
+  --text-faint-2:   #54553A; /* copyright */
 
-  /* ---------- Color: accent (olive — the light theme's identity) ----------
-     --accent is the saturated fill/solid + large display accent; --accent-text
-     is the slightly deeper olive for small type, which needs ≥4.5:1 on
-     paper. The dark theme carries its OWN accent hue — the original signature
-     mint — rather than a lighter/darker olive (see [data-theme="dark"]),
-     so every accent-hued token below (band, selection, glow) has a mint
-     override there. The wordmark PNG is drawn in that mint, so the light
-     theme retargets it to olive via a filter (see .site-header__logo). */
-  --accent:       oklch(0.487 0.0395 127.8); /* fallback #59644C — olive */
-  /* accent-text carries every small supporting highlight (eyebrows, quote
-     marks, Decision/Options labels, arrows) — kept at --accent's own hue but
-     with more chroma than a straight darken would give it. At --accent's low
-     chroma (0.0395), a same-chroma darken reads as a muddy neutral brown
-     instead of a legible olive (this is what shipped right after the
-     terracotta->olive swap and prompted this fix); 0.075 is the point it
-     reads unambiguously as green while staying well inside the muted,
-     understated palette (not a bright/saturated green). */
-  --accent-text:  oklch(0.437 0.075 127.8); /* fallback #46592A — 6.79:1 on --bg */
-  --accent-hex:        #59644C;
-  --accent-text-hex:   #46592A;
+  /* ---------- Color: accent (Sea Jet) ----------
+     --accent is the fill/solid + large display accent (rules, toggle thumb,
+     buttons). --accent-text is the deeper teal for small type, which needs
+     >=4.5:1 on paper (Sea Jet itself is only ~2.3:1 on --bg). Both themes
+     now share ONE accent hue; dark just uses the fill colour for text too. */
+  --accent:       #52AEBD;
+  --accent-text:  #2A7381; /* 4.95:1 on --bg */
+  --accent-hex:        #52AEBD;
+  --accent-text-hex:   #2A7381;
+  --on-accent:    #2C2628; /* ink on an --accent fill — 5.8:1 */
 
-  /* ---------- Color: inverted "Outcome" band (case studies) ----------
-     A saturated olive block with dark ink for the light theme. The dark
-     theme overrides this to mint (its own accent's hue at mid lightness),
-     since the two themes carry different accent hues. */
-  --band-bg:    oklch(0.605 0.045 127.8);     /* fallback #7A876A — olive, ~4.57:1 with --band-text */
-  --band-bg-hex: #7A876A;
-  --band-text:  #2A140A; /* warm near-black ink on the band — 4.58:1 */
-  --band-card:     rgba(26, 13, 6, 0.86);    /* impact cards on the band: ink surface, paper text */
-  --band-hairline: rgba(26, 13, 6, 0.2);     /* dividers between impact cards */
-  /* Committed Split surface (case-summary right panel, capability chips):
-     a softer, lighter tint of the band than the full-bleed Outcome band.
-     Mixing toward --bg-inset (light paper here) pushes it brighter than
-     --band-bg alone, so --band-text keeps its documented ~4.5:1+ margin.
-     The dark-theme override below uses a much smaller inset share, since
-     --bg-inset is dark there and would drag the mix (and its contrast with
-     --band-text) down instead of up — see that override's comment. */
+  /* Marker highlight under italic emphasis (hero, statements). */
+  --highlight: rgba(154, 198, 197, 0.6);
+
+  /* ---------- Color: contact band + "Outcome" band ----------
+     Pantone Soft Aqua block with Black Bean ink, in both themes. */
+  --band-bg:    #9AC6C5;
+  --band-bg-hex: #9AC6C5;
+  --band-text:  #2C2628; /* 7.96:1 on the band */
+  --band-card:     rgba(44, 38, 40, 0.90);   /* impact cards on the band: ink surface, light text */
+  --band-hairline: rgba(44, 38, 40, 0.22);
   --surface-committed: color-mix(in oklch, var(--bg-inset) 46%, var(--band-bg) 54%);
   /* Impact-card text: the card is a dark ink surface on the band in BOTH
-     themes, so its text is polarity-fixed paper — never theme-varying. */
-  --band-card-text:   #F6EFE4;
-  --band-card-text-2: #DCD2C2;
+     themes, so its text is polarity-fixed light — never theme-varying. */
+  --band-card-text:   #EEF6F5;
+  --band-card-text-2: #CFE3E2;
 
-  /* ---------- Color: lines (ink-alpha on paper) ---------- */
-  --border:        rgba(36, 30, 19, 0.14); /* default card/section */
-  --border-bright: rgba(36, 30, 19, 0.30); /* hover */
-  --hairline:      rgba(36, 30, 19, 0.09); /* faintest */
-  --hairline-2:    rgba(36, 30, 19, 0.18); /* stronger rule */
-  --rule-strong:   #241E13;                /* 2px section opener rule */
+  /* ---------- Color: lines (anthracite-alpha) ---------- */
+  --border:        rgba(45, 50, 64, 0.16); /* default card/section */
+  --border-bright: rgba(45, 50, 64, 0.32); /* hover */
+  --hairline:      rgba(45, 50, 64, 0.10); /* faintest */
+  --hairline-2:    rgba(45, 50, 64, 0.20); /* stronger rule */
+  --rule-strong:   #2D3240;                /* 2px section opener rule */
 
   /* ---------- Color: header scrims (page bg at opacity) ---------- */
-  --scrim-0:      rgba(244, 240, 232, 0);
-  --scrim:        rgba(244, 240, 232, 0.85); /* homepage sticky header */
-  --scrim-strong: rgba(244, 240, 232, 0.93); /* case header + subnav fade */
+  --scrim-0:      rgba(238, 246, 245, 0);
+  --scrim:        rgba(238, 246, 245, 0.85); /* homepage sticky header */
+  --scrim-strong: rgba(238, 246, 245, 0.93); /* case header + subnav fade */
 
   /* ---------- Selection ---------- */
-  --selection-bg:   var(--accent-hex);
-  --selection-text: #F7F2E9;
+  --selection-bg:   #52AEBD;
+  --selection-text: #2C2628;
 
   /* ---------- Typography: families ----------
      Editorial pairing on a contrast axis: a high-contrast display serif
      carries every headline/statement; a neutral grotesque carries body,
      nav, and the wordmark. */
-  --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-sans: 'Public Sans', system-ui, sans-serif;
   /* weights in use: 400 500 600 700 */
-  --font-display: 'Spectral', Georgia, 'Times New Roman', serif; /* warm humanist serif with expressive italics; chosen off the reflex-reject list */
-  --ls-serif: -0.005em; /* Spectral sets comfortably near 0 */
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif; /* optical-size editorial serif with expressive italics */
+  --ls-serif: -0.005em;
 
   /* ---------- Typography: fluid scale (clamp = min, fluid, max) ---------- */
   --fs-display:   clamp(min(3.25rem, 14.5vw), 8vw, 5.25rem); /* hero headline — no-image variant, full-width column. Tuned (was 6rem max / 8.5vw) so "Complexity is inevitable." (the longest hero line) stays on one line across the fluid range, not just at the capped max: at 8.5vw it was a near-exact tie with the column width around tablet (~768px); 8vw carries a real safety margin there too, and the 5.25rem cap (not 6rem) keeps it on one line once the clamp saturates at wide desktop. The min() floor is a hardening fix: a hard 3.25rem floor made "Complexity" (258px) overflow the 240px column on 320px viewports; 14.5vw only undercuts 3.25rem below ~359px, so 375px+ renders identically. */
@@ -121,7 +105,7 @@
      nothing real. */
 
   /* ---------- Typography: tracking / leading ---------- */
-  --ls-display:   -0.02em; /* Spectral display sits comfortably near 0 */
+  --ls-display:   -0.02em; /* Newsreader display */
   --ls-section:   -0.018em;
   --ls-statement: -0.014em;
   --ls-eyebrow:    0.14em;  /* wide-tracked accent labels, per the mockup */
@@ -151,11 +135,11 @@
   --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --hover-dur:   0.4s; /* border-color */
   --hover-color-dur: 0.3s;
-  --dot-glow: 0 0 0 4px rgba(89, 100, 76, 0.16); /* About status dot — soft ring reads on paper */
+  --dot-glow: 0 0 0 4px rgba(82, 174, 189, 0.25); /* About status dot — soft ring reads on paper */
 
   /* ---------- Elevation (DESIGN.md §4) — softer on paper ---------- */
-  --shadow-ambient-rest:  0 4px 24px rgba(36, 30, 19, 0.10);
-  --shadow-ambient-hover: 0 10px 34px rgba(36, 30, 19, 0.16);
+  --shadow-ambient-rest:  0 4px 24px rgba(45, 50, 64, 0.10);
+  --shadow-ambient-hover: 0 10px 34px rgba(45, 50, 64, 0.16);
 
   /* ---------- Media overlay control (video tap-to-play) ----------
      Sits on top of arbitrary video frames, not page background, so it stays
@@ -172,80 +156,67 @@
 }
 
 /* ============================================================
-   Dark theme (sibling) — set via <html data-theme="dark"> by the
-   header toggle (persisted in localStorage; prefers-color-scheme:
-   dark is the first-visit trigger). The editorial LIGHT theme above
-   is the canonical design; this is its dark counterpart: the SAME
-   Spectral/Hanken type and the SAME layouts. The two themes carry
-   DIFFERENT accent hues by design — light is olive, dark is the
-   original signature mint (keyed to the wordmark's native color). So
-   beyond surfaces/ink/lines/scrims/shadows, the accent, Outcome band,
-   selection, and status glow all get mint overrides here; they can't
-   stay theme-invariant when the hue itself differs.
-   Every value below is contrast-checked against WCAG 2.1 AA.
+   Dark theme — set via <html data-theme="dark"> by the header toggle
+   (persisted in localStorage). Same Newsreader/Public Sans type and
+   the same layouts as light; the Pantone palette flips polarity:
+   Black Bean ground, Anthracite cards, Soft Aqua supporting text,
+   Sea Jet accent. Every value is contrast-checked against WCAG 2.1 AA.
    ============================================================ */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  /* Surfaces: warm near-black, stepped by tonal lift */
-  --bg:        #15120D;
-  --bg-footer: #100D08;
-  --bg-card:   #1B1710;
-  --bg-inset:  #26211A;
+  /* Surfaces */
+  --bg:        #2C2628; /* Black Bean */
+  --bg-footer: #231E20;
+  --bg-card:   #2D3240; /* Anthracite */
+  --bg-inset:  #54553A; /* Olive Brown chips / toggle track */
 
-  /* Text: warm paper ramp (primary 14.8:1, muted 5.9:1 on --bg) */
-  --text-primary:   #F1EBDF;
-  --text-bright:    #FBF6EC;
-  --text-secondary: #D8CFC0;
-  --text-tertiary:  #C9BCA6;
-  --text-muted:     #A1957F;
-  --text-faint:     #736959;
-  --text-faint-2:   #8A8070;
+  /* Text (primary 12:1, muted 8:1 on --bg) */
+  --text-primary:   #E8F2F1;
+  --text-bright:    #F4FAF9;
+  --text-secondary: #E8F2F1;
+  --text-tertiary:  #CFE3E2;
+  --text-muted:     #9AC6C5; /* Soft Aqua */
+  --text-faint:     #7FA6A8;
+  --text-faint-2:   #9AC6C5;
 
-  /* Accent: the dark theme carries the original signature mint (keyed to the
-     TN_Port_Logo wordmark's native color), not the light theme's olive —
-     each theme owns its own accent hue. --accent 11.9:1, --accent-text 15:1
-     on --bg. Because the two themes no longer share a hue, the Outcome band,
-     selection, and status glow below all need mint overrides too. */
-  --accent:      oklch(0.81 0.084 179);  /* fallback #83D4C3 — signature mint */
-  --accent-text: oklch(0.91 0.097 179);  /* fallback #97F8E4 */
-  --accent-hex:        #83D4C3;
-  --accent-text-hex:   #97F8E4;
+  /* Accent: Sea Jet is legible as small text on dark (5.8:1 on --bg) */
+  --accent:      #52AEBD;
+  --accent-text: #52AEBD;
+  --accent-hex:        #52AEBD;
+  --accent-text-hex:   #52AEBD;
+  --on-accent:   #2C2628;
 
-  /* Outcome band — mint (the dark theme's own hue at mid lightness) */
-  --band-bg:       oklch(0.62 0.09 179); /* fallback #3D9887 */
-  --band-text:     #0E1416;              /* near-black ink in the accent's hue family */
-  --band-card:     rgba(14, 20, 22, 0.85);
-  --band-hairline: rgba(14, 20, 22, 0.2);
-  /* Committed Split surface — dark --bg-inset would darken this mix and
-     collapse its contrast with the (also near-black) --band-text, so the
-     dark theme leans almost entirely on --band-bg instead of the light
-     theme's ~46/54 split (4.98:1 vs. the light mix's own 7.8:1; both clear
-     AA's 4.5:1 with margin — measured via canvas-rendered luminance, not
-     assumed from the oklch inputs). */
+  --highlight: rgba(82, 174, 189, 0.35);
+
+  /* Contact band stays Soft Aqua with Black Bean ink */
+  --band-bg:       #9AC6C5;
+  --band-text:     #2C2628;
+  --band-card:     rgba(44, 38, 40, 0.90);
+  --band-hairline: rgba(44, 38, 40, 0.22);
   --surface-committed: color-mix(in oklch, var(--bg-inset) 5%, var(--band-bg) 95%);
 
-  /* Lines: paper-alpha instead of ink-alpha */
-  --border:        rgba(241, 235, 223, 0.12);
-  --border-bright: rgba(241, 235, 223, 0.26);
-  --hairline:      rgba(241, 235, 223, 0.08);
-  --hairline-2:    rgba(241, 235, 223, 0.16);
-  --rule-strong:   #F1EBDF;
+  /* Lines: aqua-alpha */
+  --border:        rgba(154, 198, 197, 0.18);
+  --border-bright: rgba(154, 198, 197, 0.40);
+  --hairline:      rgba(154, 198, 197, 0.12);
+  --hairline-2:    rgba(154, 198, 197, 0.22);
+  --rule-strong:   #E8F2F1;
 
   /* Header scrims: dark page bg at opacity */
-  --scrim-0:      rgba(21, 18, 13, 0);
-  --scrim:        rgba(21, 18, 13, 0.82);
-  --scrim-strong: rgba(21, 18, 13, 0.92);
+  --scrim-0:      rgba(44, 38, 40, 0);
+  --scrim:        rgba(44, 38, 40, 0.82);
+  --scrim-strong: rgba(44, 38, 40, 0.92);
 
   /* Selection */
-  --selection-bg:   #83D4C3;
-  --selection-text: #0E1416;
+  --selection-bg:   #52AEBD;
+  --selection-text: #2C2628;
 
   /* Elevation: deeper cast on the dark ground */
-  --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.25);
-  --shadow-ambient-hover: 0 10px 34px rgba(0, 0, 0, 0.34);
+  --shadow-ambient-rest:  0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-ambient-hover: 0 10px 34px rgba(0, 0, 0, 0.45);
 
-  --dot-glow: 0 0 10px oklch(0.81 0.084 179); /* mint glow reads on dark */
+  --dot-glow: 0 0 0 4px rgba(82, 174, 189, 0.25);
 }
 
 /* ---------- Global base (apply once, e.g. in globals.css) ---------- */

@@ -31,7 +31,7 @@
 
   function WhatIDo(d) {
     var right =
-      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize) + '</p>' +
+      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize, true) + '</p>' +
       '<div class="kind-list">' + d.kinds.map(C.PrincipleItem).join('') + '</div>' +
       '<p class="whatido__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
@@ -51,7 +51,7 @@
           return C.CaseStudyCard(Object.assign({ cta: d.cta }, item));
         }).join('') +
       '</div>';
-    return C.Section({ id: 'work', content: head + cards, reveal: false });
+    return C.Section({ id: 'work', content: head + cards + AlsoShipped(D.alsoShipped), reveal: false });
   }
 
   function HowIWork(d) {
@@ -64,7 +64,7 @@
       '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
       id: 'approach',
-      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }),
+      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }) + Process(D.process),
     });
   }
 
@@ -99,11 +99,165 @@
         '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
           C.esc(d.credential.link.label) + '</a>' +
         C.esc(d.credential.after) + '</p>' +
-      byline;
+      byline +
+      Facts(D.facts);
 
     return C.Section({
       id: 'about',
       content: C.Split({ label: d.label, content: right, modifier: 'split--about' }),
+    });
+  }
+
+
+  /* ---------- New sections (A3/A4 refresh) ---------- */
+
+  function AlsoShipped(d) {
+    return '<div class="also-shipped">' +
+      '<div class="also-shipped__head">' +
+        '<h3 class="also-shipped__title">' + C.esc(d.title) + ' <em>' + C.esc(d.titleEm) + '</em></h3>' +
+        '<span class="also-shipped__meta">' + C.esc(d.meta) + '</span>' +
+      '</div>' +
+      '<div class="also-shipped__grid">' + d.items.map(C.ShortReadCard).join('') + '</div>' +
+    '</div>';
+  }
+
+  var ARROW_L = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+  var ARROW_R = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function pad2(i) { return (i < 9 ? '0' : '') + (i + 1); }
+
+  function Process(d) {
+    var tabs = d.stages.map(function (s, i) {
+      return '<button type="button" class="stepper__tab" role="tab" data-step="' + i + '" aria-selected="' + (i === 0) + '" aria-controls="stepper-panel">' +
+        '<span class="stepper__num">' + pad2(i) + '</span>' +
+        '<span class="stepper__label"><span class="stepper__verb">' + C.esc(s.verb) + '</span>' +
+        '<span class="stepper__artifact">' + C.esc(s.artifact) + '</span></span></button>';
+    }).join('');
+    var s0 = d.stages[0];
+    return '<div class="stepper" data-stepper>' +
+      '<div class="stepper__head">' +
+        '<div><span class="eyebrow">' + C.esc(d.eyebrow) + '</span>' +
+        '<h3 class="stepper__title">' + C.esc(d.title) + '</h3></div>' +
+        '<p class="stepper__intro">' + C.esc(d.intro) + '</p>' +
+      '</div>' +
+      '<div class="stepper__tabs" role="tablist" aria-label="Project steps">' + tabs + '</div>' +
+      '<div class="stepper__panel" id="stepper-panel" role="tabpanel">' +
+        '<div class="stepper__media"><img data-step-img src="' + C.esc(s0.img) + '" alt="' + C.esc(s0.alt) + '" loading="lazy" /></div>' +
+        '<div class="stepper__copy">' +
+          '<div><span class="stepper__k">' + C.esc(d.didLabel) + '</span><p class="stepper__did" data-step-did>' + C.esc(s0.did) + '</p></div>' +
+          '<div class="stepper__result"><span class="stepper__k stepper__k--accent">' + C.esc(d.changedLabel) + '</span><p class="stepper__changed" data-step-changed>' + C.esc(s0.changed) + '</p></div>' +
+          '<div class="stepper__nav">' +
+            '<button type="button" class="round-btn" data-step-prev aria-label="Previous step">' + ARROW_L + '</button>' +
+            '<button type="button" class="round-btn round-btn--solid" data-step-next aria-label="Next step">' + ARROW_R + '</button>' +
+            '<span class="stepper__count" aria-live="polite">Step <span data-step-num>01</span> of ' + pad2(d.stages.length - 1) + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function Archive(d) {
+    var rows = d.items.map(function (r, i) {
+      return '<button type="button" class="archive__row" data-arch="' + i + '" aria-pressed="' + (i === 0) + '">' +
+        '<span class="archive__co">' + C.esc(r.co) + '</span>' +
+        '<span class="archive__main"><span class="archive__title">' + C.esc(r.title) + '</span>' +
+        '<span class="archive__tags">' + C.esc(r.tags) + '</span></span>' +
+        '<span class="archive__year">' + C.esc(r.year) + '</span></button>';
+    }).join('');
+    var p = d.items[0];
+    var right =
+      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
+      '<p class="statement__body">' + C.esc(d.note) + '</p>';
+    return C.Section({
+      id: 'archive',
+      content:
+        C.Split({ label: d.label, content: right, modifier: 'split--about' }) +
+        '<div class="archive" data-archive>' +
+          '<div class="archive__list">' + rows + '</div>' +
+          '<div class="archive__preview" aria-live="polite">' +
+            '<div class="archive__img" data-arch-imgbox style="background:' + C.esc(p.bg) + '"><img data-arch-img src="' + C.esc(p.img) + '" alt="' + C.esc(p.alt) + '" style="object-fit:' + C.esc(p.fit) + '" loading="lazy" /></div>' +
+            '<div class="archive__meta">' +
+              '<span class="archive__kicker"><b data-arch-co>' + C.esc(p.co) + '</b> &middot; <span data-arch-year>' + C.esc(p.year) + '</span></span>' +
+              '<h3 class="archive__ptitle" data-arch-title>' + C.esc(p.title) + '</h3>' +
+              '<p class="archive__blurb" data-arch-blurb>' + C.esc(p.blurb) + '</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>',
+    });
+  }
+
+  function Facts(d) {
+    var f = d.items[0];
+    return '<div class="facts" data-facts>' +
+      '<div class="facts__top"><span class="eyebrow">' + C.esc(d.eyebrow) + ' &middot; <span data-fact-tag>' + C.esc(f.tag) + '</span></span>' +
+      '<span class="facts__count"><span data-fact-seen>1</span> of ' + d.items.length + ' found</span></div>' +
+      '<p class="facts__text" data-fact-text aria-live="polite">' + C.esc(f.text) + '</p>' +
+      '<button type="button" class="btn-pill" data-fact-btn>' +
+        '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>' +
+        C.esc(d.button) + '</button>' +
+    '</div>';
+  }
+
+  /* Interactions (browser only) */
+  function initStepper() {
+    var root = document.querySelector('[data-stepper]');
+    if (!root) return;
+    var stages = D.process.stages;
+    var tabs = root.querySelectorAll('.stepper__tab');
+    var cur = 0;
+    function show(i) {
+      cur = (i + stages.length) % stages.length;
+      var s = stages[cur];
+      var img = root.querySelector('[data-step-img]');
+      img.src = s.img; img.alt = s.alt;
+      root.querySelector('[data-step-did]').textContent = s.did;
+      root.querySelector('[data-step-changed]').textContent = s.changed;
+      root.querySelector('[data-step-num]').textContent = pad2(cur);
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === cur ? 'true' : 'false'); });
+    }
+    tabs.forEach(function (t, j) { t.addEventListener('click', function () { show(j); }); });
+    root.querySelector('[data-step-prev]').addEventListener('click', function () { show(cur - 1); });
+    root.querySelector('[data-step-next]').addEventListener('click', function () { show(cur + 1); });
+  }
+
+  function initArchive() {
+    var root = document.querySelector('[data-archive]');
+    if (!root) return;
+    var items = D.archive.items;
+    var rows = root.querySelectorAll('.archive__row');
+    var cur = 0;
+    function pick(i) {
+      if (i === cur) return;
+      cur = i;
+      var r = items[i];
+      var img = root.querySelector('[data-arch-img]');
+      img.src = r.img; img.alt = r.alt; img.style.objectFit = r.fit;
+      root.querySelector('[data-arch-imgbox]').style.background = r.bg;
+      root.querySelector('[data-arch-co]').textContent = r.co;
+      root.querySelector('[data-arch-year]').textContent = r.year;
+      root.querySelector('[data-arch-title]').textContent = r.title;
+      root.querySelector('[data-arch-blurb]').textContent = r.blurb;
+      rows.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    }
+    rows.forEach(function (b, j) {
+      b.addEventListener('click', function () { pick(j); });
+      b.addEventListener('mouseenter', function () { pick(j); });
+      b.addEventListener('focus', function () { pick(j); });
+    });
+  }
+
+  function initFacts() {
+    var root = document.querySelector('[data-facts]');
+    if (!root) return;
+    var items = D.facts.items;
+    var cur = 0, seen = [0];
+    root.querySelector('[data-fact-btn]').addEventListener('click', function () {
+      var n = cur;
+      while (n === cur) n = Math.floor(Math.random() * items.length);
+      cur = n;
+      if (seen.indexOf(n) === -1) seen.push(n);
+      root.querySelector('[data-fact-tag]').textContent = items[n].tag;
+      root.querySelector('[data-fact-text]').textContent = items[n].text;
+      root.querySelector('[data-fact-seen]').textContent = seen.length;
     });
   }
 
@@ -340,6 +494,7 @@
         WhatIDo(D.whatIDo) +
         CaseStudies(D.caseStudies) +
         HowIWork(D.howIWork) +
+        Archive(D.archive) +
         About(Object.assign({ portrait: D.hero.portrait }, D.about)) +
       '</main>' +
       C.SiteFooter(D.contact)
@@ -353,6 +508,9 @@
     initNavScrollSpy();
     initThesisSettle();
     initHeroParallax();
+    initStepper();
+    initArchive();
+    initFacts();
     C.initThemeToggle();
   }
 

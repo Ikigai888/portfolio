@@ -45,11 +45,12 @@ window.Components = (function () {
   const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
   const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
 
-  /* Wrap given names in <strong class="emph"> for inline emphasis. */
-  const emphasizeNames = (text, names) => {
+  /* Wrap given names in <em class="emph"> for inline emphasis. With
+     `mark` true the italic also carries the marker highlight (A3/A4). */
+  const emphasizeNames = (text, names, mark) => {
     var out = esc(text);
     (names || []).forEach(function (n) {
-      out = out.replace(esc(n), '<strong class="emph">' + esc(n) + '</strong>');
+      out = out.replace(esc(n), '<em class="emph' + (mark ? ' emph--mark' : '') + '">' + esc(n) + '</em>');
     });
     return out;
   };
@@ -161,6 +162,22 @@ window.Components = (function () {
         ${ImageSlot({ src: image.src, alt: image.alt, w: image.w, h: image.h, poster: image.poster })}
       </div>
     </a>`;
+
+  /* --- ShortReadCard: compact "also shipped" card (image | text + result chips) --- */
+  const ShortReadCard = ({ tag, title, body, chips = [], image = {} }) => `
+    <article class="short-card" data-reveal>
+      <div class="short-card__media" style="background:${esc(image.bg || 'transparent')}">
+        <img src="${esc(image.src)}" alt="${esc(image.alt)}" loading="lazy" />
+      </div>
+      <div class="short-card__body">
+        <span class="short-card__tag">${esc(tag)}</span>
+        <h4 class="short-card__title">${esc(title)}</h4>
+        <p class="short-card__text">${esc(body)}</p>
+        <div class="short-card__chips">
+          ${chips.map(function (t, i) { return '<span class="chip' + (i === 0 ? ' chip--solid' : '') + '">' + esc(t) + '</span>'; }).join('')}
+        </div>
+      </div>
+    </article>`;
 
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
@@ -279,6 +296,6 @@ window.Components = (function () {
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
     emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot, Quote,
-    PrincipleItem, PortraitSlot, SiteFooter, ThemeToggle, initThemeToggle,
+    PrincipleItem, PortraitSlot, ShortReadCard, SiteFooter, ThemeToggle, initThemeToggle,
   };
 })();

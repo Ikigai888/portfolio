@@ -28,17 +28,17 @@
   <meta name="twitter:description" content="I design products that simplify complex systems. Case studies with lululemon, SAP Concur, and MoxiWorks." />
   <meta name="twitter:image" content="https://tadnatsuhara.com/images/portrait.jpg" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2359644C'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23F4F0E8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2352AEBD'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%232C2628' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
 
-  <!-- Spectral (display serif, italics) + Hanken Grotesk (body/nav sans) -->
+  <!-- Newsreader (display serif, italics) + Public Sans (body/nav sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=155" />
+  <link rel="stylesheet" href="css/tokens.css?v=156" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=155" />
+  <link rel="stylesheet" href="css/components.css?v=156" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -51,7 +51,7 @@
         <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
-            <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
+            <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#archive">Archive</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
           </nav>
           
     <div class="theme-toggle" role="group" aria-label="Color theme">
@@ -74,7 +74,7 @@
       <div class="container"><div data-reveal>
     <div class="split split--what">
       <div class="split__label"><h2 class="eyebrow">What I Do</h2></div>
-      <div class="split__content"><p class="statement">For teams at <strong class="emph">lululemon</strong>, <strong class="emph">SAP</strong>, and <strong class="emph">MoxiWorks</strong>, I’ve designed through three recurring kinds of complexity.</p><div class="kind-list">
+      <div class="split__content"><p class="statement">For teams at <em class="emph emph--mark">lululemon</em>, <em class="emph emph--mark">SAP</em>, and <em class="emph emph--mark">MoxiWorks</em>, I’ve designed through three recurring kinds of complexity.</p><div class="kind-list">
     <div class="principle">
       <div class="principle__text">
         <h3 class="principle__title">Organizational</h3>
@@ -141,20 +141,53 @@
       <div class="case-card__media">
         <img class="image-slot__img" src="images/case-studies/rail-booking-thumb-cropped.png" alt="SAP Concur rail seat selection across desktop, tablet, and mobile" width="1343" height="832" loading="lazy" />
       </div>
-    </a></div></div>
+    </a></div><div class="also-shipped"><div class="also-shipped__head"><h3 class="also-shipped__title">Also shipped at <em>lululemon</em></h3><span class="also-shipped__meta">Short reads</span></div><div class="also-shipped__grid">
+    <article class="short-card" data-reveal>
+      <div class="short-card__media" style="background:#F87C72">
+        <img src="images/work/selfservice.jpg" alt="Illustration of a support agent at a laptop" loading="lazy" />
+      </div>
+      <div class="short-card__body">
+        <span class="short-card__tag">Support discoverability</span>
+        <h4 class="short-card__title">Self-Service</h4>
+        <p class="short-card__text">Footer data showed where people hunted for help. Moving it to the header paid off.</p>
+        <div class="short-card__chips">
+          <span class="chip chip--solid">$1.6M saved</span><span class="chip">5% fewer support contacts</span>
+        </div>
+      </div>
+    </article>
+    <article class="short-card" data-reveal>
+      <div class="short-card__media" style="background:#DCE9F7">
+        <img src="images/work/community.jpg" alt="Illustration of people gathering in a city park" loading="lazy" />
+      </div>
+      <div class="short-card__body">
+        <span class="short-card__tag">Community &amp; events</span>
+        <h4 class="short-card__title">Community Hub</h4>
+        <p class="short-card__text">Local events and classes, moved out of store emails and into the app.</p>
+        <div class="short-card__chips">
+          <span class="chip chip--solid">65K registrations</span><span class="chip">+40% discoverability</span>
+        </div>
+      </div>
+    </article></div></div></div>
     </section>
     <section class="section" id="approach">
       <div class="container"><div data-reveal>
     <div class="split split--approach">
       <div class="split__label"><h2 class="eyebrow">How I Work</h2></div>
-      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <strong class="emph">organizing complexity</strong> into systems people can understand.</p><p class="statement__body">In practice that means I map the system before I draw a screen, and spend about as much time at a whiteboard with engineers as I do in Figma.</p><p class="statement__body">I build five directions when one would do, because the quickest way to find the right one is to make the other four and throw them away. Whatever survives that goes in front of a real customer before I trust it.</p><p class="statement__closing">Software people trust on the first try, and rely on every day after.</p></div>
-    </div></div></div>
+      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <em class="emph">organizing complexity</em> into systems people can understand.</p><p class="statement__body">In practice that means I map the system before I draw a screen, and spend about as much time at a whiteboard with engineers as I do in Figma.</p><p class="statement__body">I build five directions when one would do, because the quickest way to find the right one is to make the other four and throw them away. Whatever survives that goes in front of a real customer before I trust it.</p><p class="statement__closing">Software people trust on the first try, and rely on every day after.</p></div>
+    </div><div class="stepper" data-stepper><div class="stepper__head"><div><span class="eyebrow">See it in practice</span><h3 class="stepper__title">One project, five real artifacts</h3></div><p class="stepper__intro">Step through how the SAP Concur rail seat map went from a competitive audit to a shipped, accessible component.</p></div><div class="stepper__tabs" role="tablist" aria-label="Project steps"><button type="button" class="stepper__tab" role="tab" data-step="0" aria-selected="true" aria-controls="stepper-panel"><span class="stepper__num">01</span><span class="stepper__label"><span class="stepper__verb">Look around</span><span class="stepper__artifact">Competitive analysis</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="1" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">02</span><span class="stepper__label"><span class="stepper__verb">Sketch wide</span><span class="stepper__artifact">Early concepts</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="2" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">03</span><span class="stepper__label"><span class="stepper__verb">Test &amp; break</span><span class="stepper__artifact">Usability testing</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="3" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">04</span><span class="stepper__label"><span class="stepper__verb">Include everyone</span><span class="stepper__artifact">Accessibility</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="4" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">05</span><span class="stepper__label"><span class="stepper__verb">Ship &amp; measure</span><span class="stepper__artifact">Final design</span></span></button></div><div class="stepper__panel" id="stepper-panel" role="tabpanel"><div class="stepper__media"><img data-step-img src="images/work/rail-comp.jpg" alt="Competitive analysis of rail and airline seat maps" loading="lazy" /></div><div class="stepper__copy"><div><span class="stepper__k">What I did</span><p class="stepper__did" data-step-did>Audited rail and airline seat selection to find the patterns travellers already trust.</p></div><div class="stepper__result"><span class="stepper__k stepper__k--accent">What it changed</span><p class="stepper__changed" data-step-changed>Seat attributes and coach availability had to be visible up front.</p></div><div class="stepper__nav"><button type="button" class="round-btn" data-step-prev aria-label="Previous step"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" class="round-btn round-btn--solid" data-step-next aria-label="Next step"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="stepper__count" aria-live="polite">Step <span data-step-num>01</span> of 05</span></div></div></div></div></div></div>
+    </section>
+    <section class="section" id="archive">
+      <div class="container"><div data-reveal>
+    <div class="split split--about">
+      <div class="split__label"><h2 class="eyebrow">Archive</h2></div>
+      <div class="split__content"><p class="statement">Before the case studies, a decade of shipping — from <em class="emph">the 10-foot screen</em> to enterprise messaging.</p><p class="statement__body">Shorter write-ups of earlier work. Pick one to preview.</p></div>
+    </div><div class="archive" data-archive><div class="archive__list"><button type="button" class="archive__row" data-arch="0" aria-pressed="true"><span class="archive__co">Microsoft</span><span class="archive__main"><span class="archive__title">NFL on Xbox</span><span class="archive__tags">Interface design · second screen · live data</span></span><span class="archive__year">2014–15</span></button><button type="button" class="archive__row" data-arch="1" aria-pressed="false"><span class="archive__co">SAP Jam</span><span class="archive__main"><span class="archive__title">Messages</span><span class="archive__tags">Enterprise collaboration · messaging</span></span><span class="archive__year">2015–19</span></button><button type="button" class="archive__row" data-arch="2" aria-pressed="false"><span class="archive__co">lululemon</span><span class="archive__main"><span class="archive__title">People’s Network icons</span><span class="archive__tags">Iconography · brand system</span></span><span class="archive__year">2021–25</span></button><button type="button" class="archive__row" data-arch="3" aria-pressed="false"><span class="archive__co">EA SPORTS</span><span class="archive__main"><span class="archive__title">FIFA 16 menus</span><span class="archive__tags">Short contract · game UI</span></span><span class="archive__year">c. 2015</span></button><button type="button" class="archive__row" data-arch="4" aria-pressed="false"><span class="archive__co">FGL Sports</span><span class="archive__main"><span class="archive__title">Sport Chek gift cards</span><span class="archive__tags">Print · packaging</span></span><span class="archive__year">Early career</span></button></div><div class="archive__preview" aria-live="polite"><div class="archive__img" data-arch-imgbox style="background:#0B0F1A"><img data-arch-img src="images/work/xbox.jpg" alt="NFL on Xbox game feed with a fantasy alert" style="object-fit:cover" loading="lazy" /></div><div class="archive__meta"><span class="archive__kicker"><b data-arch-co>Microsoft</b> &middot; <span data-arch-year>2014–15</span></span><h3 class="archive__ptitle" data-arch-title>NFL on Xbox</h3><p class="archive__blurb" data-arch-blurb>Live games, real-time stats, fantasy football and highlights in one app on Xbox, with tablet and mobile companions for second-screen viewing.</p></div></div></div></div></div>
     </section>
     <section class="section" id="about">
       <div class="container"><div data-reveal>
     <div class="split split--about">
       <div class="split__label"><h2 class="eyebrow">About</h2></div>
-      <div class="split__content"><p class="statement about__statement">I enjoy solving the kinds of product problems that <strong class="emph">don’t have obvious answers</strong>.</p><p class="statement__body">I work closest to the hard middle of products, where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p><div class="about__byline"><span class="about__avatar"><img src="images/portrait.jpg" alt="" loading="lazy" /></span><div class="about__byline-text"><span class="about__byline-name">Tad Natsuhara</span><span class="about__byline-meta">Senior Product Designer &middot; Vancouver, BC</span></div></div></div>
+      <div class="split__content"><p class="statement about__statement">I enjoy solving the kinds of product problems that <em class="emph">don’t have obvious answers</em>.</p><p class="statement__body">I work closest to the hard middle of products, where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p><div class="about__byline"><span class="about__avatar"><img src="images/portrait.jpg" alt="" loading="lazy" /></span><div class="about__byline-text"><span class="about__byline-name">Tad Natsuhara</span><span class="about__byline-meta">Senior Product Designer &middot; Vancouver, BC</span></div></div><div class="facts" data-facts><div class="facts__top"><span class="eyebrow">Off the résumé &middot; <span data-fact-tag>Paper trail</span></span><span class="facts__count"><span data-fact-seen>1</span> of 10 found</span></div><p class="facts__text" data-fact-text aria-live="polite">I hold six granted Microsoft patents.</p><button type="button" class="btn-pill" data-fact-btn><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Surprise me</button></div></div>
     </div></div></div>
     </section></main>
     <footer class="site-footer section--footer" id="contact" data-reveal>
@@ -189,8 +222,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=155"></script>
-  <script src="js/components.js?v=155"></script>
-  <script src="js/app.js?v=155"></script>
+  <script src="js/content.js?v=156"></script>
+  <script src="js/components.js?v=156"></script>
+  <script src="js/app.js?v=156"></script>
 </body>
 </html>
