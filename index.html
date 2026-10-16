@@ -36,9 +36,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=156" />
+  <link rel="stylesheet" href="css/tokens.css?v=165" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=156" />
+  <link rel="stylesheet" href="css/components.css?v=165" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -141,40 +141,36 @@
       <div class="case-card__media">
         <img class="image-slot__img" src="images/case-studies/rail-booking-thumb-cropped.png" alt="SAP Concur rail seat selection across desktop, tablet, and mobile" width="1343" height="832" loading="lazy" />
       </div>
-    </a></div><div class="also-shipped"><div class="also-shipped__head"><h3 class="also-shipped__title">Also shipped at <em>lululemon</em></h3><span class="also-shipped__meta">Short reads</span></div><div class="also-shipped__grid">
-    <article class="short-card" data-reveal>
-      <div class="short-card__media" style="background:#F87C72">
-        <img src="images/work/selfservice.jpg" alt="Illustration of a support agent at a laptop" loading="lazy" />
+    </a></div><div class="also-shipped"><div class="also-shipped__head"><h3 class="also-shipped__title">Also shipped at <em>lululemon</em></h3></div><div class="also-shipped__grid">
+    <article class="short-card short-card--gallery" data-reveal>
+      <div class="short-card__media">
+        <img src="images/work/also/selfservice-thumb-wide.jpg" alt="The Get Help menu in the lululemon header, listing Start a Return, Track my Order, Check Return Status, and Help &amp; Support" width="800" height="533" loading="lazy" />
+        <span class="short-card__count" aria-hidden="true">6 screens</span>
       </div>
       <div class="short-card__body">
-        <span class="short-card__tag">Support discoverability</span>
-        <h4 class="short-card__title">Self-Service</h4>
-        <p class="short-card__text">Footer data showed where people hunted for help. Moving it to the header paid off.</p>
-        <div class="short-card__chips">
-          <span class="chip chip--solid">$1.6M saved</span><span class="chip">5% fewer support contacts</span>
-        </div>
+        <h4 class="short-card__title"><button type="button" class="short-card__open" data-gallery-open="0" aria-haspopup="dialog" aria-label="Self-Service: view 6 screens">Self-Service</button></h4>
+        <p class="short-card__text">Moved hard-to-find support links from the footer into a Get Help menu in the header.</p>
+        <p class="short-card__results">$1.6M cost savings &middot; 5% fewer support interactions</p>
       </div>
     </article>
-    <article class="short-card" data-reveal>
-      <div class="short-card__media" style="background:#DCE9F7">
-        <img src="images/work/community.jpg" alt="Illustration of people gathering in a city park" loading="lazy" />
+    <article class="short-card short-card--gallery" data-reveal>
+      <div class="short-card__media">
+        <img src="images/work/also/community-thumb-pair.png" alt="Two screens from the lululemon app: the Community tab with a Try a Peloton Class carousel, and an event page with ticket availability" width="900" height="600" loading="lazy" />
+        <span class="short-card__count" aria-hidden="true">4 screens</span>
       </div>
       <div class="short-card__body">
-        <span class="short-card__tag">Community &amp; events</span>
-        <h4 class="short-card__title">Community Hub</h4>
-        <p class="short-card__text">Local events and classes, moved out of store emails and into the app.</p>
-        <div class="short-card__chips">
-          <span class="chip chip--solid">65K registrations</span><span class="chip">+40% discoverability</span>
-        </div>
+        <h4 class="short-card__title"><button type="button" class="short-card__open" data-gallery-open="1" aria-haspopup="dialog" aria-label="Community Hub: view 4 screens">Community Hub</button></h4>
+        <p class="short-card__text">An in-app hub to find and register for events and classes that lived on third-party sites.</p>
+        <p class="short-card__results">65K registrations in 2025 &middot; 40% better discoverability</p>
       </div>
-    </article></div></div></div>
+    </article></div><dialog class="gallery" data-gallery aria-labelledby="gallery-title"><div class="gallery__panel"><div class="gallery__head"><h3 class="gallery__title" id="gallery-title" data-g-title></h3><button type="button" class="gallery__close" data-g-close autofocus aria-label="Close screens"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="gallery__stage" data-g-stage role="group" aria-roledescription="carousel" aria-label="Project screens"><button type="button" class="gallery__nav gallery__nav--prev" data-g-prev aria-label="Previous screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" class="gallery__nav gallery__nav--next" data-g-next aria-label="Next screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><div class="gallery__foot"><p class="gallery__caption" data-g-caption aria-live="polite"></p><span class="gallery__count" data-g-count></span></div></div></dialog></div></div>
     </section>
     <section class="section" id="approach">
       <div class="container"><div data-reveal>
     <div class="split split--approach">
       <div class="split__label"><h2 class="eyebrow">How I Work</h2></div>
-      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <em class="emph">organizing complexity</em> into systems people can understand.</p><p class="statement__body">In practice that means I map the system before I draw a screen, and spend about as much time at a whiteboard with engineers as I do in Figma.</p><p class="statement__body">I build five directions when one would do, because the quickest way to find the right one is to make the other four and throw them away. Whatever survives that goes in front of a real customer before I trust it.</p><p class="statement__closing">Software people trust on the first try, and rely on every day after.</p></div>
-    </div><div class="stepper" data-stepper><div class="stepper__head"><div><span class="eyebrow">See it in practice</span><h3 class="stepper__title">One project, five real artifacts</h3></div><p class="stepper__intro">Step through how the SAP Concur rail seat map went from a competitive audit to a shipped, accessible component.</p></div><div class="stepper__tabs" role="tablist" aria-label="Project steps"><button type="button" class="stepper__tab" role="tab" data-step="0" aria-selected="true" aria-controls="stepper-panel"><span class="stepper__num">01</span><span class="stepper__label"><span class="stepper__verb">Look around</span><span class="stepper__artifact">Competitive analysis</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="1" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">02</span><span class="stepper__label"><span class="stepper__verb">Sketch wide</span><span class="stepper__artifact">Early concepts</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="2" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">03</span><span class="stepper__label"><span class="stepper__verb">Test &amp; break</span><span class="stepper__artifact">Usability testing</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="3" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">04</span><span class="stepper__label"><span class="stepper__verb">Include everyone</span><span class="stepper__artifact">Accessibility</span></span></button><button type="button" class="stepper__tab" role="tab" data-step="4" aria-selected="false" aria-controls="stepper-panel"><span class="stepper__num">05</span><span class="stepper__label"><span class="stepper__verb">Ship &amp; measure</span><span class="stepper__artifact">Final design</span></span></button></div><div class="stepper__panel" id="stepper-panel" role="tabpanel"><div class="stepper__media"><img data-step-img src="images/work/rail-comp.jpg" alt="Competitive analysis of rail and airline seat maps" loading="lazy" /></div><div class="stepper__copy"><div><span class="stepper__k">What I did</span><p class="stepper__did" data-step-did>Audited rail and airline seat selection to find the patterns travellers already trust.</p></div><div class="stepper__result"><span class="stepper__k stepper__k--accent">What it changed</span><p class="stepper__changed" data-step-changed>Seat attributes and coach availability had to be visible up front.</p></div><div class="stepper__nav"><button type="button" class="round-btn" data-step-prev aria-label="Previous step"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" class="round-btn round-btn--solid" data-step-next aria-label="Next step"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="stepper__count" aria-live="polite">Step <span data-step-num>01</span> of 05</span></div></div></div></div></div></div>
+      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <em class="emph">organizing complexity</em> into systems people can understand.</p><p class="statement__body">In practice that means I map the system before I draw a screen, and work through the hard parts at a whiteboard with engineers, not just in Figma.</p><p class="statement__body">I explore more than one option, then put whatever holds up in front of real users before I trust it.</p><p class="statement__closing">Software people trust on the first try, and rely on every day after.</p></div>
+    </div></div></div>
     </section>
     <section class="section" id="archive">
       <div class="container"><div data-reveal>
@@ -222,8 +218,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=156"></script>
-  <script src="js/components.js?v=156"></script>
-  <script src="js/app.js?v=156"></script>
+  <script src="js/content.js?v=165"></script>
+  <script src="js/components.js?v=165"></script>
+  <script src="js/app.js?v=165"></script>
 </body>
 </html>

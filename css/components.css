@@ -1009,11 +1009,10 @@ button:focus-visible {
 /* ============================================================
    A3/A4 refresh — Also shipped, process stepper, archive, Surprise me
    ============================================================ */
-.chip--solid { background: var(--accent); color: var(--on-accent); font-weight: 700; }
 
 /* ---------- Also shipped (short-read cards) ---------- */
 .also-shipped { margin-top: 56px; }
-.also-shipped__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px; }
+.also-shipped__head { margin-bottom: 24px; }
 .also-shipped__title {
   margin: 0;
   font-family: var(--font-display);
@@ -1022,35 +1021,173 @@ button:focus-visible {
   letter-spacing: var(--ls-statement);
   color: var(--text-primary);
 }
-.also-shipped__meta {
-  font-size: var(--fs-eyebrow);
-  font-weight: 700;
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
 .also-shipped__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-stack); }
 .short-card {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   overflow: hidden;
   box-shadow: var(--shadow-ambient-rest);
 }
-.short-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.short-card__body { padding: 28px 30px; display: flex; flex-direction: column; gap: 10px; }
-.short-card__tag {
-  font-size: var(--fs-eyebrow);
-  font-weight: 600;
-  letter-spacing: var(--ls-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-muted);
+.short-card--gallery { transition: box-shadow var(--hover-color-dur), border-color var(--hover-color-dur); }
+.short-card--gallery:hover { border-color: var(--border-bright); box-shadow: var(--shadow-ambient-hover); }
+.short-card--gallery:has(.short-card__open:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.short-card__media { position: relative; aspect-ratio: 3 / 2; background: var(--bg-inset); }
+.short-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+/* "6 screens": the one cue that the card opens more, sitting on the image. */
+.short-card__count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: var(--fs-chip);
+  font-weight: 700;
+  box-shadow: var(--shadow-ambient-rest);
 }
+.short-card__body { padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 8px; }
 .short-card__title { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.8rem; line-height: 1.1; color: var(--text-primary); }
-.short-card__text { margin: 0; font-size: var(--fs-small); line-height: 1.55; color: var(--text-primary); }
-.short-card__chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.short-card__text { margin: 0; font-size: var(--fs-small); line-height: 1.55; color: var(--text-primary); text-wrap: pretty; }
+.short-card__results { margin: 4px 0 0; font-size: var(--fs-small); font-weight: 700; line-height: 1.45; color: var(--accent-text); }
+
+/* Gallery cards: the whole card is one hit target. The title button's ::after
+   stretches over the card, so a click anywhere opens the carousel and there is
+   a single tab stop. Focus is drawn on the card, not on the title text. */
+.short-card__open {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.short-card__open::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.short-card__open:focus-visible { outline: none; }
+.short-card--gallery:hover .short-card__open { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+/* ---------- Screens carousel (Also shipped) ----------
+   One native <dialog> (js/app.js AlsoGallery). The stage is a fixed light
+   surface in both themes: the screens are flattened onto it, so they read as
+   the product's own light UI rather than being re-tinted by the page theme. */
+html:has(.gallery[open]) { overflow: hidden; }
+.gallery {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+  border: none;
+  background: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.gallery[open] { display: flex; }
+.gallery::backdrop { background: var(--lightbox-backdrop); }
+.gallery__panel {
+  width: min(1040px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--r-feature);
+  overflow: hidden;
+  box-shadow: var(--shadow-ambient-hover);
+  animation: galleryIn 0.28s var(--reveal-ease) both;
+}
+@keyframes galleryIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+.gallery__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px 14px 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+.gallery__title { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.6rem; line-height: 1.1; letter-spacing: var(--ls-statement); }
+.gallery__close,
+.gallery__nav {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: filter var(--hover-color-dur);
+}
+.gallery__close { background: var(--bg-inset); color: var(--text-primary); }
+.gallery__nav { position: absolute; top: 50%; translate: 0 -50%; background: var(--media-control-bg); color: var(--media-control-fg); }
+.gallery__nav--prev { left: 12px; }
+.gallery__nav--next { right: 12px; }
+.gallery__close:hover,
+.gallery__nav:hover { filter: brightness(1.12); }
+.gallery__close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.gallery__nav[hidden] { display: none; }
+.gallery__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(320px, 62vh, 640px);
+  padding: 20px 72px;
+  background: var(--surface-stage);
+  touch-action: pan-y;
+}
+.gallery__img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* The screens are cropped to their opaque window (no baked-in shadow), so
+     the soft shadow is drawn here, following the alpha edge. */
+  border-radius: var(--r-card);
+  filter: drop-shadow(0 6px 18px rgba(45, 50, 64, 0.18));
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.gallery__img.is-ready { opacity: 1; }
+.gallery__foot {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 28px 20px;
+  border-top: 1px solid var(--hairline);
+}
+.gallery__caption { margin: 0; max-width: 64ch; font-size: var(--fs-small); line-height: 1.55; color: var(--text-primary); text-wrap: pretty; }
+.gallery__count { flex: none; font-size: var(--fs-chip); font-weight: 700; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--text-muted); white-space: nowrap; }
+@media (max-width: 600px) {
+  .gallery__head { padding-left: 20px; }
+  .gallery__stage { height: clamp(300px, 58vh, 520px); padding: 12px 12px 68px; }
+  .gallery__nav { top: auto; bottom: 12px; translate: none; }
+  .gallery__nav--prev { left: 12px; }
+  .gallery__nav--next { right: 12px; }
+  .gallery__foot { flex-direction: column-reverse; gap: 8px; padding: 14px 20px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery__panel { animation: none; }
+  .gallery__img { transition: none; }
+  .short-card--gallery { transition: none; }
+}
 
 /* ---------- Process stepper ---------- */
 .stepper {
@@ -1193,13 +1330,12 @@ button:focus-visible {
   .archive { grid-template-columns: 1fr; }
   .archive__preview { position: static; order: -1; }
   .also-shipped__grid { grid-template-columns: 1fr; }
+  .short-card__media { aspect-ratio: 2 / 1; }
 }
 @media (max-width: 600px) {
   .stepper__tabs { grid-template-columns: repeat(5, 44px); gap: 0; justify-content: space-between; }
   .stepper__label { display: none; }
   .stepper__tab { min-height: 48px; padding: 8px 0; justify-content: center; }
-  .short-card { grid-template-columns: 1fr; }
-  .short-card__media { height: 180px; }
   .archive__row { grid-template-columns: minmax(0, 1fr) auto; padding: 14px 8px; }
   .archive__co { grid-column: 1 / -1; }
   .facts { padding: 24px; }

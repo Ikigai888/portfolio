@@ -163,19 +163,23 @@ window.Components = (function () {
       </div>
     </a>`;
 
-  /* --- ShortReadCard: compact "also shipped" card (image | text + result chips) --- */
-  const ShortReadCard = ({ tag, title, body, chips = [], image = {} }) => `
-    <article class="short-card" data-reveal>
-      <div class="short-card__media" style="background:${esc(image.bg || 'transparent')}">
-        <img src="${esc(image.src)}" alt="${esc(image.alt)}" loading="lazy" />
+  /* --- ShortReadCard: compact "also shipped" card (screen on top, text beneath) --- */
+  /* With a `gallery`, the whole card opens the screens carousel (see
+     js/app.js AlsoGallery): the title is a real <button> whose ::after
+     stretches over the card, so the card is one hit target with one tab stop.
+     Four parts: screen, title, one sentence, one line of results. */
+  const ShortReadCard = ({ title, body, results = [], image = {}, gallery = [] }, index) => `
+    <article class="short-card${gallery.length ? ' short-card--gallery' : ''}" data-reveal>
+      <div class="short-card__media">
+        <img src="${esc(image.src)}" alt="${esc(image.alt)}"${image.w ? ` width="${image.w}" height="${image.h}"` : ''} loading="lazy" />
+        ${gallery.length ? `<span class="short-card__count" aria-hidden="true">${gallery.length} screens</span>` : ''}
       </div>
       <div class="short-card__body">
-        <span class="short-card__tag">${esc(tag)}</span>
-        <h4 class="short-card__title">${esc(title)}</h4>
+        <h4 class="short-card__title">${gallery.length
+          ? `<button type="button" class="short-card__open" data-gallery-open="${index}" aria-haspopup="dialog" aria-label="${esc(title)}: view ${gallery.length} screens">${esc(title)}</button>`
+          : esc(title)}</h4>
         <p class="short-card__text">${esc(body)}</p>
-        <div class="short-card__chips">
-          ${chips.map(function (t, i) { return '<span class="chip' + (i === 0 ? ' chip--solid' : '') + '">' + esc(t) + '</span>'; }).join('')}
-        </div>
+        <p class="short-card__results">${results.map(esc).join(' &middot; ')}</p>
       </div>
     </article>`;
 

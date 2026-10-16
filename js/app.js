@@ -64,7 +64,7 @@
       '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
     return C.Section({
       id: 'approach',
-      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }) + Process(D.process),
+      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }),
     });
   }
 
@@ -115,13 +115,37 @@
     return '<div class="also-shipped">' +
       '<div class="also-shipped__head">' +
         '<h3 class="also-shipped__title">' + C.esc(d.title) + ' <em>' + C.esc(d.titleEm) + '</em></h3>' +
-        '<span class="also-shipped__meta">' + C.esc(d.meta) + '</span>' +
       '</div>' +
       '<div class="also-shipped__grid">' + d.items.map(C.ShortReadCard).join('') + '</div>' +
+      AlsoGallery() +
     '</div>';
   }
 
-  var ARROW_L = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+  /* Screens carousel for the Also shipped cards. One native <dialog> shared by
+     every card: showModal() supplies the focus trap, Escape-to-close, inert
+     background and top-layer stacking. initGallery() fills it on open. */
+  function AlsoGallery() {
+    return '<dialog class="gallery" data-gallery aria-labelledby="gallery-title">' +
+      '<div class="gallery__panel">' +
+        '<div class="gallery__head">' +
+          '<h3 class="gallery__title" id="gallery-title" data-g-title></h3>' +
+          '<button type="button" class="gallery__close" data-g-close autofocus aria-label="Close screens">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="gallery__stage" data-g-stage role="group" aria-roledescription="carousel" aria-label="Project screens">' +
+          '<button type="button" class="gallery__nav gallery__nav--prev" data-g-prev aria-label="Previous screen">' + ARROW_L + '</button>' +
+          '<button type="button" class="gallery__nav gallery__nav--next" data-g-next aria-label="Next screen">' + ARROW_R + '</button>' +
+        '</div>' +
+        '<div class="gallery__foot">' +
+          '<p class="gallery__caption" data-g-caption aria-live="polite"></p>' +
+          '<span class="gallery__count" data-g-count></span>' +
+        '</div>' +
+      '</div>' +
+    '</dialog>';
+  }
+
+  var ARROW_L ='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
   var ARROW_R = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   function pad2(i) { return (i < 9 ? '0' : '') + (i + 1); }
 
@@ -217,6 +241,86 @@
     tabs.forEach(function (t, j) { t.addEventListener('click', function () { show(j); }); });
     root.querySelector('[data-step-prev]').addEventListener('click', function () { show(cur - 1); });
     root.querySelector('[data-step-next]').addEventListener('click', function () { show(cur + 1); });
+  }
+
+  function initGallery() {
+    var dialog = document.querySelector('[data-gallery]');
+    var openers = document.querySelectorAll('[data-gallery-open]');
+    // No native <dialog>: leave the cards as plain, non-interactive reads.
+    if (!dialog || !openers.length || typeof dialog.showModal !== 'function') {
+      openers.forEach(function (b) { b.hidden = true; });
+      return;
+    }
+    var items = D.alsoShipped.items;
+    var stage = dialog.querySelector('[data-g-stage]');
+    var titleEl = dialog.querySelector('[data-g-title]');
+    var caption = dialog.querySelector('[data-g-caption]');
+    var count = dialog.querySelector('[data-g-count]');
+    var prev = dialog.querySelector('[data-g-prev]');
+    var next = dialog.querySelector('[data-g-next]');
+    // Created here, not in the markup, so there is never a src-less <img>.
+    var img = document.createElement('img');
+    img.className = 'gallery__img';
+    stage.insertBefore(img, stage.firstChild);
+    img.addEventListener('load', function () { img.classList.add('is-ready'); });
+
+    var list = [];
+    var cur = 0;
+    var opener = null;
+
+    function show(i) {
+      cur = (i + list.length) % list.length;
+      var s = list[cur];
+      var changed = img.getAttribute('src') !== s.src;
+      img.classList.toggle('is-ready', !changed);
+      img.width = s.w; img.height = s.h; img.alt = s.alt;
+      if (changed) img.src = s.src;
+      caption.textContent = s.caption;
+      count.textContent = (cur + 1) + ' of ' + list.length;
+      // Warm the neighbours so stepping through never waits on the network.
+      [cur - 1, cur + 1].forEach(function (j) {
+        new Image().src = list[(j + list.length) % list.length].src;
+      });
+    }
+
+    function open(btn) {
+      var item = items[Number(btn.getAttribute('data-gallery-open'))];
+      if (!item || !item.gallery || !item.gallery.length) return;
+      opener = btn;
+      list = item.gallery;
+      titleEl.textContent = item.title;
+      prev.hidden = next.hidden = list.length < 2;
+      img.removeAttribute('src');
+      show(0);
+      dialog.showModal();
+    }
+
+    openers.forEach(function (b) { b.addEventListener('click', function () { open(b); }); });
+    prev.addEventListener('click', function () { show(cur - 1); });
+    next.addEventListener('click', function () { show(cur + 1); });
+    dialog.querySelector('[data-g-close]').addEventListener('click', function () { dialog.close(); });
+    // The dialog fills the viewport; the panel sits inside it, so a click that
+    // lands on the dialog itself is a click on the dimmed area around the panel.
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function () { if (opener) opener.focus(); });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+    });
+
+    // Swipe on touch: a mostly horizontal drag past 40px steps the carousel.
+    var startX = null, startY = null;
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      startX = e.clientX; startY = e.clientY;
+    });
+    stage.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      startX = startY = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(cur + (dx < 0 ? 1 : -1));
+    });
+    stage.addEventListener('pointercancel', function () { startX = startY = null; });
   }
 
   function initArchive() {
@@ -509,6 +613,7 @@
     initThesisSettle();
     initHeroParallax();
     initStepper();
+    initGallery();
     initArchive();
     initFacts();
     C.initThemeToggle();

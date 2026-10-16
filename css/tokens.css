@@ -16,6 +16,7 @@
   --bg-footer:     #D5E8E7; /* deepest surface (contact band lives on --band-bg) */
   --bg-card:       #FAFDFC; /* case-study cards lifted toward white */
   --bg-inset:      #D5E8E7; /* image slots + chips + theme-toggle track */
+  --surface-stage: #EEF6F5; /* image-viewer stage: deliberately NOT overridden in dark, screens are light product UI */
 
   /* ---------- Color: text (Anthracite ink ramp; AA-checked on --bg) ---------- */
   --text-primary:   #2D3240; /* body + most headings */
