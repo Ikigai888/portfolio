@@ -59,7 +59,8 @@ He establishes patterns where none existed, rather than improving flows that alr
 - **The source PRDs behind the brand-governance case are unpublished.** They live in `reference/` (gitignored), are the factual source of truth for that case's claims about hierarchy levels, feature scope, named risks, and personas, and must never be committed, published, or quoted verbatim.
 
 **Absent, and never to be fabricated:**
-- No testimonials, client quotes, endorsements, press coverage, awards, or speaking credits exist. Future work must not invent them, and must not use client logos in a way that implies endorsement, to fill a proof gap.
+- **Recognition that exists (team-level, confirmed Oct 2026):** an SAP Product Excellence Award (2018) and a Baymard Institute top-1% e-commerce ranking (2024), both awarded to the whole product team, plus six granted Microsoft patents with Tad as an inventor. Always credit the awards to the team ("My SAP team won…", "our team's e-commerce work"), never to Tad alone.
+- No testimonials, client quotes, endorsements, press coverage, or speaking credits exist. Future work must not invent them, and must not use client logos in a way that implies endorsement, to fill a proof gap.
 
 ## Product Principles
 

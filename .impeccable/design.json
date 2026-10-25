@@ -1,150 +1,298 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-11T17:48:47Z",
+  "generatedAt": "2026-10-25T20:05:21Z",
   "title": "Design System: Tad Natsuhara Portfolio",
   "extensions": {
     "colorMeta": {
       "accent": {
         "role": "primary",
-        "displayName": "Olive (light) / Signature Mint (dark)",
-        "canonical": "oklch(0.487 0.0395 127.8)",
+        "displayName": "Sea Jet",
+        "canonical": "oklch(0.701 0.090 209.5)",
+        "hex": "#52AEBD",
         "tonalRamp": [
-          "oklch(0.16 0.018 127.8)",
-          "oklch(0.25 0.026 127.8)",
-          "oklch(0.34 0.033 127.8)",
-          "oklch(0.42 0.037 127.8)",
-          "oklch(0.487 0.0395 127.8)",
-          "oklch(0.60 0.045 127.8)",
-          "oklch(0.75 0.038 127.8)",
-          "oklch(0.90 0.020 127.8)"
-        ]
+          "oklch(0.180 0.037 209.5)",
+          "oklch(0.280 0.049 209.5)",
+          "oklch(0.380 0.062 209.5)",
+          "oklch(0.480 0.074 209.5)",
+          "oklch(0.620 0.087 209.5)",
+          "oklch(0.760 0.069 209.5)",
+          "oklch(0.880 0.054 209.5)",
+          "oklch(0.960 0.044 209.5)"
+        ],
+        "use": "The single accent in both themes: fills, large display accent, focus ring, toggle thumb, solid chips."
       },
       "accent-text": {
         "role": "primary",
-        "displayName": "Olive Text (light)",
-        "canonical": "oklch(0.437 0.075 127.8)",
-        "note": "Carries MORE chroma than a straight darken of --accent (0.075 vs 0.0395, same hue). A same-chroma darken reads as a muddy neutral-brown at small sizes; the higher-chroma version stays unambiguously green while remaining muted."
-      },
-      "accent-dark": {
-        "role": "primary",
-        "displayName": "Signature Mint (dark theme accent)",
-        "canonical": "oklch(0.81 0.084 179)",
+        "displayName": "Deep Sea Jet",
+        "canonical": "oklch(0.516 0.074 212.6)",
+        "hex": "#2A7381",
         "tonalRamp": [
-          "oklch(0.20 0.03 179)",
-          "oklch(0.32 0.05 179)",
-          "oklch(0.44 0.06 179)",
-          "oklch(0.56 0.07 179)",
-          "oklch(0.68 0.08 179)",
-          "oklch(0.81 0.084 179)",
-          "oklch(0.90 0.06 179)",
-          "oklch(0.96 0.03 179)"
-        ]
+          "oklch(0.180 0.030 212.6)",
+          "oklch(0.280 0.041 212.6)",
+          "oklch(0.380 0.051 212.6)",
+          "oklch(0.480 0.062 212.6)",
+          "oklch(0.620 0.072 212.6)",
+          "oklch(0.760 0.057 212.6)",
+          "oklch(0.880 0.045 212.6)",
+          "oklch(0.960 0.037 212.6)"
+        ],
+        "use": "Small accent type on paper (light theme only, 4.95:1); dark theme uses Sea Jet itself."
       },
-      "accent-text-dark": {
-        "role": "primary",
-        "displayName": "Signature Mint Text (dark)",
-        "canonical": "oklch(0.91 0.097 179)"
+      "band-bg": {
+        "role": "secondary",
+        "displayName": "Soft Aqua",
+        "canonical": "oklch(0.795 0.046 194.5)",
+        "hex": "#9AC6C5",
+        "tonalRamp": [
+          "oklch(0.180 0.019 194.5)",
+          "oklch(0.280 0.026 194.5)",
+          "oklch(0.380 0.032 194.5)",
+          "oklch(0.480 0.039 194.5)",
+          "oklch(0.620 0.045 194.5)",
+          "oklch(0.760 0.036 194.5)",
+          "oklch(0.880 0.028 194.5)",
+          "oklch(0.960 0.023 194.5)"
+        ],
+        "use": "Outcome band and contact footer: the one committed full-surface moment, same in both themes."
       },
       "bg": {
         "role": "neutral",
-        "displayName": "Warm Paper (light) / Warm Pitch (dark)",
-        "canonical": "#F4F0E8",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(0.967 0.009 188.1)",
+        "hex": "#EEF6F5",
         "tonalRamp": [
-          "#15120D",
-          "#26211A",
-          "#3D3524",
-          "#554A33",
-          "#6E6249",
-          "#A79A80",
-          "#E9E1D2",
-          "#F4F0E8"
-        ]
+          "oklch(0.180 0.004 188.1)",
+          "oklch(0.280 0.005 188.1)",
+          "oklch(0.380 0.006 188.1)",
+          "oklch(0.480 0.007 188.1)",
+          "oklch(0.620 0.008 188.1)",
+          "oklch(0.760 0.007 188.1)",
+          "oklch(0.880 0.005 188.1)",
+          "oklch(0.960 0.004 188.1)"
+        ],
+        "use": "Light page background."
       },
       "bg-footer": {
         "role": "neutral",
-        "displayName": "Deeper Paper",
-        "canonical": "#EDE7DE"
+        "displayName": "Aqua Mist",
+        "canonical": "oklch(0.917 0.020 193.0)",
+        "hex": "#D5E8E7",
+        "tonalRamp": [
+          "oklch(0.180 0.008 193.0)",
+          "oklch(0.280 0.011 193.0)",
+          "oklch(0.380 0.014 193.0)",
+          "oklch(0.480 0.017 193.0)",
+          "oklch(0.620 0.020 193.0)",
+          "oklch(0.760 0.016 193.0)",
+          "oklch(0.880 0.012 193.0)",
+          "oklch(0.960 0.010 193.0)"
+        ],
+        "use": "Deepest light surface; also --bg-inset (chips, image slots, toggle track)."
       },
       "bg-card": {
         "role": "neutral",
         "displayName": "Card Paper",
-        "canonical": "#FBF8F1"
-      },
-      "bg-inset": {
-        "role": "neutral",
-        "displayName": "Inset Paper",
-        "canonical": "#E9E1D2"
+        "canonical": "oklch(0.992 0.003 174.5)",
+        "hex": "#FAFDFC",
+        "tonalRamp": [
+          "oklch(0.180 0.001 174.5)",
+          "oklch(0.280 0.002 174.5)",
+          "oklch(0.380 0.002 174.5)",
+          "oklch(0.480 0.003 174.5)",
+          "oklch(0.620 0.003 174.5)",
+          "oklch(0.760 0.003 174.5)",
+          "oklch(0.880 0.002 174.5)",
+          "oklch(0.960 0.002 174.5)"
+        ],
+        "use": "Light card surface, lifted toward white."
       },
       "text-primary": {
         "role": "neutral",
-        "displayName": "Primary Ink",
-        "canonical": "#241E13"
+        "displayName": "Anthracite",
+        "canonical": "oklch(0.318 0.026 269.5)",
+        "hex": "#2D3240",
+        "tonalRamp": [
+          "oklch(0.180 0.011 269.5)",
+          "oklch(0.280 0.014 269.5)",
+          "oklch(0.380 0.018 269.5)",
+          "oklch(0.480 0.022 269.5)",
+          "oklch(0.620 0.025 269.5)",
+          "oklch(0.760 0.020 269.5)",
+          "oklch(0.880 0.016 269.5)",
+          "oklch(0.960 0.013 269.5)"
+        ],
+        "use": "Body and most headings (light theme)."
       },
-      "band-bg": {
-        "role": "tertiary",
-        "displayName": "Outcome Olive (light) / Outcome Mint (dark)",
-        "canonical": "oklch(0.605 0.045 127.8)",
-        "note": "Tuned independently of --accent (lighter, slightly more saturated). A straight fill of --accent reads flat across a full-bleed surface this large."
+      "text-bright": {
+        "role": "neutral",
+        "displayName": "Black Bean",
+        "canonical": "oklch(0.276 0.010 355.6)",
+        "hex": "#2C2628",
+        "tonalRamp": [
+          "oklch(0.180 0.004 355.6)",
+          "oklch(0.280 0.005 355.6)",
+          "oklch(0.380 0.007 355.6)",
+          "oklch(0.480 0.008 355.6)",
+          "oklch(0.620 0.009 355.6)",
+          "oklch(0.760 0.007 355.6)",
+          "oklch(0.880 0.006 355.6)",
+          "oklch(0.960 0.005 355.6)"
+        ],
+        "use": "Wordmark, display headings, ink on accent fills; also the dark page background."
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Olive Brown",
+        "canonical": "oklch(0.441 0.042 109.8)",
+        "hex": "#54553A",
+        "tonalRamp": [
+          "oklch(0.180 0.017 109.8)",
+          "oklch(0.280 0.023 109.8)",
+          "oklch(0.380 0.029 109.8)",
+          "oklch(0.480 0.035 109.8)",
+          "oklch(0.620 0.040 109.8)",
+          "oklch(0.760 0.032 109.8)",
+          "oklch(0.880 0.025 109.8)",
+          "oklch(0.960 0.021 109.8)"
+        ],
+        "use": "Eyebrows, nav, supporting copy (7.0:1 on paper); also the dark --bg-inset."
+      },
+      "surface-stage": {
+        "role": "neutral",
+        "displayName": "Viewer Stage",
+        "canonical": "oklch(0.967 0.009 188.1)",
+        "hex": "#EEF6F5",
+        "tonalRamp": [
+          "oklch(0.180 0.004 188.1)",
+          "oklch(0.280 0.005 188.1)",
+          "oklch(0.380 0.006 188.1)",
+          "oklch(0.480 0.007 188.1)",
+          "oklch(0.620 0.008 188.1)",
+          "oklch(0.760 0.007 188.1)",
+          "oklch(0.880 0.005 188.1)",
+          "oklch(0.960 0.004 188.1)"
+        ],
+        "use": "Screens carousel stage. Same light value in both themes by design: the screens are light product UI."
+      },
+      "bg-dark": {
+        "role": "neutral",
+        "displayName": "Black Bean (dark ground)",
+        "canonical": "oklch(0.276 0.010 355.6)",
+        "hex": "#2C2628",
+        "tonalRamp": [
+          "oklch(0.180 0.004 355.6)",
+          "oklch(0.280 0.005 355.6)",
+          "oklch(0.380 0.007 355.6)",
+          "oklch(0.480 0.008 355.6)",
+          "oklch(0.620 0.009 355.6)",
+          "oklch(0.760 0.007 355.6)",
+          "oklch(0.880 0.006 355.6)",
+          "oklch(0.960 0.005 355.6)"
+        ],
+        "use": "Dark theme page background."
+      },
+      "bg-card-dark": {
+        "role": "neutral",
+        "displayName": "Anthracite (dark card)",
+        "canonical": "oklch(0.318 0.026 269.5)",
+        "hex": "#2D3240",
+        "tonalRamp": [
+          "oklch(0.180 0.011 269.5)",
+          "oklch(0.280 0.014 269.5)",
+          "oklch(0.380 0.018 269.5)",
+          "oklch(0.480 0.022 269.5)",
+          "oklch(0.620 0.025 269.5)",
+          "oklch(0.760 0.020 269.5)",
+          "oklch(0.880 0.016 269.5)",
+          "oklch(0.960 0.013 269.5)"
+        ],
+        "use": "Dark theme card surface."
+      },
+      "text-primary-dark": {
+        "role": "neutral",
+        "displayName": "Aqua White",
+        "canonical": "oklch(0.953 0.011 189.8)",
+        "hex": "#E8F2F1",
+        "tonalRamp": [
+          "oklch(0.180 0.004 189.8)",
+          "oklch(0.280 0.006 189.8)",
+          "oklch(0.380 0.007 189.8)",
+          "oklch(0.480 0.009 189.8)",
+          "oklch(0.620 0.010 189.8)",
+          "oklch(0.760 0.008 189.8)",
+          "oklch(0.880 0.007 189.8)",
+          "oklch(0.960 0.005 189.8)"
+        ],
+        "use": "Dark theme body text (12:1 on --bg)."
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display (Spectral serif)",
-        "purpose": "Hero headline. Left column of the two-column hero, wraps 2-3 lines by design; the accent line is Spectral italic in the theme accent. clamp(44px, 6vw, 88px), line-height 0.98."
+        "displayName": "Display",
+        "purpose": "Hero headline. Newsreader 500, --fs-display clamp(min(3.25rem,14.5vw), 8vw, 5.25rem), line-height 0.98, tracking -0.02em."
       },
       "section": {
-        "displayName": "Section (Spectral serif)",
-        "purpose": "Case-study section headlines, the case page H1, the footer 'Say hello' CTA. clamp(30px, 4vw, 52px)."
+        "displayName": "Section",
+        "purpose": "Section headlines and case page H1. Newsreader 500, --fs-section clamp(1.875rem,4vw,3.25rem)."
       },
       "statement": {
-        "displayName": "Statement (Spectral serif)",
-        "purpose": "Declarative statement blocks (What I Do, How I Work, About). Inline emphasis is Spectral italic, same ink. clamp(26px, 3.1vw, 44px)."
+        "displayName": "Statement",
+        "purpose": "Declarative statement blocks (What I Do, How I Work, About). Newsreader 500, --fs-statement-sm; key phrases in italic."
+      },
+      "coda": {
+        "displayName": "Coda",
+        "purpose": "Closing italic line under a statement. Newsreader 500 italic, --fs-coda."
       },
       "lead": {
-        "displayName": "Lead (Hanken Grotesk)",
-        "purpose": "Lead paragraphs; capped ~46-65ch. clamp(17px, 1.6vw, 21px)."
+        "displayName": "Lead",
+        "purpose": "Lead paragraphs. Public Sans 400, --fs-lead, line-height 1.6."
       },
       "body": {
-        "displayName": "Body (Hanken Grotesk)",
-        "purpose": "Default running copy, 16px."
+        "displayName": "Body",
+        "purpose": "Running copy and card text. Public Sans 400, 16px (--fs-body) or 15px (--fs-small), line-height 1.55-1.6."
       },
       "eyebrow": {
-        "displayName": "Eyebrow (Hanken Grotesk)",
-        "purpose": "Accent section labels, nav links (muted), case-card metadata. 12px, 700 weight, 0.14em tracking, uppercase."
+        "displayName": "Eyebrow",
+        "purpose": "Nav links and card tags. Public Sans 600-700, 12px, 0.14em tracking, uppercase."
       }
     },
     "shadows": [
       {
         "name": "ambient-rest",
-        "value": "0 4px 24px rgba(36, 30, 19, 0.10)",
-        "purpose": "Default soft shadow under case-study cards (light theme; dark theme uses 0 4px 24px rgba(0,0,0,0.25))."
+        "value": "0 4px 24px rgba(45, 50, 64, 0.10)",
+        "purpose": "Default soft shadow under cards (light). Dark: 0 4px 24px rgba(0, 0, 0, 0.35)."
       },
       {
         "name": "ambient-hover",
-        "value": "0 10px 34px rgba(36, 30, 19, 0.16)",
-        "purpose": "Deeper shadow on hover, paired with border-brightening (dark theme: 0 10px 34px rgba(0,0,0,0.34))."
+        "value": "0 10px 34px rgba(45, 50, 64, 0.16)",
+        "purpose": "Hover/raised state, paired with border-brightening (also the carousel panel). Dark: 0 10px 34px rgba(0, 0, 0, 0.45)."
       },
       {
-        "name": "status-glow",
-        "value": "0 0 0 4px rgba(180, 84, 46, 0.16)",
-        "purpose": "About live-status dot ring (light, soft olive ring since a real glow disappears on paper); dark theme uses a true mint glow 0 0 10px oklch(0.81 0.084 179)."
+        "name": "dot-glow",
+        "value": "0 0 0 4px rgba(82, 174, 189, 0.25)",
+        "purpose": "About live-status dot: a soft Sea Jet ring that reads on paper. Same in both themes."
+      },
+      {
+        "name": "screen-drop",
+        "value": "drop-shadow(0 6px 18px rgba(45, 50, 64, 0.18))",
+        "purpose": "Screens in the carousel: follows the screenshot's alpha edge, since the source shadows were cropped out."
       }
     ],
     "motion": [
       {
         "name": "reveal",
         "value": "0.7s cubic-bezier(0.2, 0.7, 0.2, 1)",
-        "purpose": "Scroll-reveal entrance (gated on html.js, disabled under prefers-reduced-motion)."
+        "purpose": "Scroll-reveal entrance (html.js gated, off under prefers-reduced-motion). The same ease drives the carousel entrance (0.28s) and arrow nudges."
       },
       {
         "name": "hover-border",
         "value": "0.4s ease",
-        "purpose": "Border-color / box-shadow hover transitions."
+        "purpose": "Border-color and box-shadow hover transitions on cards."
       },
       {
         "name": "hover-color",
         "value": "0.3s ease",
-        "purpose": "Text/icon color hover transitions."
+        "purpose": "Text, icon, filter and small transform hovers."
       }
     ],
     "breakpoints": [
@@ -163,73 +311,103 @@
       "name": "Chip",
       "kind": "chip",
       "refersTo": "chip",
-      "description": "Secondary metadata tag on an inset surface (case-study Key Capabilities row).",
+      "description": "Secondary metadata tag on the committed aqua-tinted surface (case-study Key Capabilities row).",
       "html": "<span class=\"ds-chip\">Product Strategy</span>",
-      "css": ".ds-chip { display: inline-block; background: var(--bg-inset); color: var(--text-tertiary); font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 100px; }"
+      "css": ".ds-chip{display:inline-block;background:var(--surface-committed);color:var(--band-text);font-size:var(--fs-chip);font-weight:500;padding:7px 13px;border-radius:var(--r-pill)}"
     },
     {
       "name": "Case Study Card",
       "kind": "card",
       "refersTo": "case-card",
-      "description": "Two-column card linking to a case study: client + theme eyebrow, serif title, italic driving question, CTA, against a whole product screenshot on a white mat.",
-      "html": "<a class=\"ds-case-card\" href=\"#\"><div class=\"ds-case-card__body\"><div class=\"ds-case-card__eyebrow\"><span>MoxiWorks</span><span aria-hidden=\"true\">·</span><span>Organizational Complexity</span></div><h3 class=\"ds-case-card__title\">Designing Brand Governance for Enterprise Scale</h3><p class=\"ds-case-card__question\">How do you help thousands of agents stay on brand without relying on manual processes?</p><span class=\"ds-case-card__cta\">View case study <span aria-hidden=\"true\">→</span></span></div><div class=\"ds-case-card__media\"></div></a>",
-      "css": ".ds-case-card { display: grid; grid-template-columns: 1.05fr 0.95fr; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow-ambient-rest); transition: border-color 0.4s, box-shadow 0.4s; } .ds-case-card:hover { border-color: var(--border-bright); box-shadow: var(--shadow-ambient-hover); } .ds-case-card__body { padding: 48px 50px; } .ds-case-card__eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); } .ds-case-card__title { font-family: var(--font-display); font-size: clamp(30px, 4vw, 52px); font-weight: 500; line-height: 1.08; letter-spacing: -0.018em; margin: 18px 0 0; } .ds-case-card__question { font-family: var(--font-display); font-style: italic; font-size: 21px; line-height: 1.5; color: var(--text-secondary); margin: 18px 0 0; } .ds-case-card__cta { display: inline-block; margin-top: 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); } /* White mat, theme-invariant: matches the screenshots' own baked-in white so the contain-fit letterboxing reads as one continuous surface. No edge scrim. */ .ds-case-card__media { position: relative; background: #fff; min-height: 420px; } .ds-case-card__media img { width: 100%; height: 100%; object-fit: contain; object-position: center; }"
+      "description": "Two-column feature card: serif title and driving question beside a screenshot. Border and shadow deepen together on hover.",
+      "html": "<a class=\"ds-case-card\" href=\"#\"><div class=\"ds-case-card__body\"><span class=\"ds-eyebrow\">SAP Concur</span><h3 class=\"ds-case-card__title\">Rail seat map</h3><p class=\"ds-case-card__q\">How do you pick a seat on a train that has no seat map?</p></div></a>",
+      "css": ".ds-case-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-feature);overflow:hidden;text-decoration:none;color:inherit;box-shadow:var(--shadow-ambient-rest);transition:border-color var(--hover-dur),box-shadow var(--hover-dur)}.ds-case-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-ambient-hover)}.ds-case-card__body{padding:48px 50px}.ds-eyebrow{font-size:var(--fs-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted)}.ds-case-card__title{margin:18px 0;font-family:var(--font-display);font-size:var(--fs-section-sm);line-height:var(--lh-tight);font-weight:500;color:var(--text-primary)}.ds-case-card__q{margin:0;font-style:italic;color:var(--text-secondary)}"
+    },
+    {
+      "name": "Short Card (Also shipped)",
+      "kind": "card",
+      "refersTo": "short-card",
+      "description": "Stacked card: landscape product screen with a '6 screens' pill, serif title, one sentence, one line of results. The whole card is one button that opens the screens carousel.",
+      "html": "<article class=\"ds-short-card\"><div class=\"ds-short-card__media\"><span class=\"ds-short-card__count\">6 screens</span></div><div class=\"ds-short-card__body\"><h4 class=\"ds-short-card__title\"><button type=\"button\" class=\"ds-short-card__open\">Self-Service</button></h4><p class=\"ds-short-card__text\">Moved hard-to-find support links from the footer into a Get Help menu in the header.</p><p class=\"ds-short-card__results\">$1.6M cost savings &middot; 5% fewer support interactions</p></div></article>",
+      "css": ".ds-short-card{position:relative;display:flex;flex-direction:column;width:min(420px,100%);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-ambient-rest);transition:box-shadow var(--hover-color-dur),border-color var(--hover-color-dur)}.ds-short-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-ambient-hover)}.ds-short-card__media{position:relative;aspect-ratio:3/2;background:var(--bg-inset)}.ds-short-card__count{position:absolute;right:12px;bottom:12px;padding:5px 11px;border-radius:var(--r-pill);background:var(--bg-card);color:var(--text-primary);font-size:var(--fs-chip);font-weight:700;box-shadow:var(--shadow-ambient-rest)}.ds-short-card__body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:8px}.ds-short-card__title{margin:0;font-family:var(--font-display);font-weight:500;font-size:1.8rem;line-height:1.1;color:var(--text-primary)}.ds-short-card__open{padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}.ds-short-card__open::after{content:'';position:absolute;inset:0;border-radius:inherit}.ds-short-card:hover .ds-short-card__open{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}.ds-short-card__text{margin:0;font-size:var(--fs-small);line-height:1.55;color:var(--text-primary)}.ds-short-card__results{margin:4px 0 0;font-size:var(--fs-small);font-weight:700;line-height:1.45;color:var(--accent-text)}"
+    },
+    {
+      "name": "Screens Carousel",
+      "kind": "custom",
+      "refersTo": "gallery",
+      "description": "Native <dialog> viewer for a project's screens: serif title, fixed-light stage, round arrow controls, caption and 'n of N' counter. Arrows, swipe and Escape all work; screens carry a drop shadow drawn in CSS.",
+      "html": "<div class=\"ds-gallery\"><div class=\"ds-gallery__head\"><h3 class=\"ds-gallery__title\">Self-Service</h3><button type=\"button\" class=\"ds-gallery__close\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M6 6l12 12M18 6L6 18\"/></svg></button></div><div class=\"ds-gallery__stage\"><div class=\"ds-gallery__screen\"></div><button type=\"button\" class=\"ds-gallery__nav ds-gallery__nav--prev\" aria-label=\"Previous screen\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 12H5M11 6l-6 6 6 6\"/></svg></button><button type=\"button\" class=\"ds-gallery__nav ds-gallery__nav--next\" aria-label=\"Next screen\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button></div><div class=\"ds-gallery__foot\"><p class=\"ds-gallery__caption\">The solution: a Get Help menu in the header puts returns, order tracking, and support where people already look.</p><span class=\"ds-gallery__count\">1 of 6</span></div></div>",
+      "css": ".ds-gallery{width:min(640px,100%);background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);border-radius:var(--r-feature);overflow:hidden;box-shadow:var(--shadow-ambient-hover)}.ds-gallery__head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 14px 28px;border-bottom:1px solid var(--hairline)}.ds-gallery__title{margin:0;font-family:var(--font-display);font-weight:500;font-size:1.6rem;line-height:1.1}.ds-gallery__close,.ds-gallery__nav{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;cursor:pointer;transition:filter var(--hover-color-dur)}.ds-gallery__close{background:var(--bg-inset);color:var(--text-primary)}.ds-gallery__nav{position:absolute;top:50%;translate:0 -50%;background:var(--media-control-bg);color:var(--media-control-fg)}.ds-gallery__nav--prev{left:12px}.ds-gallery__nav--next{right:12px}.ds-gallery__close:hover,.ds-gallery__nav:hover{filter:brightness(1.12)}.ds-gallery__close:focus-visible,.ds-gallery__nav:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.ds-gallery__stage{position:relative;display:flex;align-items:center;justify-content:center;height:220px;background:var(--surface-stage)}.ds-gallery__screen{width:160px;height:150px;background:var(--bg-card);border-radius:var(--r-card);filter:drop-shadow(0 6px 18px rgba(45,50,64,.18))}.ds-gallery__foot{display:flex;justify-content:space-between;gap:24px;padding:16px 28px 20px;border-top:1px solid var(--hairline)}.ds-gallery__caption{margin:0;max-width:64ch;font-size:var(--fs-small);line-height:1.55}.ds-gallery__count{flex:none;font-size:var(--fs-chip);font-weight:700;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--text-muted);white-space:nowrap}"
     },
     {
       "name": "Hero CTA",
       "kind": "custom",
       "refersTo": "hero__cta",
-      "description": "Uppercase link with a bottom hairline that brightens to the theme accent on hover; the arrow nudges up-right.",
+      "description": "Text link with a bottom hairline; the accent arrow nudges up-right on hover. The page has no boxed buttons.",
       "html": "<a class=\"ds-hero-cta\" href=\"#\">View selected work <span class=\"ds-hero-cta__arrow\">↗</span></a>",
-      "css": ".ds-hero-cta { display: inline-flex; align-items: center; gap: 10px; padding: 22px 0 6px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-bright); transition: color 0.3s, border-color 0.3s; } .ds-hero-cta:hover { color: var(--accent-text); border-color: var(--accent); } .ds-hero-cta__arrow { transition: transform 0.3s; } .ds-hero-cta:hover .ds-hero-cta__arrow { transform: translate(3px, -3px); }"
+      "css": ".ds-hero-cta{display:inline-flex;align-items:center;gap:10px;padding:22px 0 6px;font-size:var(--fs-chip);font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-primary);text-decoration:none;border-bottom:1px solid var(--border-bright);transition:color var(--hover-color-dur),border-color var(--hover-color-dur)}.ds-hero-cta:hover{color:var(--accent-text);border-color:var(--accent)}.ds-hero-cta__arrow{transition:transform var(--hover-color-dur)}.ds-hero-cta:hover .ds-hero-cta__arrow{transform:translate(3px,-3px)}.ds-hero-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-focus)}"
     },
     {
       "name": "Drenched Footer CTA",
       "kind": "custom",
       "refersTo": "footer-cta",
-      "description": "The one signature moment the page commits the accent to a full surface — oversized Spectral 'Say hello ↗' as display type on a solid accent field (olive light / mint dark) with near-black band ink.",
-      "html": "<a class=\"ds-footer-cta\" href=\"#\">Say hello <span class=\"ds-footer-cta__arrow\">↗</span></a>",
-      "css": ".ds-footer-cta { display: inline-flex; align-items: baseline; gap: 16px; font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 8vw, 7rem); color: var(--band-text); text-decoration: none; } .ds-footer-cta__arrow { transition: transform 0.3s; } .ds-footer-cta:hover .ds-footer-cta__arrow { transform: translate(4px, -4px); }"
+      "description": "The one committed-accent moment: oversized serif 'Say hello' on the Soft Aqua band, in ink; the arrow nudges up-right on hover.",
+      "html": "<div class=\"ds-footer-band\"><a class=\"ds-footer-cta\" href=\"#\">Say hello <span class=\"ds-footer-arrow\">↗</span></a></div>",
+      "css": ".ds-footer-band{background:var(--band-bg);color:var(--band-text);padding:48px 40px}.ds-footer-cta{display:block;font-family:var(--font-display);font-size:clamp(2.75rem,8vw,7rem);line-height:var(--lh-display);letter-spacing:var(--ls-display);font-weight:500;color:var(--band-text);text-decoration:none}.ds-footer-arrow{display:inline-block;transition:transform var(--hover-color-dur)}.ds-footer-cta:hover .ds-footer-arrow{transform:translate(6px,-6px)}.ds-footer-cta:focus-visible{outline:2px solid var(--band-text);outline-offset:3px;border-radius:var(--r-focus)}"
     },
     {
       "name": "Navigation Link",
       "kind": "nav",
       "refersTo": "site-header__link",
-      "description": "Uppercase eyebrow-treatment nav link, muted → primary on hover, 44px tap box.",
-      "html": "<a class=\"ds-nav-link\" href=\"#\">Work</a>",
-      "css": ".ds-nav-link { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.3s; padding-block: 15px; margin-block: -15px; } .ds-nav-link:hover { color: var(--text-primary); }"
+      "description": "Uppercase eyebrow link, muted until hover; the current section gets an accent underline (scrollspy).",
+      "html": "<nav style=\"display:flex;gap:28px\"><a class=\"ds-nav-link\" href=\"#\" aria-current=\"true\">Work</a><a class=\"ds-nav-link\" href=\"#\">Approach</a><a class=\"ds-nav-link\" href=\"#\">About</a></nav>",
+      "css": ".ds-nav-link{font-size:var(--fs-eyebrow);font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding-block:15px;transition:color var(--hover-color-dur)}.ds-nav-link:hover{color:var(--text-primary)}.ds-nav-link[aria-current]{color:var(--text-primary);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px}.ds-nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-focus)}"
+    },
+    {
+      "name": "Surprise Button",
+      "kind": "button",
+      "refersTo": "facts__btn",
+      "description": "Compact dome push button (112px): base plate, darker wall, Sea Jet dome with an uppercase sans label. Hover lifts, press sinks and releases.",
+      "html": "<button type=\"button\" class=\"ds-dome\"><span class=\"ds-dome__base\"></span><span class=\"ds-dome__wall\"></span><span class=\"ds-dome__top\"><span class=\"ds-dome__label\">Surprise me</span></span></button>",
+      "css": ".ds-dome{position:relative;width:112px;height:112px;border:0;background:none;padding:0;cursor:pointer}.ds-dome__base,.ds-dome__wall,.ds-dome__top{position:absolute;border-radius:50%}.ds-dome__base{inset:0;background:var(--bg-inset);border:1px solid var(--border-bright);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -8px 12px rgba(45,50,64,.14),0 12px 26px rgba(45,50,64,.18)}.ds-dome__wall{inset:18px 13px 9px;background:color-mix(in oklch,var(--accent) 60%,black)}.ds-dome__top{inset:11px 13px 18px;display:flex;align-items:center;justify-content:center;background:var(--accent);box-shadow:inset 0 -12px 16px rgba(0,0,0,.16),inset 0 10px 12px rgba(255,255,255,.32),0 10px 14px rgba(0,0,0,.14);transition:transform .12s var(--reveal-ease),box-shadow .12s var(--reveal-ease)}.ds-dome__label{font-family:var(--font-sans);font-weight:800;font-size:.75rem;line-height:1.15;letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);padding:0 10px;text-align:center}.ds-dome:hover .ds-dome__top{transform:translateY(-2px)}.ds-dome:active .ds-dome__top{transform:translateY(5px)}.ds-dome:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:50%}"
     }
   ],
   "narrative": {
     "northStar": "Editorial Restraint",
-    "overview": "Warm paper (#F4F0E8) holds the page; a high-contrast serif carries every headline like a magazine feature; one olive accent is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight warm-ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy. This is the editorial iteration (adopted Jul 2026 from the 'Editorial Homepage' redesign). It replaces the earlier dark-default, mint/copper, Alegreya-Bricolage system. The content and information architecture are unchanged; the visual language is new. This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Warmth is carried by the paper ground, the serif, and the olive accent — never by a tinted-near-white body that reads as 'AI beige.'",
+    "overview": "Cool paper (`#EEF6F5`) holds the page; a high-contrast serif carries every headline like a magazine feature; one Sea Jet accent (`#52AEBD`) is the only saturated color allowed to speak. Everything else — body copy, chips, borders — recedes into a tight Anthracite ink ramp. The system reads like a senior designer's editorial spread: generous whitespace, serif display doing the expressive work (with its italics carrying the emphasis), a single confident hue, and no decoration that doesn't serve hierarchy.\n\nThis is the *editorial* iteration (adopted Jul 2026 from the \"Editorial Homepage\" redesign). In Sept–Oct 2026 the A3 dark / A4 light refresh moved it onto the Pantone set below with Newsreader + Public Sans, replacing the earlier olive/mint, warm-paper, Fraunces/Inter version. The content and information architecture are unchanged; the visual language is new.\n\nThis system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Character is carried by the cool paper ground, the serif, and the single Sea Jet accent — never by gradients or decoration.",
     "keyCharacteristics": [
-      "Light by default, dark as sibling — :root holds the canonical light (paper) theme; [data-theme=\"dark\"] is its dark counterpart, same type, same layouts, same single accent lifted for the dark ground.",
-      "One accent per theme — olive in light, the original signature mint in dark. Each theme carries a single saturated hue; never two on one screen.",
-      "Serif display / sans body on a real contrast axis — Spectral for every headline, statement, numeral, and the footer CTA; Hanken Grotesk for body, nav, and labels.",
-      "Italics as emphasis, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Spectral italic rather than bolded.",
+      "**Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme=\"dark\"]` is its dark counterpart — same type, same layouts, the same single accent on a Black Bean ground. First visit follows OS preference, else light.",
+      "**One accent, both themes** — Sea Jet (`#52AEBD`). Each screen carries a single saturated hue; never two.",
+      "**Serif display / sans body on a real contrast axis** — Newsreader (warm humanist serif with expressive italics) for every headline, statement, numeral, and the footer CTA; Public Sans (warm neo-grotesque) for body, nav, and labels. Both chosen deliberately off the reflex-reject list — not Fraunces/Playfair, not Inter/DM.",
+      "**Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Newsreader italic rather than bolded.",
+      "**Hero wireframe motif, both themes.** A generative fern/wireframe illustration anchors the bottom of the hero (`#top`), faded into `--bg` toward the top so headline and lead sit on clean canvas. Each theme renders its own asset (`hero-bg.jpg` dark, `hero-bg-light.avif` light) rather than filtering one image, since the motif's tones need to invert, not just shift hue.",
       "Flat-by-default surfaces with tonal layering + soft ambient shadows; hover brightens a border, not a fill.",
-      "Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on html.js, a real <noscript> fallback ships, and all motion respects prefers-reduced-motion."
+      "Progressive enhancement: content is JS-rendered but pre-built into static HTML, reveals gate on `html.js`, a real `<noscript>` fallback ships, and all motion respects `prefers-reduced-motion`."
     ],
     "rules": [
       {
         "name": "The One Accent Rule",
-        "body": "Exactly one saturated color on any screen — olive in the light theme, signature mint in the dark. Never both at once, never a third hue. If a new UI need calls for 'another color,' the answer is a neutral from the ramp.",
+        "body": "Exactly one saturated color on any screen: Sea Jet, in both themes. Never a second hue. If a new UI need calls for \"another color,\" the answer is a neutral from the ramp.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed-Stage Rule",
+        "body": "A surface that frames someone else's UI (the screens carousel stage, the case-study image mat) keeps its own constant color in both themes rather than following the page theme.",
         "section": "colors"
       },
       {
         "name": "The Serif-For-Scale Rule",
-        "body": "Spectral appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, and nav stay Hanken Grotesk. The two never trade roles.",
+        "body": "Newsreader appears at display/section/statement scale, as serif numerals, and as the footer CTA. Body, UI, labels, and nav stay Public Sans. The two never trade roles.",
         "section": "typography"
       },
       {
         "name": "The Display-Weight Rule",
-        "body": "Big serif type stays at weight ~500 — Spectral's built-in contrast carries the elegance; don't bump display to 700/800 (that flattens it into a generic bold serif).",
+        "body": "Big serif type stays at weight ~500 — Newsreader's built-in contrast carries the elegance; don't bump display to 700/800 (that flattens it into a generic bold serif).",
         "section": "typography"
       },
       {
         "name": "The Italic-Emphasis Rule",
-        "body": "Lift a phrase with Spectral italic in the same ink, not with bold or color (the accent line is the one exception — italic and the accent hue).",
+        "body": "Lift a phrase with Newsreader italic in the same ink, not with bold or color (the accent line is the one exception — italic *and* the accent hue).",
         "section": "typography"
       },
       {
@@ -239,27 +417,25 @@
       }
     ],
     "dos": [
-      "Do keep exactly one accent per theme — olive in light (#59644C / text #46592A), signature mint in dark (#83D4C3 / text #97F8E4); everything else stays in the warm-neutral ramp, and the two hues never share a screen.",
-      "Do carry every headline in Spectral at weight ~500; emphasize phrases with Spectral italic, not bold.",
-      "Do treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type and layouts; surfaces/ink/shadows invert and the accent shifts to its own theme's hue (mint).",
-      "Do step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.",
-      "Do use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.",
-      "Do write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice.",
-      "Do vary the section-opening device rather than repeating the tracked eyebrow label on every section. What I Do / How I Work / About keep it as a real sticky-rail orientation cue; Hero and Contact intentionally skip it.",
-      "Do show case-study thumbnails whole (object-fit: contain on the white mat). An asset cropped tight to its own content letterboxes least and reads largest."
+      "**Do** keep exactly one accent — Sea Jet `#52AEBD` in both themes (small text on paper uses Deep Sea Jet `#2A7381`); everything else stays in the paper/ink ramp.",
+      "**Do** carry every headline in Newsreader at weight ~500 (its built-in contrast is the elegance); emphasize phrases with Newsreader *italic*, not bold.",
+      "**Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type, layouts and accent; surfaces, ink and shadows invert.",
+      "**Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.",
+      "**Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.",
+      "**Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice — and keep every claim at the resolution of its evidence.",
+      "**Do** show real product screens for work previews, cropped to the window, with the shadow drawn in CSS (Screen Drop).",
+      "**Do** vary the section-opening device rather than repeating the tracked eyebrow label on every section. What I Do / How I Work / About keep it as a real sticky-rail orientation cue (`Split()`); Hero and Contact intentionally skip it — a design critique flagged six identical repeats as the AI-editorial \"kicker on every section\" tell."
     ],
     "donts": [
-      "Don't introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.",
-      "Don't let a theme show the other theme's accent — light is olive only, dark is mint only.",
-      "Don't bump display type to 700/800 to make it 'pop' — that flattens Spectral into a generic bold serif. Keep it ~500 and larger.",
-      "Don't use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.",
-      "Don't use hard, small-radius drop shadows (the '2014 app' look).",
-      "Don't add a third type family. Spectral + Hanken Grotesk are the committed pair.",
-      "Don't let muted/faint text fall below 4.5:1. --text-faint is decorative-only; never body copy.",
-      "Don't commit the local live-mode <script src=\"localhost:8400/live.js\"> injection or leave ?v= cache tokens un-bumped when JS/CSS changes.",
-      "Don't number a set that has no sequence. The three What I Do kinds and the three case-study cards dropped their 01/02/03 markers (Aug 2026) — decorative numbering that implies an order the content doesn't have is a template tell. The Challenge numbering inside case pages stays: that sequence is real and the copy says so.",
-      "Don't rebuild How I Work as an icon-and-title grid. It is running prose (Aug 2026); the former 2×2 grid of line-art icon + bold title + description was the canonical template feature-grid, and its four perfectly parallel titles would sit unchanged on any designer's portfolio.",
-      "Don't reintroduce a seam scrim on the case-card thumbnail. The gradient that faded its inner edge was removed (Aug 2026): it read as haze over the screenshot and dulled the UI detail the image exists to show."
+      "**Don't** introduce a second saturated accent (no purple, magenta, gradient) — breaks the One Accent Rule.",
+      "**Don't** re-tint the screens carousel stage per theme — `--surface-stage` is a fixed light surface because the screens are light product UI.",
+      "**Don't** bake shadows into screenshots or use illustrations as work thumbnails; they read as stock and the soft shadow shows as grain on a light stage.",
+      "**Don't** bump display type to 700/800 to make it \"pop\" — that flattens Newsreader into a generic bold serif. Keep it ~500 and larger.",
+      "**Don't** use purple gradients, glassmorphism, cream-with-blue SaaS palettes, or stock-photo heroes — explicit anti-references.",
+      "**Don't** use hard, small-radius drop shadows (the \"2014 app\" look).",
+      "**Don't** add a third type family. Newsreader + Public Sans are the committed pair.",
+      "**Don't** let muted/faint text fall below 4.5:1. `--text-faint` is decorative-only; never body copy.",
+      "**Don't** commit the local live-mode `<script src=\"localhost:8400/live.js\">` injection or leave `?v=` cache tokens un-bumped when JS/CSS changes (see CLAUDE.md)."
     ]
   }
 }

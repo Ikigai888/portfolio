@@ -45,11 +45,12 @@ window.Components = (function () {
   const Pill = (text) => `<span class="pill">${esc(text)}</span>`;
   const Chip = (text) => `<span class="chip">${esc(text)}</span>`;
 
-  /* Wrap given names in <strong class="emph"> for inline emphasis. */
-  const emphasizeNames = (text, names) => {
+  /* Wrap given names in <em class="emph"> for inline emphasis. With
+     `mark` true the italic also carries the marker highlight (A3/A4). */
+  const emphasizeNames = (text, names, mark) => {
     var out = esc(text);
     (names || []).forEach(function (n) {
-      out = out.replace(esc(n), '<strong class="emph">' + esc(n) + '</strong>');
+      out = out.replace(esc(n), '<em class="emph' + (mark ? ' emph--mark' : '') + '">' + esc(n) + '</em>');
     });
     return out;
   };
@@ -162,6 +163,26 @@ window.Components = (function () {
       </div>
     </a>`;
 
+  /* --- ShortReadCard: compact "also shipped" card (screen on top, text beneath) --- */
+  /* With a `gallery`, the whole card opens the screens carousel (see
+     js/app.js AlsoGallery): the title is a real <button> whose ::after
+     stretches over the card, so the card is one hit target with one tab stop.
+     Four parts: screen, title, one sentence, one line of results. */
+  const ShortReadCard = ({ title, body, results = [], image = {}, gallery = [] }, index) => `
+    <article class="short-card${gallery.length ? ' short-card--gallery' : ''}" data-reveal>
+      <div class="short-card__media">
+        <img src="${esc(image.src)}" alt="${esc(image.alt)}"${image.w ? ` width="${image.w}" height="${image.h}"` : ''} loading="lazy" />
+        ${gallery.length ? `<span class="short-card__count" aria-hidden="true">${gallery.length} screens</span>` : ''}
+      </div>
+      <div class="short-card__body">
+        <h4 class="short-card__title">${gallery.length
+          ? `<button type="button" class="short-card__open" data-gallery-open="${index}" aria-haspopup="dialog" aria-label="${esc(title)}: view ${gallery.length} screens">${esc(title)}</button>`
+          : esc(title)}</h4>
+        <p class="short-card__text">${esc(body)}</p>
+        <p class="short-card__results">${results.map(esc).join(' &middot; ')}</p>
+      </div>
+    </article>`;
+
   /* --- ImageSlot: placeholder until a real screenshot is supplied ---
      If image.src is set, render a responsive <img> (or <video> for .mp4/.webm
      sources); else a labelled slot. `zoomable` (set by case-template.js on
@@ -272,6 +293,7 @@ window.Components = (function () {
             </a>
           </div>
         </div>
+        ${d.extra || ''}
         <p class="site-footer__copyright">&copy; ${new Date().getFullYear()} ${esc(d.copyrightName)}</p>
       </div>
     </footer>`;
@@ -279,6 +301,6 @@ window.Components = (function () {
   return {
     esc, Container, Section, Split, Eyebrow, SectionHeading, Pill, Chip,
     emphasizeNames, SiteHeader, CaseStudyCard, ImageSlot, Quote,
-    PrincipleItem, PortraitSlot, SiteFooter, ThemeToggle, initThemeToggle,
+    PrincipleItem, PortraitSlot, ShortReadCard, SiteFooter, ThemeToggle, initThemeToggle,
   };
 })();

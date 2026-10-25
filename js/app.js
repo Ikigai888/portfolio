@@ -29,22 +29,12 @@
     return C.Section({ id: 'top', content: content });
   }
 
-  function WhatIDo(d) {
-    var right =
-      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize) + '</p>' +
-      '<div class="kind-list">' + d.kinds.map(C.PrincipleItem).join('') + '</div>' +
-      '<p class="whatido__closing">' + C.esc(d.closing) + '</p>';
-    return C.Section({
-      content: C.Split({ label: d.label, content: right, modifier: 'split--what' }),
-    });
-  }
-
   function CaseStudies(d) {
     var head =
       '<div class="section-opener">' +
         '<h2 class="section-opener__label">' + C.esc(d.label) + '</h2>' +
-        '<span class="section-opener__meta">' + C.esc(d.meta) + '</span>' +
-      '</div>';
+      '</div>' +
+      (d.intro ? '<p class="statement work__intro">' + C.emphasizeNames(d.intro, d.emphasize || []) + '</p>' : '');
     var cards =
       '<div class="case-stack">' +
         d.items.map(function (item) {
@@ -52,20 +42,6 @@
         }).join('') +
       '</div>';
     return C.Section({ id: 'work', content: head + cards, reveal: false });
-  }
-
-  function HowIWork(d) {
-    var prose = d.body.map(function (p) {
-      return '<p class="statement__body">' + C.esc(p) + '</p>';
-    }).join('');
-    var right =
-      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-      prose +
-      '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
-    return C.Section({
-      id: 'approach',
-      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }),
-    });
   }
 
   function About(d) {
@@ -94,16 +70,305 @@
 
     var right =
       '<p class="statement about__statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-      '<p class="statement__body">' + C.esc(d.body) + '</p>' +
-      '<p class="about__credential">' + C.esc(d.credential.before) +
-        '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
-          C.esc(d.credential.link.label) + '</a>' +
-        C.esc(d.credential.after) + '</p>' +
+      [].concat(d.body).map(function (p) { return '<p class="statement__body">' + C.esc(p) + '</p>'; }).join('') +
+      (d.credential
+        ? '<p class="about__credential">' + C.esc(d.credential.before) +
+            '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
+              C.esc(d.credential.link.label) + '</a>' +
+            C.esc(d.credential.after) + '</p>'
+        : '') +
       byline;
 
     return C.Section({
       id: 'about',
       content: C.Split({ label: d.label, content: right, modifier: 'split--about' }),
+    });
+  }
+
+
+  /* ---------- New sections (A3/A4 refresh) ---------- */
+
+  function AlsoShipped(d) {
+    return '<div class="also-shipped">' +
+      '<div class="also-shipped__head">' +
+        '<h3 class="also-shipped__title">' + C.esc(d.title) + ' <em>' + C.esc(d.titleEm) + '</em></h3>' +
+      '</div>' +
+      '<div class="also-shipped__grid">' + d.items.map(C.ShortReadCard).join('') + '</div>' +
+      AlsoGallery() +
+    '</div>';
+  }
+
+  /* Screens carousel for the Also shipped cards. One native <dialog> shared by
+     every card: showModal() supplies the focus trap, Escape-to-close, inert
+     background and top-layer stacking. initGallery() fills it on open. */
+  function AlsoGallery() {
+    return '<dialog class="gallery" data-gallery aria-labelledby="gallery-title">' +
+      '<div class="gallery__panel">' +
+        '<div class="gallery__head">' +
+          '<h3 class="gallery__title" id="gallery-title" data-g-title></h3>' +
+          '<button type="button" class="gallery__close" data-g-close autofocus aria-label="Close screens">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="gallery__stage" data-g-stage role="group" aria-roledescription="carousel" aria-label="Project screens">' +
+          '<button type="button" class="gallery__nav gallery__nav--prev" data-g-prev aria-label="Previous screen">' + ARROW_L + '</button>' +
+          '<button type="button" class="gallery__nav gallery__nav--next" data-g-next aria-label="Next screen">' + ARROW_R + '</button>' +
+        '</div>' +
+        '<div class="gallery__foot">' +
+          '<p class="gallery__caption" data-g-caption aria-live="polite"></p>' +
+          '<span class="gallery__count" data-g-count></span>' +
+        '</div>' +
+      '</div>' +
+    '</dialog>';
+  }
+
+  var ARROW_L ='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+  var ARROW_R = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function pad2(i) { return (i < 9 ? '0' : '') + (i + 1); }
+
+  function Process(d) {
+    var tabs = d.stages.map(function (s, i) {
+      return '<button type="button" class="stepper__tab" role="tab" data-step="' + i + '" aria-selected="' + (i === 0) + '" aria-controls="stepper-panel">' +
+        '<span class="stepper__num">' + pad2(i) + '</span>' +
+        '<span class="stepper__label"><span class="stepper__verb">' + C.esc(s.verb) + '</span>' +
+        '<span class="stepper__artifact">' + C.esc(s.artifact) + '</span></span></button>';
+    }).join('');
+    var s0 = d.stages[0];
+    return '<div class="stepper" data-stepper>' +
+      '<div class="stepper__head">' +
+        '<div><span class="eyebrow">' + C.esc(d.eyebrow) + '</span>' +
+        '<h3 class="stepper__title">' + C.esc(d.title) + '</h3></div>' +
+        '<p class="stepper__intro">' + C.esc(d.intro) + '</p>' +
+      '</div>' +
+      '<div class="stepper__tabs" role="tablist" aria-label="Project steps">' + tabs + '</div>' +
+      '<div class="stepper__panel" id="stepper-panel" role="tabpanel">' +
+        '<div class="stepper__media"><img data-step-img src="' + C.esc(s0.img) + '" alt="' + C.esc(s0.alt) + '" loading="lazy" /></div>' +
+        '<div class="stepper__copy">' +
+          '<div><span class="stepper__k">' + C.esc(d.didLabel) + '</span><p class="stepper__did" data-step-did>' + C.esc(s0.did) + '</p></div>' +
+          '<div class="stepper__result"><span class="stepper__k stepper__k--accent">' + C.esc(d.changedLabel) + '</span><p class="stepper__changed" data-step-changed>' + C.esc(s0.changed) + '</p></div>' +
+          '<div class="stepper__nav">' +
+            '<button type="button" class="round-btn" data-step-prev aria-label="Previous step">' + ARROW_L + '</button>' +
+            '<button type="button" class="round-btn round-btn--solid" data-step-next aria-label="Next step">' + ARROW_R + '</button>' +
+            '<span class="stepper__count" aria-live="polite">Step <span data-step-num>01</span> of ' + pad2(d.stages.length - 1) + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function Archive(d) {
+    var rows = d.items.map(function (r, i) {
+      return '<button type="button" class="archive__row" data-arch="' + i + '" aria-pressed="' + (i === 0) + '">' +
+        '<span class="archive__co">' + C.esc(r.co) + '</span>' +
+        '<span class="archive__main"><span class="archive__title">' + C.esc(r.title) + '</span>' +
+        '<span class="archive__tags">' + C.esc(r.tags) + '</span></span>' +
+        '<span class="archive__year">' + C.esc(r.year) + '</span></button>';
+    }).join('');
+    var p = d.items[0];
+    var right =
+      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
+      '<p class="statement__body">' + C.esc(d.note) + '</p>';
+    return C.Section({
+      id: 'archive',
+      content:
+        C.Split({ label: d.label, content: right, modifier: 'split--about' }) +
+        '<div class="archive" data-archive>' +
+          '<div class="archive__list">' + rows + '</div>' +
+          '<div class="archive__preview" aria-live="polite">' +
+            '<div class="archive__img" data-arch-imgbox style="background:' + C.esc(p.bg) + '"><img data-arch-img src="' + C.esc(p.img) + '" alt="' + C.esc(p.alt) + '" style="object-fit:' + C.esc(p.fit) + '" loading="lazy" /></div>' +
+            '<div class="archive__meta">' +
+              '<span class="archive__kicker"><b data-arch-co>' + C.esc(p.co) + '</b> &middot; <span data-arch-year>' + C.esc(p.year) + '</span></span>' +
+              '<h3 class="archive__ptitle" data-arch-title>' + C.esc(p.title) + '</h3>' +
+              '<p class="archive__blurb" data-arch-blurb>' + C.esc(p.blurb) + '</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>',
+    });
+  }
+
+  /* "Off the resume" card: a small strip in the contact footer, below the
+     contact details. Dome push button on the right; the fact on the left. No counter: the
+     facts cycle in a shuffled order until all have been seen, then reshuffle. */
+  function FactButton(label) {
+    return '<button type="button" class="facts__btn" data-fact-btn aria-label="' + C.esc(label) + '">' +
+      '<span class="fa__base"></span><span class="fa__wall"></span>' +
+      '<span class="fa__dome"><span class="fa__label">' + C.esc(label) + '</span></span>' +
+    '</button>';
+  }
+
+  function Facts(d) {
+    var f = d.items[0];
+    return '<div class="facts" data-facts>' +
+      '<div class="facts__body">' +
+        '<span class="eyebrow">' + C.esc(d.eyebrow) + ' &middot; <span data-fact-tag>' + C.esc(f.tag) + '</span></span>' +
+        '<p class="facts__text" data-fact-text aria-live="polite">' + C.esc(f.text) + '</p>' +
+      '</div>' +
+      FactButton(d.button) +
+    '</div>';
+  }
+
+  /* Interactions (browser only) */
+  function initStepper() {
+    var root = document.querySelector('[data-stepper]');
+    if (!root) return;
+    var stages = D.process.stages;
+    var tabs = root.querySelectorAll('.stepper__tab');
+    var cur = 0;
+    function show(i) {
+      cur = (i + stages.length) % stages.length;
+      var s = stages[cur];
+      var img = root.querySelector('[data-step-img]');
+      img.src = s.img; img.alt = s.alt;
+      root.querySelector('[data-step-did]').textContent = s.did;
+      root.querySelector('[data-step-changed]').textContent = s.changed;
+      root.querySelector('[data-step-num]').textContent = pad2(cur);
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === cur ? 'true' : 'false'); });
+    }
+    tabs.forEach(function (t, j) { t.addEventListener('click', function () { show(j); }); });
+    root.querySelector('[data-step-prev]').addEventListener('click', function () { show(cur - 1); });
+    root.querySelector('[data-step-next]').addEventListener('click', function () { show(cur + 1); });
+  }
+
+  function initGallery() {
+    var dialog = document.querySelector('[data-gallery]');
+    var openers = document.querySelectorAll('[data-gallery-open]');
+    // No native <dialog>: leave the cards as plain, non-interactive reads.
+    if (!dialog || !openers.length || typeof dialog.showModal !== 'function') {
+      openers.forEach(function (b) { b.hidden = true; });
+      return;
+    }
+    var items = D.alsoShipped.items;
+    var stage = dialog.querySelector('[data-g-stage]');
+    var titleEl = dialog.querySelector('[data-g-title]');
+    var caption = dialog.querySelector('[data-g-caption]');
+    var count = dialog.querySelector('[data-g-count]');
+    var prev = dialog.querySelector('[data-g-prev]');
+    var next = dialog.querySelector('[data-g-next]');
+    // Created here, not in the markup, so there is never a src-less <img>.
+    var img = document.createElement('img');
+    img.className = 'gallery__img';
+    stage.insertBefore(img, stage.firstChild);
+    img.addEventListener('load', function () { img.classList.add('is-ready'); });
+
+    var list = [];
+    var cur = 0;
+    var opener = null;
+
+    function show(i) {
+      cur = (i + list.length) % list.length;
+      var s = list[cur];
+      var changed = img.getAttribute('src') !== s.src;
+      img.classList.toggle('is-ready', !changed);
+      img.width = s.w; img.height = s.h; img.alt = s.alt;
+      if (changed) img.src = s.src;
+      caption.textContent = s.caption;
+      count.textContent = (cur + 1) + ' of ' + list.length;
+      // Warm the neighbours so stepping through never waits on the network.
+      [cur - 1, cur + 1].forEach(function (j) {
+        new Image().src = list[(j + list.length) % list.length].src;
+      });
+    }
+
+    function open(btn) {
+      var item = items[Number(btn.getAttribute('data-gallery-open'))];
+      if (!item || !item.gallery || !item.gallery.length) return;
+      opener = btn;
+      list = item.gallery;
+      titleEl.textContent = item.title;
+      prev.hidden = next.hidden = list.length < 2;
+      img.removeAttribute('src');
+      show(0);
+      dialog.showModal();
+    }
+
+    openers.forEach(function (b) { b.addEventListener('click', function () { open(b); }); });
+    prev.addEventListener('click', function () { show(cur - 1); });
+    next.addEventListener('click', function () { show(cur + 1); });
+    dialog.querySelector('[data-g-close]').addEventListener('click', function () { dialog.close(); });
+    // The dialog fills the viewport; the panel sits inside it, so a click that
+    // lands on the dialog itself is a click on the dimmed area around the panel.
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function () { if (opener) opener.focus(); });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+    });
+
+    // Swipe on touch: a mostly horizontal drag past 40px steps the carousel.
+    var startX = null, startY = null;
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      startX = e.clientX; startY = e.clientY;
+    });
+    stage.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      startX = startY = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(cur + (dx < 0 ? 1 : -1));
+    });
+    stage.addEventListener('pointercancel', function () { startX = startY = null; });
+  }
+
+  function initArchive() {
+    var root = document.querySelector('[data-archive]');
+    if (!root) return;
+    var items = D.archive.items;
+    var rows = root.querySelectorAll('.archive__row');
+    var cur = 0;
+    function pick(i) {
+      if (i === cur) return;
+      cur = i;
+      var r = items[i];
+      var img = root.querySelector('[data-arch-img]');
+      img.src = r.img; img.alt = r.alt; img.style.objectFit = r.fit;
+      root.querySelector('[data-arch-imgbox]').style.background = r.bg;
+      root.querySelector('[data-arch-co]').textContent = r.co;
+      root.querySelector('[data-arch-year]').textContent = r.year;
+      root.querySelector('[data-arch-title]').textContent = r.title;
+      root.querySelector('[data-arch-blurb]').textContent = r.blurb;
+      rows.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    }
+    rows.forEach(function (b, j) {
+      b.addEventListener('click', function () { pick(j); });
+      b.addEventListener('mouseenter', function () { pick(j); });
+      b.addEventListener('focus', function () { pick(j); });
+    });
+  }
+
+  function initFacts() {
+    var root = document.querySelector('[data-facts]');
+    if (!root) return;
+    var items = D.facts.items;
+    var cur = 0;       // the markup always opens on the first fact
+    var queue = [];    // facts still to show in this pass
+
+    function shuffled(skip) {
+      var a = items.map(function (_, i) { return i; }).filter(function (i) { return i !== skip; });
+      for (var k = a.length - 1; k > 0; k--) {
+        var r = Math.floor(Math.random() * (k + 1));
+        var t = a[k]; a[k] = a[r]; a[r] = t;
+      }
+      return a;
+    }
+    // The first pass skips the fact already on screen. Each later pass holds
+    // every fact once, just never opening on the one the visitor is looking at.
+    function nextPass() {
+      var a = shuffled(-1);
+      if (a[0] === cur) { var t = a[0]; a[0] = a[a.length - 1]; a[a.length - 1] = t; }
+      return a;
+    }
+    queue = shuffled(cur);
+
+    root.querySelector('[data-fact-btn]').addEventListener('click', function () {
+      if (!queue.length) queue = nextPass();
+      cur = queue.shift();
+      var text = root.querySelector('[data-fact-text]');
+      root.querySelector('[data-fact-tag]').textContent = items[cur].tag;
+      text.textContent = items[cur].text;
+      // One authored moment: the new line drops in with a small tilt.
+      text.classList.remove('is-new'); void text.offsetWidth; text.classList.add('is-new');
+      var btn = root.querySelector('[data-fact-btn]');
+      btn.classList.remove('is-spin'); void btn.offsetWidth; btn.classList.add('is-spin');
     });
   }
 
@@ -337,12 +602,11 @@
       C.SiteHeader(D.header) +
       '<main id="content">' +
         Hero(D.hero) +
-        WhatIDo(D.whatIDo) +
         CaseStudies(D.caseStudies) +
-        HowIWork(D.howIWork) +
         About(Object.assign({ portrait: D.hero.portrait }, D.about)) +
+        Archive(D.archive) +
       '</main>' +
-      C.SiteFooter(D.contact)
+      C.SiteFooter(Object.assign({ extra: Facts(D.facts) }, D.contact))
     );
   }
 
@@ -353,6 +617,10 @@
     initNavScrollSpy();
     initThesisSettle();
     initHeroParallax();
+    initStepper();
+    initGallery();
+    initArchive();
+    initFacts();
     C.initThemeToggle();
   }
 
