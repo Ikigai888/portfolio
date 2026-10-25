@@ -15,9 +15,8 @@ window.Content = {
     name: 'Tad Natsuhara',
     nav: [
       { label: 'Work', href: '#work' },
-      { label: 'Approach', href: '#approach' },
-      { label: 'Archive', href: '#archive' },
       { label: 'About', href: '#about' },
+      { label: 'Archive', href: '#archive' },
       { label: 'Contact', href: '#contact' },
     ],
   },
@@ -31,30 +30,16 @@ window.Content = {
     ],
     lead:
       'Nobody should need a manual for the tools they use every day. ' +
-      'I work on the products where that is hardest: dense, high-stakes, and used daily.',
+      'My job is to organize the complexity behind them into something people can understand.',
     cta: { label: 'View selected work', href: '#work' },
     portrait: { src: 'images/portrait.jpg', w: 1230, h: 1600, alt: 'Tad Natsuhara' },
-  },
-
-  /* ---------- What I Do ---------- */
-  whatIDo: {
-    label: 'What I Do',
-    statement:
-      'For teams at lululemon, SAP, and MoxiWorks, I\u2019ve designed ' +
-      'through three recurring kinds of complexity.',
-    emphasize: ['lululemon', 'SAP', 'MoxiWorks'],
-    kinds: [
-      { title: 'Organizational', description: 'Systems too big for any one person to hold in their head.' },
-      { title: 'Behavioral', description: 'Asking people to trust something unfamiliar.' },
-      { title: 'Interaction', description: 'Dense interfaces where every detail competes for attention.' },
-    ],
-    closing: 'The case studies below take one each.',
   },
 
   /* ---------- Featured Case Studies (CaseStudyCard ×3, rendered from this array) ---------- */
   caseStudies: {
     label: 'Case Studies',
-    meta: 'Three projects',
+    intro: 'For lululemon, SAP Concur, and MoxiWorks. Three projects, three kinds of complexity.',
+    emphasize: ['lululemon', 'SAP Concur', 'MoxiWorks'],
     items: [
       {
         client: 'MoxiWorks',
@@ -176,7 +161,7 @@ window.Content = {
   /* ---------- Archive (earlier work, list + live preview) ---------- */
   archive: {
     label: 'Archive',
-    statement: 'Before the case studies, a decade of shipping \u2014 from the 10-foot screen to enterprise messaging.',
+    statement: 'Before the case studies, a decade of shipping, from the 10-foot screen to enterprise messaging.',
     emphasize: ['the 10-foot screen'],
     note: 'Shorter write-ups of earlier work. Pick one to preview.',
     items: [
@@ -205,29 +190,13 @@ window.Content = {
     items: [
       { tag: 'Paper trail', text: 'I hold six granted Microsoft patents.' },
       { tag: 'Screen sizes', text: 'I\u2019ve designed for a 10-foot TV, a phone in your hand, and just about everything in between.' },
-      { tag: 'Off the clock', text: 'I train jiu-jitsu \u2014 the one place I\u2019m happy to hear \u201Clet\u2019s try that again.\u201D' },
-      { tag: 'Off the clock', text: 'I play hockey. In Vancouver, that\u2019s practically a civic duty.' },
+      { tag: 'Off the clock', text: 'I train jiu-jitsu, the one place I\u2019m happy to hear \u201Clet\u2019s try that again.\u201D' },
       { tag: 'Big screen', text: 'I helped put live NFL games, stats, fantasy and highlights into one app on Xbox.' },
-      { tag: 'Recognition', text: 'Baymard Institute ranked my e-commerce work in the top 1% in 2024.' },
-      { tag: 'Rabbit holes', text: 'Ask me about simulation theory, quantum mechanics or the multiverse. I have thoughts.' },
-      { tag: 'Career route', text: 'Xbox \u2192 enterprise travel \u2192 athleisure \u2192 real estate tech \u2192 pet food. Same goal every time: make it obvious.' },
-      { tag: 'Recognition', text: 'I won an SAP Product Excellence Award in 2018.' },
+      { tag: 'Recognition', text: 'Baymard Institute ranked our team\u2019s e-commerce work in the top 1% in 2024.' },
+      { tag: 'Career route', text: 'Xbox \u2192 enterprise travel \u2192 athleisure \u2192 real estate tech \u2192 pet food. Different products, same job.' },
+      { tag: 'Recognition', text: 'My SAP team won a Product Excellence Award in 2018.' },
       { tag: 'Security', text: 'Zero security breaches since my passkey experience launched at lululemon.' },
     ],
-  },
-
-  /* ---------- How I Work ---------- */
-  howIWork: {
-    label: 'How I Work',
-    statement:
-      'Good software doesn’t become simpler by removing complexity. ' +
-      'It becomes better by organizing complexity into systems people can understand.',
-    emphasize: ['organizing complexity'],
-    body: [
-      'In practice that means I map the system before I draw a screen, and work through the hard parts at a whiteboard with engineers, not just in Figma.',
-      'I explore more than one option, then put whatever holds up in front of real users before I trust it.',
-    ],
-    closing: 'Software people trust on the first try, and rely on every day after.',
   },
 
   /* ---------- About ----------
@@ -237,18 +206,14 @@ window.Content = {
      'About' label, matching What I Do / How I Work. */
   about: {
     label: 'About',
-    statement:
-      'I enjoy solving the kinds of product problems that don’t have obvious answers.',
-    emphasize: ['don’t have obvious answers'],
-    body:
-      'I work closest to the hard middle of products, where the system design, ' +
-      'the interaction details, and the business logic all have to agree. Most ' +
-      'days that means whiteboards with engineers and calls with customers.',
-    credential: {
-      before: 'Also shipped work at ',
-      link: { label: 'Microsoft (6 inventor patents)', href: 'https://patents.justia.com/inventor/tad-natsuhara' },
-      after: ', Electronic Arts, and SAP Jam.',
-    },
+    statement: 'I like problems that don\u2019t have an answer yet.',
+    emphasize: ['don\u2019t have an answer yet'],
+    body: [
+      'I came to product design through games and TV, and I\u2019ve stayed for the moment a confusing thing finally clicks for someone. ' +
+      'I live in Vancouver, play hockey, and will happily lose an evening to simulation theory.',
+      'Since I was a kid I\u2019ve been curious about where technology and design meet. Now I\u2019m a senior product designer, ' +
+      'and the thing teammates mention most is my passion, followed closely by a refusal to accept \u2018that\u2019s how we\u2019ve always done it.\u2019',
+    ],
     byline: {
       name: 'Tad Natsuhara',
       role: 'Senior Product Designer',

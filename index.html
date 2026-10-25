@@ -36,9 +36,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=165" />
+  <link rel="stylesheet" href="css/tokens.css?v=173" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=165" />
+  <link rel="stylesheet" href="css/components.css?v=173" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -51,7 +51,7 @@
         <a class="site-header__name" href="#top"><img class="site-header__logo" src="images/TN_Port_Logo.png" alt="Tad Natsuhara" width="201" height="45" /></a>
         <div class="site-header__cluster">
           <nav class="site-header__nav" id="primary-nav" aria-label="Primary">
-            <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#approach">Approach</a><a class="site-header__link" href="#archive">Archive</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#contact">Contact</a>
+            <a class="site-header__link" href="#work">Work</a><a class="site-header__link" href="#about">About</a><a class="site-header__link" href="#archive">Archive</a><a class="site-header__link" href="#contact">Contact</a>
           </nav>
           
     <div class="theme-toggle" role="group" aria-label="Color theme">
@@ -68,35 +68,10 @@
       </div>
     </header><main id="content">
     <section class="section" id="top">
-      <div class="container"><div data-reveal><div class="hero"><hr class="hero__rule" /><h1 class="hero__headline"><span class="hero__line">I make complicated software</span><span class="hero__line hero__line--accent">feel obvious.</span></h1><p class="hero__lead">Nobody should need a manual for the tools they use every day. I work on the products where that is hardest: dense, high-stakes, and used daily.</p><a class="hero__cta" href="#work">View selected work <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a></div></div></div>
-    </section>
-    <section class="section">
-      <div class="container"><div data-reveal>
-    <div class="split split--what">
-      <div class="split__label"><h2 class="eyebrow">What I Do</h2></div>
-      <div class="split__content"><p class="statement">For teams at <em class="emph emph--mark">lululemon</em>, <em class="emph emph--mark">SAP</em>, and <em class="emph emph--mark">MoxiWorks</em>, I’ve designed through three recurring kinds of complexity.</p><div class="kind-list">
-    <div class="principle">
-      <div class="principle__text">
-        <h3 class="principle__title">Organizational</h3>
-        <p class="principle__desc">Systems too big for any one person to hold in their head.</p>
-      </div>
-    </div>
-    <div class="principle">
-      <div class="principle__text">
-        <h3 class="principle__title">Behavioral</h3>
-        <p class="principle__desc">Asking people to trust something unfamiliar.</p>
-      </div>
-    </div>
-    <div class="principle">
-      <div class="principle__text">
-        <h3 class="principle__title">Interaction</h3>
-        <p class="principle__desc">Dense interfaces where every detail competes for attention.</p>
-      </div>
-    </div></div><p class="whatido__closing">The case studies below take one each.</p></div>
-    </div></div></div>
+      <div class="container"><div data-reveal><div class="hero"><hr class="hero__rule" /><h1 class="hero__headline"><span class="hero__line">I make complicated software</span><span class="hero__line hero__line--accent">feel obvious.</span></h1><p class="hero__lead">Nobody should need a manual for the tools they use every day. My job is to organize the complexity behind them into something people can understand.</p><a class="hero__cta" href="#work">View selected work <span class="hero__cta-arrow" aria-hidden="true">&#8599;</span></a></div></div></div>
     </section>
     <section class="section" id="work">
-      <div class="container"><div class="section-opener"><h2 class="section-opener__label">Case Studies</h2><span class="section-opener__meta">Three projects</span></div><div class="case-stack">
+      <div class="container"><div class="section-opener"><h2 class="section-opener__label">Case Studies</h2></div><p class="statement work__intro">For <em class="emph">lululemon</em>, <em class="emph">SAP Concur</em>, and <em class="emph">MoxiWorks</em>. Three projects, three kinds of complexity.</p><div class="case-stack">
     <a class="case-card" id="case-brand-governance" href="case-brand-governance.html" data-reveal>
       <div class="case-card__body">
         <div class="case-card__eyebrow">
@@ -141,50 +116,21 @@
       <div class="case-card__media">
         <img class="image-slot__img" src="images/case-studies/rail-booking-thumb-cropped.png" alt="SAP Concur rail seat selection across desktop, tablet, and mobile" width="1343" height="832" loading="lazy" />
       </div>
-    </a></div><div class="also-shipped"><div class="also-shipped__head"><h3 class="also-shipped__title">Also shipped at <em>lululemon</em></h3></div><div class="also-shipped__grid">
-    <article class="short-card short-card--gallery" data-reveal>
-      <div class="short-card__media">
-        <img src="images/work/also/selfservice-thumb-wide.jpg" alt="The Get Help menu in the lululemon header, listing Start a Return, Track my Order, Check Return Status, and Help &amp; Support" width="800" height="533" loading="lazy" />
-        <span class="short-card__count" aria-hidden="true">6 screens</span>
-      </div>
-      <div class="short-card__body">
-        <h4 class="short-card__title"><button type="button" class="short-card__open" data-gallery-open="0" aria-haspopup="dialog" aria-label="Self-Service: view 6 screens">Self-Service</button></h4>
-        <p class="short-card__text">Moved hard-to-find support links from the footer into a Get Help menu in the header.</p>
-        <p class="short-card__results">$1.6M cost savings &middot; 5% fewer support interactions</p>
-      </div>
-    </article>
-    <article class="short-card short-card--gallery" data-reveal>
-      <div class="short-card__media">
-        <img src="images/work/also/community-thumb-pair.png" alt="Two screens from the lululemon app: the Community tab with a Try a Peloton Class carousel, and an event page with ticket availability" width="900" height="600" loading="lazy" />
-        <span class="short-card__count" aria-hidden="true">4 screens</span>
-      </div>
-      <div class="short-card__body">
-        <h4 class="short-card__title"><button type="button" class="short-card__open" data-gallery-open="1" aria-haspopup="dialog" aria-label="Community Hub: view 4 screens">Community Hub</button></h4>
-        <p class="short-card__text">An in-app hub to find and register for events and classes that lived on third-party sites.</p>
-        <p class="short-card__results">65K registrations in 2025 &middot; 40% better discoverability</p>
-      </div>
-    </article></div><dialog class="gallery" data-gallery aria-labelledby="gallery-title"><div class="gallery__panel"><div class="gallery__head"><h3 class="gallery__title" id="gallery-title" data-g-title></h3><button type="button" class="gallery__close" data-g-close autofocus aria-label="Close screens"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="gallery__stage" data-g-stage role="group" aria-roledescription="carousel" aria-label="Project screens"><button type="button" class="gallery__nav gallery__nav--prev" data-g-prev aria-label="Previous screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" class="gallery__nav gallery__nav--next" data-g-next aria-label="Next screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><div class="gallery__foot"><p class="gallery__caption" data-g-caption aria-live="polite"></p><span class="gallery__count" data-g-count></span></div></div></dialog></div></div>
+    </a></div></div>
     </section>
-    <section class="section" id="approach">
+    <section class="section" id="about">
       <div class="container"><div data-reveal>
-    <div class="split split--approach">
-      <div class="split__label"><h2 class="eyebrow">How I Work</h2></div>
-      <div class="split__content"><p class="statement">Good software doesn’t become simpler by removing complexity. It becomes better by <em class="emph">organizing complexity</em> into systems people can understand.</p><p class="statement__body">In practice that means I map the system before I draw a screen, and work through the hard parts at a whiteboard with engineers, not just in Figma.</p><p class="statement__body">I explore more than one option, then put whatever holds up in front of real users before I trust it.</p><p class="statement__closing">Software people trust on the first try, and rely on every day after.</p></div>
+    <div class="split split--about">
+      <div class="split__label"><h2 class="eyebrow">About</h2></div>
+      <div class="split__content"><p class="statement about__statement">I like problems that <em class="emph">don’t have an answer yet</em>.</p><p class="statement__body">I came to product design through games and TV, and I’ve stayed for the moment a confusing thing finally clicks for someone. I live in Vancouver, play hockey, and will happily lose an evening to simulation theory.</p><p class="statement__body">Since I was a kid I’ve been curious about where technology and design meet. Now I’m a senior product designer, and the thing teammates mention most is my passion, followed closely by a refusal to accept ‘that’s how we’ve always done it.’</p><div class="about__byline"><span class="about__avatar"><img src="images/portrait.jpg" alt="" loading="lazy" /></span><div class="about__byline-text"><span class="about__byline-name">Tad Natsuhara</span><span class="about__byline-meta">Senior Product Designer &middot; Vancouver, BC</span></div></div></div>
     </div></div></div>
     </section>
     <section class="section" id="archive">
       <div class="container"><div data-reveal>
     <div class="split split--about">
       <div class="split__label"><h2 class="eyebrow">Archive</h2></div>
-      <div class="split__content"><p class="statement">Before the case studies, a decade of shipping — from <em class="emph">the 10-foot screen</em> to enterprise messaging.</p><p class="statement__body">Shorter write-ups of earlier work. Pick one to preview.</p></div>
+      <div class="split__content"><p class="statement">Before the case studies, a decade of shipping, from <em class="emph">the 10-foot screen</em> to enterprise messaging.</p><p class="statement__body">Shorter write-ups of earlier work. Pick one to preview.</p></div>
     </div><div class="archive" data-archive><div class="archive__list"><button type="button" class="archive__row" data-arch="0" aria-pressed="true"><span class="archive__co">Microsoft</span><span class="archive__main"><span class="archive__title">NFL on Xbox</span><span class="archive__tags">Interface design · second screen · live data</span></span><span class="archive__year">2014–15</span></button><button type="button" class="archive__row" data-arch="1" aria-pressed="false"><span class="archive__co">SAP Jam</span><span class="archive__main"><span class="archive__title">Messages</span><span class="archive__tags">Enterprise collaboration · messaging</span></span><span class="archive__year">2015–19</span></button><button type="button" class="archive__row" data-arch="2" aria-pressed="false"><span class="archive__co">lululemon</span><span class="archive__main"><span class="archive__title">People’s Network icons</span><span class="archive__tags">Iconography · brand system</span></span><span class="archive__year">2021–25</span></button><button type="button" class="archive__row" data-arch="3" aria-pressed="false"><span class="archive__co">EA SPORTS</span><span class="archive__main"><span class="archive__title">FIFA 16 menus</span><span class="archive__tags">Short contract · game UI</span></span><span class="archive__year">c. 2015</span></button><button type="button" class="archive__row" data-arch="4" aria-pressed="false"><span class="archive__co">FGL Sports</span><span class="archive__main"><span class="archive__title">Sport Chek gift cards</span><span class="archive__tags">Print · packaging</span></span><span class="archive__year">Early career</span></button></div><div class="archive__preview" aria-live="polite"><div class="archive__img" data-arch-imgbox style="background:#0B0F1A"><img data-arch-img src="images/work/xbox.jpg" alt="NFL on Xbox game feed with a fantasy alert" style="object-fit:cover" loading="lazy" /></div><div class="archive__meta"><span class="archive__kicker"><b data-arch-co>Microsoft</b> &middot; <span data-arch-year>2014–15</span></span><h3 class="archive__ptitle" data-arch-title>NFL on Xbox</h3><p class="archive__blurb" data-arch-blurb>Live games, real-time stats, fantasy football and highlights in one app on Xbox, with tablet and mobile companions for second-screen viewing.</p></div></div></div></div></div>
-    </section>
-    <section class="section" id="about">
-      <div class="container"><div data-reveal>
-    <div class="split split--about">
-      <div class="split__label"><h2 class="eyebrow">About</h2></div>
-      <div class="split__content"><p class="statement about__statement">I enjoy solving the kinds of product problems that <em class="emph">don’t have obvious answers</em>.</p><p class="statement__body">I work closest to the hard middle of products, where the system design, the interaction details, and the business logic all have to agree. Most days that means whiteboards with engineers and calls with customers.</p><p class="about__credential">Also shipped work at <a href="https://patents.justia.com/inventor/tad-natsuhara" target="_blank" rel="noopener">Microsoft (6 inventor patents)</a>, Electronic Arts, and SAP Jam.</p><div class="about__byline"><span class="about__avatar"><img src="images/portrait.jpg" alt="" loading="lazy" /></span><div class="about__byline-text"><span class="about__byline-name">Tad Natsuhara</span><span class="about__byline-meta">Senior Product Designer &middot; Vancouver, BC</span></div></div><div class="facts" data-facts><div class="facts__top"><span class="eyebrow">Off the résumé &middot; <span data-fact-tag>Paper trail</span></span><span class="facts__count"><span data-fact-seen>1</span> of 10 found</span></div><p class="facts__text" data-fact-text aria-live="polite">I hold six granted Microsoft patents.</p><button type="button" class="btn-pill" data-fact-btn><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Surprise me</button></div></div>
-    </div></div></div>
     </section></main>
     <footer class="site-footer section--footer" id="contact" data-reveal>
       <div class="container">
@@ -207,6 +153,7 @@
             </a>
           </div>
         </div>
+        <div class="facts" data-facts><div class="facts__body"><span class="eyebrow">Off the résumé &middot; <span data-fact-tag>Paper trail</span></span><p class="facts__text" data-fact-text aria-live="polite">I hold six granted Microsoft patents.</p></div><button type="button" class="facts__btn" data-fact-btn aria-label="Surprise me"><span class="fa__base"></span><span class="fa__wall"></span><span class="fa__dome"><span class="fa__label">Surprise me</span></span></button></div>
         <p class="site-footer__copyright">&copy; 2026 Tad Natsuhara</p>
       </div>
     </footer><!-- BUILD:END --></div>
@@ -218,8 +165,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=165"></script>
-  <script src="js/components.js?v=165"></script>
-  <script src="js/app.js?v=165"></script>
+  <script src="js/content.js?v=173"></script>
+  <script src="js/components.js?v=173"></script>
+  <script src="js/app.js?v=173"></script>
 </body>
 </html>

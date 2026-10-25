@@ -425,6 +425,7 @@ html.js [data-reveal].is-visible .hero__rule {
 }
 
 /* ---------- CaseStudyCard (build-spec §3c) ---------- */
+.work__intro { margin: 0 0 40px; max-width: 34ch; }
 .case-stack { display: flex; flex-direction: column; gap: var(--gap-stack); }
 
 .case-card {
@@ -1296,31 +1297,68 @@ html:has(.gallery[open]) { overflow: hidden; }
 .archive__ptitle { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.95rem; line-height: 1.1; color: var(--text-primary); }
 .archive__blurb { margin: 0; font-size: var(--fs-small); line-height: 1.6; color: var(--text-primary); }
 
-/* ---------- Surprise me ---------- */
+/* ---------- Surprise me ----------
+   A small strip in the contact footer, below the contact details. The fact
+   sits level on the left; the card surface behind it is tilted a degree, like
+   a card tossed on a desk. A compact dome push button on the right. */
 .facts {
-  margin-top: 24px;
-  padding: 32px 36px;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 28px;
+  max-width: 720px;
+  margin-top: 56px;
+  padding: 22px 26px 22px 30px;
+}
+.facts::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-summary);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow-ambient-rest);
-  display: flex; flex-direction: column; gap: 20px;
+  rotate: -1deg;
 }
-.facts__top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.facts__count { font-size: var(--fs-chip); font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-.facts__text { margin: 0; min-height: 76px; font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--text-primary); }
-.btn-pill {
-  align-self: flex-start;
-  height: 48px; padding: 0 22px;
-  border-radius: var(--r-pill); border: none;
-  background: var(--accent); color: var(--on-accent);
-  font-family: inherit; font-size: var(--fs-small); font-weight: 700;
-  display: inline-flex; align-items: center; gap: 10px;
-  cursor: pointer;
-  transition: transform var(--hover-color-dur);
+.facts__body { display: flex; flex-direction: column; gap: 8px; }
+/* The footer paints its eyebrows in band ink; on the card they go back to accent. */
+.site-footer .facts .eyebrow { color: var(--accent-text); }
+.facts__text { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; line-height: 1.3; letter-spacing: -0.01em; color: var(--text-primary); text-wrap: pretty; }
+.facts__text.is-new { animation: factIn 0.42s var(--reveal-ease) both; }
+@keyframes factIn {
+  from { opacity: 0; transform: translateY(8px) rotate(-1deg); }
+  to   { opacity: 1; transform: none; }
 }
-.btn-pill:hover { transform: translateY(-1px); }
-.btn-pill:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+
+/* Dome push button: a base plate, a darker wall, a dome that presses down. */
+.facts__btn {
+  position: relative; width: 112px; height: 112px; flex: none;
+  border: 0; background: none; padding: 0; font: inherit; color: inherit;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.facts__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 50%; }
+.fa__base, .fa__wall, .fa__dome { position: absolute; border-radius: 50%; }
+.fa__base {
+  inset: 0;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-bright);
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -6px 9px rgba(45, 50, 64, 0.14), 0 8px 18px rgba(45, 50, 64, 0.18);
+}
+.fa__wall { inset: 18px 13px 9px; background: color-mix(in oklch, var(--accent) 60%, black); }
+.fa__dome {
+  inset: 11px 13px 18px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent);
+  box-shadow: inset 0 -12px 16px rgba(0, 0, 0, 0.16), inset 0 10px 12px rgba(255, 255, 255, 0.32), 0 10px 14px rgba(0, 0, 0, 0.14);
+  transition: transform 0.12s var(--reveal-ease), box-shadow 0.12s var(--reveal-ease);
+}
+.fa__label { font-family: var(--font-sans); font-weight: 800; font-size: 0.75rem; line-height: 1.15; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-accent); text-align: center; text-wrap: balance; padding: 0 8px; }
+.facts__btn:hover .fa__dome { transform: translateY(-2px); }
+.facts__btn:active .fa__dome, .facts__btn.is-spin .fa__dome { transform: translateY(5px); box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.16), inset 0 6px 8px rgba(255, 255, 255, 0.28), 0 2px 4px rgba(0, 0, 0, 0.14); }
+.facts__btn.is-spin .fa__dome { animation: domeRelease 0.5s var(--reveal-ease) both; }
+@keyframes domeRelease { 0% { transform: translateY(5px); } 55% { transform: translateY(5px); } 100% { transform: none; } }
 
 @media (max-width: 900px) {
   .stepper { padding: 32px 24px; }
@@ -1338,9 +1376,11 @@ html:has(.gallery[open]) { overflow: hidden; }
   .stepper__tab { min-height: 48px; padding: 8px 0; justify-content: center; }
   .archive__row { grid-template-columns: minmax(0, 1fr) auto; padding: 14px 8px; }
   .archive__co { grid-column: 1 / -1; }
-  .facts { padding: 24px; }
-  .facts__top { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .facts { column-gap: 18px; padding: 18px 18px 18px 22px; }
+  .facts__text { font-size: 1.125rem; }
+  .facts__btn { width: 96px; height: 96px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn-pill, .btn-pill:hover { transition: none; transform: none; }
+  .facts__text.is-new, .facts__btn.is-spin .fa__dome { animation: none; }
+  .fa__dome { transition: none; }
 }

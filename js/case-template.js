@@ -698,13 +698,12 @@
      hardcoded dark-theme text color (illegible on the light default theme),
      no header, and no way back. Mirrors 404.html's on-brand recovery
      pattern instead: same header chrome + hero-style message + a real link
-     home. Same nav vocabulary as 404.html (Work/Approach/About/Contact
+     home. Same nav vocabulary as 404.html (Work/About/Contact
      anchors on the homepage), not a case-study list — this fallback isn't
      the homepage, so it just needs a way back to it. */
   function NotFound(slug) {
     var nav = [
       { href: 'index.html#work', label: 'Work' },
-      { href: 'index.html#approach', label: 'Approach' },
       { href: 'index.html#about', label: 'About' },
       { href: 'index.html#contact', label: 'Contact' },
     ];

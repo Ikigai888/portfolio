@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T03:00:03Z",
+  "generatedAt": "2026-10-25T20:05:21Z",
   "title": "Design System: Tad Natsuhara Portfolio",
   "extensions": {
     "colorMeta": {
@@ -362,6 +362,14 @@
       "description": "Uppercase eyebrow link, muted until hover; the current section gets an accent underline (scrollspy).",
       "html": "<nav style=\"display:flex;gap:28px\"><a class=\"ds-nav-link\" href=\"#\" aria-current=\"true\">Work</a><a class=\"ds-nav-link\" href=\"#\">Approach</a><a class=\"ds-nav-link\" href=\"#\">About</a></nav>",
       "css": ".ds-nav-link{font-size:var(--fs-eyebrow);font-weight:700;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding-block:15px;transition:color var(--hover-color-dur)}.ds-nav-link:hover{color:var(--text-primary)}.ds-nav-link[aria-current]{color:var(--text-primary);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px}.ds-nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-focus)}"
+    },
+    {
+      "name": "Surprise Button",
+      "kind": "button",
+      "refersTo": "facts__btn",
+      "description": "Compact dome push button (112px): base plate, darker wall, Sea Jet dome with an uppercase sans label. Hover lifts, press sinks and releases.",
+      "html": "<button type=\"button\" class=\"ds-dome\"><span class=\"ds-dome__base\"></span><span class=\"ds-dome__wall\"></span><span class=\"ds-dome__top\"><span class=\"ds-dome__label\">Surprise me</span></span></button>",
+      "css": ".ds-dome{position:relative;width:112px;height:112px;border:0;background:none;padding:0;cursor:pointer}.ds-dome__base,.ds-dome__wall,.ds-dome__top{position:absolute;border-radius:50%}.ds-dome__base{inset:0;background:var(--bg-inset);border:1px solid var(--border-bright);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -8px 12px rgba(45,50,64,.14),0 12px 26px rgba(45,50,64,.18)}.ds-dome__wall{inset:18px 13px 9px;background:color-mix(in oklch,var(--accent) 60%,black)}.ds-dome__top{inset:11px 13px 18px;display:flex;align-items:center;justify-content:center;background:var(--accent);box-shadow:inset 0 -12px 16px rgba(0,0,0,.16),inset 0 10px 12px rgba(255,255,255,.32),0 10px 14px rgba(0,0,0,.14);transition:transform .12s var(--reveal-ease),box-shadow .12s var(--reveal-ease)}.ds-dome__label{font-family:var(--font-sans);font-weight:800;font-size:.75rem;line-height:1.15;letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);padding:0 10px;text-align:center}.ds-dome:hover .ds-dome__top{transform:translateY(-2px)}.ds-dome:active .ds-dome__top{transform:translateY(5px)}.ds-dome:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:50%}"
     }
   ],
   "narrative": {

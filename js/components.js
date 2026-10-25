@@ -293,6 +293,7 @@ window.Components = (function () {
             </a>
           </div>
         </div>
+        ${d.extra || ''}
         <p class="site-footer__copyright">&copy; ${new Date().getFullYear()} ${esc(d.copyrightName)}</p>
       </div>
     </footer>`;

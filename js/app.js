@@ -29,43 +29,19 @@
     return C.Section({ id: 'top', content: content });
   }
 
-  function WhatIDo(d) {
-    var right =
-      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize, true) + '</p>' +
-      '<div class="kind-list">' + d.kinds.map(C.PrincipleItem).join('') + '</div>' +
-      '<p class="whatido__closing">' + C.esc(d.closing) + '</p>';
-    return C.Section({
-      content: C.Split({ label: d.label, content: right, modifier: 'split--what' }),
-    });
-  }
-
   function CaseStudies(d) {
     var head =
       '<div class="section-opener">' +
         '<h2 class="section-opener__label">' + C.esc(d.label) + '</h2>' +
-        '<span class="section-opener__meta">' + C.esc(d.meta) + '</span>' +
-      '</div>';
+      '</div>' +
+      (d.intro ? '<p class="statement work__intro">' + C.emphasizeNames(d.intro, d.emphasize || []) + '</p>' : '');
     var cards =
       '<div class="case-stack">' +
         d.items.map(function (item) {
           return C.CaseStudyCard(Object.assign({ cta: d.cta }, item));
         }).join('') +
       '</div>';
-    return C.Section({ id: 'work', content: head + cards + AlsoShipped(D.alsoShipped), reveal: false });
-  }
-
-  function HowIWork(d) {
-    var prose = d.body.map(function (p) {
-      return '<p class="statement__body">' + C.esc(p) + '</p>';
-    }).join('');
-    var right =
-      '<p class="statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-      prose +
-      '<p class="statement__closing">' + C.esc(d.closing) + '</p>';
-    return C.Section({
-      id: 'approach',
-      content: C.Split({ label: d.label, content: right, modifier: 'split--approach' }),
-    });
+    return C.Section({ id: 'work', content: head + cards, reveal: false });
   }
 
   function About(d) {
@@ -94,13 +70,14 @@
 
     var right =
       '<p class="statement about__statement">' + C.emphasizeNames(d.statement, d.emphasize || []) + '</p>' +
-      '<p class="statement__body">' + C.esc(d.body) + '</p>' +
-      '<p class="about__credential">' + C.esc(d.credential.before) +
-        '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
-          C.esc(d.credential.link.label) + '</a>' +
-        C.esc(d.credential.after) + '</p>' +
-      byline +
-      Facts(D.facts);
+      [].concat(d.body).map(function (p) { return '<p class="statement__body">' + C.esc(p) + '</p>'; }).join('') +
+      (d.credential
+        ? '<p class="about__credential">' + C.esc(d.credential.before) +
+            '<a href="' + C.esc(d.credential.link.href) + '" target="_blank" rel="noopener">' +
+              C.esc(d.credential.link.label) + '</a>' +
+            C.esc(d.credential.after) + '</p>'
+        : '') +
+      byline;
 
     return C.Section({
       id: 'about',
@@ -209,15 +186,24 @@
     });
   }
 
+  /* "Off the resume" card: a small strip in the contact footer, below the
+     contact details. Dome push button on the right; the fact on the left. No counter: the
+     facts cycle in a shuffled order until all have been seen, then reshuffle. */
+  function FactButton(label) {
+    return '<button type="button" class="facts__btn" data-fact-btn aria-label="' + C.esc(label) + '">' +
+      '<span class="fa__base"></span><span class="fa__wall"></span>' +
+      '<span class="fa__dome"><span class="fa__label">' + C.esc(label) + '</span></span>' +
+    '</button>';
+  }
+
   function Facts(d) {
     var f = d.items[0];
     return '<div class="facts" data-facts>' +
-      '<div class="facts__top"><span class="eyebrow">' + C.esc(d.eyebrow) + ' &middot; <span data-fact-tag>' + C.esc(f.tag) + '</span></span>' +
-      '<span class="facts__count"><span data-fact-seen>1</span> of ' + d.items.length + ' found</span></div>' +
-      '<p class="facts__text" data-fact-text aria-live="polite">' + C.esc(f.text) + '</p>' +
-      '<button type="button" class="btn-pill" data-fact-btn>' +
-        '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>' +
-        C.esc(d.button) + '</button>' +
+      '<div class="facts__body">' +
+        '<span class="eyebrow">' + C.esc(d.eyebrow) + ' &middot; <span data-fact-tag>' + C.esc(f.tag) + '</span></span>' +
+        '<p class="facts__text" data-fact-text aria-live="polite">' + C.esc(f.text) + '</p>' +
+      '</div>' +
+      FactButton(d.button) +
     '</div>';
   }
 
@@ -353,15 +339,36 @@
     var root = document.querySelector('[data-facts]');
     if (!root) return;
     var items = D.facts.items;
-    var cur = 0, seen = [0];
+    var cur = 0;       // the markup always opens on the first fact
+    var queue = [];    // facts still to show in this pass
+
+    function shuffled(skip) {
+      var a = items.map(function (_, i) { return i; }).filter(function (i) { return i !== skip; });
+      for (var k = a.length - 1; k > 0; k--) {
+        var r = Math.floor(Math.random() * (k + 1));
+        var t = a[k]; a[k] = a[r]; a[r] = t;
+      }
+      return a;
+    }
+    // The first pass skips the fact already on screen. Each later pass holds
+    // every fact once, just never opening on the one the visitor is looking at.
+    function nextPass() {
+      var a = shuffled(-1);
+      if (a[0] === cur) { var t = a[0]; a[0] = a[a.length - 1]; a[a.length - 1] = t; }
+      return a;
+    }
+    queue = shuffled(cur);
+
     root.querySelector('[data-fact-btn]').addEventListener('click', function () {
-      var n = cur;
-      while (n === cur) n = Math.floor(Math.random() * items.length);
-      cur = n;
-      if (seen.indexOf(n) === -1) seen.push(n);
-      root.querySelector('[data-fact-tag]').textContent = items[n].tag;
-      root.querySelector('[data-fact-text]').textContent = items[n].text;
-      root.querySelector('[data-fact-seen]').textContent = seen.length;
+      if (!queue.length) queue = nextPass();
+      cur = queue.shift();
+      var text = root.querySelector('[data-fact-text]');
+      root.querySelector('[data-fact-tag]').textContent = items[cur].tag;
+      text.textContent = items[cur].text;
+      // One authored moment: the new line drops in with a small tilt.
+      text.classList.remove('is-new'); void text.offsetWidth; text.classList.add('is-new');
+      var btn = root.querySelector('[data-fact-btn]');
+      btn.classList.remove('is-spin'); void btn.offsetWidth; btn.classList.add('is-spin');
     });
   }
 
@@ -595,13 +602,11 @@
       C.SiteHeader(D.header) +
       '<main id="content">' +
         Hero(D.hero) +
-        WhatIDo(D.whatIDo) +
         CaseStudies(D.caseStudies) +
-        HowIWork(D.howIWork) +
-        Archive(D.archive) +
         About(Object.assign({ portrait: D.hero.portrait }, D.about)) +
+        Archive(D.archive) +
       '</main>' +
-      C.SiteFooter(D.contact)
+      C.SiteFooter(Object.assign({ extra: Facts(D.facts) }, D.contact))
     );
   }
 
