@@ -172,7 +172,7 @@ window.Content = {
         img: 'images/work/sapjam.jpg', alt: 'SAP Jam group messages list', bg: '#FFFFFF', fit: 'contain',
         blurb: 'Group and direct messaging for SAP\u2019s enterprise collaboration platform.' },
       { co: 'lululemon', title: 'People\u2019s Network icons', tags: 'Iconography \u00B7 brand system', year: '2021\u201325',
-        img: 'images/work/pn-icons.jpg', alt: 'Icon set for lululemon People\u2019s Networks', bg: '#FFFFFF', fit: 'contain',
+        img: 'images/work/pn-icons-peek.jpg', alt: 'Icons from lululemon\u2019s People\u2019s Networks set: Black People, Asian People, South Asian People, and Chronic Illness, Mental Health & Disabilities, with more icons fading in at the right edge', bg: '#FFFFFF', fit: 'contain',
         blurb: 'An icon family giving each employee-led network its own identity while staying true to the lululemon brand.' },
       { co: 'EA SPORTS', title: 'FIFA 16 menus', tags: 'Short contract \u00B7 game UI', year: 'c. 2015',
         img: 'images/work/fifa.jpg', alt: 'FIFA 16 Online Friendlies hub screen', bg: '#0B0F1A', fit: 'cover',
