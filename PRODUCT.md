@@ -29,7 +29,7 @@ He establishes patterns where none existed, rather than improving flows that alr
 - A single static site at <https://tadnatsuhara.com>, deployed to GitHub Pages on every push to `main`.
 - The path is homepage, then one of three case studies, then contact. Readers commonly arrive from a link (LinkedIn, an application, a referral) rather than search, and often mid-comparison against other candidates.
 - Case studies are long-form and structured for two reading depths: a summary card carrying role and outcomes up front, then seven navigable sections (Summary, Context, Challenges, Exploration, Validation, Outcome, Reflection) behind a sticky subnav.
-- Light theme is canonical with a dark sibling; first visit follows OS preference.
+- Dark is the default theme for every first visit, regardless of OS preference; a light sibling is one tap away and a visitor's explicit choice is remembered (set Oct 2026).
 
 ## Capabilities and Constraints
 

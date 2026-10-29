@@ -186,8 +186,8 @@
     });
   }
 
-  /* "Off the resume" card: a small strip in the contact footer, below the
-     contact details. Dome push button on the right; the fact on the left. No counter: the
+  /* "Off the resume" card: a small strip in its own band below Archive, above
+     the contact footer. Dome push button on the right; the fact on the left. No counter: the
      facts cycle in a shuffled order until all have been seen, then reshuffle. */
   function FactButton(label) {
     return '<button type="button" class="facts__btn" data-fact-btn aria-label="' + C.esc(label) + '">' +
@@ -205,6 +205,10 @@
       '</div>' +
       FactButton(d.button) +
     '</div>';
+  }
+
+  function FactsSection(d) {
+    return C.Section({ id: 'surprise', modifier: 'section--surprise', content: Facts(d) });
   }
 
   /* Interactions (browser only) */
@@ -605,8 +609,9 @@
         CaseStudies(D.caseStudies) +
         About(Object.assign({ portrait: D.hero.portrait }, D.about)) +
         Archive(D.archive) +
+        FactsSection(D.facts) +
       '</main>' +
-      C.SiteFooter(Object.assign({ extra: Facts(D.facts) }, D.contact))
+      C.SiteFooter(D.contact)
     );
   }
 

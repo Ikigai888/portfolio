@@ -1,9 +1,9 @@
 ---
 name: Tad Natsuhara Portfolio
-description: A cool editorial portfolio for a senior product designer — Pantone paper-light by default with a dark sibling theme, a high-contrast serif carrying every headline, lit by one accent in both themes, Sea Jet.
-theme-model: "light default (:root), dark sibling ([data-theme=\"dark\"])"
+description: A cool editorial portfolio for a senior product designer — dark by default (Black Bean ground) with a Pantone paper-light sibling theme, a high-contrast serif carrying every headline, lit by one accent in both themes, Sea Jet.
+theme-model: "dark default (<html data-theme=\"dark\">, set before paint), light sibling (:root tokens, data-theme=\"light\")"
 colors:
-  # Light theme (canonical / default)
+  # Light theme (the sibling: a visitor opts in with the toggle)
   bg: "#EEF6F5"
   bg-footer: "#D5E8E7"
   bg-card: "#FAFDFC"
@@ -120,7 +120,7 @@ This is the *editorial* iteration (adopted Jul 2026 from the "Editorial Homepage
 This system explicitly rejects the generic AI-template look: no purple gradients, no glassmorphism, no interchangeable hero sections, no cream-with-blue SaaS palette. Character is carried by the cool paper ground, the serif, and the single Sea Jet accent — never by gradients or decoration.
 
 **Key Characteristics:**
-- **Light by default, dark as sibling.** `:root` holds the canonical light (paper) theme; `[data-theme="dark"]` is its dark counterpart — same type, same layouts, the same single accent on a Black Bean ground. First visit follows OS preference, else light.
+- **Dark by default, light as sibling.** Every first visit is dark regardless of OS preference (`<html data-theme="dark">` plus a pre-paint script that reads the saved choice, else dark). `:root` still holds the light (paper) tokens and `[data-theme="dark"]` overrides them — same type, same layouts, the same single accent on a Black Bean ground. A visitor's explicit toggle is remembered.
 - **One accent, both themes** — Sea Jet (`#52AEBD`). Each screen carries a single saturated hue; never two.
 - **Serif display / sans body on a real contrast axis** — Newsreader (warm humanist serif with expressive italics) for every headline, statement, numeral, and the footer CTA; Public Sans (warm neo-grotesque) for body, nav, and labels. Both chosen deliberately off the reflex-reject list — not Fraunces/Playfair, not Inter/DM.
 - **Italics as emphasis**, the editorial way — the hero's accent line, inline company names, statement key-phrases, and codas are set in Newsreader italic rather than bolded.
@@ -137,14 +137,14 @@ One cool surface ramp, one Anthracite text ramp, and exactly one accent hue, Sea
 - **Deep Sea Jet** `#2A7381` (`--accent-text`, 4.95:1 on paper) for *small* accent type on the light theme: "View 6 screens", eyebrow numerals, inline links. Sea Jet itself is only ~2.3:1 on paper, so it never carries small type there. On the dark theme `--accent-text` is Sea Jet itself (5.8:1 on Black Bean).
 - **Marker highlight** (`--highlight`): a soft aqua underline stroke under italic emphasis (`linear-gradient(transparent 71.5%, var(--highlight) 71.5%)`), `rgba(154, 198, 197, 0.6)` light / `rgba(82, 174, 189, 0.35)` dark.
 
-### Surfaces & Ink: Light (default)
+### Surfaces & Ink: Light (sibling)
 - **Cool Paper** (`#EEF6F5`): page background.
 - **Aqua Mist** (`#D5E8E7`): the deepest surface and the inset fill: image slots, theme-toggle track, the footer ground.
 - **Card Paper** (`#FAFDFC`): case-study and short-read cards, lifted toward white and carried by a soft shadow.
 - **Ink ramp** (on paper): primary `#2D3240` (Anthracite) body & headings · bright `#2C2628` (Black Bean) wordmark & display · secondary `#2D3240` leads · tertiary `#3F4553` · muted `#54553A` (Olive Brown, 7.0:1) eyebrows/nav/support · faint `#7C9B9A` decorative only · faint-2 `#54553A` copyright.
 - **Lines** are anthracite alpha: border `rgba(45, 50, 64, 0.16)`, bright `0.32`, hairline `0.10`, strong rule `0.20`.
 
-### Surfaces & Ink: Dark (sibling)
+### Surfaces & Ink: Dark (default)
 - **Surfaces**: bg `#2C2628` (Black Bean) · footer `#231E20` · card `#2D3240` (Anthracite) · inset `#54553A` (Olive Brown, chips and toggle track).
 - **Ink ramp** (on dark): primary `#E8F2F1` (12:1) · bright `#F4FAF9` · tertiary `#CFE3E2` · muted `#9AC6C5` Soft Aqua (8:1) · faint `#7FA6A8`.
 - **Lines** are aqua alpha: border `rgba(154, 198, 197, 0.18)`, bright `0.40`, hairline `0.12`.
@@ -223,7 +223,7 @@ Flat-by-default with tonal layering: depth comes from stepping the surface ramp 
 - **Wordmark:** the hand-lettered **TN wordmark PNG** (`images/TN_Port_Logo.png`, 32px tall) — a single-hue mint asset. The **light** theme darkens it to a deep teal ink with `filter: brightness(0.35)`; the **dark** theme shows it unfiltered, as drawn. Its `alt` is the full name.
 - **Style:** sticky header over the `--scrim` tint + 12px blur, 1px bottom hairline.
 - **Links:** uppercase eyebrow treatment (12px, 700, 0.14em), muted → primary on hover, 44px tap boxes.
-- **Theme toggle:** icon-only sliding switch — both icons sit in a pill track, a solid accent capsule slides behind whichever one is active, keyed on `[data-theme]`. No visible text label; position + icon color are the state cues (`aria-label`/`aria-pressed` carry it for assistive tech). 32px real hit area per icon (see `--toggle-size` in `components.css` for why real box growth, not padding, was used to keep it tappable). Gated on `html.js`. Persists to `localStorage`; follows OS preference live until an explicit choice is stored. Third iteration (impeccable live, Jul 2026) after a single "switch to X" button and a labeled pair both read as cluttered next to the eyebrow nav.
+- **Theme toggle:** icon-only sliding switch — both icons sit in a pill track, **dark first (left), light second (right)**, and a solid accent capsule slides behind whichever one is active, keyed on `[data-theme]`. No visible text label; position + icon color are the state cues (`aria-label`/`aria-pressed` carry it for assistive tech). 32px real hit area per icon (see `--toggle-size` in `components.css` for why real box growth, not padding, was used to keep it tappable). Gated on `html.js`. Persists to `localStorage`; the OS setting is not consulted. Third iteration (impeccable live, Jul 2026) after a single "switch to X" button and a labeled pair both read as cluttered next to the eyebrow nav.
 - **Mobile (≤600px):** nav links collapse behind a 44×44 hamburger; the theme toggle stays inline.
 
 ### Hero (signature layout)
@@ -242,7 +242,7 @@ A compact card for work that earns a short read rather than a case study. Four p
 - **Copy is held to the evidence.** The sentence says what changed, in about a dozen words. Results repeat only figures the project's own write-up supports, in the source's wording; the supporting detail (the 40% footer finding, the starting point) lives in the carousel captions.
 
 ### Surprise Me (Off the résumé)
-A small strip inside the contact footer, below the contact details and above the copyright (max 720px wide, 56px above it). A card whose **surface is tilted** `-1deg` (a `::before` layer: Card Paper, `--r-card` corners, Ambient Rest shadow) while its content stays level: an eyebrow ("Off the résumé · Tag", accent-text, overriding the footer's band-ink eyebrows) over the fact in Newsreader 1.3rem (1.125rem on phones), and a **compact dome push button** on the right.
+A small strip in a band of its own, below Archive and above the contact footer (64px section padding, max 720px wide, left-aligned to the content column). A card whose **surface is tilted** `-1deg` (a `::before` layer: Card Paper, `--r-card` corners, Ambient Rest shadow) while its content stays level: an eyebrow ("Off the résumé · Tag", accent-text) over the fact in Newsreader 1.3rem (1.125rem on phones), and a **compact dome push button** on the right.
 - **The button is a physical object**, built from three round layers: a base plate (`--bg-inset` with an inset highlight and soft drop), a darker wall (`--accent` mixed 60% with black), and a Sea Jet dome carrying **SURPRISE ME** in Public Sans 800, 12px, uppercase with 0.08em tracking (a control, not a headline). 112px across (96px on phones). Hover lifts the dome 2px; press sinks it 5px and releases over 0.5s. No hard offset shadow: the wall is a shape, not a shadow.
 - **The new fact drops in** with an 8px rise and a -1deg tilt (0.42s on the reveal ease); that is the one authored moment. Motion is off under `prefers-reduced-motion`.
 - **No counter.** Facts cycle in a shuffled order and every fact is shown once per pass before any repeats; a new pass never opens on the fact on screen.
@@ -263,7 +263,7 @@ Shared layout for any case-study narrative section — Context, Exploration, Val
 A Challenge item with exactly two images chooses its own arrangement in `ChallengeBlock()` (`case-template.js`) by checking `img.h > img.w` on both: **portrait pairs go side by side** (`.cs-challenge__media--grid`, breakpoint-free `repeat(auto-fit, minmax(200px, 1fr))`, same technique as `.cs-full-image-grid`); **landscape pairs stay stacked** (`.cs-challenge__media--stack`, the original vertical treatment). Two tall portrait screenshots stacked compound their own height and run far taller than the text column beside them; splitting them side by side roughly halves the total height and reads as two states of one screen instead of a long scroll. Splitting a landscape pair instead would squeeze each image too narrow to read — don't apply the portrait fix universally. Both variants collapse to one column on narrow viewports (`--grid` via its own auto-fit; `--stack` is already single-column).
 
 ### Homepage order and the retired sections
-The homepage runs **Hero → Case studies → About → Archive → Contact** (with the Surprise Me strip inside Contact), and the nav follows the page: Work, About, Archive, Contact. Each section has one job: the claim, the proof, the person, the earlier work, the way to reach out.
+The homepage runs **Hero → Case studies → About → Archive → Contact** (with the Surprise Me strip between Archive and Contact), and the nav follows the page: Work, About, Archive, Contact. Each section has one job: the claim, the proof, the person, the earlier work, the way to reach out.
 - **What I Do was merged into the case studies** (Oct 2026). Its three kinds of complexity already label the three cards, so a single serif intro line under the "Case studies" opener names the clients and the idea ("For lululemon, SAP Concur, and MoxiWorks. Three projects, three kinds of complexity.") and the cards carry the rest. Don't reintroduce a separate taxonomy section above the work.
 - **How I Work was retired** (Oct 2026). Its thesis moved into the hero lead ("…organize the complexity behind them into something people can understand"), and its process claims are shown, with evidence, inside the case studies. It had been saying the hero's idea a third time.
 - **About is personal, not a second pitch**: a short statement, then two paragraphs about how Tad came to design, where he lives and what he does outside work, his current role, and what teammates count on him for. No work claims, no method recap, no credentials line (the Archive and the facts deck carry those).
@@ -276,7 +276,7 @@ The "See it in practice" five-step stepper (`Process()` in `js/app.js`, `.steppe
 ### Do:
 - **Do** keep exactly one accent — Sea Jet `#52AEBD` in both themes (small text on paper uses Deep Sea Jet `#2A7381`); everything else stays in the paper/ink ramp.
 - **Do** carry every headline in Newsreader at weight ~500 (its built-in contrast is the elegance); emphasize phrases with Newsreader *italic*, not bold.
-- **Do** treat light as the canonical theme and keep the dark sibling a faithful counterpart — same type, layouts and accent; surfaces, ink and shadows invert.
+- **Do** treat dark as the default theme and keep the light sibling a faithful counterpart — same type, layouts and accent; surfaces, ink and shadows invert.
 - **Do** step through the surface ramp (paper → card → inset) to convey depth before reaching for another color.
 - **Do** use the Ambient Rest / Ambient Hover pair for new card-level surfaces, paired with border-brightening.
 - **Do** write copy the way a senior designer talks to a peer — specific and confident, not marketing-voice — and keep every claim at the resolution of its evidence.
@@ -297,5 +297,6 @@ The "See it in practice" five-step stepper (`Process()` in `js/app.js`, `.steppe
 ## Update log
 
 - **Sept 2026: Pantone set + Newsreader / Public Sans.** One accent, Sea Jet `#52AEBD`, for both themes. Light: bg `#EEF6F5`, card `#FAFDFC`, inset `#D5E8E7`, text `#2D3240` / `#2C2628`, muted `#54553A`, small accent text `#2A7381`, band `#9AC6C5`. Dark: bg `#2C2628` (Black Bean), card `#2D3240` (Anthracite), chips `#54553A`, text `#E8F2F1`, muted `#9AC6C5`. Tokens added then: `--on-accent` and `--highlight`.
-- **Oct 2026: Homepage narrative.** What I Do merged into the case studies, How I Work retired, About rewritten as personal and moved above Archive, nav reduced to Work / About / Archive / Contact. The Surprise Me card became a compact strip in the contact footer with an uppercase dome button, a tilted surface, and a no-repeat shuffle with the counter removed. The Also shipped section is hidden for now (code retained).
+- **Oct 2026: Dark by default.** Dark is now the theme every first visit sees, the toggle lists dark first, and the OS preference is ignored; a saved choice still wins.
+- **Oct 2026: Homepage narrative.** What I Do merged into the case studies, How I Work retired, About rewritten as personal and moved above Archive, nav reduced to Work / About / Archive / Contact. The Surprise Me card became a compact strip in a band of its own below Archive (it briefly lived inside the footer) with an uppercase dome button, a tilted surface, and a no-repeat shuffle with the counter removed. The Also shipped section is hidden for now (code retained).
 - **Oct 2026: Also shipped gallery.** Short cards now use real screens as thumbnails and open the Screens Carousel; new token `--surface-stage`; short cards were simplified to a screen, title, one sentence and one results line (tag, chips and text link removed; Self-Service shows its header menu, Community Hub two app screens side by side); the homepage process stepper is retained but not rendered; How I Work copy tightened.

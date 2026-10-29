@@ -67,14 +67,14 @@ window.Components = (function () {
      labeled pair read as cluttered next to the eyebrow nav.) */
   const ThemeToggle = () => `
     <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
       <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
+      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
       <span class="theme-toggle__thumb" aria-hidden="true"></span>
     </div>
   `;
 
   /* Runtime wiring for every .theme-toggle group on the page. Persists the
-     choice; while no explicit choice exists, follows the OS setting live.
+     choice. Dark is the default; the OS setting is not consulted.
      Safe to define in the Node build sandbox (only touches document when
      called, which happens in-browser only). */
   function initThemeToggle() {
@@ -82,9 +82,6 @@ window.Components = (function () {
     var buttons = document.querySelectorAll('.theme-toggle__item');
     if (!buttons.length) return;
 
-    function stored() {
-      try { return localStorage.getItem('theme'); } catch (e) { return null; }
-    }
     function sync() {
       var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       buttons.forEach(function (btn) {
@@ -99,16 +96,6 @@ window.Components = (function () {
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () { set(btn.getAttribute('data-theme-btn')); });
     });
-    if (window.matchMedia) {
-      var mq = window.matchMedia('(prefers-color-scheme: light)');
-      var follow = function (e) {
-        if (stored()) return; /* explicit choice wins */
-        root.setAttribute('data-theme', e.matches ? 'light' : 'dark');
-        sync();
-      };
-      if (mq.addEventListener) mq.addEventListener('change', follow);
-      else if (mq.addListener) mq.addListener(follow);
-    }
     sync();
   }
 
@@ -293,7 +280,6 @@ window.Components = (function () {
             </a>
           </div>
         </div>
-        ${d.extra || ''}
         <p class="site-footer__copyright">&copy; ${new Date().getFullYear()} ${esc(d.copyrightName)}</p>
       </div>
     </footer>`;

@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <script>
     document.documentElement.className += ' js';
-    /* Theme before first paint: saved choice, else light.
-       Light is the canonical editorial default regardless of OS preference;
-       :root holds the light tokens. */
+    /* Theme before first paint: saved choice, else dark.
+       Dark is the default regardless of OS preference; a visitor's explicit
+       toggle is remembered. */
     (function () {
       var t; try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') { t = 'light'; }
+      if (t !== 'light' && t !== 'dark') { t = 'dark'; }
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
@@ -36,9 +36,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Single source of truth for all design values -->
-  <link rel="stylesheet" href="css/tokens.css?v=175" />
+  <link rel="stylesheet" href="css/tokens.css?v=177" />
   <!-- Component + layout styles (tokens only, no hardcoded values) -->
-  <link rel="stylesheet" href="css/components.css?v=175" />
+  <link rel="stylesheet" href="css/components.css?v=177" />
 </head>
 <body>
   <!-- Page is rendered from data by js/app.js — never hand-written markup per section.
@@ -55,8 +55,8 @@
           </nav>
           
     <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
       <button type="button" class="theme-toggle__item" data-theme-btn="dark" aria-pressed="false" aria-label="Dark theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 14.2A8.3 8.3 0 0 1 9.8 3.6a8.3 8.3 0 1 0 10.6 10.6Z"/></svg></button>
+      <button type="button" class="theme-toggle__item" data-theme-btn="light" aria-pressed="false" aria-label="Light theme"><svg class="theme-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg></button>
       <span class="theme-toggle__thumb" aria-hidden="true"></span>
     </div>
   
@@ -131,6 +131,9 @@
       <div class="split__label"><h2 class="eyebrow">Archive</h2></div>
       <div class="split__content"><p class="statement">Before the case studies, a decade of shipping, from <em class="emph">the 10-foot screen</em> to enterprise messaging.</p><p class="statement__body">Shorter write-ups of earlier work. Pick one to preview.</p></div>
     </div><div class="archive" data-archive><div class="archive__list"><button type="button" class="archive__row" data-arch="0" aria-pressed="true"><span class="archive__co">Microsoft</span><span class="archive__main"><span class="archive__title">NFL on Xbox</span><span class="archive__tags">Interface design · second screen · live data</span></span><span class="archive__year">2014–15</span></button><button type="button" class="archive__row" data-arch="1" aria-pressed="false"><span class="archive__co">SAP Jam</span><span class="archive__main"><span class="archive__title">Messages</span><span class="archive__tags">Enterprise collaboration · messaging</span></span><span class="archive__year">2015–19</span></button><button type="button" class="archive__row" data-arch="2" aria-pressed="false"><span class="archive__co">lululemon</span><span class="archive__main"><span class="archive__title">People’s Network icons</span><span class="archive__tags">Iconography · brand system</span></span><span class="archive__year">2021–25</span></button><button type="button" class="archive__row" data-arch="3" aria-pressed="false"><span class="archive__co">EA SPORTS</span><span class="archive__main"><span class="archive__title">FIFA 16 menus</span><span class="archive__tags">Short contract · game UI</span></span><span class="archive__year">c. 2015</span></button><button type="button" class="archive__row" data-arch="4" aria-pressed="false"><span class="archive__co">FGL Sports</span><span class="archive__main"><span class="archive__title">Sport Chek gift cards</span><span class="archive__tags">Print · packaging</span></span><span class="archive__year">Early career</span></button></div><div class="archive__preview" aria-live="polite"><div class="archive__img" data-arch-imgbox style="background:#0B0F1A"><img data-arch-img src="images/work/xbox.jpg" alt="NFL on Xbox game feed with a fantasy alert" style="object-fit:cover" loading="lazy" /></div><div class="archive__meta"><span class="archive__kicker"><b data-arch-co>Microsoft</b> &middot; <span data-arch-year>2014–15</span></span><h3 class="archive__ptitle" data-arch-title>NFL on Xbox</h3><p class="archive__blurb" data-arch-blurb>Live games, real-time stats, fantasy football and highlights in one app on Xbox, with tablet and mobile companions for second-screen viewing.</p></div></div></div></div></div>
+    </section>
+    <section class="section section--surprise" id="surprise">
+      <div class="container"><div data-reveal><div class="facts" data-facts><div class="facts__body"><span class="eyebrow">Off the résumé &middot; <span data-fact-tag>Paper trail</span></span><p class="facts__text" data-fact-text aria-live="polite">I hold six granted Microsoft patents.</p></div><button type="button" class="facts__btn" data-fact-btn aria-label="Surprise me"><span class="fa__base"></span><span class="fa__wall"></span><span class="fa__dome"><span class="fa__label">Surprise me</span></span></button></div></div></div>
     </section></main>
     <footer class="site-footer section--footer" id="contact" data-reveal>
       <div class="container">
@@ -153,7 +156,6 @@
             </a>
           </div>
         </div>
-        <div class="facts" data-facts><div class="facts__body"><span class="eyebrow">Off the résumé &middot; <span data-fact-tag>Paper trail</span></span><p class="facts__text" data-fact-text aria-live="polite">I hold six granted Microsoft patents.</p></div><button type="button" class="facts__btn" data-fact-btn aria-label="Surprise me"><span class="fa__base"></span><span class="fa__wall"></span><span class="fa__dome"><span class="fa__label">Surprise me</span></span></button></div>
         <p class="site-footer__copyright">&copy; 2026 Tad Natsuhara</p>
       </div>
     </footer><!-- BUILD:END --></div>
@@ -165,8 +167,8 @@
 
   <!-- Classic scripts, loaded in order so the site opens directly from file:// with no build step -->
   <!-- Cache-busting: bump ?v= on every one of these files whenever js/ or css/ changes -->
-  <script src="js/content.js?v=175"></script>
-  <script src="js/components.js?v=175"></script>
-  <script src="js/app.js?v=175"></script>
+  <script src="js/content.js?v=177"></script>
+  <script src="js/components.js?v=177"></script>
+  <script src="js/app.js?v=177"></script>
 </body>
 </html>
